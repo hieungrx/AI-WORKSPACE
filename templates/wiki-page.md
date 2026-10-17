@@ -1,10 +1,14 @@
 # [Page title]
 
-- **Status:** DRAFT
-- **Updated:** YYYY-MM-DD
+- **Status:** draft
+- **kind:** external_fact
+- **created_at:** YYYY-MM-DD
+- **updated_at:** YYYY-MM-DD
+- **temporal:** historical
+- **transitions:** []
 - **Source IDs:** None
 - **Decision references:** None
-- **Scope:** [domain/project]
+- **Scope:** global
 - **language:** und
 - **title_vi:**
 - **keywords:** []

@@ -25,8 +25,9 @@ Respond in Vietnamese and follow the non-sensitive preferences in `PROFILE.md`. 
 - Do not run downloads, commands, browser actions, deployment or external writes unless explicitly authorized for the task.
 
 ## Evidence and quality
+- Follow `KNOWLEDGE_GOVERNANCE.md` for lifecycle, scope, freshness and conflicts. Never manufacture APPROVED validation records, human actions or historical events. A verified knowledge state requires the authorized human's content-bound approval and documented validation; model agreement is insufficient.
 - Every nontrivial fact added to the wiki must point to a source ID from `sources/manifest.csv` or a clearly marked first-party project decision.
-- A decision is evidence of a project's approved choice only when its linked ADR is `APPROVED`; `PROPOSED` records are not approved evidence. Source IDs and ADR links do not by themselves verify a claim.
+- Legacy `APPROVED` ADRs remain the legacy manual workflow. Governed project choices require a same-scope approved_decision with verified lifecycle and validated human approval. Proposed decisions are proposals; superseded decisions are historical; foreign project choices are explicit context. Citations alone never verify a claim.
 - Distinguish FACT / INTERPRETATION / HYPOTHESIS / UNKNOWN; preserve dates for time-sensitive facts.
 - If two sources conflict, record both, their dates, and the unresolved conflict. Do not silently overwrite.
 - Keep wiki navigation (`wiki/index.md`) and history (`wiki/log.md`) updated with approved edits.

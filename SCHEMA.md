@@ -6,18 +6,20 @@
 3. Schema (`SCHEMA.md`, `AGENTS.md`): conventions and operations.
 
 ## Wiki page format and evidence
-- Use `templates/wiki-page.md`. Content pages require `Status`, `Updated`, and `Source IDs` metadata, plus a summary, findings, related pages, uncertainties and next questions. Navigation pages named `index.md` and the activity `wiki/log.md` are exempt from content metadata.
-- Status is DRAFT / REVIEWED / STALE. `Updated` is a real ISO date (`YYYY-MM-DD`); it records a page update, not proof that every claim was rechecked.
-- Label claims FACT / INTERPRETATION / HYPOTHESIS / UNKNOWN. Each FACT and each item under `Verified findings` needs a source ID with an exact source pointer, or a link to the relevant `APPROVED` ADR for a first-party project decision.
+- Use `templates/wiki-page.md`. Content pages require lifecycle metadata and `Source IDs`, plus a summary, findings, related pages, uncertainties and next questions. Legacy date aliases are handled below. Navigation pages named `index.md` and the activity `wiki/log.md` are exempt from content metadata.
+- New or explicitly upgraded pages use Status draft / unverified / verified / disputed / superseded / archived, kind, Scope, created_at, updated_at, temporal and transitions under [Knowledge governance](KNOWLEDGE_GOVERNANCE.md). Optional effective_at, reviewed_at, superseded_by, review_after, conflicts, access and cross_project_refs have conditional validation. Dates record events, never proof by themselves.
+- Legacy DRAFT / REVIEWED / STALE plus Updated remain readable without rewriting files. REVIEWED and STALE normalize to unverified, never verified. Do not mix old and canonical date fields or invent historical dates/events.
+- Label claims FACT / INTERPRETATION / HYPOTHESIS / UNKNOWN. Each FACT and each item under `Verified findings` needs a source ID with an exact source pointer, or the relevant human-approved ADR for a first-party project choice under the governance rules. A factual assertion or section title does not itself establish verified lifecycle.
 - List registered source IDs in `Source IDs`. With no sources, use `None` or the existing scaffold value `None ingested yet`. Optional `Decision references` lists direct Markdown links to approved records in `decisions/`; the decisions index is not an ADR citation.
 - A DRAFT may have no evidence only while it explicitly describes a hypothesis or evidence gap and makes no verified findings. Lint warns about this state; it must not invent sources or promote the page. REVIEWED requires evidence and human review. Missing citations for factual findings are errors at any status.
-- An approved ADR establishes the project's choice, not an external research fact. A valid citation is a pointer, not factual verification.
+- An approved ADR establishes the project's choice, not an external research fact. Legacy APPROVED is retained for the legacy manual workflow. Governed decisions require kind approved_decision, lifecycle verified and a content-bound human approval with documented validation evidence. Proposed, superseded or foreign-scope ADRs cannot establish current project configuration.
+- Lifecycle transitions are traced in page metadata. An AI must never create human approval or promote facts based on reasoning/model agreement; only the authorized human may verify, supersede, archive, restore or resolve disputes. Freshness warnings do not automatically change status.
 
 ## Multilingual metadata
 - English technical content and Vietnamese/English questions are supported without translating raw sources or rewriting existing wiki pages.
 - Optional page fields: language (en / vi / mul / und, default und), title_vi (Vietnamese display/search title, default empty), keywords and aliases_vi (JSON arrays of unique nonempty strings, default empty arrays). These are Markdown metadata bullets, not new YAML frontmatter or manifest columns. Existing pages remain valid.
 - Keep technical terms, file names, API routes and identifiers unchanged in storage, queries and citations. Normalization is used only for matching. Vietnamese labels/aliases are navigation aids, not new evidence.
-- Scope uses the existing Scope field, with exact project identifiers. Missing Scope is unscoped; a search must explicitly select a scope. Never broaden to another project because evidence is missing.
+- Scope uses the existing Scope field, with exact project identifiers and explicit global knowledge. Missing legacy Scope is unscoped. Queries select one scope; cross-project context additionally requires declared cross_project_refs and an explicit --cross-ref lookup. Restricted retrieval requires scope authorization. Never broaden because evidence is missing.
 - Controlled expansion adds English keywords for matched in-scope title_vi/aliases_vi; it keeps the original query. No automatic translation, accent removal, inferred synonyms or cross-project alias pooling.
 - The specification, lexical search limits and proposed semantic upgrade path are in [Multilingual readiness](MULTILINGUAL.md). Query results must trace back to sources; missing documents and missing evidence are different UNKNOWN outcomes.
 

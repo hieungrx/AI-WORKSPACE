@@ -37,6 +37,8 @@ JSON arrays avoid ambiguous comma-separated lists. Values retain their original 
 
 The lexical tool reports page status and does not certify source relevance, source-pointer accuracy, human review, factual correctness or freshness. It currently resolves registered local source citations; approved ADR reasoning remains part of the agent Query workflow and is not automatically verified by this tool. Scope filtering is retrieval isolation, not a filesystem authorization system.
 
+Phase 2 [Knowledge governance](KNOWLEDGE_GOVERNANCE.md) additionally resolves governed human-approved decisions, labels lifecycle/freshness, and supports explicitly declared cross-project context and opt-in history. Legacy ADR reasoning remains the manual workflow. Cross-project terms are considered only for the exact target requested with --cross-ref; they never become current truth for the anchor scope.
+
 ## Usage and validation
 
 ~~~text

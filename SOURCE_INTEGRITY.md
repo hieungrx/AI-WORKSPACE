@@ -56,6 +56,8 @@ These controls enforce immutability through these maintenance APIs and detect la
 
 ## Traceability and Query
 
+Phase 2 additionally resolves governed human-approved decisions under [Knowledge governance](KNOWLEDGE_GOVERNANCE.md). Legacy ADR reasoning retains the manual workflow described here. Referenced ADRs cannot bypass integrity checks on their own supporting sources.
+
 Wiki Source IDs metadata remains compatible. One finding may cite several sources using separate source-pointer citations. Source-to-wiki relationships and structured finding source lists are included in the integrity audit. Missing IDs, missing files and changed hashes remain errors, not evidence.
 
 The existing source-based lexical Query gate now requires every source cited by a returned structured finding to be available. With a ledger present, cited snapshots must match their recorded hashes. Citations include source_version, verification_status, integrity_status, original URI status and superseded_by. Query does not silently omit a bad supporting source and return the remainder as complete evidence.
