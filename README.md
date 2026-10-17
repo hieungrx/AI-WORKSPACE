@@ -55,7 +55,7 @@ python -B -m unittest discover -s tests -v
 
 The checker validates manifest metadata/local source existence, wiki metadata and structured citations, local inline link/image file targets, and wiki reachability from the index. It does not read raw source bodies or fetch URLs. It reports unsupported reference links/wikilinks for manual review and does not validate heading anchors or factual meaning. Exit 0 means no structural errors, possibly with warnings; exit 1 means errors need attention.
 
-Keep each accepted checkpoint in a separate local commit and review its diff before continuing. Rollback can target that checkpoint without rewriting earlier history. Tests use isolated temporary fixtures, not real sources or approved decisions.
+Keep each accepted checkpoint in a separate local commit and review its diff before continuing. Rollback can target that checkpoint without rewriting earlier history. Tests use isolated temporary fixtures under `tests/`, removed by the test runner, not real sources or approved decisions.
 
 ## Codex and Obsidian
 Open the workspace root as the vault. The checked-in `.obsidian/app.json` selects Markdown links and relative paths, matching `SCHEMA.md`. Generate links from the final page location. Opening a page and following its links in Obsidian is a separate visual check; the script cannot certify that behavior. No additional plugin is required by this workspace contract.
