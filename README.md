@@ -46,6 +46,8 @@ A lightweight, Markdown-first personal AI workspace inspired by Andrej Karpathy'
 - **Lint:** dùng [prompt Lint](prompts/lint.md). Đọc kết quả script cùng phần rà soát thủ công; chỉ lưu báo cáo hoặc sửa wiki trong phạm vi đã cho phép. PASS cấu trúc không xác nhận kiến thức đúng.
 
 ## Checks and review
+Phase 5 [scalability assessment and migration criteria](SCALABILITY.md) provides a reproducible disposable load benchmark: `python -B scripts/benchmark_scalability.py --sizes 100 1000 10000 --trials 1 --timeout 600`. This is an explicit performance run, separate from routine tests; 10,000 documents can take tens of minutes. Save observations with a new `--output reports/<new-name>.json`. No synthetic documents enter the live knowledge directories, and no full-text/vector engine is installed.
+
 Phase 4 [workflow reliability and benchmark definitions](WORKFLOW_RELIABILITY.md) tests actual Ingest → Query → Lint using an independent English synthetic corpus and 30 Vietnamese–English query pairs. Run `python -B scripts/validate_workflows.py`; add `--output reports/<new-name>.json` to save actual, non-overwriting results. It records recall, citation validity, scope isolation, safe retries and recovery; it does not claim semantic search or factual verification.
 
 Phase 3 [security policy and recovery](SECURITY_POLICY.md) defines trust boundaries, bounded write operations, redacted reports and safe conflict handling. Run `python -B scripts/validate_security.py` and `python -B scripts/check_workspace.py --integrity --security`. These controls protect the workflow APIs; broader Codex tool permissions remain an explicit residual risk.

@@ -7,6 +7,7 @@
 Project-specific canonical state is indexed in [`../projects/index.md`](../projects/index.md).
 
 ## Operating guides
+- [Scalability and performance readiness](../SCALABILITY.md) - Phase 5 load tests and migration gates.
 - [Knowledge workflow reliability](../WORKFLOW_RELIABILITY.md) - Phase 4 synthetic benchmark and measured limits.
 - [Security and recovery policy](../SECURITY_POLICY.md) — Phase 3 boundaries, safeguards and recovery.
 - [Knowledge lifecycle and isolation](../KNOWLEDGE_GOVERNANCE.md) — Phase 2 governance and compatibility.
