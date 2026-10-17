@@ -210,7 +210,7 @@ def _restore(root, record):
     return _finish(root, record, "rolled_back")
 
 
-def transact(root, changes, expected, *, operation="wiki", authorized=False):
+def transact(root, changes, expected, *, operation="wiki", authorized=False, allow_unchanged=False):
     """Every target needs its reviewed version; no inferred write/delete/command."""
     if not authorized:
         raise PermissionError("MAINTENANCE_AUTHORIZATION_REQUIRED")
@@ -230,7 +230,7 @@ def transact(root, changes, expected, *, operation="wiki", authorized=False):
                 raise SecurityError("INVALID_WRITE_PLAN")
             seen.add(canonical)
             before = target.read_bytes() if target.exists() else None
-            if digest(before) != expected[relative]:
+            if digest(before) != expected[relative] and not (allow_unchanged and before == after):
                 if operation == "report" and expected[relative] is None:
                     raise FileExistsError("REPORT_EXISTS")
                 raise SecurityError("CONCURRENT_CHANGE")
@@ -244,23 +244,32 @@ def transact(root, changes, expected, *, operation="wiki", authorized=False):
                 raise SecurityError("SENSITIVE_CONTENT")
             records.append({"path": relative, "before": digest(before), "after": digest(after)})
             bodies.append((before, after, target))
+        # A retried synthesis must not append a second log entry when every
+        # page/index byte is already current, even if a fresh log suffix was proposed.
+        if allow_unchanged and all(before == after for before, after, target in bodies
+                                   if target != root / "wiki/log.md"):
+            return {"status": "UNCHANGED", "paths": sorted(changes)}
         if operation in {"wiki", "lifecycle"}:
             if __package__:
-                from .knowledge_governance import read_page
+                from .knowledge_governance import read_page, validate_wiki_update, validate_lifecycle_update
                 from .check_workspace import LINK, link_path, prose
                 from .workspace_security import require_safe_data
             else:
-                from knowledge_governance import read_page
+                from knowledge_governance import read_page, validate_wiki_update, validate_lifecycle_update
                 from check_workspace import LINK, link_path, prose
                 from workspace_security import require_safe_data
             destinations = {target for _, _, target in bodies}
-            for _, after, target in bodies:
+            for before, after, target in bodies:
                 text = after.decode("utf-8-sig")
                 require_safe_data(text)
                 if target.name not in {"index.md", "log.md"}:
                     governed = read_page(root, target, text)
                     if governed["legacy"] and governed["kind"].endswith("decision"):
                         raise SecurityError("LEGACY_DECISION_MIGRATION_REQUIRED")
+                    if operation == "wiki":
+                        validate_wiki_update(root, target, before, after)
+                    else:
+                        validate_lifecycle_update(root, target, before, after)
                 for match in LINK.finditer(prose(text)):
                     linked = link_path(root, target, match[1])
                     if linked is not None and not linked.exists() and linked not in destinations:

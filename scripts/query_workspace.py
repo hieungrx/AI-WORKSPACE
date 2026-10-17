@@ -19,13 +19,13 @@ if __package__:
     from .knowledge_governance import read_page, document_path, GovernanceError
     from .check_workspace import (
         ROOT, MANIFEST_FIELDS, REQUIRED_FIELDS, SOURCE_TOKEN, findings, iso_date,
-        linked_path, local_path, metadata, multilingual_metadata, prose, source_id,
+        linked_path, local_path, metadata, multilingual_metadata, prose, source_id, source_pointer,
     )
 else:
     from knowledge_governance import read_page, document_path, GovernanceError
     from check_workspace import (
         ROOT, MANIFEST_FIELDS, REQUIRED_FIELDS, SOURCE_TOKEN, findings, iso_date,
-        linked_path, local_path, metadata, multilingual_metadata, prose, source_id,
+        linked_path, local_path, metadata, multilingual_metadata, prose, source_id, source_pointer,
     )
 
 MESSAGES = {
@@ -141,7 +141,20 @@ def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scope
         if governed["access"] == "restricted" and governed["scope"] not in authorized_scopes:
             raise PermissionError("restricted target scope")
         selected.append((target, text, meta, governed))
-    for child, text, meta, governed in selected:
+    unique = {child: (child, text, meta, governed) for child, text, meta, governed in selected}
+    page_ids, decisions = set(), set()
+    for child, text, meta, governed in unique.values():
+        if page_id := meta.get("page_id"):
+            if page_id in page_ids:
+                raise GovernanceError("DUPLICATE_PAGE_ID")
+            page_ids.add(page_id)
+        if (governed["decision_authority"] == "approved" and governed["temporal"] != "historical" and meta.get("decision_key")
+                and "NOT_YET_EFFECTIVE" not in governed["freshness"]):
+            key = (governed["scope"], meta["decision_key"])
+            if key in decisions:
+                raise GovernanceError("CURRENT_DECISION_COLLISION")
+            decisions.add(key)
+    for child, text, meta, governed in unique.values():
         require_safe_data(text)
         if governed["status"] in {"superseded", "archived"} and not include_history:
             continue
@@ -164,17 +177,17 @@ def citations(page, catalog):
         if not required or not required <= listed:
             return []
         for sid in sorted(required):
-            pointer = re.search(r"\[" + re.escape(sid) + r",\s*([^\]\n]+)\]", block)
+            pointer = source_pointer(block, sid)
             record = catalog.get(sid)
             if not record or not record["source_path"] or not pointer:
                 return []
             if pointer:
-                key = (sid, pointer[1].strip())
+                key = (sid, pointer)
                 if key not in seen:
                     seen.add(key)
                     result.append({
                         "source_id": sid, **record,
-                        "source_pointer": pointer[1].strip(),
+                        "source_pointer": pointer,
                     })
     return result
 

@@ -1,0 +1,42 @@
+{
+  "dataset_id": "TEST_ONLY-workflow-v1",
+  "date": "2026-10-18",
+  "description": "Independent synthetic evidence and page specifications. All statements concern this invented corpus, never production systems.",
+  "sources": [
+    {"id":"SRC-20261018-501", "body":"TEST_ONLY: repeated requests with the same Idempotency-Key produce one widget in this fictional protocol."},
+    {"id":"SRC-20261018-502", "body":"TEST_ONLY: the fictional retry policy uses exponential backoff."},
+    {"id":"SRC-20261018-503", "body":"TEST_ONLY: the fictional retry policy uses full jitter."},
+    {"id":"SRC-20261018-504", "body":"TEST_ONLY: the fictional read route is /v1/widgets/{widget_id}."},
+    {"id":"SRC-20261018-505", "body":"TEST_ONLY: the fictional cache settings are described by cache_policy.py."},
+    {"id":"SRC-20261018-506", "body":"TEST_ONLY: the fictional transaction acquires a row lock using SELECT ... FOR UPDATE."},
+    {"id":"SRC-20261018-507", "body":"TEST_ONLY: a second synthetic observation records the same row locking protocol."},
+    {"id":"SRC-20261018-508", "body":"TEST_ONLY: observation A sets the maximum window to 10 ticks."},
+    {"id":"SRC-20261018-509", "body":"TEST_ONLY: observation B sets the maximum window to 30 ticks."},
+    {"id":"SRC-20261018-510", "body":"TEST_ONLY: demo-orion uses request timeout 4100ms and timeout_ms=4100."},
+    {"id":"SRC-20261018-511", "body":"TEST_ONLY: demo-lyra uses request timeout 8800ms and timeout_ms=8800."},
+    {"id":"SRC-20261018-512", "body":"TEST_ONLY: demo-lyra cache TTL is recorded in cache_ttl_ms."},
+    {"id":"SRC-20261018-513", "body":"TEST_ONLY: the fictional former transport choice was a polling channel."},
+    {"id":"SRC-20261018-514", "body":"TEST_ONLY: the fictional current transport choice is an event channel."},
+    {"id":"SRC-20261018-515", "body":"TEST_ONLY: a storage proposal suggests an append-only journal; it is not approved."},
+    {"id":"SRC-20261018-516", "body":"TEST_ONLY: the fictional copy-on-write operation retains the previous buffer."},
+    {"id":"SRC-20261018-517", "body":"TEST_ONLY: optimistic concurrency in this invented protocol compares ETag with If-Match."}
+  ],
+  "pages": [
+    {"path":"wiki/idempotency.md", "title":"Idempotent requests", "scope":"global", "sources":["SRC-20261018-501"], "status":"unverified", "keywords":["Idempotency-Key"], "aliases_vi":["khóa chống lặp"], "claims":[["SRC-20261018-501","TEST_ONLY: repeated Idempotency-Key requests produce one widget."]]},
+    {"path":"wiki/backoff.md", "title":"Backoff protocol", "scope":"global", "sources":["SRC-20261018-502"], "status":"draft", "keywords":["exponential backoff","retry policy"], "aliases_vi":["thử lại có giãn cách","chính sách thử lại"], "claims":[["SRC-20261018-502","TEST_ONLY: the retry policy uses exponential backoff."]]},
+    {"path":"wiki/jitter.md", "title":"Jitter protocol", "scope":"global", "sources":["SRC-20261018-503"], "status":"unverified", "keywords":["full jitter","retry policy"], "aliases_vi":["nhiễu ngẫu nhiên","chính sách thử lại"], "claims":[["SRC-20261018-503","TEST_ONLY: the retry policy uses full jitter."]]},
+    {"path":"wiki/route.md", "title":"Widget route", "scope":"global", "sources":["SRC-20261018-504"], "status":"draft", "keywords":["/v1/widgets/{widget_id}"], "aliases_vi":["đọc widget"], "claims":[["SRC-20261018-504","TEST_ONLY: the read route is /v1/widgets/{widget_id}."]]},
+    {"path":"wiki/file.md", "title":"Cache configuration filename", "scope":"global", "sources":["SRC-20261018-505"], "status":"draft", "keywords":["cache_policy.py"], "aliases_vi":["tệp cấu hình cache"], "claims":[["SRC-20261018-505","TEST_ONLY: cache_policy.py describes the cache settings."]]},
+    {"path":"wiki/locking.md", "title":"Row locking protocol", "scope":"global", "sources":["SRC-20261018-506","SRC-20261018-507"], "status":"unverified", "keywords":["row locking","SELECT ... FOR UPDATE"], "aliases_vi":["khóa hàng"], "claims":[["SRC-20261018-506","TEST_ONLY: the protocol uses SELECT ... FOR UPDATE for row locking."],["SRC-20261018-507","TEST_ONLY: a second observation records row locking."]]},
+    {"path":"wiki/missing.md", "title":"Zero-copy question", "scope":"global", "sources":["SRC-20261018-501"], "status":"draft", "keywords":["zero-copy replication"], "aliases_vi":["sao chép zero-copy"], "claims":[]},
+    {"path":"wiki/conflict.md", "title":"Window observations", "scope":"global", "sources":["SRC-20261018-508","SRC-20261018-509"], "status":"disputed", "keywords":["maximum window"], "aliases_vi":["cửa sổ tối đa"], "conflicts":[{"summary":"TEST_ONLY: incompatible measurements, 10 and 30 ticks, both dated 2026-10-18.","source_ids":["SRC-20261018-508","SRC-20261018-509"],"resolution":null}], "claims":[["SRC-20261018-508","TEST_ONLY: observation A reports 10 ticks on 2026-10-18."],["SRC-20261018-509","TEST_ONLY: observation B reports 30 ticks on 2026-10-18."]]},
+    {"path":"wiki/projects/demo-lyra/cache.md", "title":"Lyra cache", "scope":"demo-lyra", "sources":["SRC-20261018-512"], "status":"draft", "keywords":["cache TTL","cache_ttl_ms"], "aliases_vi":["thời gian sống cache"], "claims":[["SRC-20261018-512","TEST_ONLY: demo-lyra records cache TTL in cache_ttl_ms."]]},
+    {"path":"wiki/projects/demo-orion/timeout.md", "title":"Orion request settings", "scope":"demo-orion", "sources":["SRC-20261018-510"], "status":"unverified", "keywords":["request timeout","timeout_ms"], "aliases_vi":["thời gian chờ yêu cầu"], "cross_project_refs":["wiki/projects/demo-lyra/cache.md"], "claims":[["SRC-20261018-510","TEST_ONLY: demo-orion uses timeout_ms=4100."]]},
+    {"path":"wiki/projects/demo-lyra/timeout.md", "title":"Lyra request settings", "scope":"demo-lyra", "sources":["SRC-20261018-511"], "status":"draft", "keywords":["request timeout","timeout_ms"], "aliases_vi":["thời gian chờ yêu cầu"], "claims":[["SRC-20261018-511","TEST_ONLY: demo-lyra uses timeout_ms=8800."]]},
+    {"path":"decisions/transport-current.md", "title":"Current transport", "scope":"demo-orion", "sources":["SRC-20261018-514"], "kind":"approved_decision", "status":"verified", "decision_key":"transport", "keywords":["transport choice"], "aliases_vi":["lựa chọn giao vận"], "claims":[["SRC-20261018-514","TEST_ONLY: the current transport choice is an event channel."]]},
+    {"path":"decisions/transport-old.md", "title":"Former transport", "scope":"demo-orion", "sources":["SRC-20261018-513"], "kind":"approved_decision", "status":"superseded", "decision_key":"transport", "superseded_by":"decisions/transport-current.md", "keywords":["transport choice","legacy transport"], "aliases_vi":["lựa chọn giao vận","giao vận cũ"], "claims":[["SRC-20261018-513","TEST_ONLY: the previous transport choice was a polling channel."]]},
+    {"path":"decisions/storage-proposal.md", "title":"Storage proposal", "scope":"demo-orion", "sources":["SRC-20261018-515"], "kind":"proposed_decision", "status":"draft", "keywords":["storage proposal"], "aliases_vi":["đề xuất lưu trữ"], "claims":[["SRC-20261018-515","TEST_ONLY: the proposal suggests an append-only journal."]]},
+    {"path":"wiki/copy.md", "title":"Buffer retention", "scope":"global", "sources":["SRC-20261018-516"], "status":"unverified", "keywords":["copy-on-write"], "aliases_vi":[], "claims":[["SRC-20261018-516","TEST_ONLY: copy-on-write retains the previous buffer."]]},
+    {"path":"wiki/concurrency.md", "title":"Optimistic update protocol", "scope":"global", "sources":["SRC-20261018-517"], "status":"unverified", "keywords":["optimistic concurrency","ETag","If-Match"], "aliases_vi":["kiểm soát đồng thời lạc quan"], "claims":[["SRC-20261018-517","TEST_ONLY: optimistic concurrency compares ETag with If-Match."]]}
+  ]
+}

@@ -6,9 +6,9 @@ from pathlib import Path
 import re
 
 if __package__:
-    from .check_workspace import LINK, SOURCE_TOKEN, findings, iso_date, link_path, local_path, metadata, prose
+    from .check_workspace import LINK, SOURCE_TOKEN, findings, identity_metadata, iso_date, link_path, local_path, metadata, prose, source_pointer
 else:
-    from check_workspace import LINK, SOURCE_TOKEN, findings, iso_date, link_path, local_path, metadata, prose
+    from check_workspace import LINK, SOURCE_TOKEN, findings, identity_metadata, iso_date, link_path, local_path, metadata, prose, source_pointer
 
 STATES = {"draft", "unverified", "verified", "disputed", "superseded", "archived"}
 KINDS = {"external_fact", "interpretation", "hypothesis", "requirement",
@@ -121,7 +121,7 @@ def check_transition(before, after, actor):
 def read_page(root, page, text=None, today=None):
     root, page = Path(root).absolute(), Path(page).absolute()
     text = page.read_text(encoding="utf-8-sig") if text is None else text
-    meta = metadata(text)
+    meta = identity_metadata(text)
     legacy = not (MANAGED & meta.keys()) and meta.get("status") in LEGACY
     scope = meta.get("scope", "unscoped")
     if not scope or scope.strip() != scope:
@@ -276,11 +276,49 @@ def read_page(root, page, text=None, today=None):
                 temporal=meta["temporal"], freshness=freshness, decision_authority=authority, **dates)
 
 
+def validate_wiki_update(root, page, before, after):
+    """Normal synthesis may edit drafts; lifecycle/history and evidence need explicit review."""
+    if before is None or before == after:
+        return
+    old_text, new_text = before.decode("utf-8-sig"), after.decode("utf-8-sig")
+    old, new = read_page(root, page, old_text), read_page(root, page, new_text)
+    if old["status"] != "draft":
+        raise GovernanceError("PROTECTED_KNOWLEDGE_UPDATE")
+    old_meta, new_meta = metadata(old_text), metadata(new_text)
+    if (new["status"] != "draft" or old["scope"] != new["scope"]
+            or not old["legacy"] and any(old_meta.get(key) != new_meta.get(key) for key in
+                ("kind", "created_at", "transitions", "reviewed_at", "effective_at", "superseded_by", "access"))
+            or old_meta.get("page_id") and old_meta["page_id"] != new_meta.get("page_id")):
+        raise GovernanceError("LIFECYCLE_CHANGE_REQUIRES_TRANSITION")
+    old_ids = set(SOURCE_TOKEN.findall(old_meta.get("source ids", "")))
+    if not old_ids <= set(SOURCE_TOKEN.findall(new_meta.get("source ids", ""))):
+        raise GovernanceError("EVIDENCE_REMOVAL_REQUIRES_REVIEW")
+    def pointers(text):
+        return {(sid, source_pointer(block, sid)) for block in findings(prose(text))
+                for sid in SOURCE_TOKEN.findall(block)}
+    if not pointers(old_text) <= pointers(new_text):
+        raise GovernanceError("EVIDENCE_REMOVAL_REQUIRES_REVIEW")
+    if any(item not in new["conflicts"] for item in old["conflicts"]):
+        raise GovernanceError("CONFLICT_REMOVAL_REQUIRES_REVIEW")
+
+
+def validate_lifecycle_update(root, page, before, after):
+    """A lifecycle write appends one event; it cannot rewrite content or reset history."""
+    if before is None:
+        raise GovernanceError("INVALID_LIFECYCLE_UPDATE")
+    old_text, new_text = before.decode("utf-8-sig"), after.decode("utf-8-sig")
+    old = read_page(root, page, old_text)
+    old_events, new_events = array(metadata(old_text), "transitions"), array(metadata(new_text), "transitions")
+    if (old["legacy"] or len(new_events) != len(old_events) + 1 or new_events[:-1] != old_events
+            or new_events[-1].get("from") != old["status"] or content_hash(old_text) != content_hash(new_text)):
+        raise GovernanceError("INVALID_LIFECYCLE_UPDATE")
+
+
 def replace_field(text, name, value):
     lines = text.splitlines()
     for number, line in enumerate(lines):
         match = FIELD.match(line)
-        if match and match[1].lower() == name:
+        if match and match[1].lower() == name.lower():
             lines[number] = f"- **{name}:** {value}"
             return "\n".join(lines) + "\n"
         if re.match(r"^#{2,6}\s", line):

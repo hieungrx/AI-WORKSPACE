@@ -125,6 +125,22 @@ def metadata(text):
     return result
 
 
+def identity_metadata(text):
+    """Optional IDs, one format. Canonical metadata is Markdown bullets, never YAML."""
+    if text.lstrip("\ufeff\r\n ").startswith("---"):
+        raise ValueError("UNSUPPORTED_FRONTMATTER")
+    meta = metadata(text)
+    for field in ("page_id", "decision_key"):
+        if field in meta and not re.fullmatch(r"[a-z0-9][a-z0-9._-]{0,95}", meta[field]):
+            raise ValueError("INVALID_" + field.upper())
+    return meta
+
+
+def source_pointer(block, sid):
+    match = re.search(r"\[" + re.escape(sid) + r",\s*([^\]\n]+)\]", block)
+    return match[1].strip() if match and match[1].strip() else None
+
+
 def multilingual_metadata(meta):
     """Optional additive fields; older pages keep their original meaning."""
     language = meta.get("language", "und")
@@ -248,6 +264,7 @@ def check_workspace(root=ROOT, integrity=False, security=False):
 
     graph = {page: set() for page in documents}
     for page, text in documents.items():
+        index_targets = set()
         starts = len(re.findall(r"!?\[[^\]\n]*\]\(", text))
         if (REFERENCE_LINK.search(text) or re.search(r"!?\[\[[^\]\n]+\]\]", text)
                 or starts > len(list(LINK.finditer(text)))):
@@ -256,6 +273,10 @@ def check_workspace(root=ROOT, integrity=False, security=False):
             try:
                 target = link_path(root, page, match[1])
                 if target is not None:
+                    if page.name == "index.md" and target.suffix == ".md":
+                        if target in index_targets:
+                            report("WARNING", "DUPLICATE_INDEX_ENTRY", page, "a Markdown target is listed more than once.")
+                        index_targets.add(target)
                     if target.exists():
                         graph[page].add(target)
                     else:
@@ -292,6 +313,7 @@ def check_workspace(root=ROOT, integrity=False, security=False):
     wiki = {page for page in documents if page.is_relative_to(root / "wiki")}
     canonical_decisions = {root / path for path, record in governance["pages"].items()
                            if path.startswith("decisions/") and not record["legacy"]}
+    page_ids, current_decisions = {}, {}
     for page in sorted(wiki | canonical_decisions):
         text = documents[page]
         tokens = set(SOURCE_TOKEN.findall(text))
@@ -304,12 +326,28 @@ def check_workspace(root=ROOT, integrity=False, security=False):
             continue
         meta = metadata(text)
         try:
+            identity_metadata(text)
+        except ValueError as error:
+            report("ERROR", str(error), page, "use canonical Markdown metadata and valid optional identifiers.")
+        if page_id := meta.get("page_id"):
+            if page_id in page_ids:
+                report("ERROR", "DUPLICATE_PAGE_ID", page, "page_id must be unique across wiki and canonical decisions.")
+            page_ids[page_id] = page
+        try:
             multilingual_metadata(meta)
         except ValueError as error:
             report("ERROR", "INVALID_MULTILINGUAL_METADATA", page, f"invalid optional {error} field.")
         status = meta.get("status")
         governed = governance["pages"].get(page.relative_to(root).as_posix(), {})
         modern = not governed.get("legacy", True)
+        if modern and governed.get("status") in {"draft", "unverified"}:
+            report("WARNING", "UNREVIEWED_KNOWLEDGE", page, "knowledge awaits authorized validation; citations are not factual verification.")
+        if (governed.get("decision_authority") == "approved" and governed.get("temporal") != "historical" and meta.get("decision_key")
+                and "NOT_YET_EFFECTIVE" not in governed.get("freshness", [])):
+            key = (governed["scope"], meta["decision_key"])
+            if key in current_decisions:
+                report("ERROR", "CURRENT_DECISION_COLLISION", page, "multiple current approved decisions share scope and decision_key; review and supersede explicitly.")
+            current_decisions[key] = page
         if status not in {"DRAFT", "REVIEWED", "STALE"} | STATES:
             report("ERROR", "INVALID_STATUS", page, "invalid legacy or lifecycle status.")
         if not iso_date(meta.get("updated_at", meta.get("updated", ""))):
@@ -340,6 +378,9 @@ def check_workspace(root=ROOT, integrity=False, security=False):
             decision_evidence |= block_decisions
             if not (set(SOURCE_TOKEN.findall(block)) & ids or block_decisions):
                 report("ERROR", "MISSING_CITATION", page, "a structured factual finding needs a registered source or APPROVED ADR.")
+            for sid in set(SOURCE_TOKEN.findall(block)) & ids:
+                if not source_pointer(block, sid):
+                    report("ERROR", "MISSING_CITATION_POINTER", page, "each cited source in a finding needs [source_id, exact pointer].")
         has_evidence = bool(listed & ids or decision_evidence)
         if status == "verified" and not has_evidence and governed.get("decision_authority") != "approved":
             report("ERROR", "VERIFIED_WITHOUT_EVIDENCE", page, "verified requires traceable source or same-scope approved decision.")
