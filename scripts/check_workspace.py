@@ -268,11 +268,21 @@ def check_workspace(root=ROOT, integrity=False):
                 continue
         return targets
 
+    if __package__:
+        from .knowledge_governance import STATES, audit_governance
+    else:
+        from knowledge_governance import STATES, audit_governance
+    governance = audit_governance(root)
+    issues.extend(governance["issues"])
     approved = {page for page, text in documents.items()
                 if page.is_relative_to(root / "decisions") and page.name != "index.md"
                 and metadata(text).get("status") == "APPROVED"}
+    approved |= {root / path for path, record in governance["pages"].items()
+                 if path.startswith("decisions/") and record["decision_authority"] == "approved"}
     wiki = {page for page in documents if page.is_relative_to(root / "wiki")}
-    for page in sorted(wiki):
+    canonical_decisions = {root / path for path, record in governance["pages"].items()
+                           if path.startswith("decisions/") and not record["legacy"]}
+    for page in sorted(wiki | canonical_decisions):
         text = documents[page]
         tokens = set(SOURCE_TOKEN.findall(text))
         for sid in sorted(tokens):
@@ -288,9 +298,11 @@ def check_workspace(root=ROOT, integrity=False):
         except ValueError as error:
             report("ERROR", "INVALID_MULTILINGUAL_METADATA", page, f"invalid optional {error} field.")
         status = meta.get("status")
-        if status not in {"DRAFT", "REVIEWED", "STALE"}:
-            report("ERROR", "INVALID_STATUS", page, "Status must be DRAFT, REVIEWED or STALE.")
-        if not iso_date(meta.get("updated", "")):
+        governed = governance["pages"].get(page.relative_to(root).as_posix(), {})
+        modern = not governed.get("legacy", True)
+        if status not in {"DRAFT", "REVIEWED", "STALE"} | STATES:
+            report("ERROR", "INVALID_STATUS", page, "invalid legacy or lifecycle status.")
+        if not iso_date(meta.get("updated_at", meta.get("updated", ""))):
             report("ERROR", "INVALID_UPDATED", page, "Updated must be a real ISO date.")
         source_field = meta.get("source ids")
         listed = set(SOURCE_TOKEN.findall(source_field or ""))
@@ -299,16 +311,28 @@ def check_workspace(root=ROOT, integrity=False):
         if tokens - listed:
             report("ERROR", "UNLISTED_SOURCE", page, "cited source IDs must also appear in Source IDs metadata.")
         decision_field = meta.get("decision references", "None")
+        eligible = approved
+        if not modern and meta.get("scope"):
+            eligible = {target for target in approved
+                        if metadata(documents[target]).get("scope") == meta["scope"]}
+        if modern:
+            eligible = {target for target in approved
+                        if (target_record := governance["pages"].get(target.relative_to(root).as_posix()))
+                        and not target_record["legacy"] and target_record["scope"] == governed["scope"]}
         decisions = adr_targets(page, decision_field)
-        if decision_field != "None" and (not decisions or decisions - approved):
+        if decision_field != "None" and (not decisions or decisions - eligible):
             report("ERROR", "UNAPPROVED_DECISION", page, "Decision references must link directly to APPROVED ADRs.")
-        decision_evidence = decisions & approved
+        decision_evidence = decisions & eligible
         for block in findings(text):
-            block_decisions = adr_targets(page, block) & approved
+            block_decisions = adr_targets(page, block) & eligible
+            if page in canonical_decisions and governed.get("decision_authority") == "approved":
+                block_decisions.add(page)  # A first-party choice is supported by its own human-approved ADR.
             decision_evidence |= block_decisions
             if not (set(SOURCE_TOKEN.findall(block)) & ids or block_decisions):
                 report("ERROR", "MISSING_CITATION", page, "a structured factual finding needs a registered source or APPROVED ADR.")
         has_evidence = bool(listed & ids or decision_evidence)
+        if status == "verified" and not has_evidence and governed.get("decision_authority") != "approved":
+            report("ERROR", "VERIFIED_WITHOUT_EVIDENCE", page, "verified requires traceable source or same-scope approved decision.")
         if status == "REVIEWED" and not has_evidence:
             report("ERROR", "REVIEWED_WITHOUT_EVIDENCE", page, "REVIEWED requires source or approved decision evidence.")
         elif not has_evidence:
