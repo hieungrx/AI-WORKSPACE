@@ -1,0 +1,360 @@
+{
+  "phase": "AI-WORKSPACE V1 Phase 1 only",
+  "verdict": "PASS",
+  "verdict_scope": "Source-integrity contract, current registry and synthetic fixtures; not factual correctness or Phase 2.",
+  "synthetic_tests_only": true,
+  "live_registered_sources": 0,
+  "live_hash_matches": 0,
+  "workspace_errors": [],
+  "workspace_warnings": [
+    "WARNING NO_EVIDENCE wiki/concepts/knowledge-system-principles.md: page has no registered source or approved decision evidence."
+  ],
+  "source_audit": {
+    "issues": [],
+    "sources": {},
+    "source_to_wiki": {},
+    "claims": []
+  },
+  "unit_tests": {
+    "run": 81,
+    "passed": 81,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "observed_output": "----------------------------------------------------------------------\nRan 81 tests in 17.020s\n\nOK\n",
+    "results": [
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_all_required_manifest_values_are_checked",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_approved_adr_can_support_a_first_party_project_decision",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_bad_manifest_header_and_row_shape_are_errors",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_checker_does_not_modify_or_create_workspace_files",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_citations_can_continue_on_the_next_line",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_cited_source_must_be_listed_in_page_metadata",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_content_metadata_values_are_validated",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_duplicate_manifest_ids_are_errors",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_each_finding_needs_its_own_citation",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_empty_registry_allows_explicit_unverified_draft",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_escaped_links_are_rejected_without_accessing_outside_paths",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_examples_and_comments_do_not_create_citations_or_links",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_existing_starter_hypothesis_remains_valid",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_exit_codes_and_output_distinguish_pass_warning_and_error",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_http_sources_are_metadata_only_and_no_network_is_used",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_images_and_encoded_or_angle_bracket_targets",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_inline_links_are_checked_across_documentation_locations",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_linked_paths_are_not_followed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_missing_and_unreadable_manifests_are_reported_without_tracebacks",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_missing_raw_file_and_directory_targets_are_errors",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_missing_wiki_entrypoints_are_reported",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_orphans_are_reported_and_indirect_navigation_is_followed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_proposed_adr_and_decision_index_are_not_approved_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_proposed_adr_can_be_linked_as_context_without_claiming_approval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_raw_bodies_and_protected_documents_are_never_opened",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_registered_source_and_finding_pass",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_source_dates_and_id_dates_are_real_calendar_dates",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_source_paths_cannot_escape_raw_or_workspace",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_source_paths_cannot_hide_linked_components_before_parent_segments",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_structured_facts_require_citations_even_in_drafts",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_template_can_be_copied_at_two_wiki_depths_without_broken_examples",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unknown_and_malformed_source_ids_are_reported",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unknown_author_or_publication_date_needs_an_explanatory_note",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unsupported_links_warn_and_heading_anchor_limit_is_explicit",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unverified_draft_and_reviewed_without_evidence_are_distinct",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_utf8_bom_and_windows_newlines_are_supported",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_accents_are_not_silently_removed_or_synonyms_invented",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_alias_and_vietnamese_title_add_only_declared_english_terms",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_aliases_do_not_leak_from_another_project",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_all_25_pairs_have_observed_results",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_ambiguous_alias_does_not_pick_an_arbitrary_document",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_identifiers_routes_and_filenames_retain_original_spelling",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_invalid_registry_fails_closed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_linter_and_search_reject_bad_metadata",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_missing_evidence_is_not_a_source_backed_answer",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_old_metadata_defaults_and_legacy_retrieval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_optional_metadata_rejects_invalid_types_and_duplicates",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_other_project_bad_metadata_does_not_change_selected_scope",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_punctuation_bearing_technical_keywords_are_literal",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_raw_bodies_are_not_opened_and_network_is_not_used",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_report_writer_rejects_existing_or_protected_paths",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_scope_is_required_and_never_inferred",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_search_does_not_write_or_translate_any_file",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_underscored_fields_are_parsed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_unicode_nfc_nfd_case_and_spacing_match",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_01_valid_registration_and_unknown_metadata",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_02_duplicate_ingestion_is_idempotent_and_content_deduplicated",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_03_duplicate_id_with_different_content_is_rejected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_04_hash_mismatch_blocks_source_and_query",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_05_missing_source_file_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_06_invalid_wiki_reference_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_07_missing_required_metadata_is_rejected_before_writes",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_08_unavailable_original_url_retains_local_evidence_without_network",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_09_attempted_raw_modification_is_refused",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_10_source_version_replacement_preserves_old_snapshot_and_references",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_audit_and_query_are_read_only_and_only_hash_raw_bytes",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_binary_sources_are_hashed_without_text_decoding",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_claim_with_no_evidence_stays_unknown",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_corrupt_duplicate_and_orphan_provenance_fail_closed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_forked_and_out_of_sequence_versions_are_rejected_before_append",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_hash_matching_never_promotes_verification_status",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_interrupted_registration_is_an_orphan_not_a_trusted_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_known_origin_revision_needs_explicit_version_link",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_legacy_migration_is_explicit_readonly_planning_and_append_only_apply",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_manifest_metadata_tampering_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_manually_duplicated_content_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_metadata_only_replacement_can_reuse_immutable_bytes",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_migration_detects_changed_bytes_since_proposal",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_multiple_sources_support_one_claim_and_one_bad_source_blocks_it",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_remote_only_legacy_record_requires_an_authorized_snapshot",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_stale_lock_is_not_deleted_or_ignored",
+        "status": "PASS"
+      }
+    ]
+  },
+  "limits": [
+    "No real knowledge was ingested; an empty live registry is explicitly reported.",
+    "Original URL availability is recorded metadata, never a live network verification here.",
+    "Legacy sources without a baseline remain LEGACY_UNHASHED and fail strict admission until migration.",
+    "Migration records current bytes, not proof of historical immutability.",
+    "Two metadata appends are not an atomic transaction; an interruption fails closed as an orphan.",
+    "Hashes and citations do not prove factual correctness; trusted Git history protects the baseline."
+  ]
+}
