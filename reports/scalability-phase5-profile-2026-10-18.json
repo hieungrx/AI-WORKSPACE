@@ -1,0 +1,234 @@
+{
+  "phase": "V1 Phase 5",
+  "label": "baseline-profile",
+  "synthetic_only": true,
+  "observed_at_utc": "2026-10-17T17:42:13.487730+00:00",
+  "environment": {
+    "os": "Windows",
+    "release": "11",
+    "machine": "AMD64",
+    "python": "3.13.0",
+    "logical_cpu_count": 8,
+    "free_bytes_at_start": 469596217344
+  },
+  "method": {
+    "trials": 1,
+    "operation_timeout_seconds": 120,
+    "latency": "Fresh worker process; imports/startup excluded; Path open/stat counters enabled. OS disk cache uncontrolled; not a cold-cache claim.",
+    "memory": "Worker process lifetime peak working set on Windows; imports/checks included.",
+    "setup": "Direct owned fixture provisioning, not production admission throughput.",
+    "cost": "LLM tokens/API charges NOT MEASURED; no LLM API is called by the benchmark.",
+    "selected_operations": [
+      "profile_query"
+    ]
+  },
+  "datasets": [
+    {
+      "setup": {
+        "documents": 100,
+        "raw_snapshots": 100,
+        "fixture_build_seconds": 0.8725537999998778,
+        "fixture_navigation_generation_seconds": 0.009363099998154212,
+        "production_index_generation": "NOT MEASURED (no production generator)",
+        "file_count": 217,
+        "directory_count": 17,
+        "logical_bytes": 451159,
+        "allocated_disk_bytes": "NOT MEASURED",
+        "corpus_sha256": "f32c2cf40a72c58516752e96bafba7e4ad015f34cee28d4bfe11bd843f9bcf6d",
+        "recipe": "TEST_ONLY-scale-v1"
+      },
+      "operations": [
+        {
+          "status": "MEASURED",
+          "operation": "profile_query",
+          "trial": 0,
+          "seconds": 3.0238196999998763,
+          "cpu_seconds": 2.5,
+          "io_calls": {
+            "path_stat_calls": 5465,
+            "path_open_calls": 325,
+            "manifest_open_calls": 12
+          },
+          "memory": {
+            "peak_working_set_bytes": 33095680,
+            "working_set_bytes": 33009664,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "status": "FOUND",
+            "path": "wiki/projects/load-project-01/p000001.md",
+            "source_id": "SRC-20260101-001",
+            "scope": "load-project-01",
+            "profile": [
+              {
+                "file": "query_workspace.py",
+                "line": 235,
+                "function": "search",
+                "calls": 1,
+                "self_seconds": 0.0002634,
+                "cumulative_seconds": 2.5301505
+              },
+              {
+                "file": "query_workspace.py",
+                "line": 54,
+                "function": "source_catalog",
+                "calls": 1,
+                "self_seconds": 0.0033490000000000004,
+                "cumulative_seconds": 1.9356203
+              },
+              {
+                "file": "check_workspace.py",
+                "line": 61,
+                "function": "local_path",
+                "calls": 569,
+                "self_seconds": 0.029443,
+                "cumulative_seconds": 1.8932760000000002
+              },
+              {
+                "file": "source_integrity.py",
+                "line": 226,
+                "function": "audit_sources",
+                "calls": 1,
+                "self_seconds": 0.0042053,
+                "cumulative_seconds": 1.4010036000000001
+              },
+              {
+                "file": "benchmark_scalability.py",
+                "line": 183,
+                "function": "stated",
+                "calls": 5465,
+                "self_seconds": 0.0231189,
+                "cumulative_seconds": 0.9237216
+              },
+              {
+                "file": "_local.py",
+                "line": 510,
+                "function": "stat",
+                "calls": 5465,
+                "self_seconds": 0.005166400000000001,
+                "cumulative_seconds": 0.9006024
+              },
+              {
+                "file": "~",
+                "line": 0,
+                "function": "<built-in method nt.stat>",
+                "calls": 5465,
+                "self_seconds": 0.8892421,
+                "cumulative_seconds": 0.895436
+              },
+              {
+                "file": "check_workspace.py",
+                "line": 57,
+                "function": "linked_path",
+                "calls": 2177,
+                "self_seconds": 0.0065992,
+                "cumulative_seconds": 0.7390695
+              },
+              {
+                "file": "source_integrity.py",
+                "line": 143,
+                "function": "raw_path",
+                "calls": 200,
+                "self_seconds": 0.0010608,
+                "cumulative_seconds": 0.7141618000000001
+              },
+              {
+                "file": "query_workspace.py",
+                "line": 106,
+                "function": "pages",
+                "calls": 11,
+                "self_seconds": 0.0001258,
+                "cumulative_seconds": 0.5573034
+              },
+              {
+                "file": "~",
+                "line": 0,
+                "function": "<method 'extend' of 'list' objects>",
+                "calls": 3058,
+                "self_seconds": 0.0019281,
+                "cumulative_seconds": 0.5337104
+              },
+              {
+                "file": "query_workspace.py",
+                "line": 109,
+                "function": "visit",
+                "calls": 43,
+                "self_seconds": 0.0018486000000000002,
+                "cumulative_seconds": 0.5321379
+              },
+              {
+                "file": "source_integrity.py",
+                "line": 198,
+                "function": "wiki_relationships",
+                "calls": 1,
+                "self_seconds": 7.6e-06,
+                "cumulative_seconds": 0.507343
+              },
+              {
+                "file": "source_integrity.py",
+                "line": 203,
+                "function": "visit",
+                "calls": 12,
+                "self_seconds": 0.013137000000000001,
+                "cumulative_seconds": 0.5066599
+              },
+              {
+                "file": "source_integrity.py",
+                "line": 150,
+                "function": "content_hash",
+                "calls": 100,
+                "self_seconds": 0.0020428,
+                "cumulative_seconds": 0.47882830000000004
+              },
+              {
+                "file": "_abc.py",
+                "line": 513,
+                "function": "is_symlink",
+                "calls": 2177,
+                "self_seconds": 0.004019,
+                "cumulative_seconds": 0.4183252
+              },
+              {
+                "file": "_abc.py",
+                "line": 432,
+                "function": "lstat",
+                "calls": 2177,
+                "self_seconds": 0.0033471000000000004,
+                "cumulative_seconds": 0.41314330000000005
+              },
+              {
+                "file": "_abc.py",
+                "line": 476,
+                "function": "is_file",
+                "calls": 2471,
+                "self_seconds": 0.0076798000000000005,
+                "cumulative_seconds": 0.40151220000000004
+              }
+            ]
+          },
+          "correct": true
+        }
+      ],
+      "summary": {
+        "profile_query": {
+          "completed_trials": 1,
+          "median_seconds": 3.0238196999998763,
+          "max_seconds": 3.0238196999998763
+        }
+      },
+      "quality": {
+        "status": "NOT RUN",
+        "reason": "Explicit --skip-quality baseline selection."
+      }
+    }
+  ],
+  "benchmark_script_sha256": "adaa62aadb6a3e7c6a638dd834f15f384a6576080cee84f8e8d31ebf08e7d04c",
+  "implementation_sha256": {
+    "query_workspace.py": "45d324bded02f8e9e8fef1ffcf678fccf38aa43dc668698050fd972f32cb75ea",
+    "source_integrity.py": "4e99ab15e20056f4497979de11220b2b2d4487f216c530a5eca62d9c6b2fc860",
+    "knowledge_governance.py": "b062cd73d49156a9532d83e041605d17b2a3b2fb224f9642b3b21e00575009b4",
+    "check_workspace.py": "76ff102227494acf733723d4674f87da607ba4d8400424ef1690e8051a65fd07",
+    "safe_operations.py": "2a97bc6d198627aa8cf69c2bf33528b7c16ce831bb5bea28b87ab0610c4d050e"
+  },
+  "verdict": "CONDITIONAL"
+}
