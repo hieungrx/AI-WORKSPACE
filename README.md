@@ -46,6 +46,15 @@ A lightweight, Markdown-first personal AI workspace inspired by Andrej Karpathy'
 - **Lint:** dùng [prompt Lint](prompts/lint.md). Đọc kết quả script cùng phần rà soát thủ công; chỉ lưu báo cáo hoặc sửa wiki trong phạm vi đã cho phép. PASS cấu trúc không xác nhận kiến thức đúng.
 
 ## Checks and review
+Multilingual metadata, controlled Vietnamese-English query expansion and the proposed semantic upgrade path are specified in [MULTILINGUAL.md](MULTILINGUAL.md). Existing pages need no migration. The optional lexical helper and paired fixture validation use only Python's standard library:
+
+```text
+python -B scripts/query_workspace.py --scope unscoped --query "nguồn đã được kiểm chứng"
+python -B scripts/validate_multilingual.py
+```
+
+The query helper is read-only and preserves technical terms. Validation selects synthetic test data explicitly; it does not ingest it into the live workspace. No QMD, RAG or vector database is installed.
+
 Run from the workspace root; only Python's standard library is needed:
 
 ```text

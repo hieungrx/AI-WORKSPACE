@@ -5,6 +5,10 @@
 - **Source IDs:** None
 - **Decision references:** None
 - **Scope:** [domain/project]
+- **language:** und
+- **title_vi:**
+- **keywords:** []
+- **aliases_vi:** []
 
 ## Summary
 UNKNOWN: [2-5 sentences; describe the scope and any evidence gap.]

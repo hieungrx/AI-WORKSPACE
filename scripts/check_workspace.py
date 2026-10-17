@@ -2,6 +2,7 @@
 """Read-only, offline structural checks. Uses only the Python standard library."""
 import csv
 from datetime import date
+import json
 from pathlib import Path, PureWindowsPath
 import re
 import sys
@@ -107,10 +108,28 @@ def metadata(text):
     for line in text.splitlines():
         if re.match(r"^#{2,6}\s", line):
             break
-        match = re.match(r"^\s*-\s+(?:\*\*)?([A-Za-z][A-Za-z ]*):(?:\*\*)?\s*(.*?)\s*$", line)
+        match = re.match(r"^\s*-\s+(?:\*\*)?([A-Za-z][A-Za-z_ ]*):(?:\*\*)?\s*(.*?)\s*$", line)
         if match:
             result[match[1].lower()] = match[2]
     return result
+
+
+def multilingual_metadata(meta):
+    """Optional additive fields; older pages keep their original meaning."""
+    language = meta.get("language", "und")
+    if language not in {"en", "vi", "mul", "und"}:
+        raise ValueError("language")
+    fields = {"language": language, "title_vi": meta.get("title_vi", "")}
+    for name in ("keywords", "aliases_vi"):
+        try:
+            values = json.loads(meta.get(name, "[]"))
+        except (ValueError, TypeError):
+            raise ValueError(name) from None
+        if (not isinstance(values, list) or any(not isinstance(v, str) or not v.strip() for v in values)
+                or len(set(values)) != len(values)):
+            raise ValueError(name)
+        fields[name] = values
+    return fields
 
 
 def findings(text):
@@ -263,6 +282,10 @@ def check_workspace(root=ROOT):
         if page.name == "index.md" or page == root / "wiki/log.md":
             continue
         meta = metadata(text)
+        try:
+            multilingual_metadata(meta)
+        except ValueError as error:
+            report("ERROR", "INVALID_MULTILINGUAL_METADATA", page, f"invalid optional {error} field.")
         status = meta.get("status")
         if status not in {"DRAFT", "REVIEWED", "STALE"}:
             report("ERROR", "INVALID_STATUS", page, "Status must be DRAFT, REVIEWED or STALE.")

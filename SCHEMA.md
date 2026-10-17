@@ -13,6 +13,14 @@
 - A DRAFT may have no evidence only while it explicitly describes a hypothesis or evidence gap and makes no verified findings. Lint warns about this state; it must not invent sources or promote the page. REVIEWED requires evidence and human review. Missing citations for factual findings are errors at any status.
 - An approved ADR establishes the project's choice, not an external research fact. A valid citation is a pointer, not factual verification.
 
+## Multilingual metadata
+- English technical content and Vietnamese/English questions are supported without translating raw sources or rewriting existing wiki pages.
+- Optional page fields: language (en / vi / mul / und, default und), title_vi (Vietnamese display/search title, default empty), keywords and aliases_vi (JSON arrays of unique nonempty strings, default empty arrays). These are Markdown metadata bullets, not new YAML frontmatter or manifest columns. Existing pages remain valid.
+- Keep technical terms, file names, API routes and identifiers unchanged in storage, queries and citations. Normalization is used only for matching. Vietnamese labels/aliases are navigation aids, not new evidence.
+- Scope uses the existing Scope field, with exact project identifiers. Missing Scope is unscoped; a search must explicitly select a scope. Never broaden to another project because evidence is missing.
+- Controlled expansion adds English keywords for matched in-scope title_vi/aliases_vi; it keeps the original query. No automatic translation, accent removal, inferred synonyms or cross-project alias pooling.
+- The specification, lexical search limits and proposed semantic upgrade path are in [Multilingual readiness](MULTILINGUAL.md). Query results must trace back to sources; missing documents and missing evidence are different UNKNOWN outcomes.
+
 ## Source registry
 - Use unique IDs `SRC-YYYYMMDD-###` with a real calendar date (for example `SRC-20261017-001`). Each cited ID must resolve to exactly one entry in `sources/manifest.csv`.
 - Keep the existing nine-column CSV header. Required row values: `source_id`, `title`, `source_type`, `source_url_or_path`, `retrieved_date`, and `access_and_license`. Unknown author or publication date may be blank with an explanation in `notes`; supplied dates use ISO format.
