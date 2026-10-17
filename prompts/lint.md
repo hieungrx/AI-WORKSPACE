@@ -1,5 +1,7 @@
 # Prompt: LINT
 
+Follow `SECURITY_POLICY.md` and run `python -B scripts/check_workspace.py --integrity --security`. Never open actual secret/environment/private locations, print matched values or send findings externally. Reports use the centralized redacted, exclusive writer. Report pending recovery and version conflicts without resetting files, deleting user changes or clearing owner locks automatically.
+
 Follow `KNOWLEDGE_GOVERNANCE.md`. The existing checker also validates canonical lifecycle metadata, transition chains, content-bound human validation approval, successor references, scope consistency and explicit review dates. Report legacy compatibility separately from verified authority. Flag unresolved conflicts and due reviews; do not select a winning source, change status because of age, or auto-promote anything.
 
 For Phase 1 source integrity, follow `SOURCE_INTEGRITY.md` and additionally run `python -B scripts/check_workspace.py --integrity`. This read-only mode hashes registered raw bytes without printing them. Report missing provenance, changed bytes/manifest metadata, duplicate content, broken version lineage and reverse wiki references; never repair a failed hash by overwriting raw or its baseline. The default command below is metadata-only compatibility mode.

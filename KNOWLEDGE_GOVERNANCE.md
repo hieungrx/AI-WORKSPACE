@@ -114,6 +114,8 @@ Age alone never changes status. Historical facts do not expire because their cre
 Conflicts retain source IDs, summary and any resolution. Unresolved conflicts produce warnings and DISPUTED Query output with both source citations, never a verified answer. A disputed page requires a conflict record. Verification is blocked while any conflict remains unresolved. A human documents resolution and validation before moving to unverified, then separately verifies. The checker cannot discover all semantic disagreements by itself.
 
 ## Operations and compatibility checks
+Phase 3 [security policy](SECURITY_POLICY.md) routes applied transitions through the shared version-checked, journaled writer. Verified wiki content still has DATA trust; it cannot issue commands, create human approvals or change permissions. A pending operation blocks Query until recovery completes.
+
 
 Ingest retains Phase 1 admission/hashing, starts new synthesis at draft and proposes governance metadata within task authorization. Query stays read-only. Lint reports lifecycle/authority/scope/freshness failures; it never promotes, resolves or deletes content.
 

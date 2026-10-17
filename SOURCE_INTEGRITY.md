@@ -41,6 +41,8 @@ Unknown author, publisher, publication date, original URI or verification must s
 - Superseded sources stay available. Existing wiki references are reported for review, never silently changed to a newer source.
 
 ## Authorized admission and immutable raw
+Phase 3 [security and recovery](SECURITY_POLICY.md) supersedes the earlier two-append failure behavior below: new admission publishes complete raw snapshots exclusively and journals metadata replacement while preserving append-only history. Interrupted new registration restores its exact pre-operation metadata or blocks for recovery; legacy orphan records still need human reconciliation. Existing historical reports are unchanged.
+
 
 The source_integrity module exposes small standard-library functions for separately authorized future intake:
 
@@ -50,7 +52,7 @@ The source_integrity module exposes small standard-library functions for separat
 
 All paths reuse the existing workspace/private/symlink/junction guards. Hashing reads registered raw files as binary chunks; it never prints source bodies. Audit and Query do not modify raw or provenance.
 
-Registration uses an exclusive lock and persists the ledger first, then appends the CSV row. A stale lock is not automatically removed. If an interruption leaves an orphan ledger record, validation and Query fail closed. Human reconciliation must verify the surviving record and bytes before appending the exact missing CSV row; do not truncate history or rehash altered raw just to clear an error.
+Registration retains exclusive ownership and validates both metadata updates before publication. Phase 3 journals their logical append-only replacement and before-images; ordinary failures restore the exact prior state, while unresolved interruptions block Query until authorized recovery. A stale lock is not automatically removed. Legacy orphan records still require human reconciliation of the surviving record and bytes; never truncate committed history or rehash altered raw to clear an error.
 
 These controls enforce immutability through these maintenance APIs and detect later byte changes. They do not make files unwritable to every editor/OS process. Trusted Git history and human review are needed against an actor able to alter both raw data and the ledger.
 
