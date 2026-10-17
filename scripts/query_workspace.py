@@ -55,6 +55,29 @@ def source_catalog(root):
     """Legacy metadata mode; recorded provenance additionally requires byte hashes."""
     path = local_path(root, root, "sources/manifest.csv")
     catalog = {}
+    ledger = local_path(root, root, "sources/provenance.jsonl")
+    if ledger.exists():
+        if __package__:
+            from .source_integrity import audit_sources
+        else:
+            from source_integrity import audit_sources
+        # One complete registry/raw audit; avoid a preceding duplicate CSV/path scan
+        # and the reverse wiki scan that selected-page retrieval repeats below.
+        audit = audit_sources(root, include_relationships=False)
+        per_source = {"HASH_MISMATCH", "SOURCE_UNAVAILABLE", "MISSING_PROVENANCE", "MISSING_LOCAL_SNAPSHOT"}
+        fatal = [issue for issue in audit["issues"] if issue.startswith("ERROR ")
+                 and issue.split()[1] not in per_source | {"UNKNOWN_SOURCE_REFERENCE"}]
+        if fatal:
+            raise ValueError("invalid provenance")
+        return {
+            sid: {
+                "source_path": record["local_path"] if record["integrity_status"] == "MATCH" else None,
+                "integrity_status": record["integrity_status"], "source_version": record["source_version"],
+                "verification_status": record["verification_status"], "superseded_by": record["superseded_by"],
+                "original_uri_status": record["original_uri_status"], "source_uri": record["source_uri"],
+            }
+            for sid, record in audit["sources"].items()
+        }
     with path.open(encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle, strict=True)
         if reader.fieldnames != list(MANIFEST_FIELDS):
@@ -76,34 +99,13 @@ def source_catalog(root):
                     catalog[sid] = target.relative_to(root).as_posix()
             except (ValueError, OSError):
                 pass
-    ledger = local_path(root, root, "sources/provenance.jsonl")
-    if ledger.exists():
-        if __package__:
-            from .source_integrity import audit_sources
-        else:
-            from source_integrity import audit_sources
-        audit = audit_sources(root)
-        per_source = {"HASH_MISMATCH", "SOURCE_UNAVAILABLE", "MISSING_PROVENANCE", "MISSING_LOCAL_SNAPSHOT"}
-        fatal = [issue for issue in audit["issues"] if issue.startswith("ERROR ")
-                 and issue.split()[1] not in per_source | {"UNKNOWN_SOURCE_REFERENCE"}]
-        if fatal:
-            raise ValueError("invalid provenance")
-        return {
-            sid: {
-                "source_path": record["local_path"] if record["integrity_status"] == "MATCH" else None,
-                "integrity_status": record["integrity_status"], "source_version": record["source_version"],
-                "verification_status": record["verification_status"], "superseded_by": record["superseded_by"],
-                "original_uri_status": record["original_uri_status"], "source_uri": record["source_uri"],
-            }
-            for sid, record in audit["sources"].items()
-        }
     return {sid: {"source_path": path, "integrity_status": "LEGACY_UNHASHED", "source_version": None,
                   "verification_status": "UNVERIFIED", "superseded_by": None, "original_uri_status": "UNKNOWN",
                   "source_uri": None}
             for sid, path in catalog.items()}
 
 
-def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scopes=()):
+def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scopes=(), _registered_ids=None):
     selected = []
 
     def visit(folder):
@@ -123,7 +125,7 @@ def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scope
                     # Legacy ADR retrieval remains an agent workflow, as in Phase 1.
                     if child.is_relative_to(root / "decisions") and meta.get("status", "").isupper():
                         continue
-                    governed = read_page(root, child, text)
+                    governed = read_page(root, child, text, _registered_ids=_registered_ids)
                     if governed["access"] == "restricted" and scope not in authorized_scopes:
                         continue
                     yield child, text, meta, governed
@@ -137,7 +139,7 @@ def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scope
         target = document_path(root, ref)
         text = target.read_text(encoding="utf-8-sig")
         meta = metadata(text)
-        governed = read_page(root, target, text)
+        governed = read_page(root, target, text, _registered_ids=_registered_ids)
         if governed["access"] == "restricted" and governed["scope"] not in authorized_scopes:
             raise PermissionError("restricted target scope")
         selected.append((target, text, meta, governed))
@@ -214,7 +216,7 @@ def decision_citations(root, page, catalog, include_history, authorized_scopes):
             if not target.is_relative_to(root / "decisions") or target.name == "index.md":
                 continue
             other_text = target.read_text(encoding="utf-8-sig")
-            other = read_page(root, target, other_text)
+            other = read_page(root, target, other_text, _registered_ids=frozenset(catalog))
             if (other["legacy"] or other["scope"] != record["scope"]
                     or other["decision_authority"] != "approved"
                     or other["access"] == "restricted" and other["scope"] not in authorized_scopes):
@@ -270,7 +272,7 @@ def search(root, query, scope, *, cross_refs=(), include_history=False, authoriz
         reading_started = True
         catalog = source_catalog(root)
         for page in pages(root, scope, cross_refs=cross_refs, include_history=include_history,
-                          authorized_scopes=authorized_scopes):
+                          authorized_scopes=authorized_scopes, _registered_ids=frozenset(catalog)):
             terms = (
                 [("title", page["title"]), ("title_vi", page["title_vi"])]
                 + [("keywords", term) for term in page["keywords"]]

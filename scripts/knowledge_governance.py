@@ -1,5 +1,6 @@
 """Phase 2: one Markdown contract, explicit authority and scoped context."""
 from datetime import date
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -118,7 +119,7 @@ def check_transition(before, after, actor):
         raise GovernanceError("HUMAN_AUTHORITY_REQUIRED")
 
 
-def read_page(root, page, text=None, today=None):
+def read_page(root, page, text=None, today=None, *, _registered_ids=None):
     root, page = Path(root).absolute(), Path(page).absolute()
     text = page.read_text(encoding="utf-8-sig") if text is None else text
     meta = identity_metadata(text)
@@ -154,7 +155,10 @@ def read_page(root, page, text=None, today=None):
         from .source_integrity import read_registry
     else:
         from source_integrity import read_registry
-    if listed_sources - read_registry(root).keys():
+    # An owning read operation may share its already validated registry IDs.
+    # Never retain these across operations or use them to skip raw hash checks.
+    registered_ids = read_registry(root).keys() if _registered_ids is None else _registered_ids
+    if listed_sources - registered_ids:
         raise GovernanceError("UNKNOWN_SOURCE")
     if "scope" not in meta or meta.get("temporal") not in {"historical", "current", "time_sensitive"}:
         raise GovernanceError("MISSING_GOVERNANCE_METADATA")
@@ -372,6 +376,14 @@ def transition(root, relative, target, *, actor, at, reason, authorized=False,
 def audit_governance(root, today=None):
     root = Path(root).absolute()
     results, issues = {}, []
+    if __package__:
+        from .source_integrity import read_registry
+    else:
+        from source_integrity import read_registry
+    try:
+        registered_ids = frozenset(read_registry(root))
+    except (ValueError, OSError, UnicodeError, csv.Error):
+        registered_ids = None  # Preserve per-page error handling on invalid registries.
     for folder in ("wiki", "decisions"):
         base = local_path(root, root, folder)
         if not base.is_dir():
@@ -389,12 +401,12 @@ def audit_governance(root, today=None):
         for page in visit(base):
             relative = page.relative_to(root).as_posix()
             try:
-                record = read_page(root, page, today=today)
+                record = read_page(root, page, today=today, _registered_ids=registered_ids)
                 results[relative] = record
                 if not record["legacy"]:
                     for flag in record["freshness"]:
                         issues.append(f"WARNING {flag} {relative}: review required; no automatic state change.")
-            except (ValueError, OSError, UnicodeError) as error:
+            except (ValueError, OSError, UnicodeError, csv.Error) as error:
                 code = str(error) if isinstance(error, GovernanceError) else "GOVERNANCE_READ"
                 issues.append(f"ERROR {code} {relative}: invalid governance metadata or authority.")
     return {"pages": results, "issues": issues}

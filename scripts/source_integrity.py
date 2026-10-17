@@ -223,7 +223,7 @@ def wiki_relationships(root):
     return usage, claims
 
 
-def audit_sources(root, require_complete=True, verify_hashes=True, *, _new_rows=(), _new_entries=()):
+def audit_sources(root, require_complete=True, verify_hashes=True, *, _new_rows=(), _new_entries=(), include_relationships=True):
     root = _root(root)
     result = {"issues": [], "sources": {}, "source_to_wiki": {}, "claims": []}
 
@@ -328,6 +328,8 @@ def audit_sources(root, require_complete=True, verify_hashes=True, *, _new_rows=
             previous = seen_uris.setdefault(uri, sid)
             if previous != sid and identities.get(previous) != identities.get(sid):
                 issue("ERROR", "UNLINKED_SOURCE_REVISION", sid)
+    if not include_relationships:
+        return result  # Query validates selected pages itself; source checks above remain complete.
     try:
         usage, claims = wiki_relationships(root)
         result["source_to_wiki"], result["claims"] = usage, claims
