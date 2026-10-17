@@ -46,6 +46,15 @@ A lightweight, Markdown-first personal AI workspace inspired by Andrej Karpathy'
 - **Lint:** dùng [prompt Lint](prompts/lint.md). Đọc kết quả script cùng phần rà soát thủ công; chỉ lưu báo cáo hoặc sửa wiki trong phạm vi đã cho phép. PASS cấu trúc không xác nhận kiến thức đúng.
 
 ## Checks and review
+Phase 1 source identity, provenance, hashes, duplicate policy, replacement rules and legacy migration are specified in [SOURCE_INTEGRITY.md](SOURCE_INTEGRITY.md). Strict pre-ingestion checks use:
+
+```text
+python -B scripts/check_workspace.py --integrity
+python -B scripts/validate_source_integrity.py
+```
+
+The nine-column manifest is unchanged; integrity records are appended separately. No real knowledge is ingested by the validation suite.
+
 Multilingual metadata, controlled Vietnamese-English query expansion and the proposed semantic upgrade path are specified in [MULTILINGUAL.md](MULTILINGUAL.md). Existing pages need no migration. The optional lexical helper and paired fixture validation use only Python's standard library:
 
 ```text
@@ -62,7 +71,7 @@ python -B scripts/check_workspace.py
 python -B -m unittest discover -s tests -v
 ```
 
-The checker validates manifest metadata/local source existence, wiki metadata and structured citations, local inline link/image file targets, and wiki reachability from the index. It does not read raw source bodies or fetch URLs. It reports unsupported reference links/wikilinks for manual review and does not validate heading anchors or factual meaning. Exit 0 means no structural errors, possibly with warnings; exit 1 means errors need attention.
+The checker validates manifest metadata/local source existence, wiki metadata and structured citations, local inline link/image file targets, and wiki reachability from the index. Default mode does not read raw bodies; integrity mode additionally hashes registered raw bytes and their manifest metadata. Neither mode fetches URLs. Unsupported reference links/wikilinks, heading anchors and factual meaning require manual review. Exit 0 means no errors within the selected mode, possibly with warnings; exit 1 means errors need attention.
 
 Keep each accepted checkpoint in a separate local commit and review its diff before continuing. Rollback can target that checkpoint without rewriting earlier history. Tests use isolated temporary fixtures under `tests/`, removed by the test runner, not real sources or approved decisions.
 

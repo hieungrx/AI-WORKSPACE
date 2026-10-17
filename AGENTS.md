@@ -14,6 +14,7 @@ Respond in Vietnamese and follow the non-sensitive preferences in `PROFILE.md`. 
 ## Permission boundaries
 - `sources/raw/`: **READ ONLY**. Never modify, truncate or delete existing source files. New sources require user authorization.
 - `sources/manifest.csv`: append only for newly approved sources; do not overwrite provenance.
+- `sources/provenance.jsonl`: append-only integrity records under `SOURCE_INTEGRITY.md`. New source admission and migration require task authorization. Never overwrite raw or update a stored hash to conceal changed bytes; revisions receive new IDs and explicit version links.
 - `wiki/`: agent may propose edits. Apply only in permitted scope and surface a diff to the human reviewer.
 - `wiki/log.md`: append approved changes and actual check results; never rewrite prior entries. Query and read-only Lint do not append entries.
 - `projects/`: update only approved project metadata; the code repo is authoritative for implementation.
