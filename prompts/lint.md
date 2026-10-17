@@ -11,6 +11,7 @@ Read `AGENTS.md`, `SCHEMA.md`, `PROFILE.md`, and `wiki/index.md`. Audit without 
 - Broken Markdown links and missing index entries
 - Contradictions, stale facts and unresolved questions
 - Orphan pages and duplication
+- Duplicate optional page_id, unsupported YAML frontmatter, duplicate index targets, unreviewed knowledge and same-scope current decision_key collisions under WORKFLOW_RELIABILITY.md. These are structural findings; unkeyed/textual contradictions still need review.
 - Suspected sensitive locations, without opening protected contents or printing secret values
 
 Run `python -B scripts/check_workspace.py` if Python is available. Report actual exit code, errors and warnings separately from semantic/manual findings. The checker does not verify facts, heading anchors, freshness, permission, approval or Obsidian rendering. Reference-style links and wikilinks require manual review. Use FACT / INTERPRETATION / HYPOTHESIS / UNKNOWN for conclusions and uncertainties.

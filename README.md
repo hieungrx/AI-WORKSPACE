@@ -46,6 +46,8 @@ A lightweight, Markdown-first personal AI workspace inspired by Andrej Karpathy'
 - **Lint:** dùng [prompt Lint](prompts/lint.md). Đọc kết quả script cùng phần rà soát thủ công; chỉ lưu báo cáo hoặc sửa wiki trong phạm vi đã cho phép. PASS cấu trúc không xác nhận kiến thức đúng.
 
 ## Checks and review
+Phase 4 [workflow reliability and benchmark definitions](WORKFLOW_RELIABILITY.md) tests actual Ingest → Query → Lint using an independent English synthetic corpus and 30 Vietnamese–English query pairs. Run `python -B scripts/validate_workflows.py`; add `--output reports/<new-name>.json` to save actual, non-overwriting results. It records recall, citation validity, scope isolation, safe retries and recovery; it does not claim semantic search or factual verification.
+
 Phase 3 [security policy and recovery](SECURITY_POLICY.md) defines trust boundaries, bounded write operations, redacted reports and safe conflict handling. Run `python -B scripts/validate_security.py` and `python -B scripts/check_workspace.py --integrity --security`. These controls protect the workflow APIs; broader Codex tool permissions remain an explicit residual risk.
 
 Phase 2 lifecycle states, human validation authority, explicit scope isolation, freshness and conflict handling are specified in [KNOWLEDGE_GOVERNANCE.md](KNOWLEDGE_GOVERNANCE.md). New templates use that metadata; existing wiki pages stay unchanged through a compatibility reader. Run `python -B scripts/validate_knowledge_governance.py` for synthetic workflow and regression evidence.
