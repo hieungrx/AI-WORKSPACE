@@ -1,0 +1,319 @@
+{
+  "fixture_only": true,
+  "pairs": [
+    {
+      "id": "P01",
+      "category": "exact_keyword",
+      "scope": "demo-a",
+      "vi": "Giải thích GET /api/listings",
+      "en": "Explain GET /api/listings",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/listing-route.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P02",
+      "category": "exact_keyword",
+      "scope": "demo-a",
+      "vi": "Giải thích reserveListing()",
+      "en": "Explain reserveListing()",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/reserve-function.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P03",
+      "category": "exact_keyword",
+      "scope": "demo-a",
+      "vi": "Giải thích checkout.service.ts",
+      "en": "Explain checkout.service.ts",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/checkout-file.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P04",
+      "category": "exact_keyword",
+      "scope": "demo-a",
+      "vi": "Giải thích SELECT FOR UPDATE",
+      "en": "Explain SELECT FOR UPDATE",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/row-lock.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P05",
+      "category": "exact_keyword",
+      "scope": "demo-a",
+      "vi": "Giải thích HTTP 409",
+      "en": "Explain HTTP 409",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/conflict-status.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P06",
+      "category": "bilingual_aliases",
+      "scope": "demo-a",
+      "vi": "Hỏi về đăng nhập",
+      "en": "Explain authentication",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/authentication.md"
+      ],
+      "expected_expansion_vi": [
+        "authentication"
+      ]
+    },
+    {
+      "id": "P07",
+      "category": "bilingual_aliases",
+      "scope": "demo-a",
+      "vi": "kiểm tra quyền",
+      "en": "authorization",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/authorization.md"
+      ],
+      "expected_expansion_vi": [
+        "authorization"
+      ]
+    },
+    {
+      "id": "P08",
+      "category": "bilingual_aliases",
+      "scope": "demo-a",
+      "vi": "chống xử lý lặp",
+      "en": "idempotency",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/idempotency.md"
+      ],
+      "expected_expansion_vi": [
+        "idempotency"
+      ]
+    },
+    {
+      "id": "P09",
+      "category": "bilingual_aliases",
+      "scope": "demo-a",
+      "vi": "Chính sách thử lại",
+      "en": "retry policy",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/retry.md"
+      ],
+      "expected_expansion_vi": [
+        "retry policy"
+      ]
+    },
+    {
+      "id": "P10",
+      "category": "bilingual_aliases",
+      "scope": "demo-a",
+      "vi": "chia trang",
+      "en": "pagination",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/pagination.md"
+      ],
+      "expected_expansion_vi": [
+        "pagination"
+      ]
+    },
+    {
+      "id": "P11",
+      "category": "cross_language",
+      "scope": "demo-a",
+      "vi": "Hệ thống dùng giao dịch cơ sở dữ liệu thế nào?",
+      "en": "How does a database transaction work?",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/transaction.md"
+      ],
+      "expected_expansion_vi": [
+        "database transaction"
+      ]
+    },
+    {
+      "id": "P12",
+      "category": "cross_language",
+      "scope": "demo-a",
+      "vi": "Khi nào cần hoàn tác giao dịch?",
+      "en": "When is transaction rollback needed?",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/rollback.md"
+      ],
+      "expected_expansion_vi": [
+        "transaction rollback"
+      ]
+    },
+    {
+      "id": "P13",
+      "category": "cross_language",
+      "scope": "demo-a",
+      "vi": "Xử lý bế tắc thế nào?",
+      "en": "How is deadlock handled?",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/deadlock.md"
+      ],
+      "expected_expansion_vi": [
+        "deadlock"
+      ]
+    },
+    {
+      "id": "P14",
+      "category": "cross_language",
+      "scope": "demo-a",
+      "vi": "Khi nào vô hiệu hóa bộ nhớ đệm?",
+      "en": "When is cache invalidation needed?",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/cache.md"
+      ],
+      "expected_expansion_vi": [
+        "cache invalidation"
+      ]
+    },
+    {
+      "id": "P15",
+      "category": "cross_language",
+      "scope": "demo-a",
+      "vi": "Hệ thống dùng khóa lạc quan ra sao?",
+      "en": "How does optimistic locking work?",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/optimistic.md"
+      ],
+      "expected_expansion_vi": [
+        "optimistic locking"
+      ]
+    },
+    {
+      "id": "P16",
+      "category": "project_scope",
+      "scope": "demo-a",
+      "vi": "thời gian chờ",
+      "en": "request timeout",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/timeout-a.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P17",
+      "category": "project_scope",
+      "scope": "demo-b",
+      "vi": "thời gian chờ",
+      "en": "request timeout",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/timeout-b.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P18",
+      "category": "project_scope",
+      "scope": "demo-c",
+      "vi": "thời gian chờ",
+      "en": "request timeout",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P19",
+      "category": "project_scope",
+      "scope": "demo-a",
+      "vi": "đổi kích thước ảnh",
+      "en": "image resizing",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P20",
+      "category": "project_scope",
+      "scope": "unscoped",
+      "vi": "Giải thích Legacy checksum",
+      "en": "Explain Legacy checksum",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/legacy.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P21",
+      "category": "missing_evidence",
+      "scope": "demo-a",
+      "vi": "tồn kho lượng tử",
+      "en": "quantum inventory",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P22",
+      "category": "missing_evidence",
+      "scope": "demo-a",
+      "vi": "đối soát chi trả",
+      "en": "payout reconciliation",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/no-evidence.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P23",
+      "category": "missing_evidence",
+      "scope": "demo-a",
+      "vi": "theo dõi hoàn tiền",
+      "en": "refund tracing",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/unknown-id.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P24",
+      "category": "missing_evidence",
+      "scope": "demo-a",
+      "vi": "bàn giao tranh chấp",
+      "en": "dispute handoff",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/missing-file.md"
+      ],
+      "expected_expansion_vi": []
+    },
+    {
+      "id": "P25",
+      "category": "missing_evidence",
+      "scope": "demo-a",
+      "vi": "xuất kiểm toán",
+      "en": "audit export",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/metadata-only.md"
+      ],
+      "expected_expansion_vi": []
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+source_id,title,source_type,source_url_or_path,author,published_date,retrieved_date,access_and_license,notes
+SRC-20261017-101,TEST_ONLY listing-route,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-102,TEST_ONLY reserve-function,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-103,TEST_ONLY checkout-file,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-104,TEST_ONLY row-lock,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-105,TEST_ONLY conflict-status,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-106,TEST_ONLY authentication,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-107,TEST_ONLY authorization,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-108,TEST_ONLY idempotency,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-109,TEST_ONLY retry,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-110,TEST_ONLY pagination,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-111,TEST_ONLY transaction,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-112,TEST_ONLY rollback,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-113,TEST_ONLY deadlock,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-114,TEST_ONLY cache,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-115,TEST_ONLY optimistic,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-116,TEST_ONLY timeout-a,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-117,TEST_ONLY timeout-b,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-118,TEST_ONLY image-b,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-119,TEST_ONLY legacy,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-122,TEST_ONLY missing-file,synthetic_fixture,sources/raw/absent.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
+SRC-20261017-123,TEST_ONLY metadata-only,synthetic_fixture,sources/raw/synthetic.md,Synthetic fixture,2026-10-17,2026-10-17,Synthetic test data only,Not real knowledge.
