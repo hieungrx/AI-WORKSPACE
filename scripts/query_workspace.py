@@ -38,7 +38,7 @@ def contains(text, phrase):
 
 
 def source_catalog(root):
-    """Read registry and check local file availability, never raw bodies or URLs."""
+    """Legacy metadata mode; recorded provenance additionally requires byte hashes."""
     path = local_path(root, root, "sources/manifest.csv")
     catalog = {}
     with path.open(encoding="utf-8-sig", newline="") as handle:
@@ -62,7 +62,31 @@ def source_catalog(root):
                     catalog[sid] = target.relative_to(root).as_posix()
             except (ValueError, OSError):
                 pass
-    return catalog
+    ledger = local_path(root, root, "sources/provenance.jsonl")
+    if ledger.exists():
+        if __package__:
+            from .source_integrity import audit_sources
+        else:
+            from source_integrity import audit_sources
+        audit = audit_sources(root)
+        per_source = {"HASH_MISMATCH", "SOURCE_UNAVAILABLE", "MISSING_PROVENANCE", "MISSING_LOCAL_SNAPSHOT"}
+        fatal = [issue for issue in audit["issues"] if issue.startswith("ERROR ")
+                 and issue.split()[1] not in per_source | {"UNKNOWN_SOURCE_REFERENCE"}]
+        if fatal:
+            raise ValueError("invalid provenance")
+        return {
+            sid: {
+                "source_path": record["local_path"] if record["integrity_status"] == "MATCH" else None,
+                "integrity_status": record["integrity_status"], "source_version": record["source_version"],
+                "verification_status": record["verification_status"], "superseded_by": record["superseded_by"],
+                "original_uri_status": record["original_uri_status"], "source_uri": record["source_uri"],
+            }
+            for sid, record in audit["sources"].items()
+        }
+    return {sid: {"source_path": path, "integrity_status": "LEGACY_UNHASHED", "source_version": None,
+                  "verification_status": "UNVERIFIED", "superseded_by": None, "original_uri_status": "UNKNOWN",
+                  "source_uri": None}
+            for sid, path in catalog.items()}
 
 
 def pages(root, scope):
@@ -97,14 +121,20 @@ def citations(page, catalog):
     result = []
     seen = set()
     for block in findings(prose(page["text"])):
-        for sid in sorted(set(SOURCE_TOKEN.findall(block)) & listed):
+        required = set(SOURCE_TOKEN.findall(block))
+        if not required or not required <= listed:
+            return []
+        for sid in sorted(required):
             pointer = re.search(r"\[" + re.escape(sid) + r",\s*([^\]\n]+)\]", block)
-            if catalog.get(sid) and pointer:
+            record = catalog.get(sid)
+            if not record or not record["source_path"] or not pointer:
+                return []
+            if pointer:
                 key = (sid, pointer[1].strip())
                 if key not in seen:
                     seen.add(key)
                     result.append({
-                        "source_id": sid, "source_path": catalog[sid],
+                        "source_id": sid, **record,
                         "source_pointer": pointer[1].strip(),
                     })
     return result

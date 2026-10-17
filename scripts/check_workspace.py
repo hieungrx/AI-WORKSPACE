@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read-only, offline structural checks. Uses only the Python standard library."""
 import csv
+import argparse
 from datetime import date
 import json
 from pathlib import Path, PureWindowsPath
@@ -151,7 +152,7 @@ def findings(text):
             block.append(line)
 
 
-def check_workspace(root=ROOT):
+def check_workspace(root=ROOT, integrity=False):
     root = Path(root).absolute()
     issues = []
 
@@ -335,11 +336,19 @@ def check_workspace(root=ROOT):
     for page in sorted(wiki - reachable):
         if page.name != "index.md" and page != root / "wiki/log.md":
             report("WARNING", "ORPHAN_PAGE", page, "not reachable through checked links from wiki/index.md.")
+    if integrity:
+        if __package__:
+            from .source_integrity import audit_sources
+        else:
+            from source_integrity import audit_sources
+        for issue in audit_sources(root)["issues"]:
+            if issue not in issues:
+                issues.append(issue)
     return issues
 
 
-def main(root=ROOT):
-    issues = check_workspace(root)
+def main(root=ROOT, integrity=False):
+    issues = check_workspace(root, integrity=integrity)
     for issue in issues:
         print(issue)
     errors = sum(issue.startswith("ERROR ") for issue in issues)
@@ -351,8 +360,12 @@ def main(root=ROOT):
     else:
         print("PASS: structural checks only; NOT a factual verification.")
     print(MANUAL_LIMITS)
+    if not integrity:
+        print("HASH CHECKS: not run; use --integrity for required provenance and SHA-256 checks.")
     return 1 if errors else 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--integrity", action="store_true", help="Require provenance and verify local raw bytes read-only.")
+    sys.exit(main(integrity=parser.parse_args().integrity))
