@@ -11,6 +11,11 @@ import re
 from urllib.parse import urlsplit
 
 if __package__:
+    from .safe_operations import atomic_snapshot, digest, transact, versions
+else:
+    from safe_operations import atomic_snapshot, digest, transact, versions
+
+if __package__:
     from .check_workspace import (
         MANIFEST_FIELDS, REQUIRED_FIELDS, SOURCE_TOKEN, findings, iso_date,
         linked_path, local_path, prose, source_id,
@@ -377,11 +382,10 @@ def _append_json(root, entries):
     path = local_path(root, root, LEDGER)
     if path.exists() and path.stat().st_size and not path.read_bytes().endswith(b"\n"):
         raise IntegrityError("PROVENANCE_FINAL_NEWLINE")
-    with path.open("a", encoding="utf-8", newline="\n") as handle:
-        for entry in entries:
-            handle.write(json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n")
-        handle.flush()
-        os.fsync(handle.fileno())
+    previous = path.read_bytes() if path.exists() else b""
+    data = previous + "".join(json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n" for entry in entries).encode("utf-8")
+    transact(root, {LEDGER: data}, {LEDGER: digest(previous) if path.exists() else None},
+             operation="registry", authorized=True)
 
 
 def create_raw_snapshot(root, location, data, *, authorized=False):
@@ -391,10 +395,8 @@ def create_raw_snapshot(root, location, data, *, authorized=False):
         raise IntegrityError("RAW_BYTES_REQUIRED")
     root = _root(root)
     path = raw_path(root, location)
-    path.parent.mkdir(parents=True, exist_ok=True)
     try:
-        with path.open("xb") as handle:
-            handle.write(data)
+        atomic_snapshot(root, location, data)
     except FileExistsError:
         raise IntegrityError("RAW_SOURCE_IMMUTABLE") from None
     return location
@@ -404,6 +406,7 @@ def register_source(root, row, *, authorized=False, **metadata_values):
     root = _root(root)
     row = _row(row)
     with _registration_lock(root, authorized):
+        expected = versions(root, ("sources/manifest.csv", LEDGER), operation="registry")
         rows = read_registry(root)
         ledger = read_provenance(root)
         entry = _entry(root, row, **metadata_values)
@@ -437,12 +440,15 @@ def register_source(root, row, *, authorized=False, **metadata_values):
             raise IntegrityError("MANIFEST_FINAL_NEWLINE")
         if content_hash(root, entry["local_path"]) != entry["content_hash"]:
             raise IntegrityError("SOURCE_CHANGED_BEFORE_REGISTRATION")
-        # Persist hash first: an interrupted append is an auditable orphan, never trusted.
-        _append_json(root, [entry])
-        with manifest.open("a", encoding="utf-8", newline="") as handle:
-            handle.write(text.getvalue())
-            handle.flush()
-            os.fsync(handle.fileno())
+        ledger_path = local_path(root, root, LEDGER)
+        prior_ledger = ledger_path.read_bytes() if ledger_path.exists() else b""
+        if prior_ledger and not prior_ledger.endswith(b"\n"):
+            raise IntegrityError("PROVENANCE_FINAL_NEWLINE")
+        # Logical append-only history; physical replacement is journaled and recoverable.
+        transact(root, {
+            LEDGER: prior_ledger + (json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8"),
+            "sources/manifest.csv": manifest.read_bytes() + text.getvalue().encode("utf-8"),
+        }, expected, operation="registry", authorized=True)
         return {"status": "REGISTERED", "source_id": sid}
 
 

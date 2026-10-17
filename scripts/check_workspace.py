@@ -45,10 +45,13 @@ def source_id(value):
 
 
 def protected(path):
-    reserved = {"private", "secret", "secrets", "credential", "credentials",
+    reserved = {"private", "secret", "secrets", "credential", "credentials", "env", "environment",
                 "token", "tokens", "identity", "financial"}
     return any(part.startswith(".") or Path(part).stem.lower() in reserved
-               or part.lower().startswith("id_rsa") for part in path.parts)
+               or part.lower().startswith(("id_rsa", "id_ed25519", "id_ecdsa"))
+               or Path(part).suffix.lower() in {".pem", ".key", ".p12", ".pfx", ".kdbx", ".env"}
+               or re.search(r"(?i)(?:^|[_.-])(?:passwords?|credentials?|secrets?|tokens?)(?:[_.-]|$)", part)
+               for part in path.parts)
 
 
 def linked_path(path):
@@ -57,6 +60,8 @@ def linked_path(path):
 
 def local_path(root, base, target):
     """Reject escapes and links before checking target existence or reading it."""
+    if not isinstance(target, str) or any(ord(c) < 32 for c in target):
+        raise ValueError("INVALID_PATH")
     target = target.replace("\\", "/")
     if Path(target).is_absolute() or PureWindowsPath(target).drive:
         raise ValueError("OUTSIDE_WORKSPACE")
@@ -64,12 +69,17 @@ def local_path(root, base, target):
     for part in target.split("/"):
         if part in ("", "."):
             continue
+        if part != ".." and (":" in part or part.endswith((" ", "."))
+                             or re.fullmatch(r"(?i)(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\..*)?", part)):
+            raise ValueError("INVALID_PATH")
         current = current.parent if part == ".." else current / part
         if not current.is_relative_to(root):
             raise ValueError("OUTSIDE_WORKSPACE")
         if protected(current.relative_to(root)):
             raise ValueError("PROTECTED_PATH")
         if linked_path(current):
+            raise ValueError("LINKED_PATH")
+        if current.is_file() and current.stat().st_nlink > 1:
             raise ValueError("LINKED_PATH")
     return current
 
@@ -152,7 +162,7 @@ def findings(text):
             block.append(line)
 
 
-def check_workspace(root=ROOT, integrity=False):
+def check_workspace(root=ROOT, integrity=False, security=False):
     root = Path(root).absolute()
     issues = []
 
@@ -368,11 +378,23 @@ def check_workspace(root=ROOT, integrity=False):
         for issue in audit_sources(root)["issues"]:
             if issue not in issues:
                 issues.append(issue)
+    if security:
+        if __package__:
+            from .workspace_security import audit_security
+            from .safe_operations import ensure_idle
+        else:
+            from workspace_security import audit_security
+            from safe_operations import ensure_idle
+        issues.extend(audit_security(root))
+        try:
+            ensure_idle(root)
+        except ValueError:
+            issues.append("ERROR RECOVERY_REQUIRED recovery/: writes or recovery need review.")
     return issues
 
 
-def main(root=ROOT, integrity=False):
-    issues = check_workspace(root, integrity=integrity)
+def main(root=ROOT, integrity=False, security=False):
+    issues = check_workspace(root, integrity=integrity, security=security)
     for issue in issues:
         print(issue)
     errors = sum(issue.startswith("ERROR ") for issue in issues)
@@ -392,4 +414,6 @@ def main(root=ROOT, integrity=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--integrity", action="store_true", help="Require provenance and verify local raw bytes read-only.")
-    sys.exit(main(integrity=parser.parse_args().integrity))
+    parser.add_argument("--security", action="store_true", help="Scan approved public documents without opening sensitive files.")
+    args = parser.parse_args()
+    sys.exit(main(integrity=args.integrity, security=args.security))

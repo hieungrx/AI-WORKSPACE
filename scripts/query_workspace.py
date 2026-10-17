@@ -9,6 +9,13 @@ import sys
 import unicodedata
 
 if __package__:
+    from .workspace_security import SecurityError, require_safe_data, redact, TRUST
+    from .safe_operations import ensure_idle, read_version
+else:
+    from workspace_security import SecurityError, require_safe_data, redact, TRUST
+    from safe_operations import ensure_idle, read_version
+
+if __package__:
     from .knowledge_governance import read_page, document_path, GovernanceError
     from .check_workspace import (
         ROOT, MANIFEST_FIELDS, REQUIRED_FIELDS, SOURCE_TOKEN, findings, iso_date,
@@ -22,6 +29,9 @@ else:
     )
 
 MESSAGES = {
+    "UNTRUSTED_CONTENT": "Nội dung bị chặn tại ranh giới dữ liệu không tin cậy. UNKNOWN.",
+    "SENSITIVE_CONTENT": "Dữ liệu nghi nhạy cảm bị chặn; không hiển thị giá trị. UNKNOWN.",
+    "RECOVERY_REQUIRED": "Có thao tác đang ghi hoặc cần phục hồi; tạm dừng truy vấn.",
     "FOUND": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh.",
     "NOT_FOUND": "Không tìm thấy tài liệu phù hợp trong scope đã chọn. UNKNOWN.",
     "MISSING_EVIDENCE": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN.",
@@ -132,6 +142,7 @@ def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scope
             raise PermissionError("restricted target scope")
         selected.append((target, text, meta, governed))
     for child, text, meta, governed in selected:
+        require_safe_data(text)
         if governed["status"] in {"superseded", "archived"} and not include_history:
             continue
         if "NOT_YET_EFFECTIVE" in governed["freshness"] and not include_history:
@@ -215,10 +226,20 @@ def search(root, query, scope, *, cross_refs=(), include_history=False, authoriz
         "query": query, "scope": scope, "retrieval_only": True,
         "expanded_terms": [], "matches": [], "blocked": [],
     }
+    read_token = None
+    reading_started = False
 
     def finish(status):
+        if reading_started:
+            try:
+                stable = read_version(root) == read_token
+            except (ValueError, OSError):
+                stable = False
+            if not stable:
+                status = "RECOVERY_REQUIRED"
+                outcome["matches"], outcome["blocked"], outcome["expanded_terms"] = [], [], []
         outcome.update(status=status, message=MESSAGES[status])
-        return outcome
+        return redact(outcome)
 
     if not isinstance(query, str) or not isinstance(scope, str) or not query.strip() or not scope.strip():
         return finish("INVALID_QUERY")
@@ -231,6 +252,9 @@ def search(root, query, scope, *, cross_refs=(), include_history=False, authoriz
     q = normalize(query)
     candidates = []
     try:
+        require_safe_data(query)
+        read_token = read_version(root)
+        reading_started = True
         catalog = source_catalog(root)
         for page in pages(root, scope, cross_refs=cross_refs, include_history=include_history,
                           authorized_scopes=authorized_scopes):
@@ -264,6 +288,7 @@ def search(root, query, scope, *, cross_refs=(), include_history=False, authoriz
                        and bool(evidence) and all(c.get("integrity_status") == "MATCH"
                                                  or c.get("evidence_type") == "project_decision" for c in evidence))
             candidates.append({
+                "content_trust": TRUST,
                 "path": page["path"], "title": page["title"],
                 "title_vi": page["title_vi"], "language": page["language"],
                 "scope": governed["scope"], "page_status": page["meta"].get("status", "UNKNOWN"),
@@ -280,6 +305,9 @@ def search(root, query, scope, *, cross_refs=(), include_history=False, authoriz
                 "expansion_terms": additions,
                 "citations": evidence,
             })
+    except SecurityError as error:
+        outcome["matches"], outcome["blocked"], outcome["expanded_terms"] = [], [], []
+        return finish(str(error) if str(error) in MESSAGES else "INVALID_DATA")
     except PermissionError:
         return finish("ACCESS_DENIED")
     except (OSError, UnicodeError, ValueError, csv.Error):

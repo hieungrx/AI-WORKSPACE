@@ -79,7 +79,7 @@ def evaluate():
             "Original URL availability is recorded metadata, never a live network verification here.",
             "Legacy sources without a baseline remain LEGACY_UNHASHED and fail strict admission until migration.",
             "Migration records current bytes, not proof of historical immutability.",
-            "Two metadata appends are not an atomic transaction; an interruption fails closed as an orphan.",
+            "Phase 3 journals metadata publication and rollback; unresolved recovery blocks queries. Legacy orphan records need human reconciliation.",
             "Hashes and citations do not prove factual correctness; trusted Git history protects the baseline.",
         ],
     }
@@ -138,8 +138,8 @@ def markdown(report):
     lines.extend("- " + item for item in report["limits"])
     lines += [
         "- No external URL requests, real-source ingestion, Obsidian visual check, Phase 2 or V2 work was performed.",
-        "- Interrupted registration requires human reconciliation against the surviving record and raw hash; "
-        "the tool never truncates provenance or automatically removes an existing lock.", "",
+        "- Phase 3 uses recoverable metadata publication. Legacy orphan records require human reconciliation; "
+        "the tool never truncates committed provenance or automatically removes an existing lock.", "",
         "## Reproduce", "",
         "~~~text", "python -B scripts/validate_source_integrity.py",
         "python -B scripts/check_workspace.py --integrity", "~~~", "",
@@ -150,17 +150,11 @@ def markdown(report):
 
 
 def save(report, output):
-    output = local_path(ROOT, ROOT, str(output))
-    if not output.is_relative_to(ROOT / "reports") or output.suffix != ".json":
-        raise ValueError("expected a relative reports/*.json path")
-    companion = output.with_suffix(".md")
-    if output.exists() or companion.exists():
-        raise FileExistsError("refusing to overwrite an audit report")
-    output.parent.mkdir(parents=True, exist_ok=True)
-    with output.open("x", encoding="utf-8", newline="\n") as handle:
-        handle.write(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
-    with companion.open("x", encoding="utf-8", newline="\n") as handle:
-        handle.write(markdown(report))
+    if __package__:
+        from .safe_operations import save_reports
+    else:
+        from safe_operations import save_reports
+    return save_reports(ROOT, report, output, markdown)
 
 
 def main():

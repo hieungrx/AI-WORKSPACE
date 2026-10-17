@@ -108,17 +108,11 @@ def markdown_report(report):
 
 
 def save_report(report, output):
-    output = local_path(ROOT, ROOT, str(output))
-    if not output.is_relative_to(ROOT / "reports") or output.suffix != ".json":
-        raise ValueError("report output must be a relative reports/*.json path")
-    companion = output.with_suffix(".md")
-    if output.exists() or companion.exists():
-        raise FileExistsError("refusing to overwrite an existing report")
-    output.parent.mkdir(parents=True, exist_ok=True)
-    with output.open("x", encoding="utf-8", newline="\n") as handle:
-        handle.write(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
-    with companion.open("x", encoding="utf-8", newline="\n") as handle:
-        handle.write(markdown_report(report))
+    if __package__:
+        from .safe_operations import save_reports
+    else:
+        from safe_operations import save_reports
+    return save_reports(ROOT, report, output, markdown_report)
 
 
 def main():

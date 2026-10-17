@@ -322,9 +322,12 @@ def transition(root, relative, target, *, actor, at, reason, authorized=False,
     if apply:
         if not authorized:
             raise PermissionError("MAINTENANCE_AUTHORIZATION_REQUIRED")
-        if page.read_bytes() != original:
-            raise GovernanceError("CONCURRENT_PAGE_CHANGE")
-        page.write_text(proposed, encoding="utf-8", newline="\n")
+        if __package__:
+            from .safe_operations import transact, digest
+        else:
+            from safe_operations import transact, digest
+        transact(root, {relative: proposed.encode("utf-8")}, {relative: digest(original)},
+                 operation="lifecycle", authorized=True)
     return proposed
 
 

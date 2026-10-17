@@ -23,3 +23,6 @@ exports/private/
 *.safetensors
 *.pt
 *.bin
+
+# Local write journals and before-images; never publish recovery snapshots.
+recovery/

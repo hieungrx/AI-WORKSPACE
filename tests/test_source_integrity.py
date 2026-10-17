@@ -330,22 +330,25 @@ class SourceIntegrityTests(unittest.TestCase):
             integrity.register_source(self.root, row, authorized=True)
         self.assertEqual(lock.read_text(encoding="utf-8"), "TEST_ONLY existing lock")
 
-    def test_interrupted_registration_is_an_orphan_not_a_trusted_source(self):
+    def test_interrupted_registration_rolls_back_metadata_without_touching_raw(self):
         row = self.row()
         self.snapshot(row)
         manifest = self.root / "sources/manifest.csv"
-        original_open = Path.open
+        from scripts import safe_operations
+        original_replace = safe_operations._replace_file
+        before = self.metadata_bytes()
 
-        def fail_append(path, mode="r", *args, **kwargs):
-            if path == manifest and mode == "a":
+        def fail_append(staged, target):
+            if target == manifest and staged.suffix == ".after":
                 raise OSError("TEST_ONLY simulated interrupted manifest append")
-            return original_open(path, mode, *args, **kwargs)
+            return original_replace(staged, target)
 
-        with patch.object(Path, "open", fail_append):
+        with patch.object(safe_operations, "_replace_file", fail_append):
             with self.assertRaises(OSError):
                 integrity.register_source(self.root, row, authorized=True)
-        self.assertIn("ORPHAN_PROVENANCE", self.errors())
-        self.assertEqual(query.search(self.root, "Fixture claim", "demo")["status"], "INVALID_DATA")
+        self.assertEqual(self.metadata_bytes(), before)
+        self.assertEqual(self.errors(), set())
+        self.assertEqual(query.search(self.root, "Fixture claim", "demo")["status"], "MISSING_EVIDENCE")
         self.assertEqual((self.root / row["source_url_or_path"]).read_bytes(), b"TEST_ONLY original bytes\n")
 
     def test_hash_matching_never_promotes_verification_status(self):
