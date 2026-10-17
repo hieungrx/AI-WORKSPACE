@@ -1,0 +1,818 @@
+{
+  "phase": "AI-WORKSPACE V1 Phase 3 only",
+  "discovery_baseline": "309e364",
+  "guarded_workflow_verdict": "PASS",
+  "verdict": "CONDITIONAL",
+  "verdict_reason": "Guarded APIs are enforced and tested; broader agent tool permissions remain unchanged and were not proven contained.",
+  "synthetic_only": true,
+  "required_scenarios": [
+    {
+      "scenario": 1,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_01_prompt_injection_in_source_is_blocked_on_actual_ingest_path",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 2,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_02_fake_priority_and_hidden_instructions_block_actual_query",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 3,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_03_unauthorized_policy_modification_has_no_write_capability",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 4,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_04_path_traversal_and_windows_aliases_are_rejected",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 5,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_05_sensitive_locations_are_rejected_before_open",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 6,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_06_failed_write_midway_restores_all_owned_resources",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 7,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_07_failed_ingestion_rolls_back_without_removing_approved_source",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 8,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_08_concurrent_writers_cannot_silently_lose_updates",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 9,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_09_generated_report_redacts_secret_keys_and_values",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": 10,
+      "tests": [
+        {
+          "test": "test_security_recovery.SecurityRecoveryTests.test_10_crash_recovery_preserves_every_unrelated_user_file",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "unit_tests": {
+    "run": 135,
+    "passed": 135,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "observed_output": "----------------------------------------------------------------------\nRan 135 tests in 146.036s\n\nOK\n",
+    "results": [
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_all_required_manifest_values_are_checked",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_approved_adr_can_support_a_first_party_project_decision",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_bad_manifest_header_and_row_shape_are_errors",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_checker_does_not_modify_or_create_workspace_files",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_citations_can_continue_on_the_next_line",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_cited_source_must_be_listed_in_page_metadata",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_content_metadata_values_are_validated",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_duplicate_manifest_ids_are_errors",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_each_finding_needs_its_own_citation",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_empty_registry_allows_explicit_unverified_draft",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_escaped_links_are_rejected_without_accessing_outside_paths",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_examples_and_comments_do_not_create_citations_or_links",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_existing_starter_hypothesis_remains_valid",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_exit_codes_and_output_distinguish_pass_warning_and_error",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_http_sources_are_metadata_only_and_no_network_is_used",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_images_and_encoded_or_angle_bracket_targets",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_inline_links_are_checked_across_documentation_locations",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_linked_paths_are_not_followed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_missing_and_unreadable_manifests_are_reported_without_tracebacks",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_missing_raw_file_and_directory_targets_are_errors",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_missing_wiki_entrypoints_are_reported",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_orphans_are_reported_and_indirect_navigation_is_followed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_proposed_adr_and_decision_index_are_not_approved_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_proposed_adr_can_be_linked_as_context_without_claiming_approval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_raw_bodies_and_protected_documents_are_never_opened",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_registered_source_and_finding_pass",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_source_dates_and_id_dates_are_real_calendar_dates",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_source_paths_cannot_escape_raw_or_workspace",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_source_paths_cannot_hide_linked_components_before_parent_segments",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_structured_facts_require_citations_even_in_drafts",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_template_can_be_copied_at_two_wiki_depths_without_broken_examples",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unknown_and_malformed_source_ids_are_reported",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unknown_author_or_publication_date_needs_an_explanatory_note",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unsupported_links_warn_and_heading_anchor_limit_is_explicit",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_unverified_draft_and_reviewed_without_evidence_are_distinct",
+        "status": "PASS"
+      },
+      {
+        "test": "test_check_workspace.WorkspaceChecks.test_utf8_bom_and_windows_newlines_are_supported",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_01_valid_lifecycle_transitions_are_traceable",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_02_invalid_transitions_do_not_write",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_03_ai_cannot_verify_even_with_approval_or_model_agreement",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_04_superseded_decision_is_never_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_05_historical_fact_retrieval_does_not_expire_by_age",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_06_conflicting_sources_preserved_and_block_verified",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_07_incorrect_project_scope_has_no_fallback_or_alias_leak",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_08_explicit_cross_project_lookup_is_context_only",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_09_proposed_decision_cannot_become_approved_by_citation",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_10_missing_or_inconsistent_metadata_fails_closed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_apply_requires_authorization_and_plan_is_read_only",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_archive_requires_human_and_history_is_opt_in",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_conflict_resolution_needs_human_validation_then_reverification",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_decision_approval_cannot_bypass_a_tampered_supporting_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_first_party_choice_without_external_fact_uses_approval_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_foreign_decision_is_context_not_local_configuration",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_future_effective_policy_is_not_current",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_global_knowledge_is_selected_explicitly",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_governed_decision_source_references_are_validated",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_human_label_without_validation_record_is_insufficient",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_interpretation_and_hypothesis_are_not_verified_facts",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_legacy_reviewed_is_not_verified_and_bytes_are_unchanged",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_malformed_history_and_mixed_metadata_are_rejected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_query_and_audit_are_read_only",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_referenced_decision_cannot_hide_a_changed_supporting_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_restricted_scope_requires_explicit_authorization",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_review_due_is_warning_not_automatic_obsolescence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_same_scope_approved_decision_can_support_a_project_choice",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_source_tampering_still_blocks_governed_verified_knowledge",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_unapproved_historical_label_does_not_create_decision_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_knowledge_governance.GovernanceTests.test_verified_body_or_scope_edit_invalidates_approval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_accents_are_not_silently_removed_or_synonyms_invented",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_alias_and_vietnamese_title_add_only_declared_english_terms",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_aliases_do_not_leak_from_another_project",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_all_25_pairs_have_observed_results",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_ambiguous_alias_does_not_pick_an_arbitrary_document",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_identifiers_routes_and_filenames_retain_original_spelling",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_invalid_registry_fails_closed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_linter_and_search_reject_bad_metadata",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_missing_evidence_is_not_a_source_backed_answer",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_old_metadata_defaults_and_legacy_retrieval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_optional_metadata_rejects_invalid_types_and_duplicates",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_other_project_bad_metadata_does_not_change_selected_scope",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_punctuation_bearing_technical_keywords_are_literal",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_raw_bodies_are_not_opened_and_network_is_not_used",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_report_writer_rejects_existing_or_protected_paths",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_scope_is_required_and_never_inferred",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_search_does_not_write_or_translate_any_file",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_underscored_fields_are_parsed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_multilingual.MultilingualTests.test_unicode_nfc_nfd_case_and_spacing_match",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_01_prompt_injection_in_source_is_blocked_on_actual_ingest_path",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_02_fake_priority_and_hidden_instructions_block_actual_query",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_03_unauthorized_policy_modification_has_no_write_capability",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_04_path_traversal_and_windows_aliases_are_rejected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_05_sensitive_locations_are_rejected_before_open",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_06_failed_write_midway_restores_all_owned_resources",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_07_failed_ingestion_rolls_back_without_removing_approved_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_08_concurrent_writers_cannot_silently_lose_updates",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_09_generated_report_redacts_secret_keys_and_values",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_10_crash_recovery_preserves_every_unrelated_user_file",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_approval_and_source_command_cannot_expand_the_write_allowlist",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_committed_operation_recovery_keeps_complete_result",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_fake_labeled_identity_is_flagged_without_value_in_output",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_new_raw_snapshot_never_publishes_partial_bytes",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_old_report_writers_use_the_redaction_boundary",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_query_rejects_a_generation_changed_during_retrieval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_raw_policy_filename_is_blocked_before_publication",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_recovery_refuses_to_overwrite_edits_made_after_interruption",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_sensitive_generated_wiki_is_blocked_before_backup_or_commit",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_stale_owner_requires_explicit_human_recovery_acknowledgement",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_successful_ingestion_is_atomic_draft_and_query_remains_data",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_synthetic_private_key_block_is_redacted_as_a_whole",
+        "status": "PASS"
+      },
+      {
+        "test": "test_security_recovery.SecurityRecoveryTests.test_tampered_journal_cannot_target_operating_policy",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_01_valid_registration_and_unknown_metadata",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_02_duplicate_ingestion_is_idempotent_and_content_deduplicated",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_03_duplicate_id_with_different_content_is_rejected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_04_hash_mismatch_blocks_source_and_query",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_05_missing_source_file_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_06_invalid_wiki_reference_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_07_missing_required_metadata_is_rejected_before_writes",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_08_unavailable_original_url_retains_local_evidence_without_network",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_09_attempted_raw_modification_is_refused",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_10_source_version_replacement_preserves_old_snapshot_and_references",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_audit_and_query_are_read_only_and_only_hash_raw_bytes",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_binary_sources_are_hashed_without_text_decoding",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_claim_with_no_evidence_stays_unknown",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_corrupt_duplicate_and_orphan_provenance_fail_closed",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_forked_and_out_of_sequence_versions_are_rejected_before_append",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_hash_matching_never_promotes_verification_status",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_interrupted_registration_rolls_back_metadata_without_touching_raw",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_known_origin_revision_needs_explicit_version_link",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_legacy_migration_is_explicit_readonly_planning_and_append_only_apply",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_manifest_metadata_tampering_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_manually_duplicated_content_is_detected",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_metadata_only_replacement_can_reuse_immutable_bytes",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_migration_detects_changed_bytes_since_proposal",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_multiple_sources_support_one_claim_and_one_bad_source_blocks_it",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_remote_only_legacy_record_requires_an_authorized_snapshot",
+        "status": "PASS"
+      },
+      {
+        "test": "test_source_integrity.SourceIntegrityTests.test_stale_lock_is_not_deleted_or_ignored",
+        "status": "PASS"
+      }
+    ]
+  },
+  "workspace_errors": [],
+  "workspace_warnings": [
+    "WARNING NO_EVIDENCE wiki/concepts/knowledge-system-principles.md: page has no registered source or approved decision evidence."
+  ],
+  "attack_observations": [
+    {
+      "sample": "override",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "role",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "developer",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "exfiltrate",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "policy",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "hidden",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "tool",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "command",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "active",
+      "path": "ingest_registered",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "override",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "role",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "developer",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "exfiltrate",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "policy",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "hidden",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "tool",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "command",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    },
+    {
+      "sample": "active",
+      "path": "query.search",
+      "observed_status": "UNTRUSTED_CONTENT",
+      "user_files_unchanged": true
+    }
+  ],
+  "recovery_demonstration": {
+    "fixture_only": true,
+    "failure_after_resource_replacements": 1,
+    "query_before_recovery": "RECOVERY_REQUIRED",
+    "recovery_result": {
+      "status": "ROLLED_BACK",
+      "operation_id": "51508836bf704fabb1b7c0374d933d50",
+      "files": 3
+    },
+    "before_hashes": {
+      "sources/manifest.csv": "11270dda47efb4c02f476705564c909afcdaf392b6ec05acf0630d9b896837e8",
+      "sources/provenance.jsonl": "ac5e8abd1df8cf93f04d60b3cd36b1c615afaef7a8157d6ff79266bbb1156fb0",
+      "wiki/existing.md": "e9663f2e68193a25c752e51bb50747a8586f212d1d563e452b850b6c9205fe85",
+      "wiki/index.md": "8cf7b6c8ab5b4dfc0d731b5bea10719af1a48a2afb555ee80a84a402217e9f43",
+      "wiki/log.md": "d13e9a86387962cb28cfe15241377776700bcda2641c47fb7e5b739d87b0fd70",
+      "wiki/unrelated.md": "226840717c81a066bc04ede89f640bb5d0d64a1d719677a8f46e034fa10ffd30",
+      "sources/raw/SRC-20261017-401.md": "bff91ce7c9125b492acdac2272eb2575276baf0da0d85b0651f98530b3158823"
+    },
+    "after_hashes": {
+      "sources/manifest.csv": "11270dda47efb4c02f476705564c909afcdaf392b6ec05acf0630d9b896837e8",
+      "sources/provenance.jsonl": "ac5e8abd1df8cf93f04d60b3cd36b1c615afaef7a8157d6ff79266bbb1156fb0",
+      "wiki/existing.md": "e9663f2e68193a25c752e51bb50747a8586f212d1d563e452b850b6c9205fe85",
+      "wiki/index.md": "8cf7b6c8ab5b4dfc0d731b5bea10719af1a48a2afb555ee80a84a402217e9f43",
+      "wiki/log.md": "d13e9a86387962cb28cfe15241377776700bcda2641c47fb7e5b739d87b0fd70",
+      "wiki/unrelated.md": "226840717c81a066bc04ede89f640bb5d0d64a1d719677a8f46e034fa10ffd30",
+      "sources/raw/SRC-20261017-401.md": "bff91ce7c9125b492acdac2272eb2575276baf0da0d85b0651f98530b3158823"
+    },
+    "all_user_files_preserved": true
+  },
+  "compatibility": {
+    "baseline_tests": 112,
+    "existing_tests_run": 112,
+    "existing_tests_passed": 112,
+    "changed_failure_contract": "Interrupted registration now restores exact metadata instead of leaving an orphan; its fault-injection regression was updated and run."
+  },
+  "residual_risks": [
+    "General Codex/editor/shell access can bypass the Python workflow layer; no OS ACL or host permission configuration was changed.",
+    "Injection signatures are conservative, incomplete and can have false positives. No complete LLM-agent/model red-team evaluation was run.",
+    "Local human/task assertions and journal records are not cryptographically authenticated against a malicious same-user process.",
+    "Cooperating writers are serialized; hostile non-cooperating writers and physical power loss require additional external controls.",
+    "Secret scanning covers approved public documents and explicit authorized source intake, not every ignored file or all possible personal information.",
+    "Source admission and wiki synthesis are separate authorized checkpoints; failed synthesis retains the admitted immutable source.",
+    "No real secrets, production knowledge, external targets, deploy/push/merge or Phase 4 work was used."
+  ]
+}

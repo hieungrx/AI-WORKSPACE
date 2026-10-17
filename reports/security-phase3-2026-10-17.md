@@ -1,0 +1,221 @@
+# Phase 3 — Security and Recovery Audit
+
+**Overall: CONDITIONAL**. Guarded workflow controls: **PASS**.
+Guarded APIs are enforced and tested; broader agent tool permissions remain unchanged and were not proven contained.
+
+Observed: 133 tests; 133 PASS, 0 failures, 0 errors, 0 skipped.
+Strict source/security Lint: 0 errors, 1 warnings.
+
+## Threat model and policy
+
+See [trust boundaries, allowlist, safeguards and recovery procedure](../SECURITY_POLICY.md).
+Read: repository AGENTS/README/SCHEMA/PROFILE, wiki index/log, relevant prompts, prior phase reports, source/governance/query/report implementations and validation tests.
+Sources used: first-party repository state and TEST_ONLY synthetic attack fixtures. No real secret was opened.
+Changed: bounded transaction/security/Ingest modules; registration, lifecycle, Query and report writers; path guards, security Lint, operating docs/prompts, adversarial tests and append-only maintenance history.
+
+## Compatibility and implementation findings
+
+- Existing source hashes, lifecycle approval, citations and exact-scope matching were retained.
+- Earlier raw publication/direct wiki writes and two-file append registration had incomplete-operation windows.
+- Writes now use expected versions, ownership, staged bytes, before-images and validated recovery; source history remains logically append-only.
+- The old interrupted-registration orphan test now injects failure during replacement and verifies exact restoration.
+- Existing regressions passed: 112 / 112. Historical phase reports were preserved.
+
+## Required observed scenarios
+
+- PASS: 1. test_01_prompt_injection_in_source_is_blocked_on_actual_ingest_path
+- PASS: 2. test_02_fake_priority_and_hidden_instructions_block_actual_query
+- PASS: 3. test_03_unauthorized_policy_modification_has_no_write_capability
+- PASS: 4. test_04_path_traversal_and_windows_aliases_are_rejected
+- PASS: 5. test_05_sensitive_locations_are_rejected_before_open
+- PASS: 6. test_06_failed_write_midway_restores_all_owned_resources
+- PASS: 7. test_07_failed_ingestion_rolls_back_without_removing_approved_source
+- PASS: 8. test_08_concurrent_writers_cannot_silently_lose_updates
+- PASS: 9. test_09_generated_report_redacts_secret_keys_and_values
+- PASS: 10. test_10_crash_recovery_preserves_every_unrelated_user_file
+
+## Actual adversarial handling paths
+
+- override / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- role / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- developer / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- exfiltrate / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- policy / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- hidden / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- tool / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- command / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- active / ingest_registered: UNTRUSTED_CONTENT; user files unchanged: True.
+- override / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- role / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- developer / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- exfiltrate / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- policy / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- hidden / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- tool / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- command / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+- active / query.search: UNTRUSTED_CONTENT; user files unchanged: True.
+
+## Recovery demonstration on disposable fixtures
+
+- Injected interruption after 1 target replacement.
+- Query before recovery: RECOVERY_REQUIRED.
+- Actual recovery result: ROLLED_BACK.
+- Exact user-file preservation: True.
+- Before/after resource hashes equal: True.
+- The JSON companion contains the observed operation ID and before/after hashes; it contains no source bodies or secret values.
+- Additional tests cover recovery conflicts, journal tampering, committed-state recovery and stale-owner acknowledgement.
+
+## All observed tests
+
+- PASS: test_check_workspace.WorkspaceChecks.test_all_required_manifest_values_are_checked
+- PASS: test_check_workspace.WorkspaceChecks.test_approved_adr_can_support_a_first_party_project_decision
+- PASS: test_check_workspace.WorkspaceChecks.test_bad_manifest_header_and_row_shape_are_errors
+- PASS: test_check_workspace.WorkspaceChecks.test_checker_does_not_modify_or_create_workspace_files
+- PASS: test_check_workspace.WorkspaceChecks.test_citations_can_continue_on_the_next_line
+- PASS: test_check_workspace.WorkspaceChecks.test_cited_source_must_be_listed_in_page_metadata
+- PASS: test_check_workspace.WorkspaceChecks.test_content_metadata_values_are_validated
+- PASS: test_check_workspace.WorkspaceChecks.test_duplicate_manifest_ids_are_errors
+- PASS: test_check_workspace.WorkspaceChecks.test_each_finding_needs_its_own_citation
+- PASS: test_check_workspace.WorkspaceChecks.test_empty_registry_allows_explicit_unverified_draft
+- PASS: test_check_workspace.WorkspaceChecks.test_escaped_links_are_rejected_without_accessing_outside_paths
+- PASS: test_check_workspace.WorkspaceChecks.test_examples_and_comments_do_not_create_citations_or_links
+- PASS: test_check_workspace.WorkspaceChecks.test_existing_starter_hypothesis_remains_valid
+- PASS: test_check_workspace.WorkspaceChecks.test_exit_codes_and_output_distinguish_pass_warning_and_error
+- PASS: test_check_workspace.WorkspaceChecks.test_http_sources_are_metadata_only_and_no_network_is_used
+- PASS: test_check_workspace.WorkspaceChecks.test_images_and_encoded_or_angle_bracket_targets
+- PASS: test_check_workspace.WorkspaceChecks.test_inline_links_are_checked_across_documentation_locations
+- PASS: test_check_workspace.WorkspaceChecks.test_linked_paths_are_not_followed
+- PASS: test_check_workspace.WorkspaceChecks.test_missing_and_unreadable_manifests_are_reported_without_tracebacks
+- PASS: test_check_workspace.WorkspaceChecks.test_missing_raw_file_and_directory_targets_are_errors
+- PASS: test_check_workspace.WorkspaceChecks.test_missing_wiki_entrypoints_are_reported
+- PASS: test_check_workspace.WorkspaceChecks.test_orphans_are_reported_and_indirect_navigation_is_followed
+- PASS: test_check_workspace.WorkspaceChecks.test_proposed_adr_and_decision_index_are_not_approved_evidence
+- PASS: test_check_workspace.WorkspaceChecks.test_proposed_adr_can_be_linked_as_context_without_claiming_approval
+- PASS: test_check_workspace.WorkspaceChecks.test_raw_bodies_and_protected_documents_are_never_opened
+- PASS: test_check_workspace.WorkspaceChecks.test_registered_source_and_finding_pass
+- PASS: test_check_workspace.WorkspaceChecks.test_source_dates_and_id_dates_are_real_calendar_dates
+- PASS: test_check_workspace.WorkspaceChecks.test_source_paths_cannot_escape_raw_or_workspace
+- PASS: test_check_workspace.WorkspaceChecks.test_source_paths_cannot_hide_linked_components_before_parent_segments
+- PASS: test_check_workspace.WorkspaceChecks.test_structured_facts_require_citations_even_in_drafts
+- PASS: test_check_workspace.WorkspaceChecks.test_template_can_be_copied_at_two_wiki_depths_without_broken_examples
+- PASS: test_check_workspace.WorkspaceChecks.test_unknown_and_malformed_source_ids_are_reported
+- PASS: test_check_workspace.WorkspaceChecks.test_unknown_author_or_publication_date_needs_an_explanatory_note
+- PASS: test_check_workspace.WorkspaceChecks.test_unsupported_links_warn_and_heading_anchor_limit_is_explicit
+- PASS: test_check_workspace.WorkspaceChecks.test_unverified_draft_and_reviewed_without_evidence_are_distinct
+- PASS: test_check_workspace.WorkspaceChecks.test_utf8_bom_and_windows_newlines_are_supported
+- PASS: test_knowledge_governance.GovernanceTests.test_01_valid_lifecycle_transitions_are_traceable
+- PASS: test_knowledge_governance.GovernanceTests.test_02_invalid_transitions_do_not_write
+- PASS: test_knowledge_governance.GovernanceTests.test_03_ai_cannot_verify_even_with_approval_or_model_agreement
+- PASS: test_knowledge_governance.GovernanceTests.test_04_superseded_decision_is_never_current_truth
+- PASS: test_knowledge_governance.GovernanceTests.test_05_historical_fact_retrieval_does_not_expire_by_age
+- PASS: test_knowledge_governance.GovernanceTests.test_06_conflicting_sources_preserved_and_block_verified
+- PASS: test_knowledge_governance.GovernanceTests.test_07_incorrect_project_scope_has_no_fallback_or_alias_leak
+- PASS: test_knowledge_governance.GovernanceTests.test_08_explicit_cross_project_lookup_is_context_only
+- PASS: test_knowledge_governance.GovernanceTests.test_09_proposed_decision_cannot_become_approved_by_citation
+- PASS: test_knowledge_governance.GovernanceTests.test_10_missing_or_inconsistent_metadata_fails_closed
+- PASS: test_knowledge_governance.GovernanceTests.test_apply_requires_authorization_and_plan_is_read_only
+- PASS: test_knowledge_governance.GovernanceTests.test_archive_requires_human_and_history_is_opt_in
+- PASS: test_knowledge_governance.GovernanceTests.test_conflict_resolution_needs_human_validation_then_reverification
+- PASS: test_knowledge_governance.GovernanceTests.test_decision_approval_cannot_bypass_a_tampered_supporting_source
+- PASS: test_knowledge_governance.GovernanceTests.test_first_party_choice_without_external_fact_uses_approval_evidence
+- PASS: test_knowledge_governance.GovernanceTests.test_foreign_decision_is_context_not_local_configuration
+- PASS: test_knowledge_governance.GovernanceTests.test_future_effective_policy_is_not_current
+- PASS: test_knowledge_governance.GovernanceTests.test_global_knowledge_is_selected_explicitly
+- PASS: test_knowledge_governance.GovernanceTests.test_governed_decision_source_references_are_validated
+- PASS: test_knowledge_governance.GovernanceTests.test_human_label_without_validation_record_is_insufficient
+- PASS: test_knowledge_governance.GovernanceTests.test_interpretation_and_hypothesis_are_not_verified_facts
+- PASS: test_knowledge_governance.GovernanceTests.test_legacy_reviewed_is_not_verified_and_bytes_are_unchanged
+- PASS: test_knowledge_governance.GovernanceTests.test_malformed_history_and_mixed_metadata_are_rejected
+- PASS: test_knowledge_governance.GovernanceTests.test_query_and_audit_are_read_only
+- PASS: test_knowledge_governance.GovernanceTests.test_referenced_decision_cannot_hide_a_changed_supporting_source
+- PASS: test_knowledge_governance.GovernanceTests.test_restricted_scope_requires_explicit_authorization
+- PASS: test_knowledge_governance.GovernanceTests.test_review_due_is_warning_not_automatic_obsolescence
+- PASS: test_knowledge_governance.GovernanceTests.test_same_scope_approved_decision_can_support_a_project_choice
+- PASS: test_knowledge_governance.GovernanceTests.test_source_tampering_still_blocks_governed_verified_knowledge
+- PASS: test_knowledge_governance.GovernanceTests.test_unapproved_historical_label_does_not_create_decision_evidence
+- PASS: test_knowledge_governance.GovernanceTests.test_verified_body_or_scope_edit_invalidates_approval
+- PASS: test_multilingual.MultilingualTests.test_accents_are_not_silently_removed_or_synonyms_invented
+- PASS: test_multilingual.MultilingualTests.test_alias_and_vietnamese_title_add_only_declared_english_terms
+- PASS: test_multilingual.MultilingualTests.test_aliases_do_not_leak_from_another_project
+- PASS: test_multilingual.MultilingualTests.test_all_25_pairs_have_observed_results
+- PASS: test_multilingual.MultilingualTests.test_ambiguous_alias_does_not_pick_an_arbitrary_document
+- PASS: test_multilingual.MultilingualTests.test_identifiers_routes_and_filenames_retain_original_spelling
+- PASS: test_multilingual.MultilingualTests.test_invalid_registry_fails_closed
+- PASS: test_multilingual.MultilingualTests.test_linter_and_search_reject_bad_metadata
+- PASS: test_multilingual.MultilingualTests.test_missing_evidence_is_not_a_source_backed_answer
+- PASS: test_multilingual.MultilingualTests.test_old_metadata_defaults_and_legacy_retrieval
+- PASS: test_multilingual.MultilingualTests.test_optional_metadata_rejects_invalid_types_and_duplicates
+- PASS: test_multilingual.MultilingualTests.test_other_project_bad_metadata_does_not_change_selected_scope
+- PASS: test_multilingual.MultilingualTests.test_punctuation_bearing_technical_keywords_are_literal
+- PASS: test_multilingual.MultilingualTests.test_raw_bodies_are_not_opened_and_network_is_not_used
+- PASS: test_multilingual.MultilingualTests.test_report_writer_rejects_existing_or_protected_paths
+- PASS: test_multilingual.MultilingualTests.test_scope_is_required_and_never_inferred
+- PASS: test_multilingual.MultilingualTests.test_search_does_not_write_or_translate_any_file
+- PASS: test_multilingual.MultilingualTests.test_underscored_fields_are_parsed
+- PASS: test_multilingual.MultilingualTests.test_unicode_nfc_nfd_case_and_spacing_match
+- PASS: test_security_recovery.SecurityRecoveryTests.test_01_prompt_injection_in_source_is_blocked_on_actual_ingest_path
+- PASS: test_security_recovery.SecurityRecoveryTests.test_02_fake_priority_and_hidden_instructions_block_actual_query
+- PASS: test_security_recovery.SecurityRecoveryTests.test_03_unauthorized_policy_modification_has_no_write_capability
+- PASS: test_security_recovery.SecurityRecoveryTests.test_04_path_traversal_and_windows_aliases_are_rejected
+- PASS: test_security_recovery.SecurityRecoveryTests.test_05_sensitive_locations_are_rejected_before_open
+- PASS: test_security_recovery.SecurityRecoveryTests.test_06_failed_write_midway_restores_all_owned_resources
+- PASS: test_security_recovery.SecurityRecoveryTests.test_07_failed_ingestion_rolls_back_without_removing_approved_source
+- PASS: test_security_recovery.SecurityRecoveryTests.test_08_concurrent_writers_cannot_silently_lose_updates
+- PASS: test_security_recovery.SecurityRecoveryTests.test_09_generated_report_redacts_secret_keys_and_values
+- PASS: test_security_recovery.SecurityRecoveryTests.test_10_crash_recovery_preserves_every_unrelated_user_file
+- PASS: test_security_recovery.SecurityRecoveryTests.test_approval_and_source_command_cannot_expand_the_write_allowlist
+- PASS: test_security_recovery.SecurityRecoveryTests.test_committed_operation_recovery_keeps_complete_result
+- PASS: test_security_recovery.SecurityRecoveryTests.test_fake_labeled_identity_is_flagged_without_value_in_output
+- PASS: test_security_recovery.SecurityRecoveryTests.test_new_raw_snapshot_never_publishes_partial_bytes
+- PASS: test_security_recovery.SecurityRecoveryTests.test_old_report_writers_use_the_redaction_boundary
+- PASS: test_security_recovery.SecurityRecoveryTests.test_raw_policy_filename_is_blocked_before_publication
+- PASS: test_security_recovery.SecurityRecoveryTests.test_recovery_refuses_to_overwrite_edits_made_after_interruption
+- PASS: test_security_recovery.SecurityRecoveryTests.test_sensitive_generated_wiki_is_blocked_before_backup_or_commit
+- PASS: test_security_recovery.SecurityRecoveryTests.test_stale_owner_requires_explicit_human_recovery_acknowledgement
+- PASS: test_security_recovery.SecurityRecoveryTests.test_successful_ingestion_is_atomic_draft_and_query_remains_data
+- PASS: test_security_recovery.SecurityRecoveryTests.test_tampered_journal_cannot_target_operating_policy
+- PASS: test_source_integrity.SourceIntegrityTests.test_01_valid_registration_and_unknown_metadata
+- PASS: test_source_integrity.SourceIntegrityTests.test_02_duplicate_ingestion_is_idempotent_and_content_deduplicated
+- PASS: test_source_integrity.SourceIntegrityTests.test_03_duplicate_id_with_different_content_is_rejected
+- PASS: test_source_integrity.SourceIntegrityTests.test_04_hash_mismatch_blocks_source_and_query
+- PASS: test_source_integrity.SourceIntegrityTests.test_05_missing_source_file_is_detected
+- PASS: test_source_integrity.SourceIntegrityTests.test_06_invalid_wiki_reference_is_detected
+- PASS: test_source_integrity.SourceIntegrityTests.test_07_missing_required_metadata_is_rejected_before_writes
+- PASS: test_source_integrity.SourceIntegrityTests.test_08_unavailable_original_url_retains_local_evidence_without_network
+- PASS: test_source_integrity.SourceIntegrityTests.test_09_attempted_raw_modification_is_refused
+- PASS: test_source_integrity.SourceIntegrityTests.test_10_source_version_replacement_preserves_old_snapshot_and_references
+- PASS: test_source_integrity.SourceIntegrityTests.test_audit_and_query_are_read_only_and_only_hash_raw_bytes
+- PASS: test_source_integrity.SourceIntegrityTests.test_binary_sources_are_hashed_without_text_decoding
+- PASS: test_source_integrity.SourceIntegrityTests.test_claim_with_no_evidence_stays_unknown
+- PASS: test_source_integrity.SourceIntegrityTests.test_corrupt_duplicate_and_orphan_provenance_fail_closed
+- PASS: test_source_integrity.SourceIntegrityTests.test_forked_and_out_of_sequence_versions_are_rejected_before_append
+- PASS: test_source_integrity.SourceIntegrityTests.test_hash_matching_never_promotes_verification_status
+- PASS: test_source_integrity.SourceIntegrityTests.test_interrupted_registration_rolls_back_metadata_without_touching_raw
+- PASS: test_source_integrity.SourceIntegrityTests.test_known_origin_revision_needs_explicit_version_link
+- PASS: test_source_integrity.SourceIntegrityTests.test_legacy_migration_is_explicit_readonly_planning_and_append_only_apply
+- PASS: test_source_integrity.SourceIntegrityTests.test_manifest_metadata_tampering_is_detected
+- PASS: test_source_integrity.SourceIntegrityTests.test_manually_duplicated_content_is_detected
+- PASS: test_source_integrity.SourceIntegrityTests.test_metadata_only_replacement_can_reuse_immutable_bytes
+- PASS: test_source_integrity.SourceIntegrityTests.test_migration_detects_changed_bytes_since_proposal
+- PASS: test_source_integrity.SourceIntegrityTests.test_multiple_sources_support_one_claim_and_one_bad_source_blocks_it
+- PASS: test_source_integrity.SourceIntegrityTests.test_remote_only_legacy_record_requires_an_authorized_snapshot
+- PASS: test_source_integrity.SourceIntegrityTests.test_stale_lock_is_not_deleted_or_ignored
+
+## Residual risks and checks not run
+
+- General Codex/editor/shell access can bypass the Python workflow layer; no OS ACL or host permission configuration was changed.
+- Injection signatures are conservative, incomplete and can have false positives. No complete LLM-agent/model red-team evaluation was run.
+- Local human/task assertions and journal records are not cryptographically authenticated against a malicious same-user process.
+- Cooperating writers are serialized; hostile non-cooperating writers and physical power loss require additional external controls.
+- Secret scanning covers approved public documents and explicit authorized source intake, not every ignored file or all possible personal information.
+- Source admission and wiki synthesis are separate authorized checkpoints; failed synthesis retains the admitted immutable source.
+- No real secrets, production knowledge, external targets, deploy/push/merge or Phase 4 work was used.
+
+## Reproduce
+
+~~~text
+python -B scripts/validate_security.py
+python -B scripts/check_workspace.py --integrity --security
+~~~
+
+The whole-agent verdict remains CONDITIONAL until broader host permissions are independently constrained and tested. This phase did not change global settings or begin Phase 4.
