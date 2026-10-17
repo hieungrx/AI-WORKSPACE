@@ -1,0 +1,25 @@
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+*.p12
+
+# OS/editor cache
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.obsidian/workspace*.json
+
+# Local/private source contents (decide manually what can be committed)
+sources/raw/private/
+exports/private/
+
+# Large generated artifacts
+*.ckpt
+*.safetensors
+*.pt
+*.bin
