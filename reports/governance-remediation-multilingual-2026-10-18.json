@@ -1,0 +1,3677 @@
+{
+  "fixture_only": true,
+  "fixture_root": "tests/fixtures/multilingual",
+  "method": "scoped deterministic lexical matching with curated aliases; no semantic retrieval",
+  "python": "3.13.0",
+  "pairs": 25,
+  "queries": 50,
+  "passed": 50,
+  "failed": 0,
+  "categories": {
+    "exact_keyword": {
+      "queries": 10,
+      "passed": 10
+    },
+    "bilingual_aliases": {
+      "queries": 10,
+      "passed": 10
+    },
+    "cross_language": {
+      "queries": 10,
+      "passed": 10
+    },
+    "project_scope": {
+      "queries": 10,
+      "passed": 10
+    },
+    "missing_evidence": {
+      "queries": 10,
+      "passed": 10
+    }
+  },
+  "actual_outcomes": {
+    "FOUND": 36,
+    "NOT_FOUND": 6,
+    "MISSING_EVIDENCE": 8
+  },
+  "results": [
+    {
+      "pair_id": "P01",
+      "category": "exact_keyword",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/listing-route.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Giải thích GET /api/listings",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/listing-route.md",
+            "title": "GET /api/listings",
+            "title_vi": "liệt kê sản phẩm",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "GET /api/listings"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-101",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#listing-route"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P01",
+      "category": "exact_keyword",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/listing-route.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Explain GET /api/listings",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/listing-route.md",
+            "title": "GET /api/listings",
+            "title_vi": "liệt kê sản phẩm",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "GET /api/listings"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-101",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#listing-route"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P02",
+      "category": "exact_keyword",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/reserve-function.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Giải thích reserveListing()",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/reserve-function.md",
+            "title": "reserveListing()",
+            "title_vi": "giữ món",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "reserveListing()"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-102",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#reserve-function"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P02",
+      "category": "exact_keyword",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/reserve-function.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Explain reserveListing()",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/reserve-function.md",
+            "title": "reserveListing()",
+            "title_vi": "giữ món",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "reserveListing()"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-102",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#reserve-function"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P03",
+      "category": "exact_keyword",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/checkout-file.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Giải thích checkout.service.ts",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/checkout-file.md",
+            "title": "checkout.service.ts",
+            "title_vi": "tệp xử lý thanh toán",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "checkout.service.ts"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-103",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#checkout-file"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P03",
+      "category": "exact_keyword",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/checkout-file.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Explain checkout.service.ts",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/checkout-file.md",
+            "title": "checkout.service.ts",
+            "title_vi": "tệp xử lý thanh toán",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "checkout.service.ts"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-103",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#checkout-file"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P04",
+      "category": "exact_keyword",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/row-lock.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Giải thích SELECT FOR UPDATE",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/row-lock.md",
+            "title": "SELECT FOR UPDATE",
+            "title_vi": "khóa dòng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "SELECT FOR UPDATE"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-104",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#row-lock"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P04",
+      "category": "exact_keyword",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/row-lock.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Explain SELECT FOR UPDATE",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/row-lock.md",
+            "title": "SELECT FOR UPDATE",
+            "title_vi": "khóa dòng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "SELECT FOR UPDATE"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-104",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#row-lock"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P05",
+      "category": "exact_keyword",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/conflict-status.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Giải thích HTTP 409",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/conflict-status.md",
+            "title": "HTTP 409",
+            "title_vi": "mã xung đột",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "HTTP 409"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-105",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#conflict-status"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P05",
+      "category": "exact_keyword",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/conflict-status.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Explain HTTP 409",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/conflict-status.md",
+            "title": "HTTP 409",
+            "title_vi": "mã xung đột",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "HTTP 409"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-105",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#conflict-status"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P06",
+      "category": "bilingual_aliases",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/authentication.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Hỏi về đăng nhập",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "authentication"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/authentication.md",
+            "title": "authentication",
+            "title_vi": "Xác thực người dùng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "aliases_vi"
+            ],
+            "matched_terms": [
+              "đăng nhập"
+            ],
+            "expansion_terms": [
+              "authentication"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-106",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#authentication"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P06",
+      "category": "bilingual_aliases",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/authentication.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Explain authentication",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/authentication.md",
+            "title": "authentication",
+            "title_vi": "Xác thực người dùng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "authentication"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-106",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#authentication"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P07",
+      "category": "bilingual_aliases",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/authorization.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "kiểm tra quyền",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "authorization"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/authorization.md",
+            "title": "authorization",
+            "title_vi": "Phân quyền người dùng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi"
+            ],
+            "matched_terms": [
+              "kiểm tra quyền"
+            ],
+            "expansion_terms": [
+              "authorization"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-107",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#authorization"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P07",
+      "category": "bilingual_aliases",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/authorization.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "authorization",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/authorization.md",
+            "title": "authorization",
+            "title_vi": "Phân quyền người dùng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "authorization"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-107",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#authorization"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P08",
+      "category": "bilingual_aliases",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/idempotency.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "chống xử lý lặp",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "idempotency"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/idempotency.md",
+            "title": "idempotency",
+            "title_vi": "Tính lũy đẳng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi"
+            ],
+            "matched_terms": [
+              "chống xử lý lặp"
+            ],
+            "expansion_terms": [
+              "idempotency"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-108",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#idempotency"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P08",
+      "category": "bilingual_aliases",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/idempotency.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "idempotency",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/idempotency.md",
+            "title": "idempotency",
+            "title_vi": "Tính lũy đẳng",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "idempotency"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-108",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#idempotency"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P09",
+      "category": "bilingual_aliases",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/retry.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Chính sách thử lại",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "retry policy"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/retry.md",
+            "title": "retry policy",
+            "title_vi": "Chính sách thử lại",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Chính sách thử lại",
+              "thử lại"
+            ],
+            "expansion_terms": [
+              "retry policy"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-109",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#retry"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P09",
+      "category": "bilingual_aliases",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/retry.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "retry policy",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/retry.md",
+            "title": "retry policy",
+            "title_vi": "Chính sách thử lại",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "retry policy"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-109",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#retry"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P10",
+      "category": "bilingual_aliases",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/pagination.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "chia trang",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "pagination"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/pagination.md",
+            "title": "pagination",
+            "title_vi": "Phân trang dữ liệu",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi"
+            ],
+            "matched_terms": [
+              "chia trang"
+            ],
+            "expansion_terms": [
+              "pagination"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-110",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#pagination"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P10",
+      "category": "bilingual_aliases",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/pagination.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "pagination",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/pagination.md",
+            "title": "pagination",
+            "title_vi": "Phân trang dữ liệu",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "pagination"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-110",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#pagination"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P11",
+      "category": "cross_language",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/transaction.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Hệ thống dùng giao dịch cơ sở dữ liệu thế nào?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "database transaction"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/transaction.md",
+            "title": "database transaction",
+            "title_vi": "Giao dịch cơ sở dữ liệu",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Giao dịch cơ sở dữ liệu",
+              "giao dịch cơ sở dữ liệu"
+            ],
+            "expansion_terms": [
+              "database transaction"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-111",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#transaction"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P11",
+      "category": "cross_language",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/transaction.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "How does a database transaction work?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/transaction.md",
+            "title": "database transaction",
+            "title_vi": "Giao dịch cơ sở dữ liệu",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "database transaction"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-111",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#transaction"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P12",
+      "category": "cross_language",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/rollback.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Khi nào cần hoàn tác giao dịch?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "transaction rollback"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/rollback.md",
+            "title": "transaction rollback",
+            "title_vi": "Hoàn tác giao dịch",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Hoàn tác giao dịch",
+              "hoàn tác giao dịch"
+            ],
+            "expansion_terms": [
+              "transaction rollback"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-112",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#rollback"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P12",
+      "category": "cross_language",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/rollback.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "When is transaction rollback needed?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/rollback.md",
+            "title": "transaction rollback",
+            "title_vi": "Hoàn tác giao dịch",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "transaction rollback"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-112",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#rollback"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P13",
+      "category": "cross_language",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/deadlock.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Xử lý bế tắc thế nào?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "deadlock"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/deadlock.md",
+            "title": "deadlock",
+            "title_vi": "Bế tắc",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Bế tắc",
+              "bế tắc"
+            ],
+            "expansion_terms": [
+              "deadlock"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-113",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#deadlock"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P13",
+      "category": "cross_language",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/deadlock.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "How is deadlock handled?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/deadlock.md",
+            "title": "deadlock",
+            "title_vi": "Bế tắc",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "deadlock"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-113",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#deadlock"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P14",
+      "category": "cross_language",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/cache.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Khi nào vô hiệu hóa bộ nhớ đệm?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "cache invalidation"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/cache.md",
+            "title": "cache invalidation",
+            "title_vi": "Vô hiệu hóa bộ nhớ đệm",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Vô hiệu hóa bộ nhớ đệm",
+              "vô hiệu hóa bộ nhớ đệm"
+            ],
+            "expansion_terms": [
+              "cache invalidation"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-114",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#cache"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P14",
+      "category": "cross_language",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/cache.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "When is cache invalidation needed?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/cache.md",
+            "title": "cache invalidation",
+            "title_vi": "Vô hiệu hóa bộ nhớ đệm",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "cache invalidation"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-114",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#cache"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P15",
+      "category": "cross_language",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/optimistic.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Hệ thống dùng khóa lạc quan ra sao?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "optimistic locking"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/optimistic.md",
+            "title": "optimistic locking",
+            "title_vi": "Khóa lạc quan",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Khóa lạc quan",
+              "khóa lạc quan"
+            ],
+            "expansion_terms": [
+              "optimistic locking"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-115",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#optimistic"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P15",
+      "category": "cross_language",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/optimistic.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "How does optimistic locking work?",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/optimistic.md",
+            "title": "optimistic locking",
+            "title_vi": "Khóa lạc quan",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "optimistic locking"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-115",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#optimistic"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P16",
+      "category": "project_scope",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/timeout-a.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "thời gian chờ",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "request timeout"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/timeout-a.md",
+            "title": "request timeout",
+            "title_vi": "Thời gian chờ A",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi"
+            ],
+            "matched_terms": [
+              "thời gian chờ"
+            ],
+            "expansion_terms": [
+              "request timeout"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-116",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#timeout-a"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P16",
+      "category": "project_scope",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/timeout-a.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "request timeout",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/timeout-a.md",
+            "title": "request timeout",
+            "title_vi": "Thời gian chờ A",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "request timeout"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-116",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#timeout-a"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P17",
+      "category": "project_scope",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/timeout-b.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "thời gian chờ",
+        "scope": "demo-b",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "request timeout"
+        ],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/timeout-b.md",
+            "title": "request timeout",
+            "title_vi": "Thời gian chờ B",
+            "language": "en",
+            "scope": "demo-b",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi"
+            ],
+            "matched_terms": [
+              "thời gian chờ"
+            ],
+            "expansion_terms": [
+              "request timeout"
+            ],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-117",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#timeout-b"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P17",
+      "category": "project_scope",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/timeout-b.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "request timeout",
+        "scope": "demo-b",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/timeout-b.md",
+            "title": "request timeout",
+            "title_vi": "Thời gian chờ B",
+            "language": "en",
+            "scope": "demo-b",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "request timeout"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-117",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#timeout-b"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P18",
+      "category": "project_scope",
+      "language": "vi",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "thời gian chờ",
+        "scope": "demo-c",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [],
+        "status": "NOT_FOUND",
+        "message": "Không tìm thấy tài liệu phù hợp trong scope đã chọn. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P18",
+      "category": "project_scope",
+      "language": "en",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "request timeout",
+        "scope": "demo-c",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [],
+        "status": "NOT_FOUND",
+        "message": "Không tìm thấy tài liệu phù hợp trong scope đã chọn. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P19",
+      "category": "project_scope",
+      "language": "vi",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "đổi kích thước ảnh",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [],
+        "status": "NOT_FOUND",
+        "message": "Không tìm thấy tài liệu phù hợp trong scope đã chọn. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P19",
+      "category": "project_scope",
+      "language": "en",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "image resizing",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [],
+        "status": "NOT_FOUND",
+        "message": "Không tìm thấy tài liệu phù hợp trong scope đã chọn. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P20",
+      "category": "project_scope",
+      "language": "vi",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/legacy.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Giải thích Legacy checksum",
+        "scope": "unscoped",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/legacy.md",
+            "title": "Legacy checksum",
+            "title_vi": "",
+            "language": "und",
+            "scope": "unscoped",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "title"
+            ],
+            "matched_terms": [
+              "Legacy checksum"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-119",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#legacy"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P20",
+      "category": "project_scope",
+      "language": "en",
+      "expected_status": "FOUND",
+      "expected_paths": [
+        "wiki/legacy.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "Explain Legacy checksum",
+        "scope": "unscoped",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/legacy.md",
+            "title": "Legacy checksum",
+            "title_vi": "",
+            "language": "und",
+            "scope": "unscoped",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 2,
+            "matched_fields": [
+              "title"
+            ],
+            "matched_terms": [
+              "Legacy checksum"
+            ],
+            "expansion_terms": [],
+            "citations": [
+              {
+                "source_id": "SRC-20261017-119",
+                "source_path": "sources/raw/synthetic.md",
+                "integrity_status": "LEGACY_UNHASHED",
+                "source_version": null,
+                "verification_status": "UNVERIFIED",
+                "superseded_by": null,
+                "original_uri_status": "UNKNOWN",
+                "source_uri": null,
+                "source_pointer": "#legacy"
+              }
+            ]
+          }
+        ],
+        "blocked": [],
+        "status": "FOUND",
+        "message": "Đã tìm thấy tài liệu có con trỏ nguồn; nội dung claim chưa được tự động xác minh."
+      }
+    },
+    {
+      "pair_id": "P21",
+      "category": "missing_evidence",
+      "language": "vi",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "tồn kho lượng tử",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [],
+        "status": "NOT_FOUND",
+        "message": "Không tìm thấy tài liệu phù hợp trong scope đã chọn. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P21",
+      "category": "missing_evidence",
+      "language": "en",
+      "expected_status": "NOT_FOUND",
+      "expected_paths": [],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "quantum inventory",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [],
+        "status": "NOT_FOUND",
+        "message": "Không tìm thấy tài liệu phù hợp trong scope đã chọn. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P22",
+      "category": "missing_evidence",
+      "language": "vi",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/no-evidence.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "đối soát chi trả",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "payout reconciliation"
+        ],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/no-evidence.md",
+            "title": "payout reconciliation",
+            "title_vi": "Đối soát chi trả",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Đối soát chi trả",
+              "đối soát chi trả"
+            ],
+            "expansion_terms": [
+              "payout reconciliation"
+            ],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P22",
+      "category": "missing_evidence",
+      "language": "en",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/no-evidence.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "payout reconciliation",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/no-evidence.md",
+            "title": "payout reconciliation",
+            "title_vi": "Đối soát chi trả",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA"
+            ],
+            "evidence_issues": [],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "payout reconciliation"
+            ],
+            "expansion_terms": [],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P23",
+      "category": "missing_evidence",
+      "language": "vi",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/unknown-id.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "theo dõi hoàn tiền",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "refund tracing"
+        ],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/unknown-id.md",
+            "title": "refund tracing",
+            "title_vi": "Theo dõi hoàn tiền",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA",
+              "MISSING_CLAIM_EVIDENCE"
+            ],
+            "evidence_issues": [
+              [
+                "ERROR",
+                "MISSING_CLAIM_EVIDENCE"
+              ]
+            ],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Theo dõi hoàn tiền",
+              "theo dõi hoàn tiền"
+            ],
+            "expansion_terms": [
+              "refund tracing"
+            ],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P23",
+      "category": "missing_evidence",
+      "language": "en",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/unknown-id.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "refund tracing",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/unknown-id.md",
+            "title": "refund tracing",
+            "title_vi": "Theo dõi hoàn tiền",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA",
+              "MISSING_CLAIM_EVIDENCE"
+            ],
+            "evidence_issues": [
+              [
+                "ERROR",
+                "MISSING_CLAIM_EVIDENCE"
+              ]
+            ],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "refund tracing"
+            ],
+            "expansion_terms": [],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P24",
+      "category": "missing_evidence",
+      "language": "vi",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/missing-file.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "bàn giao tranh chấp",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "dispute handoff"
+        ],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/missing-file.md",
+            "title": "dispute handoff",
+            "title_vi": "Bàn giao tranh chấp",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA",
+              "MISSING_CLAIM_EVIDENCE"
+            ],
+            "evidence_issues": [
+              [
+                "ERROR",
+                "MISSING_CLAIM_EVIDENCE"
+              ]
+            ],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Bàn giao tranh chấp",
+              "bàn giao tranh chấp"
+            ],
+            "expansion_terms": [
+              "dispute handoff"
+            ],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P24",
+      "category": "missing_evidence",
+      "language": "en",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/missing-file.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "dispute handoff",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/missing-file.md",
+            "title": "dispute handoff",
+            "title_vi": "Bàn giao tranh chấp",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA",
+              "MISSING_CLAIM_EVIDENCE"
+            ],
+            "evidence_issues": [
+              [
+                "ERROR",
+                "MISSING_CLAIM_EVIDENCE"
+              ]
+            ],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "dispute handoff"
+            ],
+            "expansion_terms": [],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P25",
+      "category": "missing_evidence",
+      "language": "vi",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/metadata-only.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "xuất kiểm toán",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [
+          "audit export"
+        ],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/metadata-only.md",
+            "title": "audit export",
+            "title_vi": "Xuất kiểm toán",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA",
+              "MISSING_CLAIM_EVIDENCE"
+            ],
+            "evidence_issues": [
+              [
+                "ERROR",
+                "MISSING_CLAIM_EVIDENCE"
+              ]
+            ],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "aliases_vi",
+              "title_vi"
+            ],
+            "matched_terms": [
+              "Xuất kiểm toán",
+              "xuất kiểm toán"
+            ],
+            "expansion_terms": [
+              "audit export"
+            ],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    },
+    {
+      "pair_id": "P25",
+      "category": "missing_evidence",
+      "language": "en",
+      "expected_status": "MISSING_EVIDENCE",
+      "expected_paths": [
+        "wiki/metadata-only.md"
+      ],
+      "checks": {
+        "status": true,
+        "paths": true,
+        "scope_isolation": true,
+        "original_query": true,
+        "expansion": true,
+        "citations": true
+      },
+      "passed": true,
+      "actual": {
+        "query": "audit export",
+        "scope": "demo-a",
+        "retrieval_only": true,
+        "expanded_terms": [],
+        "matches": [],
+        "blocked": [
+          {
+            "content_trust": "UNTRUSTED_DATA",
+            "path": "wiki/metadata-only.md",
+            "title": "audit export",
+            "title_vi": "Xuất kiểm toán",
+            "language": "en",
+            "scope": "demo-a",
+            "page_status": "DRAFT",
+            "knowledge_status": "draft",
+            "information_type": "unknown",
+            "created_at": null,
+            "updated_at": "2026-10-17",
+            "effective_at": null,
+            "reviewed_at": null,
+            "temporal": "unknown",
+            "decision_authority": null,
+            "freshness": [
+              "LEGACY_METADATA"
+            ],
+            "conflicts": [],
+            "superseded_by": null,
+            "usable_as_current_truth": false,
+            "eligibility_reasons": [
+              "LEGACY_METADATA",
+              "MISSING_CLAIM_EVIDENCE"
+            ],
+            "evidence_issues": [
+              [
+                "ERROR",
+                "MISSING_CLAIM_EVIDENCE"
+              ]
+            ],
+            "cross_project_context": false,
+            "score": 3,
+            "matched_fields": [
+              "keywords",
+              "title"
+            ],
+            "matched_terms": [
+              "audit export"
+            ],
+            "expansion_terms": [],
+            "citations": []
+          }
+        ],
+        "status": "MISSING_EVIDENCE",
+        "message": "Có tài liệu phù hợp nhưng thiếu bằng chứng nguồn cục bộ hợp lệ. UNKNOWN."
+      }
+    }
+  ]
+}

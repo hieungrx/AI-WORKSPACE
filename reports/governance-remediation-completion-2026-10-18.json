@@ -1,0 +1,861 @@
+{
+  "objective": "V1 remediation limited to H-GOV-01 / H-GOV-02; stop after verification.",
+  "observed_at_utc": "2026-10-18T06:27:03.205544+00:00",
+  "language": "vi",
+  "synthetic_only": true,
+  "branch": "workspace/initialize",
+  "discovery_head": "80d9d67c495aad3443efa06b2b823bae5be8b4a7",
+  "tested_head": "a73c638cd3420d2aa898866fd8b1c54bbab74623",
+  "local_implementation_commit": "5345a2b",
+  "local_specification_commit": "a73c638",
+  "report_commit": "This report and append-only log are checkpointed after generation; use Git history, not an invented future commit ID.",
+  "findings": {
+    "H-GOV-01": "RESOLVED",
+    "H-GOV-02": "RESOLVED"
+  },
+  "root_causes_before_changes": {
+    "H-GOV-01": "ADR eligibility duplicated/incomplete: Query decision_citations and Lint approved set omit dependency freshness/effective/history; current gate only checks parent. Mixed evidence currently uses page-level OR.",
+    "H-GOV-02": "Helper validates approval, but event replay checks only truthy resolution ref; writer only checks append/content hash. Required authorization can be skipped through lifecycle transaction."
+  },
+  "pre_fix_actual": {
+    "ADR_regressions": {
+      "tests": 16,
+      "failures": 10,
+      "errors": 0,
+      "exit_code": 1,
+      "note": "Includes newly specified behavior, not ten distinct security bugs. Original future/overdue/historical current=true failures reproduced."
+    },
+    "approval_regressions": {
+      "tests": 4,
+      "failures": 4,
+      "errors": 0,
+      "exit_code": 1,
+      "note": "Helper rejected nonexistent approval; direct writer committed, reader/Query/Lint accepted legacy invalid history."
+    }
+  },
+  "files_read": [
+    "AGENTS.md",
+    "README.md",
+    "SCHEMA.md",
+    "PROFILE.md",
+    "wiki/index.md",
+    "wiki/log.md",
+    "KNOWLEDGE_GOVERNANCE.md",
+    "SOURCE_INTEGRITY.md",
+    "SECURITY_POLICY.md",
+    "WORKFLOW_RELIABILITY.md",
+    "relevant Ingest/Query/Lint prompts and templates",
+    "scripts and tests on affected public paths",
+    "reports/independent-final-audit-2026-10-18.md",
+    "reports/independent-final-governance-probes-2026-10-18.json"
+  ],
+  "sources_used": "First-party repository implementation, retained audit observations and executed synthetic tests. No external web/repository, live knowledge or real approval evidence admitted.",
+  "files_changed": {
+    "scripts/knowledge_governance.py": "Canonical own/dependency eligibility; per-finding evidence; shared action-bound approval validation for helper, writer and replay.",
+    "scripts/query_workspace.py": "Use shared eligibility/evidence, expose context/current reasons and retain historical retrieval.",
+    "scripts/check_workspace.py": "Use shared evidence evaluator and strict catalog; preserve ERROR diagnostics for invalid records/references.",
+    "scripts/validate_governance_remediation.py": "Fresh full-suite validation and original public-path reproductions; scoped evidence export.",
+    "tests/test_governance_adr_eligibility.py": "21 new synthetic tests for H-GOV-01, including actual Ingest/Query/Lint and changing dependencies.",
+    "tests/test_governance_approval_paths.py": "24 new synthetic tests across helper, direct writer, stored replay, Query and Lint.",
+    "tests/test_knowledge_governance.py": "Existing fixtures issue explicit policy-2 approvals; prior assertions retained.",
+    "tests/workflow_support.py": "Unique action-bound TEST_ONLY fixture approval records.",
+    "tests/test_security_recovery.py": "Concurrent Query test instruments the new shared evaluation hook; original concurrency expectations retained.",
+    "KNOWLEDGE_GOVERNANCE.md": "Eligibility, approval policy 2, versioned replay, validity dates and review-in-place quarantine procedure.",
+    "SCHEMA.md": "Compatible references to canonical eligibility and new action-bound required-approval events.",
+    "wiki/log.md": "Append actual authorized maintenance and test results; preserve the entire 23144-byte prior log.",
+    "reports/governance-remediation-inspection-2026-10-18.json": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-inspection-2026-10-18.md": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-workflows-2026-10-18.json": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-workflows-2026-10-18.md": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-multilingual-2026-10-18.json": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-multilingual-2026-10-18.md": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-verification-2026-10-18.json": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-verification-2026-10-18.md": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-completion-2026-10-18.json": "New exclusive evidence report; no existing report overwritten.",
+    "reports/governance-remediation-completion-2026-10-18.md": "New exclusive evidence report; no existing report overwritten."
+  },
+  "entry_points_reviewed": [
+    "transition -> approval -> proposed read_page -> transact",
+    "transact wiki/lifecycle preflight -> read_page -> validate_update -> journal -> replace",
+    "read_page event replay -> audit_governance -> Lint",
+    "Query pages -> read_page -> citations OR decision_citations -> current truth",
+    "Ingest read_page/update validators -> bounded transaction",
+    "recovery restores hash-validated exact before-images; cannot rewrite history"
+  ],
+  "invariants": [
+    "One own-record gate and one shared transitive evidence evaluator drive direct ADR, parent wiki/derived claims, Query and strict Lint; no duplicated Query authority implementation.",
+    "Every factual finding needs intact listed source proof or an eligible same-scope canonical decision; proof for a different finding cannot substitute.",
+    "A noncurrent ADR remains traceable context. FOUND is independent of usable_as_current_truth; independent valid evidence for the same finding is retained.",
+    "Effective dates, review deadlines, lifecycle/historical/proposal state, scope and recursive dependencies all gate current authority; missing/unknown evidence fails closed.",
+    "No persistent eligibility cache: changed ADR, approval or date is reevaluated on each operation. Cycles and depth over the resource bound fail closed.",
+    "Every required approval is checked in helper, direct writer before durable publication and every historical replay, including invalid prior events followed by unverified/draft.",
+    "New required-approval writes need policy 2: human authority, valid approval/evidence, exact subject, content hash, from/to transition and prior-history hash. Wrong/reused/revoked/expired approvals cannot commit.",
+    "New wiki creation starts draft with empty lifecycle history; generic wiki writes cannot import fabricated verification events.",
+    "Recorded historical events and approval bytes are never erased or rebound by ordinary edits/recovery; version-specific replay is explicit.",
+    "Source hashing, scope restrictions, expected-version ownership and rollback guards remain in force; citations and model agreement do not prove factual truth."
+  ],
+  "original_paths_after_fix": {
+    "H-GOV-01": {
+      "cases": [
+        {
+          "case": "future",
+          "status": "FOUND",
+          "current": [
+            false
+          ],
+          "citations": [
+            [
+              {
+                "decision_path": "decisions/future.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project",
+                "eligible_for_current_truth": false,
+                "context_only": true,
+                "knowledge_status": "verified",
+                "temporal": "current",
+                "freshness": [
+                  "NOT_YET_EFFECTIVE"
+                ],
+                "eligibility_reasons": [
+                  "NOT_YET_EFFECTIVE"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "case": "overdue",
+          "status": "FOUND",
+          "current": [
+            false
+          ],
+          "citations": [
+            [
+              {
+                "decision_path": "decisions/overdue.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project",
+                "eligible_for_current_truth": false,
+                "context_only": true,
+                "knowledge_status": "verified",
+                "temporal": "current",
+                "freshness": [
+                  "REVIEW_DUE"
+                ],
+                "eligibility_reasons": [
+                  "REVIEW_DUE"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "case": "historical",
+          "status": "FOUND",
+          "current": [
+            false
+          ],
+          "citations": [
+            [
+              {
+                "decision_path": "decisions/historical.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project",
+                "eligible_for_current_truth": false,
+                "context_only": true,
+                "knowledge_status": "verified",
+                "temporal": "historical",
+                "freshness": [],
+                "eligibility_reasons": [
+                  "NOT_CURRENT_KNOWLEDGE"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    "H-GOV-02": {
+      "outcomes": {
+        "helper": "FileNotFoundError",
+        "writer": "FileNotFoundError",
+        "no_durable_event": true,
+        "query": "INVALID_DATA",
+        "lint_errors": [
+          "ERROR GOVERNANCE_READ wiki/conflict.md: invalid governance metadata or authority."
+        ]
+      },
+      "passed": true
+    },
+    "owned_fixture_cleaned": true
+  },
+  "cross_path_contract": [
+    {
+      "interface": "transition helper",
+      "valid": "Proposal/apply succeeds with correct policy-2 approval.",
+      "invalid": "Reject before transaction; original missing-ref probe raised FileNotFoundError."
+    },
+    {
+      "interface": "direct lifecycle transaction",
+      "valid": "COMMITTED only after shared preflight, under version/ownership guard.",
+      "invalid": "Reject before journal/publication; no status downgrade or partial bundle."
+    },
+    {
+      "interface": "durable event history",
+      "valid": "Append one bound event; previous event prefix preserved.",
+      "invalid": "No durable event, no side effect in snapshot including recovery files."
+    },
+    {
+      "interface": "historical read_page replay",
+      "valid": "Version-specific rules retain valid past events and old immutable approvals.",
+      "invalid": "ERROR even if final state unverified/draft; no silent historical repair."
+    },
+    {
+      "interface": "Query",
+      "valid": "Eligible proof may authorize current; historical/context FOUND is separate.",
+      "invalid": "Ineligible ADR-only current=false; malformed approval history INVALID_DATA."
+    },
+    {
+      "interface": "strict Lint / integrity audit",
+      "valid": "No authority/integrity ERROR for valid fixtures.",
+      "invalid": "Invalid approval/reference ERROR; existing valid but noncurrent ADR support warning with reason."
+    }
+  ],
+  "acceptance_evidence": {
+    "H-GOV-01": [
+      {
+        "requirement": "Valid and effective ADR",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_valid_effective_adr_authorizes_same_scope_current_claim",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Not-yet-effective ADR",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_future_effective_adr_is_context_not_parent_current_truth",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Expired review requiring reapproval",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_review_expired_adr_is_context_not_parent_current_truth",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Historical ADR",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_temporally_historical_approved_adr_is_not_parent_current_truth",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Superseded ADR",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_superseded_adr_supports_history_not_current_truth",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Missing ADR",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_missing_adr_fails_closed_and_lint_reports_error",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Only ineligible support / derived knowledge",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_derived_adr_chain_propagates_ineligible_support_to_wiki_claim",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Independent sufficient evidence for the same claim",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_independent_intact_source_for_same_claim_survives_ineligible_adr_context",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Validity changes after prior retrieval",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_adr_lifecycle_change_after_prior_query_is_not_cached_as_current",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Query and Lint consistency",
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_remediation_depth_guard_fails_closed_consistently_in_query_and_lint",
+        "observed": "PASS"
+      }
+    ],
+    "H-GOV-02": [
+      {
+        "requirement": "Valid approval",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_valid_resolution_is_consistent_across_public_boundaries",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Nonexistent approval",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_helper_and_writer_both_reject_atomically",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Revoked approval",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_revoked_pending_and_unauthorized_records_are_rejected_everywhere",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Expired approval",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_expired_or_revoked_before_event_is_rejected_everywhere",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Different subject",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_wrong_subject_hash_or_date_are_rejected_everywhere",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Different transition",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_wrong_transition_or_history_prefix_is_rejected_everywhere",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Unauthorized approver",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_unauthorized_actor_rejects_helper_writer_reader_query_and_lint",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Duplicate/replayed approval",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_approval_cannot_be_replayed_for_a_later_resolution_cycle",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Failed commit atomicity",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_bad_approval_rejects_entire_bundle_before_any_publication",
+        "observed": "PASS"
+      },
+      {
+        "requirement": "Invalid historical event",
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_invalid_required_approval_remains_invalid_in_prior_history",
+        "observed": "PASS"
+      }
+    ]
+  },
+  "all_new_regressions": {
+    "H-GOV-01": [
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_actual_ingest_can_retain_independent_source_and_noncurrent_adr_context",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_adr_lifecycle_change_after_prior_query_is_not_cached_as_current",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_adr_review_deadline_crossing_recomputes_dependencies_without_index_rebuild",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_cyclic_adr_dependencies_never_authorize_current_truth_or_crash",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_derived_adr_chain_propagates_ineligible_support_to_wiki_claim",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_draft_adr_approval_label_does_not_establish_authority",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_future_effective_adr_is_context_not_parent_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_historical_decision_kind_is_preserved_in_explicit_history",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_independent_intact_source_for_same_claim_survives_ineligible_adr_context",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_legacy_approved_label_is_not_canonical_current_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_missing_adr_fails_closed_and_lint_reports_error",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_ordinary_wiki_link_is_not_an_additional_source_of_authority",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_remediation_depth_guard_fails_closed_consistently_in_query_and_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_remediation_ineligible_adr_citation_is_explicit_context_alongside_independent_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_remediation_malformed_decision_metadata_is_linted_without_erasing_independent_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_review_expired_adr_is_context_not_parent_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_source_for_different_claim_does_not_mask_ineligible_adr_only_claim",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_superseded_adr_supports_history_not_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_temporally_historical_approved_adr_is_not_parent_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_valid_derived_adr_chain_retrieves_traceable_current_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_valid_effective_adr_authorizes_same_scope_current_claim",
+        "status": "PASS"
+      }
+    ],
+    "H-GOV-02": [
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_absent_independent_evidence_is_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_approval_cannot_be_replayed_for_a_later_resolution_cycle",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_bad_approval_rejects_entire_bundle_before_any_publication",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_controlled_revision_keeps_old_approvals_without_rebinding_them",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_duplicate_approval_fields_are_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_expired_or_revoked_before_event_is_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_illegal_history_rejects_helper_writer_reader_query_and_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_invalid_required_approval_remains_invalid_in_prior_history",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_later_expiry_preserves_history_but_blocks_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_later_revocation_preserves_history_but_blocks_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_legacy_history_still_validates_its_required_approval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_malformed_or_wrong_event_binding_is_rejected_by_all_consumers",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_helper_and_writer_both_reject_atomically",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_history_is_detected_by_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_history_is_rejected_by_query",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_history_is_rejected_by_reader",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_new_wiki_creation_cannot_import_non_draft_lifecycle_history",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_revoked_pending_and_unauthorized_records_are_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_unauthorized_actor_rejects_helper_writer_reader_query_and_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_unresolved_conflict_cannot_be_cleared_even_with_valid_approval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_valid_helper_application_matches_direct_transaction",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_valid_resolution_is_consistent_across_public_boundaries",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_wrong_subject_hash_or_date_are_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_wrong_transition_or_history_prefix_is_rejected_everywhere",
+        "status": "PASS"
+      }
+    ]
+  },
+  "test_totals": {
+    "run": 219,
+    "passed": 219,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "test_scope": "45 new tests (21 ADR + 24 approval paths) and all 174 prior tests. Two independent fresh full-suite executions both 219/219, no skips; helper-only testing was not used as sufficient evidence.",
+  "commands_executed": [
+    {
+      "command": "python -B scripts/validate_workflows.py --output reports/governance-remediation-workflows-2026-10-18.json",
+      "exit_code": 0,
+      "result": "219/219 tests; existing 60-query independent synthetic workflow benchmark and recovery demonstrations executed."
+    },
+    {
+      "command": "python -B scripts/validate_multilingual.py --output reports/governance-remediation-multilingual-2026-10-18.json",
+      "exit_code": 0,
+      "result": "25 pairs / 50 queries, 50 passed; scoped lexical matching and curated aliases only."
+    },
+    {
+      "command": "python -B scripts/validate_governance_remediation.py --output reports/governance-remediation-verification-2026-10-18.json",
+      "exit_code": 0,
+      "result": "Fresh second full suite 219/219 plus the original public-path probes; both findings RESOLVED; core hashes unchanged."
+    },
+    {
+      "command": "python -B scripts/check_workspace.py --integrity --security",
+      "exit_code": 0,
+      "result": "0 errors, existing 1 NO_EVIDENCE warning; repeated after log append."
+    },
+    {
+      "command": "git diff 80d9d67 --check",
+      "exit_code": 0,
+      "result": "No whitespace errors across remediation code/docs and appended log."
+    },
+    {
+      "command": "git show --stat --oneline 5345a2b",
+      "exit_code": 0,
+      "result": "Reviewed explicit code/test checkpoint; no unrelated data included."
+    },
+    {
+      "command": "Python standard-library SHA-256 comparison against inspection report",
+      "exit_code": 0,
+      "result": "16 complete files plus original log prefix match all 17 protected baselines."
+    },
+    {
+      "command": "Ad hoc TEST_ONLY compatibility fixture via python -B -",
+      "exit_code": 0,
+      "result": "Policy-1 active read, controlled content revision and new policy-2 validation; old approval bytes/event prefix preserved; strict Lint has no errors; owned fixture removed."
+    }
+  ],
+  "iteration_notes": [
+    "Pre-fix focused ADR set: 10 failures / 16 tests; approval set: 4 failures / 4 tests. These are regression observations, not counts of distinct vulnerabilities.",
+    "Fixture approval generators were upgraded to action-bound records; the existing concurrent-Query test follows the shared evaluator hook. No benchmark gold or prior safety assertions were relaxed.",
+    "An initial ad hoc legacy compatibility probe placed a new interpretation inside the factual Findings section: strict Lint correctly rejected missing evidence. Moving that synthetic line to its own Interpretations section made the corrected fixture pass; implementation rules were not weakened."
+  ],
+  "compatibility": [
+    "CSV/provenance contract, Markdown metadata and legacy read adapter remain; no global schema_version or competing metadata standard added.",
+    "Unversioned six-field events replay under policy 1. Their required approvals are validated; policy 1 cannot authorize a new required-approval write.",
+    "Policy 2 adds approval_policy / approval_content_hash to required events and binds the approval record to from_state / to_state / prior_transitions_hash. Approval templates/process must use these fields for future authorized required transitions.",
+    "Later expiry/revocation preserves a valid prior event evaluated on its event date, while blocking current authority. New commits also check commit-date validity.",
+    "Policy-1 historical content snapshots are unavailable if content has changed. LEGACY_APPROVAL_SNAPSHOT_UNAVAILABLE is an explicit unverified limitation; new validation does not retroactively certify absent old content.",
+    "Invalid historical approval data is quarantined in place by ERROR / INVALID_DATA. Preserve bytes for human review; separately authorized reconciliation may restore genuine evidence or create a draft replacement linked to the original. Never invent an old approval, drop events or relabel policy versions.",
+    "Recovery restores exact validated snapshots, not silently edited history; restored invalid history remains rejected by Query/Lint. No live migration/reapproval took place."
+  ],
+  "supplemental_legacy_observed": {
+    "legacy_active_read": "FOUND/current=true",
+    "old_snapshot_warning": "LEGACY_APPROVAL_SNAPSHOT_UNAVAILABLE",
+    "new_policy2_state": "verified",
+    "old_approval_bytes_preserved": true,
+    "old_event_prefix_preserved": true,
+    "strict_lint_errors": [],
+    "owned_fixture_cleaned": true
+  },
+  "workspace_checks_after_log_append": [
+    "WARNING NO_EVIDENCE wiki/concepts/knowledge-system-principles.md: page has no registered source or approved decision evidence."
+  ],
+  "workflow_metrics": {
+    "retrieval_recall_at_5": {
+      "value": 0.9375,
+      "queries_with_relevance_gold": 48,
+      "definition": "Macro document Recall@5 over actual highest-tier candidates (matches + blocked), ordered by score/path; excludes zero-relevance cases. Retrieval does not imply answerability.",
+      "vi": {
+        "value": 0.9166666666666666,
+        "queries_with_relevance_gold": 24
+      },
+      "en": {
+        "value": 0.9583333333333334,
+        "queries_with_relevance_gold": 24
+      }
+    },
+    "citation_validity": {
+      "numerator": 53,
+      "denominator": 53,
+      "value": 1.0
+    },
+    "cross_project_leakage": {
+      "numerator": 0,
+      "denominator": 60,
+      "value": 0.0
+    },
+    "duplicate_ingestion_rate": {
+      "numerator": 0,
+      "denominator": 13,
+      "value": 0.0
+    },
+    "duplicate_registration_rate": {
+      "numerator": 0,
+      "denominator": 17,
+      "value": 0.0
+    },
+    "schema_validation_pass_rate": {
+      "numerator": 16,
+      "denominator": 16,
+      "value": 1.0
+    },
+    "workflow_failure_rate": {
+      "numerator": 0,
+      "denominator": 90,
+      "value": 0.0
+    },
+    "answer_generation_accuracy": "NOT MEASURED",
+    "cross_language_semantic_search": "NOT MEASURED (not implemented)",
+    "automatic_translation_accuracy": "NOT MEASURED (not implemented)",
+    "semantic_factual_verification": "NOT MEASURED"
+  },
+  "multilingual": {
+    "fixture_only": true,
+    "fixture_root": "tests/fixtures/multilingual",
+    "method": "scoped deterministic lexical matching with curated aliases; no semantic retrieval",
+    "python": "3.13.0",
+    "pairs": 25,
+    "queries": 50,
+    "passed": 50,
+    "failed": 0,
+    "categories": {
+      "exact_keyword": {
+        "queries": 10,
+        "passed": 10
+      },
+      "bilingual_aliases": {
+        "queries": 10,
+        "passed": 10
+      },
+      "cross_language": {
+        "queries": 10,
+        "passed": 10
+      },
+      "project_scope": {
+        "queries": 10,
+        "passed": 10
+      },
+      "missing_evidence": {
+        "queries": 10,
+        "passed": 10
+      }
+    },
+    "actual_outcomes": {
+      "FOUND": 36,
+      "NOT_FOUND": 6,
+      "MISSING_EVIDENCE": 8
+    }
+  },
+  "implementation_sha256": {
+    "knowledge_governance.py": "b1e9339c39b022f00256036e9ef40fad376a1c4ae7ed67fdf796398c6ce7c9f6",
+    "query_workspace.py": "2d3884fd180711a7d63808d33fb3450ced9bd616bd5a80ac72c87511732cf14a",
+    "check_workspace.py": "4b9c51045ede39596125af367146dffc2fc437e5b082b05224dd0468f0f2462a",
+    "safe_operations.py": "2a97bc6d198627aa8cf69c2bf33528b7c16ce831bb5bea28b87ab0610c4d050e"
+  },
+  "code_unchanged_during_final_validation": true,
+  "protected_files": {
+    ".obsidian/graph.json": {
+      "mode": "entire file",
+      "baseline_bytes": 502,
+      "current_bytes": 502,
+      "expected_sha256": "a3aad29bbc1153d8b46cf515d8f0eb994d32b35e87a1e70921fb1db2ac65a8b5",
+      "observed_sha256": "a3aad29bbc1153d8b46cf515d8f0eb994d32b35e87a1e70921fb1db2ac65a8b5",
+      "preserved": true
+    },
+    "sources/raw/README.md": {
+      "mode": "entire file",
+      "baseline_bytes": 416,
+      "current_bytes": 416,
+      "expected_sha256": "c03e0fc22df68048d53bb3d422f302beeed28e395280b711ca44304384775ad8",
+      "observed_sha256": "c03e0fc22df68048d53bb3d422f302beeed28e395280b711ca44304384775ad8",
+      "preserved": true
+    },
+    "sources/manifest.csv": {
+      "mode": "entire file",
+      "baseline_bytes": 109,
+      "current_bytes": 109,
+      "expected_sha256": "1abd623611abb8760a152154c369c789ebe47b481b6bc1b24690cc27512fb285",
+      "observed_sha256": "1abd623611abb8760a152154c369c789ebe47b481b6bc1b24690cc27512fb285",
+      "preserved": true
+    },
+    "sources/provenance.jsonl": {
+      "mode": "entire file",
+      "baseline_bytes": 0,
+      "current_bytes": 0,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "preserved": true
+    },
+    "decisions/index.md": {
+      "mode": "entire file",
+      "baseline_bytes": 165,
+      "current_bytes": 165,
+      "expected_sha256": "0eb74c8b24c81b746b6fa4c86b983364fe1242d55fd7d2305d51fd07ca8405b2",
+      "observed_sha256": "0eb74c8b24c81b746b6fa4c86b983364fe1242d55fd7d2305d51fd07ca8405b2",
+      "preserved": true
+    },
+    "wiki/concepts/knowledge-system-principles.md": {
+      "mode": "entire file",
+      "baseline_bytes": 420,
+      "current_bytes": 420,
+      "expected_sha256": "6f3147ad0c4b4425b9bb7738b47e41eb78c91e8d3a5692840b7eba3408a2bc13",
+      "observed_sha256": "6f3147ad0c4b4425b9bb7738b47e41eb78c91e8d3a5692840b7eba3408a2bc13",
+      "preserved": true
+    },
+    "wiki/log.md": {
+      "mode": "exact original prefix",
+      "baseline_bytes": 23144,
+      "current_bytes": 27166,
+      "expected_sha256": "511a4c3e5711c113d7a7999647b494b67ca4da139f176b8e7323349d12d05424",
+      "observed_sha256": "511a4c3e5711c113d7a7999647b494b67ca4da139f176b8e7323349d12d05424",
+      "preserved": true
+    },
+    "reports/independent-final-audit-2026-10-18.json": {
+      "mode": "entire file",
+      "baseline_bytes": 51058,
+      "current_bytes": 51058,
+      "expected_sha256": "b45b49d3736129c97df5a3ecd7b5836960decaf47836af23e5f5f2801e78d73b",
+      "observed_sha256": "b45b49d3736129c97df5a3ecd7b5836960decaf47836af23e5f5f2801e78d73b",
+      "preserved": true
+    },
+    "reports/independent-final-audit-2026-10-18.md": {
+      "mode": "entire file",
+      "baseline_bytes": 30042,
+      "current_bytes": 30042,
+      "expected_sha256": "7a25a56727aa48eba9f00a6652e5e34b1a8cd8aac825f1bc8ce40a6d1fd1ac23",
+      "observed_sha256": "7a25a56727aa48eba9f00a6652e5e34b1a8cd8aac825f1bc8ce40a6d1fd1ac23",
+      "preserved": true
+    },
+    "reports/independent-final-governance-probes-2026-10-18.json": {
+      "mode": "entire file",
+      "baseline_bytes": 8086,
+      "current_bytes": 8086,
+      "expected_sha256": "538921f41e6f2b3f3f4e309093387609e2378cd9948732becedda9d367ea32fd",
+      "observed_sha256": "538921f41e6f2b3f3f4e309093387609e2378cd9948732becedda9d367ea32fd",
+      "preserved": true
+    },
+    "reports/independent-final-governance-probes-2026-10-18.md": {
+      "mode": "entire file",
+      "baseline_bytes": 7468,
+      "current_bytes": 7468,
+      "expected_sha256": "f38c18de607f50634f2adc5f9dccc3a98c89fefa4150f15298c6401334663435",
+      "observed_sha256": "f38c18de607f50634f2adc5f9dccc3a98c89fefa4150f15298c6401334663435",
+      "preserved": true
+    },
+    "reports/independent-final-load-2026-10-18.json": {
+      "mode": "entire file",
+      "baseline_bytes": 14413,
+      "current_bytes": 14413,
+      "expected_sha256": "32d36d13e190088ffd26c3469ffe679e3b86c3965a1b3bce67309c80a2ebc901",
+      "observed_sha256": "32d36d13e190088ffd26c3469ffe679e3b86c3965a1b3bce67309c80a2ebc901",
+      "preserved": true
+    },
+    "reports/independent-final-load-2026-10-18.md": {
+      "mode": "entire file",
+      "baseline_bytes": 9969,
+      "current_bytes": 9969,
+      "expected_sha256": "7595e1a140c843e18603a4ab0c2358d7d39efd5a581acaaac8631729d64dadc7",
+      "observed_sha256": "7595e1a140c843e18603a4ab0c2358d7d39efd5a581acaaac8631729d64dadc7",
+      "preserved": true
+    },
+    "reports/independent-final-security-probes-2026-10-18.json": {
+      "mode": "entire file",
+      "baseline_bytes": 9821,
+      "current_bytes": 9821,
+      "expected_sha256": "5d221a374cb1348efaf1626847540ba4a432ca670984e0c9ceb1432a3e5a7474",
+      "observed_sha256": "5d221a374cb1348efaf1626847540ba4a432ca670984e0c9ceb1432a3e5a7474",
+      "preserved": true
+    },
+    "reports/independent-final-security-probes-2026-10-18.md": {
+      "mode": "entire file",
+      "baseline_bytes": 6872,
+      "current_bytes": 6872,
+      "expected_sha256": "baf27576988e784148969f26235731b7574a8b320c053e5991be5c0afa708c7e",
+      "observed_sha256": "baf27576988e784148969f26235731b7574a8b320c053e5991be5c0afa708c7e",
+      "preserved": true
+    },
+    "reports/independent-final-workflows-2026-10-18.json": {
+      "mode": "entire file",
+      "baseline_bytes": 200917,
+      "current_bytes": 200917,
+      "expected_sha256": "a2c089395379561770a67ca91337fd074c847b1c475fdc1b2c25f66cdad85ce9",
+      "observed_sha256": "a2c089395379561770a67ca91337fd074c847b1c475fdc1b2c25f66cdad85ce9",
+      "preserved": true
+    },
+    "reports/independent-final-workflows-2026-10-18.md": {
+      "mode": "entire file",
+      "baseline_bytes": 18148,
+      "current_bytes": 18148,
+      "expected_sha256": "21c8a3b5721a83f337f746c4340d303ad2822d1676c870f16276bad01112c90d",
+      "observed_sha256": "21c8a3b5721a83f337f746c4340d303ad2822d1676c870f16276bad01112c90d",
+      "preserved": true
+    }
+  },
+  "live_registered_sources": 0,
+  "preservation_summary": "16 entire baseline files plus the exact 23144-byte old log prefix preserved. User Obsidian change and ten prior audit reports remain excluded from remediation commits.",
+  "remaining_risks": [
+    "Local approval records/caller authorization flags do not authenticate human identity or validate evidence relevance; direct host tools outside the bounded API remain outside this guarantee.",
+    "Shared deterministic checks do not prove source truth, semantic citation relevance, conflict correctness or LLM answer accuracy.",
+    "Depth 32 is a fail-closed resource bound, not measured capacity. Dense dependency graph latency, concurrency capacity and post-change 100/1000/10000 load are NOT RUN; old Phase 5 flat-corpus timings are not evidence for this new recursive path.",
+    "Legacy missing snapshots cannot be reconstructed; no real legacy reconciliation or reviewer authentication was tested.",
+    "Other Medium/Low findings in the retained independent audit, including detector coverage and historical wrapper/version drift, are outside this two-High task and remain outstanding."
+  ],
+  "not_run_or_not_measured": [
+    "Production knowledge or approval ingestion",
+    "Live legacy migration/reapproval",
+    "Semantic retrieval / automatic translation / factual truth evaluation",
+    "Real secrets or real URL availability",
+    "OS/host containment and hostile same-user editors",
+    "Physical power loss",
+    "Obsidian UI rendering",
+    "New dependency-graph performance benchmark",
+    "API tokens/charges",
+    "Push / merge / deployment / V2"
+  ],
+  "approval_items": "No further approval needed for this completed scoped remediation. Actual human validation, live legacy reconciliation, pilot intake and architecture/permission changes require separately authorized tasks; none was performed.",
+  "rollback_notes": "Small local commits separate implementation, specification and report/log checkpoints. Review and revert only the intended checkpoint hunks on this non-main branch, preserving newer user changes; no blanket reset/clean, raw overwrite or history deletion.",
+  "evidence_reports": [
+    "reports/governance-remediation-inspection-2026-10-18.json",
+    "reports/governance-remediation-inspection-2026-10-18.md",
+    "reports/governance-remediation-workflows-2026-10-18.json",
+    "reports/governance-remediation-workflows-2026-10-18.md",
+    "reports/governance-remediation-multilingual-2026-10-18.json",
+    "reports/governance-remediation-multilingual-2026-10-18.md",
+    "reports/governance-remediation-verification-2026-10-18.json",
+    "reports/governance-remediation-verification-2026-10-18.md"
+  ],
+  "overall_readiness": "Not reassessed. These two scoped RESOLVED findings do not rewrite the earlier NOT READY audit, approve V1.1 intake or authorize V2."
+}
