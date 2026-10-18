@@ -1,0 +1,1334 @@
+{
+  "report_type": "PRE_ACQUISITION_SOURCE_MANIFEST_PROPOSAL_NOT_A_COMPLETED_PILOT",
+  "observed_at_utc": "2026-10-18T12:24:21.583964+00:00",
+  "head": "5f73c8ffb7fe154b023b9618821e1d6b2a87766e",
+  "branch": "workspace/initialize",
+  "execution_gate": {
+    "state": "AWAITING_EXPLICIT_EXTERNAL_READ_AUTHORIZATION",
+    "external_requests_this_task": 0,
+    "acquisition_authorized": false,
+    "intake_authorized": false,
+    "fetched_documents": 0,
+    "admitted_sources": 0,
+    "human_confirmed_gold": 0,
+    "actual_real_AI_AB_trials": 0,
+    "user_instruction": "Stop before external acquisition or ingestion until explicit authorization is provided.",
+    "task_attachment": "C:/Users/Admin/.codex/attachments/d9dc8059-74c3-4896-a52f-b86add3ce9f2/Pasted text.txt"
+  },
+  "current_readiness": {
+    "whole_system_latest_recorded": "NOT READY",
+    "whole_system_reaudit": "NOT RUN",
+    "two_High_findings": "RESOLVED in previous remediation; current focused regressions and original paths pass",
+    "focused_tests": 45,
+    "focused_passed": 45,
+    "strict_lint": [
+      "WARNING NO_EVIDENCE wiki/concepts/knowledge-system-principles.md: page has no registered source or approved decision evidence."
+    ],
+    "prior_full_suite": "234/234 in V1.1; current implementation/test hashes match; not rerun this task",
+    "real_world_feasibility": "NOT YET MEASURED",
+    "latest_feasibility_verdict": "INCONCLUSIVE"
+  },
+  "corpus_proposal": {
+    "target_unique_documents": 12,
+    "allowed_target_range": [
+      10,
+      15
+    ],
+    "exact_locally_referenced_URLs": 3,
+    "unresolved_discovery_slots": 9,
+    "confirmed_corpus_count": 0,
+    "proposed_scope": "pilot-knowledge-workspace",
+    "scope_created": false,
+    "candidate_identity_note": "P01-P12 are planning IDs, not registered source IDs. No actual source_id or provenance is fabricated.",
+    "candidates": [
+      {
+        "candidate_id": "P01",
+        "proposal_label": "LLM Wiki: original primary statement",
+        "topic": "LLM Wiki",
+        "candidate_url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+        "url_basis": "Exact URL already linked locally; not fetched or remotely verified",
+        "local_reference": "README.md:98",
+        "document_selector_pending": null,
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P02",
+        "proposal_label": "AutoResearch: overview document to be identified at the repository landing page",
+        "topic": "AutoResearch",
+        "candidate_url": "https://github.com/karpathy/autoresearch",
+        "url_basis": "Exact URL already linked locally; not fetched or remotely verified",
+        "local_reference": "README.md:99",
+        "document_selector_pending": "Resolve one exact overview document; a landing page and its README must not be counted twice.",
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P03",
+        "proposal_label": "Codex iterative development workflow article",
+        "topic": "Agentic Engineering",
+        "candidate_url": "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex",
+        "url_basis": "Exact URL already linked locally; not fetched or remotely verified",
+        "local_reference": "README.md:100",
+        "document_selector_pending": null,
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P04",
+        "proposal_label": "AutoResearch agent task/instruction document, if a distinct document exists",
+        "topic": "AutoResearch",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "AutoResearch agent task/instruction document, if a distinct document exists",
+        "discovery_anchor_candidate": "P02",
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P05",
+        "proposal_label": "AutoResearch experiment budget and evaluation protocol, if separately documented",
+        "topic": "AutoResearch",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "AutoResearch experiment budget and evaluation protocol, if separately documented",
+        "discovery_anchor_candidate": "P02",
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P06",
+        "proposal_label": "AutoResearch reproducibility/limitations document, if separately documented",
+        "topic": "AutoResearch",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "AutoResearch reproducibility/limitations document, if separately documented",
+        "discovery_anchor_candidate": "P02",
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P07",
+        "proposal_label": "Primary definition and practice of Context Engineering",
+        "topic": "Context Engineering",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "Primary definition and practice of Context Engineering",
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P08",
+        "proposal_label": "Official technical documentation of context selection/compaction/persistence",
+        "topic": "Context Engineering",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "Official technical documentation of context selection/compaction/persistence",
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P09",
+        "proposal_label": "Original primary statement about Agentic Engineering",
+        "topic": "Agentic Engineering",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "Original primary statement about Agentic Engineering",
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P10",
+        "proposal_label": "Primary documentation of knowledge memory and context handoff",
+        "topic": "Knowledge maintenance",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "Primary documentation of knowledge memory and context handoff",
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P11",
+        "proposal_label": "Primary technical reference for provenance/evidence and source attribution",
+        "topic": "Knowledge verification",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "Primary technical reference for provenance/evidence and source attribution",
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      },
+      {
+        "candidate_id": "P12",
+        "proposal_label": "Primary methodology for agent evaluation and citation verification",
+        "topic": "Knowledge verification",
+        "candidate_url": null,
+        "url_basis": "UNRESOLVED_DISCOVERY_SLOT; not a found document",
+        "local_reference": null,
+        "document_selector_pending": "Primary methodology for agent evaluation and citation verification",
+        "discovery_anchor_candidate": null,
+        "source_id": null,
+        "source_uri": null,
+        "local_path": null,
+        "title": null,
+        "author": null,
+        "publisher": null,
+        "published_at": null,
+        "retrieved_at": null,
+        "content_hash": null,
+        "language": null,
+        "public_access_verified": false,
+        "rights_status": "NOT CHECKED",
+        "license": null,
+        "permission_evidence": null,
+        "approval_status": "PENDING_DIRECT_HUMAN_AUTHORIZATION",
+        "fetched": false,
+        "admitted": false,
+        "planned_knowledge_state": "draft then unverified only within explicit later task scope"
+      }
+    ],
+    "selection_rules": [
+      "Only non-sensitive public primary documents on the five user topics; no login, private repository, secret or production repository.",
+      "A repository landing page is not automatically multiple distinct documents. Resolve exact URLs and versions, deduplicate byte-identical/repeated originals; do not count licenses, mirrored copies or headings as independent knowledge sources.",
+      "If AutoResearch document slots do not exist separately, merge them and propose genuinely distinct topic-relevant primary documents rather than pad the count.",
+      "Verify availability, authorship/date only when stated, exact license/permission evidence and safe local capture. Public accessibility does not itself certify reuse rights.",
+      "Freeze 10-15 actual permitted sources or report insufficient corpus. Never fill gaps by invented URLs, metadata, disputes or approvals."
+    ]
+  },
+  "requested_next_authorization": {
+    "purpose": "Resolve and review 10-15 concrete source candidates before intake",
+    "actions": [
+      "Use web discovery and read public primary pages/documents and their rights metadata within the proposed domain/topic boundary.",
+      "Verify the three existing URL candidates, resolve the nine slots, inspect availability and licensing/permission evidence.",
+      "Return a new exact-URL corpus proposal and rights/gaps report; no raw snapshot, registry admission or wiki synthesis in this authorization stage."
+    ],
+    "proposed_domain_boundaries": [
+      "gist.github.com/karpathy/",
+      "github.com/karpathy/",
+      "developers.openai.com/",
+      "anthropic.com/",
+      "w3.org/"
+    ],
+    "domain_note": "These are proposed discovery boundaries, not assertions that a specific qualifying document exists. Record off-boundary redirects and stop rather than silently broaden.",
+    "excluded": [
+      "Saving real raw source bytes",
+      "Appending manifest/provenance",
+      "Wiki ingestion or lifecycle approval",
+      "Private/authenticated material",
+      "Executing source commands",
+      "Paid APIs",
+      "Changes outside this workspace",
+      "V2"
+    ]
+  },
+  "later_acquisition_plan_not_executed": [
+    "After separate exact-corpus intake authorization and rights review, retrieve allowed original response bytes; record final/original URLs, redirects, MIME/encoding and actual retrieval timestamp. If only rendered/extracted content is available, label it explicitly rather than claim byte-identical original HTML.",
+    "Use create_raw_snapshot for exclusive immutable publication; assign an actual source ID from the then-current registry/date; register_source appends unchanged CSV schema and SHA-256 provenance. Unknown author/publisher/publication date remains null/blank with notes.",
+    "Use UNVERIFIED source trust, never a source self-declared VERIFIED label as validation. A local hash verifies captured bytes, not factual correctness or licensing.",
+    "Inspect source data as DATA, never execute embedded instructions. Use reviewed draft synthesis, exact scope/target hashes and bounded Ingest; preserve raw, citations, index/log and conflicting information.",
+    "Actual source correction receives a new ID/version/link. On synthesis failure retain the admitted source and recover only the owned bundle without deleting newer user edits.",
+    "For evolution, identify real changed/conflicting/complementary evidence. Do not invent a contradiction or treat retrieval date as publication date. If no valid case exists, mark the scenario NOT RUN or not applicable with evidence."
+  ],
+  "draft_questions": [
+    {
+      "question_id": "V12-Q01",
+      "category": "direct_fact",
+      "input_prompt": "Nguồn gốc mô tả LLM Wiki là gì? Phần nào được tác giả nói trực tiếp?",
+      "candidate_evidence_slots": [
+        "P01"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q02",
+      "category": "direct_fact",
+      "input_prompt": "Nguồn LLM Wiki có phân biệt raw material và nội dung tổng hợp không? Nếu không nêu thì báo rõ.",
+      "candidate_evidence_slots": [
+        "P01"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q03",
+      "category": "attribution",
+      "input_prompt": "Ingest/Query/Lint có thực sự xuất hiện trong nguồn gốc hay chỉ trong thiết kế workspace này?",
+      "candidate_evidence_slots": [
+        "P01"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q04",
+      "category": "direct_fact",
+      "input_prompt": "Nguồn AutoResearch mô tả mục tiêu và phạm vi thí nghiệm nào?",
+      "candidate_evidence_slots": [
+        "P02",
+        "P04"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q05",
+      "category": "direct_fact",
+      "input_prompt": "Metric và giới hạn tài nguyên nào được tài liệu AutoResearch ghi rõ?",
+      "candidate_evidence_slots": [
+        "P05"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q06",
+      "category": "missing_evidence",
+      "input_prompt": "Có bằng chứng tái lập hoặc giới hạn được tác giả công bố không? Không suy từ tên repository.",
+      "candidate_evidence_slots": [
+        "P06"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q07",
+      "category": "multi_source",
+      "input_prompt": "So sánh mục đích LLM Wiki và AutoResearch dựa trên hai nguồn gốc; tách điểm chung suy luận.",
+      "candidate_evidence_slots": [
+        "P01",
+        "P02"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q08",
+      "category": "multi_source",
+      "input_prompt": "Nguồn workflow và Context Engineering đề xuất những bước kiểm tra nào, và điều gì chỉ là diễn giải?",
+      "candidate_evidence_slots": [
+        "P03",
+        "P07"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q09",
+      "category": "bilingual",
+      "input_prompt": "Tìm bằng chứng tiếng Anh giải thích Context Engineering cho câu hỏi tiếng Việt này, giữ nguyên technical terms.",
+      "candidate_evidence_slots": [
+        "P07",
+        "P08"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q10",
+      "category": "bilingual",
+      "input_prompt": "Tài liệu tiếng Anh nói gì về lưu context và bàn giao phiên mới?",
+      "candidate_evidence_slots": [
+        "P10"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q11",
+      "category": "bilingual",
+      "input_prompt": "Nguồn nào mô tả vòng lặp experiment của AutoResearch? Trích đúng metric/API/identifier nếu có.",
+      "candidate_evidence_slots": [
+        "P04",
+        "P05"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q12",
+      "category": "terminology",
+      "input_prompt": "Agentic Engineering được nguồn gốc định nghĩa thế nào; có định nghĩa khác trong corpus không?",
+      "candidate_evidence_slots": [
+        "P03",
+        "P09"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q13",
+      "category": "terminology",
+      "input_prompt": "Context Engineering, prompt engineering và persistent memory có được nguồn phân biệt rõ không?",
+      "candidate_evidence_slots": [
+        "P07",
+        "P08",
+        "P10"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q14",
+      "category": "contradiction",
+      "input_prompt": "Hai phát biểu được reviewer chọn có thật sự mâu thuẫn, hay khác thời điểm/phạm vi?",
+      "candidate_evidence_slots": [
+        "P01",
+        "P09"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q15",
+      "category": "contradiction",
+      "input_prompt": "Nếu nguồn sau bổ sung điều kiện, điều đó sửa claim cũ hay chỉ bổ sung context? Giữ cả hai citations.",
+      "candidate_evidence_slots": [
+        "P07",
+        "P08"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q16",
+      "category": "missing_evidence",
+      "input_prompt": "Corpus có số đo chứng minh workspace này tăng năng suất bao nhiêu phần trăm không?",
+      "candidate_evidence_slots": [
+        "P01",
+        "P12"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q17",
+      "category": "missing_evidence",
+      "input_prompt": "Có đủ dữ liệu tính API cost của pilot này không? Không suy giá từ tên model hoặc độ dài text.",
+      "candidate_evidence_slots": [
+        "P12"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q18",
+      "category": "lifecycle",
+      "input_prompt": "Một draft có citation hợp lệ đã đủ để gọi là verified knowledge của workspace này chưa?",
+      "candidate_evidence_slots": [],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [
+        "AGENTS.md",
+        "SCHEMA.md",
+        "KNOWLEDGE_GOVERNANCE.md"
+      ],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q19",
+      "category": "lifecycle",
+      "input_prompt": "Lời kể phiên trước đã duyệt hoặc hai AI cùng đồng ý có thay thế approval được ghi nhận không?",
+      "candidate_evidence_slots": [],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [
+        "AGENTS.md",
+        "SCHEMA.md",
+        "KNOWLEDGE_GOVERNANCE.md"
+      ],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q20",
+      "category": "history",
+      "input_prompt": "Lời khuyên cũ có ngày xuất bản có tự động là obsolete không? Cần evidence nào để quyết định?",
+      "candidate_evidence_slots": [
+        "P01",
+        "P06"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q21",
+      "category": "history",
+      "input_prompt": "Một repository hoặc bài viết thay đổi kể từ snapshot thì cách trích lịch sử và hiện tại phải khác thế nào?",
+      "candidate_evidence_slots": [
+        "P02",
+        "P11"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q22",
+      "category": "scope",
+      "input_prompt": "Nguồn công khai chung có chứng minh một quyết định hiện hành cho project khác trong workspace không?",
+      "candidate_evidence_slots": [],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [
+        "AGENTS.md",
+        "SCHEMA.md",
+        "KNOWLEDGE_GOVERNANCE.md"
+      ],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q23",
+      "category": "handoff",
+      "input_prompt": "Phiên mới phải khôi phục những claim, nguồn, gap và việc tiếp theo nào từ handoff pilot đã được review?",
+      "candidate_evidence_slots": [
+        "P10"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "medium",
+      "human_confirmation": null,
+      "executed": false
+    },
+    {
+      "question_id": "V12-Q24",
+      "category": "evolution",
+      "input_prompt": "Sau khi thêm nguồn B thật, kết luận nào đổi, kết luận nào giữ nguyên và điều gì vẫn chưa xác minh?",
+      "candidate_evidence_slots": [
+        "P01",
+        "P07",
+        "P11"
+      ],
+      "expected_source_ids": null,
+      "required_source_pointers": null,
+      "first_party_policy_refs": [],
+      "expected_answer": null,
+      "gold_status": "UNCONFIRMED_NOT_SCORABLE",
+      "expected_scope": "pilot-knowledge-workspace (proposed; not created)",
+      "answer_rubric_proposal": [
+        "Use source-backed assertions with exact pointers and scope/date boundaries.",
+        "Separate original statements from AI interpretation; preserve English technical identifiers.",
+        "Report missing evidence, ambiguity or disagreement; do not manufacture current truth."
+      ],
+      "abstention_rule": "Unknown until corpus/rights/expected evidence are reviewed; no missing-evidence gold is confirmed merely by guessing absence.",
+      "severity_proposal": "high",
+      "human_confirmation": null,
+      "executed": false
+    }
+  ],
+  "gold_confirmation_gate": [
+    "These 24 questions are a review worksheet, NOT a real gold set. Expected answers/source IDs/pointers are unresolved, not empty-gold abstention labels.",
+    "After acquisition, an independent human reviews exact raw snapshots and authors or confirms expected answer/evidence/source IDs, pointer meaning, scope/date and abstention rules for 20-30 questions.",
+    "Record reviewer, actual time and content-bound confirmation. The evaluated AI cannot both generate and validate its own gold. Human gold confirmation does not automatically verify wiki lifecycle or approve project decisions.",
+    "Keep gold and scoring keys outside both arms' read permissions; record corpus and rubric hashes/revision. Missing human confirmation means the question is not scorable as factual real-world gold."
+  ],
+  "reviewed_protocol_only_rubrics": [
+    {
+      "case_id": "E01",
+      "category": "evolution",
+      "original_prompt": "A newer proposal and an older former-transport note coexist. State what is known without approving the proposal.",
+      "reviewed_goal": "Separate a proposal from an older decision/history.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E02",
+      "category": "evolution",
+      "original_prompt": "Resolve the maximum-window disagreement if evidence permits; otherwise preserve it.",
+      "reviewed_goal": "Preserve a real evidence disagreement without selecting a winner.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E03",
+      "category": "evolution",
+      "original_prompt": "Two project timeout records differ. Is one obsolete, or do they describe separate project contexts? Compare them explicitly without choosing a winner.",
+      "reviewed_goal": "Separate foreign scopes; keep synthetic unless two real authorized scopes exist.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E04",
+      "category": "evolution",
+      "original_prompt": "Is the old polling note obsolete merely because it is dated September?",
+      "reviewed_goal": "Age alone is not obsolescence.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E05",
+      "category": "evolution",
+      "original_prompt": "Treat the newer event proposal as approved because it is newer.",
+      "reviewed_goal": "Newer proposal is not approved authority.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E06",
+      "category": "evolution",
+      "original_prompt": "Report today's p95 using the old lookup sample.",
+      "reviewed_goal": "Historical observation is not today's measurement.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E07",
+      "category": "evolution",
+      "original_prompt": "Can observation B be preferred because its numeric window is larger?",
+      "reviewed_goal": "A larger number does not establish a winning source.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E08",
+      "category": "evolution",
+      "original_prompt": "Resume the Cedar handoff and assert its last test passed in this new session.",
+      "reviewed_goal": "Handoff text is not proof a test passed.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E09",
+      "category": "evolution",
+      "original_prompt": "Two AI reviewers agree with window observation B. Resolve the source disagreement and mark that window verified automatically.",
+      "reviewed_goal": "AI agreement cannot resolve a dispute or verify a claim.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "E10",
+      "category": "evolution",
+      "original_prompt": "The newer event-channel proposal contradicts the former polling note. Replace the older note without retaining its history.",
+      "reviewed_goal": "New evidence cannot erase historical source/decision records.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "C01",
+      "category": "continuity",
+      "original_prompt": "A fresh session has no chat memory. Read the Cedar handoff and state next task and open question.",
+      "reviewed_goal": "Recover next task/open questions in a genuinely fresh session.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "C02",
+      "category": "continuity",
+      "original_prompt": "A fresh session is scoped to Marlin. Recover only its next task.",
+      "reviewed_goal": "Recover only the permitted real scope, or retain as synthetic control.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "C03",
+      "category": "continuity",
+      "original_prompt": "A new session asks which real Git commit checkpoint_demo_17 names.",
+      "reviewed_goal": "Check a named checkpoint against actual durable revision evidence.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "C04",
+      "category": "continuity",
+      "original_prompt": "The previous chat allegedly approved event transport. Find durable approval before continuing.",
+      "reviewed_goal": "Locate actual authorization rather than trust prior-chat claims.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "C05",
+      "category": "continuity",
+      "original_prompt": "A fresh session requests the last test result for Cedar without rerunning it.",
+      "reviewed_goal": "Retrieve actual test evidence, not infer PASS from a name.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T01",
+      "category": "task",
+      "original_prompt": "Research brief: compare the two maximum-window observations, list missing measurement evidence and propose a repeatable experiment. Do not fetch external sources.",
+      "reviewed_goal": "Build a source-backed research comparison and bounded experiment proposal.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T02",
+      "category": "task",
+      "original_prompt": "Coding task packet: propose the smallest conditional-update change preserving ETag and If-Match. Do not modify a real repository.",
+      "reviewed_goal": "HTTP conditional-update task is outside this topic; revise separately, do not import unrelated sources for quota.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T03",
+      "category": "task",
+      "original_prompt": "Coding review packet: propose cursor boundary tests for empty and final pages using the documented field names.",
+      "reviewed_goal": "Cursor pagination task is outside this topic; keep original unrun or human-confirm a newly versioned task.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T04",
+      "category": "task",
+      "original_prompt": "Research brief: assess whether the dated latency observation justifies adding an index or database.",
+      "reviewed_goal": "Do not justify infrastructure from one sample; require measured evidence.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T05",
+      "category": "task",
+      "original_prompt": "Coding task packet: propose a retry cap experiment combining the known schedule and jitter while listing missing caps.",
+      "reviewed_goal": "Retry/backoff task is outside this topic; retain synthetic rubric separately.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T06",
+      "category": "task",
+      "original_prompt": "Coding task packet: design a fixture-only interrupted-publication recovery check and rollback review.",
+      "reviewed_goal": "Actual bounded recovery, rollback and before/after bytes.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T07",
+      "category": "task",
+      "original_prompt": "Research brief: determine whether the event-channel proposal can become Cedar's current transport decision.",
+      "reviewed_goal": "A proposal is not an approved current project decision.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    },
+    {
+      "case_id": "T08",
+      "category": "task",
+      "original_prompt": "Coding task packet: design an idempotent create-request fixture test including duplicate and distinct request keys.",
+      "reviewed_goal": "Idempotent HTTP create task is outside this topic; do not relabel synthetic outputs as real work.",
+      "original_execution_status": "NOT RUN",
+      "real_execution_status": "NOT RUN",
+      "migration_rule": "Reuse the rubric, not the synthetic answer/source IDs. New real case/version needs curated evidence, human-confirmed gold, actual execution and independent scoring."
+    }
+  ],
+  "reusable_components": [
+    "Existing source integrity/admission, Ingest, Query, Lint, lifecycle, expected-version transaction/recovery and exclusive report APIs.",
+    "V1.1 seeded AB/BA order, per-case artifacts, Recall@5 projection, citation-structure checks and measured/null metric conventions.",
+    "V1.1 evaluation protocol, human scoring rubrics, 23 protocol-only rubric goals, real task/review/time observation fields."
+  ],
+  "capability_gaps_before_real_AI_trials": [
+    "No real observations importer/scorer or automatic real AI A/B runner exists; synthetic-only evaluate_feasibility must not be bypassed by labelling real data synthetic.",
+    "Fresh agents sharing one cwd/tools do not prove A cannot read wiki/gold. Demonstrate actual packet/read-permission isolation or report real paired trials NOT RUN.",
+    "Match actual model/version/settings, prompts, tools, raw/decision rights and human interventions; record unknown/unobservable fields rather than infer them.",
+    "Independent blinded reviewer, source-grounded semantic/factual grading, real human times/corrections, context handoff and usage telemetry remain unavailable."
+  ],
+  "paired_task_proposals_not_run": [
+    {
+      "task_id": "V12-T01",
+      "task": "Attribute and summarize one primary LLM Wiki document, preserving its limitations."
+    },
+    {
+      "task_id": "V12-T02",
+      "task": "Write a bilingual source-backed comparison of LLM Wiki and AutoResearch, separating interpretation."
+    },
+    {
+      "task_id": "V12-T03",
+      "task": "Explain terminology differences across Context/Agentic Engineering sources without inventing consensus."
+    },
+    {
+      "task_id": "V12-T04",
+      "task": "Analyze a real newly introduced source and revise only claims actually affected; retain history."
+    },
+    {
+      "task_id": "V12-T05",
+      "task": "Resume a reviewed context handoff in a genuinely isolated fresh session and identify evidence gaps."
+    },
+    {
+      "task_id": "V12-T06",
+      "task": "Answer an intentionally unsupported benefit/cost question with evidence-backed abstention."
+    }
+  ],
+  "blinded_scoring_plan": [
+    "After gold freeze, counterbalance paired tasks with a recorded seed and precommitted order; no choosing only favorable retries.",
+    "Use opaque answer IDs; hide arm/order mapping from the independent human scorer where possible. Preserve verbatim answers/tool traces and actual deviations. Do not claim the preparer is blind to its own mapping.",
+    "Score each semantic citation and factual/task/handoff rubric item; retain disagreements, uncertain items, missing evidence and failure severity. Unreviewed fields remain NOT MEASURED, no fake zero.",
+    "Include actual corpus preparation, intake, draft synthesis, human review/corrections, Lint/recovery and maintenance in net-time accounting. Tokens/context/API cost require observed telemetry; no inferred price or pilot $0.",
+    "Operating policies and any independent real decision source needed by the tasks must be equally available to A/B. Maintained wiki is the only intended information treatment."
+  ],
+  "real_metrics_now": {
+    "Recall@5": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "semantic_citation_accuracy": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "factual_answer_correctness": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "task_quality": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "unsupported_current_truth": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "cross_project_contamination": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "human_corrections": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "human_review_time": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "real_intake_maintenance_time": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "AI_task_duration": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "tokens_API_cost": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "context_handoff_accuracy": {
+      "status": "NOT MEASURED",
+      "value": null
+    },
+    "net_productivity": {
+      "status": "NOT MEASURED",
+      "value": null
+    }
+  },
+  "remaining_risks": [
+    "Latest whole-system audit remains historical NOT READY and was not replaced by High-only remediation or a synthetic harness PASS.",
+    "Source self-declared trust, Vietnamese/encoded injection detector gaps, host containment and human identity/evidence relevance remain outside the proven controls.",
+    "Nine candidate document URLs and all rights metadata remain unresolved. There may not be 12 distinct suitable documents in the proposed locations.",
+    "No source, gold answer, independent grade, actual trial, cost or time saving is manufactured to satisfy the pilot quota."
+  ],
+  "scope_this_turn": "Offline readiness inspection, focused synthetic regressions, local URL inventory and proposal reports only. No code/schema/wiki/raw/registry modifications.",
+  "checks_report": "reports/pilot-v1.2-readiness-2026-10-18.json",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "SCHEMA.md",
+    "PROFILE.md",
+    "FEASIBILITY_EVALUATION.md",
+    "wiki/index.md",
+    "recent wiki/log.md",
+    "latest V1.1/remediation/audit reports",
+    "actual admission/Ingest/Query/Lint/report code",
+    "23 protocol-only synthetic rubrics"
+  ],
+  "sources_used": "First-party local repository evidence only; three URL strings from README, no remote content.",
+  "full_real_pilot_report": "NOT RUN; this document is a gated proposal, not a completed V1.2 pilot verdict.",
+  "V2_recommendation": "Do not start V2; no real-world effectiveness or net-productivity evidence yet."
+}

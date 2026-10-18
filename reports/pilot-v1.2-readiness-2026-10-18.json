@@ -1,0 +1,654 @@
+{
+  "phase": "V1.2 pre-acquisition readiness; no external acquisition authorized",
+  "observed_at_utc": "2026-10-18T12:21:58.159550+00:00",
+  "head": "5f73c8ffb7fe154b023b9618821e1d6b2a87766e",
+  "branch": "workspace/initialize",
+  "git_status": [
+    " M .obsidian/graph.json",
+    "?? reports/independent-final-audit-2026-10-18.json",
+    "?? reports/independent-final-audit-2026-10-18.md",
+    "?? reports/independent-final-governance-probes-2026-10-18.json",
+    "?? reports/independent-final-governance-probes-2026-10-18.md",
+    "?? reports/independent-final-load-2026-10-18.json",
+    "?? reports/independent-final-load-2026-10-18.md",
+    "?? reports/independent-final-security-probes-2026-10-18.json",
+    "?? reports/independent-final-security-probes-2026-10-18.md",
+    "?? reports/independent-final-workflows-2026-10-18.json",
+    "?? reports/independent-final-workflows-2026-10-18.md"
+  ],
+  "protected_baseline": {
+    ".obsidian/graph.json": {
+      "bytes": 510,
+      "sha256": "62fb3432797c64a42c619c1b70fe1bfdef77ad97ee7a164a87be2ca61e487149"
+    },
+    "decisions/index.md": {
+      "bytes": 165,
+      "sha256": "0eb74c8b24c81b746b6fa4c86b983364fe1242d55fd7d2305d51fd07ca8405b2"
+    },
+    "reports/feasibility-completion-2026-10-18.json": {
+      "bytes": 75905,
+      "sha256": "9431ce058a403f8346187821ffce1810c08a4617b303172ff1eeee6dedc59ed8"
+    },
+    "reports/feasibility-completion-2026-10-18.md": {
+      "bytes": 8999,
+      "sha256": "bd5704fe454aa091aa66249506f83f5be0d36edddb5ea72985eae9e6b98dfef9"
+    },
+    "reports/feasibility-continuity-2026-10-18.json": {
+      "bytes": 23547,
+      "sha256": "bd4bdb0e4d4cebba0566baaa4f196ed659703b4b696ee344cf019eee507d2568"
+    },
+    "reports/feasibility-continuity-2026-10-18.md": {
+      "bytes": 23907,
+      "sha256": "dea4fdc887deba9614d7de21992d89acbfd32d232597f6972fe2544dce05fee1"
+    },
+    "reports/feasibility-inspection-2026-10-18.json": {
+      "bytes": 5113,
+      "sha256": "aeb5203d59eaa6a77996d5e53eae8248ed3ef2926cd965fe6b7a5eeef46ff949"
+    },
+    "reports/feasibility-inspection-2026-10-18.md": {
+      "bytes": 5153,
+      "sha256": "d04d968d05d92977b81b36e8ab534b891f24c1a0f7555f3789c92a9e205e06a6"
+    },
+    "reports/feasibility-regression-2026-10-18.json": {
+      "bytes": 43284,
+      "sha256": "d80f283708773865d0ae2e22da863cd0ec5ba88b33efab785b3f7a44da3390f9"
+    },
+    "reports/feasibility-regression-2026-10-18.md": {
+      "bytes": 43318,
+      "sha256": "604cf6d91ec8556f6c078a1e5c70faa1d5ec81c2a61fb82f2575bfd4bc0d39b4"
+    },
+    "reports/feasibility-v1.1-2026-10-18.json": {
+      "bytes": 296391,
+      "sha256": "4a54836701b00478b5243cc1665a18b7453c7b6567ab851880af32ceb4b7d906"
+    },
+    "reports/feasibility-v1.1-2026-10-18.md": {
+      "bytes": 28875,
+      "sha256": "7ae74be1f94081d095f8987e5ff35af230e2089f0b26afd8330ebf765c42c093"
+    },
+    "reports/governance-phase2-2026-10-17-final.json": {
+      "bytes": 22544,
+      "sha256": "ff7eb907c54e866f68ac40a1aa13f9a61978f9e77a227e33899bdbcaa147be67"
+    },
+    "reports/governance-phase2-2026-10-17-final.md": {
+      "bytes": 15524,
+      "sha256": "21ea6290e326d84acaf065ba0a3381419df082f48fa4e0068f54eab3d9027537"
+    },
+    "reports/governance-phase2-2026-10-17.json": {
+      "bytes": 22046,
+      "sha256": "6f8d1056ebd763fdac57f40228b5495e40f0b9187204d08f5513c43514c9eb1c"
+    },
+    "reports/governance-phase2-2026-10-17.md": {
+      "bytes": 15185,
+      "sha256": "879a3d384b7e2fd7fee90de581866433bc58ce1207958285d420415819c0f402"
+    },
+    "reports/governance-remediation-completion-2026-10-18.json": {
+      "bytes": 41361,
+      "sha256": "27e422e3e9058735cb3e3cb551921c9670280b9188ad41683c68f5933dd9c880"
+    },
+    "reports/governance-remediation-completion-2026-10-18.md": {
+      "bytes": 19972,
+      "sha256": "898b74442586cc4c8d943ad4c5832650d59f82efeafaed9de4002d8a8559cd9e"
+    },
+    "reports/governance-remediation-inspection-2026-10-18.json": {
+      "bytes": 4914,
+      "sha256": "bc71af7d9ffaef50346ba44858688025713785ec5ec9e6b0d3d4543170bd8544"
+    },
+    "reports/governance-remediation-inspection-2026-10-18.md": {
+      "bytes": 4962,
+      "sha256": "fef341a6078b4ad308a28f9d8448c0d698bd3605467e70d3c5f0efe1f32a1aad"
+    },
+    "reports/governance-remediation-multilingual-2026-10-18.json": {
+      "bytes": 112040,
+      "sha256": "102bc1f0e4c7af9592e9e2cde520bd138701df5044184f0f7d8698fe0aa971b3"
+    },
+    "reports/governance-remediation-multilingual-2026-10-18.md": {
+      "bytes": 10080,
+      "sha256": "14bb9b9c808c8d5a4959c076c0d1c277855c6e29d2ef7ad956033bcb4e64797b"
+    },
+    "reports/governance-remediation-verification-2026-10-18.json": {
+      "bytes": 49757,
+      "sha256": "1010524b2421fac155f1e15b240b8cf4ea7048d8aeec020f2a0499298a919172"
+    },
+    "reports/governance-remediation-verification-2026-10-18.md": {
+      "bytes": 10489,
+      "sha256": "b48dc9899df00663b90fbe56d3799b433b4c866f62331cc47f8d9d182b98ef68"
+    },
+    "reports/governance-remediation-workflows-2026-10-18.json": {
+      "bytes": 215339,
+      "sha256": "34d5ff0bec86b59f8f33ca7ffcff3a8d96a973b65d4388ac2a1d8e3e24f0a8bc"
+    },
+    "reports/governance-remediation-workflows-2026-10-18.md": {
+      "bytes": 18169,
+      "sha256": "39391d6ada51179093e788213bb8b3e0f87efc49029f805006180816300ff5f5"
+    },
+    "reports/independent-final-audit-2026-10-18.json": {
+      "bytes": 51058,
+      "sha256": "b45b49d3736129c97df5a3ecd7b5836960decaf47836af23e5f5f2801e78d73b"
+    },
+    "reports/independent-final-audit-2026-10-18.md": {
+      "bytes": 30042,
+      "sha256": "7a25a56727aa48eba9f00a6652e5e34b1a8cd8aac825f1bc8ce40a6d1fd1ac23"
+    },
+    "reports/independent-final-governance-probes-2026-10-18.json": {
+      "bytes": 8086,
+      "sha256": "538921f41e6f2b3f3f4e309093387609e2378cd9948732becedda9d367ea32fd"
+    },
+    "reports/independent-final-governance-probes-2026-10-18.md": {
+      "bytes": 7468,
+      "sha256": "f38c18de607f50634f2adc5f9dccc3a98c89fefa4150f15298c6401334663435"
+    },
+    "reports/independent-final-load-2026-10-18.json": {
+      "bytes": 14413,
+      "sha256": "32d36d13e190088ffd26c3469ffe679e3b86c3965a1b3bce67309c80a2ebc901"
+    },
+    "reports/independent-final-load-2026-10-18.md": {
+      "bytes": 9969,
+      "sha256": "7595e1a140c843e18603a4ab0c2358d7d39efd5a581acaaac8631729d64dadc7"
+    },
+    "reports/independent-final-security-probes-2026-10-18.json": {
+      "bytes": 9821,
+      "sha256": "5d221a374cb1348efaf1626847540ba4a432ca670984e0c9ceb1432a3e5a7474"
+    },
+    "reports/independent-final-security-probes-2026-10-18.md": {
+      "bytes": 6872,
+      "sha256": "baf27576988e784148969f26235731b7574a8b320c053e5991be5c0afa708c7e"
+    },
+    "reports/independent-final-workflows-2026-10-18.json": {
+      "bytes": 200917,
+      "sha256": "a2c089395379561770a67ca91337fd074c847b1c475fdc1b2c25f66cdad85ce9"
+    },
+    "reports/independent-final-workflows-2026-10-18.md": {
+      "bytes": 18148,
+      "sha256": "21c8a3b5721a83f337f746c4340d303ad2822d1676c870f16276bad01112c90d"
+    },
+    "reports/multilingual-2026-10-17.json": {
+      "bytes": 70858,
+      "sha256": "46762d9f4e77a2222c7a8f63344a028a7d8d202a960b9a1526cdcde0ab93f35e"
+    },
+    "reports/multilingual-2026-10-17.md": {
+      "bytes": 10080,
+      "sha256": "14bb9b9c808c8d5a4959c076c0d1c277855c6e29d2ef7ad956033bcb4e64797b"
+    },
+    "reports/scalability-phase5-2026-10-18.json": {
+      "bytes": 20844,
+      "sha256": "dca37172b83e8fb4cafffabf6f83b90a8f33fb40778b5c2b1fcc01c66e06b1b9"
+    },
+    "reports/scalability-phase5-2026-10-18.md": {
+      "bytes": 14487,
+      "sha256": "41e7e1d83221e0a3d49e9fe5eb7717a95f4557ef31d8694360e1c9862dc851cb"
+    },
+    "reports/scalability-phase5-assessment-2026-10-18.json": {
+      "bytes": 43467,
+      "sha256": "46001952b9c2f3d7c9d3e4b4eabf73c90bcbdfeef31e8d32aae5d325c759693f"
+    },
+    "reports/scalability-phase5-assessment-2026-10-18.md": {
+      "bytes": 33509,
+      "sha256": "3c21ecd66eb0e0d6e2cfb71a9701c122de1b13c306a8819360ff979d439106d0"
+    },
+    "reports/scalability-phase5-baseline-2026-10-18.json": {
+      "bytes": 12255,
+      "sha256": "f8ec77bdddca1cada4a7427f5cb5c099fe0d4185844fa3bf0fb9529d633683c9"
+    },
+    "reports/scalability-phase5-baseline-2026-10-18.md": {
+      "bytes": 8785,
+      "sha256": "23fe7785eb94535cea8399a4e394c5e8dbb337a3704916f480ffcc8adeec134a"
+    },
+    "reports/scalability-phase5-profile-2026-10-18.json": {
+      "bytes": 8261,
+      "sha256": "55e1335f2175daee727b9eeb3842deac658479ddad90f0d53c86c0a60b338623"
+    },
+    "reports/scalability-phase5-profile-2026-10-18.md": {
+      "bytes": 4891,
+      "sha256": "e28ebe5a4c26cce6c009142a97d43453c9a8f1532a89b039450cfe2b6e039053"
+    },
+    "reports/security-phase3-2026-10-17-final.json": {
+      "bytes": 30387,
+      "sha256": "7a99f4fc258a2147f50050bb285593d8acdb898505ac2b7250ecd310408ca038"
+    },
+    "reports/security-phase3-2026-10-17-final.md": {
+      "bytes": 19568,
+      "sha256": "cffc3c50f19b4196f3fd2948c1f2bc7a65cf1fb96b48b850f686aef92fcc397a"
+    },
+    "reports/security-phase3-2026-10-17.json": {
+      "bytes": 30062,
+      "sha256": "c6080f1b9c8d443680f3d2cdbe2bf571dc37662cd6a8424091af50536cfff34a"
+    },
+    "reports/security-phase3-2026-10-17.md": {
+      "bytes": 19349,
+      "sha256": "52e1ba3f51817edc03d1af79d091559ae6248acdc4ec3d8ef223a5da982e971a"
+    },
+    "reports/source-integrity-phase1-2026-10-17.json": {
+      "bytes": 13898,
+      "sha256": "61a399c4c45dca7469d47ac586124a7e27aef7b76eccdd741d8dd348beb9ec20"
+    },
+    "reports/source-integrity-phase1-2026-10-17.md": {
+      "bytes": 12047,
+      "sha256": "9d76a5f62f5bb69d5d0b0616c8b199b2e11bef07fd1544d8f7100d356f128de0"
+    },
+    "reports/workflows-phase4-2026-10-18-final.json": {
+      "bytes": 199309,
+      "sha256": "38291248d57a40bbd7772374a7ebffbc0e2fdae440c8ecfbb253b455ebd29b48"
+    },
+    "reports/workflows-phase4-2026-10-18-final.md": {
+      "bytes": 18148,
+      "sha256": "f4a3dac96398e27fbda5379d0fb9152e33eb415dfe287552cea88e0f3cf99efc"
+    },
+    "sources/manifest.csv": {
+      "bytes": 109,
+      "sha256": "1abd623611abb8760a152154c369c789ebe47b481b6bc1b24690cc27512fb285"
+    },
+    "sources/provenance.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sources/raw/README.md": {
+      "bytes": 416,
+      "sha256": "c03e0fc22df68048d53bb3d422f302beeed28e395280b711ca44304384775ad8"
+    },
+    "wiki/concepts/knowledge-system-principles.md": {
+      "bytes": 420,
+      "sha256": "6f3147ad0c4b4425b9bb7738b47e41eb78c91e8d3a5692840b7eba3408a2bc13"
+    },
+    "wiki/index.md": {
+      "bytes": 1202,
+      "sha256": "3d83f1e210c8a2107fb6389317911bf36901010e3d0b572e8ea5715940c000f3"
+    },
+    "wiki/log.md": {
+      "bytes": 31326,
+      "sha256": "a60c03acbf1588d2708f4ef8928e036b9a8f16d3d622e09d798e1f797f079738"
+    }
+  },
+  "protected_preserved": {
+    ".obsidian/graph.json": true,
+    "decisions/index.md": true,
+    "reports/feasibility-completion-2026-10-18.json": true,
+    "reports/feasibility-completion-2026-10-18.md": true,
+    "reports/feasibility-continuity-2026-10-18.json": true,
+    "reports/feasibility-continuity-2026-10-18.md": true,
+    "reports/feasibility-inspection-2026-10-18.json": true,
+    "reports/feasibility-inspection-2026-10-18.md": true,
+    "reports/feasibility-regression-2026-10-18.json": true,
+    "reports/feasibility-regression-2026-10-18.md": true,
+    "reports/feasibility-v1.1-2026-10-18.json": true,
+    "reports/feasibility-v1.1-2026-10-18.md": true,
+    "reports/governance-phase2-2026-10-17-final.json": true,
+    "reports/governance-phase2-2026-10-17-final.md": true,
+    "reports/governance-phase2-2026-10-17.json": true,
+    "reports/governance-phase2-2026-10-17.md": true,
+    "reports/governance-remediation-completion-2026-10-18.json": true,
+    "reports/governance-remediation-completion-2026-10-18.md": true,
+    "reports/governance-remediation-inspection-2026-10-18.json": true,
+    "reports/governance-remediation-inspection-2026-10-18.md": true,
+    "reports/governance-remediation-multilingual-2026-10-18.json": true,
+    "reports/governance-remediation-multilingual-2026-10-18.md": true,
+    "reports/governance-remediation-verification-2026-10-18.json": true,
+    "reports/governance-remediation-verification-2026-10-18.md": true,
+    "reports/governance-remediation-workflows-2026-10-18.json": true,
+    "reports/governance-remediation-workflows-2026-10-18.md": true,
+    "reports/independent-final-audit-2026-10-18.json": true,
+    "reports/independent-final-audit-2026-10-18.md": true,
+    "reports/independent-final-governance-probes-2026-10-18.json": true,
+    "reports/independent-final-governance-probes-2026-10-18.md": true,
+    "reports/independent-final-load-2026-10-18.json": true,
+    "reports/independent-final-load-2026-10-18.md": true,
+    "reports/independent-final-security-probes-2026-10-18.json": true,
+    "reports/independent-final-security-probes-2026-10-18.md": true,
+    "reports/independent-final-workflows-2026-10-18.json": true,
+    "reports/independent-final-workflows-2026-10-18.md": true,
+    "reports/multilingual-2026-10-17.json": true,
+    "reports/multilingual-2026-10-17.md": true,
+    "reports/scalability-phase5-2026-10-18.json": true,
+    "reports/scalability-phase5-2026-10-18.md": true,
+    "reports/scalability-phase5-assessment-2026-10-18.json": true,
+    "reports/scalability-phase5-assessment-2026-10-18.md": true,
+    "reports/scalability-phase5-baseline-2026-10-18.json": true,
+    "reports/scalability-phase5-baseline-2026-10-18.md": true,
+    "reports/scalability-phase5-profile-2026-10-18.json": true,
+    "reports/scalability-phase5-profile-2026-10-18.md": true,
+    "reports/security-phase3-2026-10-17-final.json": true,
+    "reports/security-phase3-2026-10-17-final.md": true,
+    "reports/security-phase3-2026-10-17.json": true,
+    "reports/security-phase3-2026-10-17.md": true,
+    "reports/source-integrity-phase1-2026-10-17.json": true,
+    "reports/source-integrity-phase1-2026-10-17.md": true,
+    "reports/workflows-phase4-2026-10-18-final.json": true,
+    "reports/workflows-phase4-2026-10-18-final.md": true,
+    "sources/manifest.csv": true,
+    "sources/provenance.jsonl": true,
+    "sources/raw/README.md": true,
+    "wiki/concepts/knowledge-system-principles.md": true,
+    "wiki/index.md": true,
+    "wiki/log.md": true
+  },
+  "implementation_test_sha256": {
+    "scripts/benchmark_scalability.py": "adaa62aadb6a3e7c6a638dd834f15f384a6576080cee84f8e8d31ebf08e7d04c",
+    "scripts/check_workspace.py": "4b9c51045ede39596125af367146dffc2fc437e5b082b05224dd0468f0f2462a",
+    "scripts/evaluate_feasibility.py": "49b11301dd9b8c206e298c1aa7f159df3f87651d48abdd588c702d7b6406612a",
+    "scripts/feasibility_evolution.py": "8baa1cdaa0f2d646b6882c48a8df8e8802b9a6fcda52ae731f763e1bee06c3d9",
+    "scripts/ingest_workspace.py": "c98a95afe039b643205250a1acf888ce6771b09294fdf71cf53ab4f5f110f5d3",
+    "scripts/knowledge_governance.py": "b1e9339c39b022f00256036e9ef40fad376a1c4ae7ed67fdf796398c6ce7c9f6",
+    "scripts/query_workspace.py": "2d3884fd180711a7d63808d33fb3450ced9bd616bd5a80ac72c87511732cf14a",
+    "scripts/safe_operations.py": "2a97bc6d198627aa8cf69c2bf33528b7c16ce831bb5bea28b87ab0610c4d050e",
+    "scripts/source_integrity.py": "2df48ff29a5e41057b18703c8d7fa20009e06d2afa1ef73ed110b8cb0b8b2468",
+    "scripts/validate_governance_remediation.py": "f4cea4c1fc41bf95be06fa4adf14a06238074fdf1b420422694d6c7954e9cd76",
+    "scripts/validate_knowledge_governance.py": "f213ac2469248afc8a596f6a5117b05e73667d0515f1063ec25deac44ff199f3",
+    "scripts/validate_multilingual.py": "41c875ecd40190a85e46fce29bc947dc444e98263c9eb2b3a111bf45b5d8e134",
+    "scripts/validate_scalability.py": "de1dcf6aba63151f663b69f7fb52c9a278c4b15814da9e853d6c586b905320b3",
+    "scripts/validate_security.py": "ed79324a9d34aed9314a94712a6d6f566ae1a80caa88a0eddcb9360bc6b40f7a",
+    "scripts/validate_source_integrity.py": "d6c001e3382a57a3d578a88a82d638c7aa69d0ea80d89aad78d92face1eb7c63",
+    "scripts/validate_workflows.py": "32bff4f845759e9c28c9163ca3c0236dd433c37ad74ac96f1e4d3494e9f3c9b0",
+    "scripts/workspace_security.py": "03a35cb6524de3a4fb2c7b1b994c8d6d9ad88d4f0607341b1d8d92ec175f80ad",
+    "tests/test_check_workspace.py": "09c3e825c0e1064da4043cb2e9b46f5ba7e848dddc79bf6b35379d576f0a364f",
+    "tests/test_feasibility_evolution.py": "3b6f297983cac9f590b833a4e1a00e0124d7d37142e8fcda68f507244b91437f",
+    "tests/test_feasibility_harness.py": "536be6d60cfe02385c5540dc1e2b74a0d25cbd6e6b7069682f9a8e22589a410f",
+    "tests/test_governance_adr_eligibility.py": "fab8745bd45fd203f40032683844a085bd25bb310ad3362925ca345301021280",
+    "tests/test_governance_approval_paths.py": "8ec9ce54f386dd438b1f4befdea84aeccd950d0ebf0b5a922343cb708c742880",
+    "tests/test_knowledge_governance.py": "10a3e0f499b9c320fe2eb43f872db327e87f39fca22ef97fc0cdc486865ccf5a",
+    "tests/test_multilingual.py": "183f7da34345114d1d5dc79bd15249458712fb0897f07ef773448342903b2d66",
+    "tests/test_scalability.py": "1f5ea5fb68164b2b16cf6ba26a44785d97882fd7b007e155627060fd3467981a",
+    "tests/test_security_recovery.py": "3bfa4a48b73d2fa8cd95aa2a39b1c4bc3f60bbe9221482412ebae4178fb51f1b",
+    "tests/test_source_integrity.py": "6cc5536aa0525fb89c071e5f30ae9422399a62e51dcc5ade1840a6f5968017cd",
+    "tests/test_workflow_reliability.py": "6343a662265773ef957ede18660aac32168ba1049262a163e9975c3f65bdac43",
+    "tests/workflow_benchmark.py": "d118b5c50500fd164fe740d6ea03634eaeab5d71daf8fa73cb42cdde41732293",
+    "tests/workflow_support.py": "e8d968fdac6f444aceef0749f208e4d9e7ee0e04210910449f605844134083d1"
+  },
+  "matches_previous_234_test_worktree": true,
+  "unit_tests": {
+    "run": 45,
+    "passed": 45,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "results": [
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_actual_ingest_can_retain_independent_source_and_noncurrent_adr_context",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_adr_lifecycle_change_after_prior_query_is_not_cached_as_current",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_adr_review_deadline_crossing_recomputes_dependencies_without_index_rebuild",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_cyclic_adr_dependencies_never_authorize_current_truth_or_crash",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_derived_adr_chain_propagates_ineligible_support_to_wiki_claim",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_draft_adr_approval_label_does_not_establish_authority",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_future_effective_adr_is_context_not_parent_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_historical_decision_kind_is_preserved_in_explicit_history",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_independent_intact_source_for_same_claim_survives_ineligible_adr_context",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_legacy_approved_label_is_not_canonical_current_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_missing_adr_fails_closed_and_lint_reports_error",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_ordinary_wiki_link_is_not_an_additional_source_of_authority",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_remediation_depth_guard_fails_closed_consistently_in_query_and_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_remediation_ineligible_adr_citation_is_explicit_context_alongside_independent_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_remediation_malformed_decision_metadata_is_linted_without_erasing_independent_source",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_review_expired_adr_is_context_not_parent_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_source_for_different_claim_does_not_mask_ineligible_adr_only_claim",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_superseded_adr_supports_history_not_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_temporally_historical_approved_adr_is_not_parent_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_valid_derived_adr_chain_retrieves_traceable_current_evidence",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_adr_eligibility.AdrEligibilityTests.test_valid_effective_adr_authorizes_same_scope_current_claim",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_absent_independent_evidence_is_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_approval_cannot_be_replayed_for_a_later_resolution_cycle",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_bad_approval_rejects_entire_bundle_before_any_publication",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_controlled_revision_keeps_old_approvals_without_rebinding_them",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_duplicate_approval_fields_are_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_expired_or_revoked_before_event_is_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_illegal_history_rejects_helper_writer_reader_query_and_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_invalid_required_approval_remains_invalid_in_prior_history",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_later_expiry_preserves_history_but_blocks_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_later_revocation_preserves_history_but_blocks_current_truth",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_legacy_history_still_validates_its_required_approval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_malformed_or_wrong_event_binding_is_rejected_by_all_consumers",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_helper_and_writer_both_reject_atomically",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_history_is_detected_by_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_history_is_rejected_by_query",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_missing_approval_history_is_rejected_by_reader",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_new_wiki_creation_cannot_import_non_draft_lifecycle_history",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_revoked_pending_and_unauthorized_records_are_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_unauthorized_actor_rejects_helper_writer_reader_query_and_lint",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_unresolved_conflict_cannot_be_cleared_even_with_valid_approval",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_valid_helper_application_matches_direct_transaction",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_valid_resolution_is_consistent_across_public_boundaries",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_wrong_subject_hash_or_date_are_rejected_everywhere",
+        "status": "PASS"
+      },
+      {
+        "test": "test_governance_approval_paths.GovernanceApprovalPathTests.test_wrong_transition_or_history_prefix_is_rejected_everywhere",
+        "status": "PASS"
+      }
+    ],
+    "observed_output": "----------------------------------------------------------------------\nRan 45 tests in 124.271s\n\nOK\n"
+  },
+  "original_public_paths": {
+    "H-GOV-01": {
+      "cases": [
+        {
+          "case": "future",
+          "status": "FOUND",
+          "current": [
+            false
+          ],
+          "citations": [
+            [
+              {
+                "decision_path": "decisions/future.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project",
+                "eligible_for_current_truth": false,
+                "context_only": true,
+                "knowledge_status": "verified",
+                "temporal": "current",
+                "freshness": [
+                  "NOT_YET_EFFECTIVE"
+                ],
+                "eligibility_reasons": [
+                  "NOT_YET_EFFECTIVE"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "case": "overdue",
+          "status": "FOUND",
+          "current": [
+            false
+          ],
+          "citations": [
+            [
+              {
+                "decision_path": "decisions/overdue.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project",
+                "eligible_for_current_truth": false,
+                "context_only": true,
+                "knowledge_status": "verified",
+                "temporal": "current",
+                "freshness": [
+                  "REVIEW_DUE"
+                ],
+                "eligibility_reasons": [
+                  "REVIEW_DUE"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "case": "historical",
+          "status": "FOUND",
+          "current": [
+            false
+          ],
+          "citations": [
+            [
+              {
+                "decision_path": "decisions/historical.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project",
+                "eligible_for_current_truth": false,
+                "context_only": true,
+                "knowledge_status": "verified",
+                "temporal": "historical",
+                "freshness": [],
+                "eligibility_reasons": [
+                  "NOT_CURRENT_KNOWLEDGE"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    "H-GOV-02": {
+      "outcomes": {
+        "helper": "FileNotFoundError",
+        "writer": "FileNotFoundError",
+        "no_durable_event": true,
+        "query": "INVALID_DATA",
+        "lint_errors": [
+          "ERROR GOVERNANCE_READ wiki/conflict.md: invalid governance metadata or authority."
+        ]
+      },
+      "passed": true
+    },
+    "owned_fixture_cleaned": true
+  },
+  "strict_lint": [
+    "WARNING NO_EVIDENCE wiki/concepts/knowledge-system-principles.md: page has no registered source or approved decision evidence."
+  ],
+  "full_suite_this_turn": "NOT RUN; no code changes; current hashes match prior observed 234/234 run",
+  "external_requests": 0,
+  "raw_admissions": 0,
+  "whole_system_audit": "NOT READY remains latest recorded whole-system verdict; two High findings resolved separately, not a new READY audit",
+  "real_pilot_trials": "NOT RUN",
+  "focused_checks_passed": true
+}
