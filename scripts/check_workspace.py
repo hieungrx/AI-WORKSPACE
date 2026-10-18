@@ -189,6 +189,7 @@ def check_workspace(root=ROOT, integrity=False, security=False):
         return ["ERROR LINKED_ROOT .: workspace root must not be a symlink or junction."]
 
     ids = set()
+    source_catalog = {}
     manifest = root / "sources/manifest.csv"
     try:
         manifest = local_path(root, root, "sources/manifest.csv")
@@ -213,6 +214,7 @@ def check_workspace(root=ROOT, integrity=False, security=False):
                         report("ERROR", "DUPLICATE_SOURCE", manifest, f"{prefix} repeats a source ID.")
                     else:
                         ids.add(sid)
+                    source_catalog[sid] = {"source_path": None, "integrity_status": "NOT_CHECKED"}
                     for field in ("published_date", "retrieved_date"):
                         if row[field] and not iso_date(row[field]):
                             report("ERROR", "INVALID_SOURCE_DATE", manifest, f"{prefix} has an invalid {field}.")
@@ -230,6 +232,8 @@ def check_workspace(root=ROOT, integrity=False, security=False):
                             raise ValueError("OUTSIDE_RAW")
                         if not target.is_file():
                             report("ERROR", "MISSING_RAW_SOURCE", manifest, f"{prefix} points to no local source file.")
+                        else:
+                            source_catalog[sid]["source_path"] = target.relative_to(root).as_posix()
                     except (ValueError, OSError):
                         report("ERROR", "INVALID_SOURCE_PATH", manifest, f"{prefix} must use a permitted raw path or HTTP(S) URL.")
     except (OSError, UnicodeError, csv.Error, ValueError):
@@ -300,9 +304,19 @@ def check_workspace(root=ROOT, integrity=False, security=False):
         return targets
 
     if __package__:
-        from .knowledge_governance import STATES, audit_governance
+        from .knowledge_governance import STATES, audit_governance, current_eligibility, evaluate_evidence
     else:
-        from knowledge_governance import STATES, audit_governance
+        from knowledge_governance import STATES, audit_governance, current_eligibility, evaluate_evidence
+    source_audit = None
+    if integrity:
+        if __package__:
+            from .source_integrity import audit_sources
+        else:
+            from source_integrity import audit_sources
+        source_audit = audit_sources(root)
+        source_catalog = {sid: {**record, "source_path": record["local_path"]
+                               if record["integrity_status"] == "MATCH" else None}
+                          for sid, record in source_audit["sources"].items()}
     governance = audit_governance(root)
     issues.extend(governance["issues"])
     approved = {page for page, text in documents.items()
@@ -342,8 +356,8 @@ def check_workspace(root=ROOT, integrity=False, security=False):
         modern = not governed.get("legacy", True)
         if modern and governed.get("status") in {"draft", "unverified"}:
             report("WARNING", "UNREVIEWED_KNOWLEDGE", page, "knowledge awaits authorized validation; citations are not factual verification.")
-        if (governed.get("decision_authority") == "approved" and governed.get("temporal") != "historical" and meta.get("decision_key")
-                and "NOT_YET_EFFECTIVE" not in governed.get("freshness", [])):
+        if (modern and governed.get("decision_authority") == "approved" and current_eligibility(governed)
+                and meta.get("decision_key")):
             key = (governed["scope"], meta["decision_key"])
             if key in current_decisions:
                 report("ERROR", "CURRENT_DECISION_COLLISION", page, "multiple current approved decisions share scope and decision_key; review and supersede explicitly.")
@@ -359,14 +373,24 @@ def check_workspace(root=ROOT, integrity=False, security=False):
         if tokens - listed:
             report("ERROR", "UNLISTED_SOURCE", page, "cited source IDs must also appear in Source IDs metadata.")
         decision_field = meta.get("decision references", "None")
+        if modern:
+            proof = evaluate_evidence(root, page, source_catalog, text=text, record=governed,
+                                      scope=governed["scope"], authorized_scopes=(governed["scope"],))
+            for level, code in proof["issues"]:
+                report(level, code, page, "claim evidence or decision dependency needs review; current truth is separately gated.")
+            for block in findings(text):
+                for sid in set(SOURCE_TOKEN.findall(block)) & ids:
+                    if not source_pointer(block, sid):
+                        report("ERROR", "MISSING_CITATION_POINTER", page, "each cited source needs an exact pointer.")
+            if status == "verified" and not proof["complete"]:
+                report("ERROR", "VERIFIED_WITHOUT_EVIDENCE", page, "verified requires complete per-finding evidence.")
+            elif not proof["citations"]:
+                report("WARNING", "NO_EVIDENCE", page, "page has no registered source or approved decision evidence.")
+            continue
         eligible = approved
         if not modern and meta.get("scope"):
             eligible = {target for target in approved
                         if metadata(documents[target]).get("scope") == meta["scope"]}
-        if modern:
-            eligible = {target for target in approved
-                        if (target_record := governance["pages"].get(target.relative_to(root).as_posix()))
-                        and not target_record["legacy"] and target_record["scope"] == governed["scope"]}
         decisions = adr_targets(page, decision_field)
         if decision_field != "None" and (not decisions or decisions - eligible):
             report("ERROR", "UNAPPROVED_DECISION", page, "Decision references must link directly to APPROVED ADRs.")
@@ -411,12 +435,8 @@ def check_workspace(root=ROOT, integrity=False, security=False):
     for page in sorted(wiki - reachable):
         if page.name != "index.md" and page != root / "wiki/log.md":
             report("WARNING", "ORPHAN_PAGE", page, "not reachable through checked links from wiki/index.md.")
-    if integrity:
-        if __package__:
-            from .source_integrity import audit_sources
-        else:
-            from source_integrity import audit_sources
-        for issue in audit_sources(root)["issues"]:
+    if source_audit is not None:
+        for issue in source_audit["issues"]:
             if issue not in issues:
                 issues.append(issue)
     if security:

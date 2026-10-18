@@ -68,10 +68,16 @@ class GovernanceTests(unittest.TestCase):
 
     def approval(self, relative):
         path = self.root / relative
-        ref = "experiments/" + path.stem + "-approval.md"
+        text = path.read_text(encoding="utf-8")
+        meta = checker.metadata(text)
+        events = governance.array(meta, "transitions")
+        target = "unverified" if meta["status"] == "disputed" else "verified"
+        ref = "experiments/" + relative.replace("/", ".") + f"-{len(events)}-approval.md"
         self.write(ref, "# TEST_ONLY human approval simulation\n"
                    "- Status: APPROVED\n- authority: human\n- target: " + relative
-                   + "\n- content_hash: " + governance.content_hash(path.read_text(encoding="utf-8"))
+                   + "\n- content_hash: " + governance.content_hash(text)
+                   + "\n- approval_policy: 2\n- from_state: " + meta["status"] + "\n- to_state: " + target
+                   + "\n- prior_transitions_hash: " + governance.history_hash(events)
                    + "\n- validated_at: " + DAY + '\n- evidence: ["reports/proof.md"]\n')
         return ref
 

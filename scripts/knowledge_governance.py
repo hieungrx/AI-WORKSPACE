@@ -30,6 +30,7 @@ MANAGED = {"kind", "created_at", "updated_at", "effective_at", "reviewed_at",
            "cross_project_refs", "access"}
 DYNAMIC = {"status", "updated_at", "reviewed_at", "superseded_by", "transitions"}
 FIELD = re.compile(r"^\s*-\s+(?:\*\*)?([A-Za-z][A-Za-z_ ]*):(?:\*\*)?\s*(.*?)\s*$")
+MAX_DECISION_DEPTH = 32  # Fail-closed resource bound, not a measured capacity/SLA.
 
 
 class GovernanceError(ValueError):
@@ -77,7 +78,18 @@ def document_path(root, relative):
     return path
 
 
-def approval(root, relative, page, text, at):
+def history_hash(events):
+    """Bind an approval to one exact append position, independent of JSON spacing."""
+    data = json.dumps(events, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+    return "sha256:" + hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+
+def approval_required(event):
+    return event["to"] == "verified" or (event["from"], event["to"]) == ("disputed", "unverified")
+
+
+def approval(root, relative, page, text, at, *, event=None, prefix=(), write=False,
+             bind_current=True, today=None):
     """Validate a human-authored authorization record, never create one."""
     if not isinstance(relative, str) or not relative:
         raise GovernanceError("HUMAN_APPROVAL_REQUIRED")
@@ -89,10 +101,40 @@ def approval(root, relative, page, text, at):
     if len({key for key, _ in pairs}) != len(pairs):
         raise GovernanceError("DUPLICATE_APPROVAL_METADATA")
     record = metadata(approval_text)
-    if (record.get("authority") != "human" or record.get("status") != "APPROVED"
+    now = (today or date.today()).isoformat()
+    expires, revoked = record.get("expires_at"), record.get("revoked_at")
+    if any(value and not iso_date(value) for value in (expires, revoked)):
+        raise GovernanceError("INVALID_APPROVAL_DATE")
+    if (record.get("authority") != "human" or record.get("status") not in {"APPROVED", "REVOKED"}
             or record.get("target") != page.relative_to(root).as_posix()
-            or record.get("content_hash") != content_hash(text)
-            or record.get("validated_at") != at):
+            or not re.fullmatch(r"sha256:[0-9a-f]{64}", record.get("content_hash", ""))
+            or record.get("validated_at") != at or not iso_date(at)):
+        raise GovernanceError("INVALID_HUMAN_APPROVAL")
+    if record["status"] == "REVOKED" and (not revoked or revoked <= at) or revoked and revoked <= at:
+        raise GovernanceError("APPROVAL_REVOKED")
+    if expires and expires < at:
+        raise GovernanceError("APPROVAL_EXPIRED")
+    flags = []
+    if record["status"] == "REVOKED" or revoked and revoked <= now:
+        flags.append("APPROVAL_REVOKED")
+    if expires and expires < now:
+        flags.append("APPROVAL_EXPIRED")
+    if write and flags:
+        raise GovernanceError(flags[0])
+    if event is not None:
+        policy = event.get("approval_policy", 1)
+        if type(policy) is not int or policy not in {1, 2} or record.get("approval_policy", "1") != str(policy):
+            raise GovernanceError("APPROVAL_POLICY_MISMATCH")
+        if write and policy != 2:
+            raise GovernanceError("APPROVAL_POLICY_REQUIRED")
+        if policy == 2:
+            if (record.get("from_state") != event["from"] or record.get("to_state") != event["to"]
+                    or record.get("prior_transitions_hash") != history_hash(prefix)
+                    or event.get("approval_content_hash") != record["content_hash"]):
+                raise GovernanceError("APPROVAL_EVENT_MISMATCH")
+        elif any(key in record for key in ("from_state", "to_state", "prior_transitions_hash")):
+            raise GovernanceError("APPROVAL_POLICY_REQUIRED")
+    if bind_current and record["content_hash"] != content_hash(text):
         raise GovernanceError("INVALID_HUMAN_APPROVAL")
     evidence = array(record, "evidence")
     if not evidence:
@@ -105,7 +147,172 @@ def approval(root, relative, page, text, at):
                 or not any(target.is_relative_to(root / folder)
                            for folder in ("experiments", "reports", "decisions"))):
             raise GovernanceError("INVALID_VALIDATION_EVIDENCE")
-    return relative
+    return {"reference": relative, "policy": record.get("approval_policy", "1"),
+            "content_hash": record["content_hash"], "current_flags": flags}
+
+
+def validate_event_approval(root, page, text, event, prefix, *, write=False,
+                            bind_current=False, today=None):
+    """One authorization check for helper, writer preflight and historical replay."""
+    if not approval_required(event):
+        if any(key in event for key in ("approval_policy", "approval_content_hash")):
+            raise GovernanceError("UNEXPECTED_EVENT_APPROVAL")
+        return None
+    result = approval(root, event["approval"], page, text, event["at"], event=event,
+                      prefix=prefix, write=write, bind_current=bind_current, today=today)
+    if (write and event["from"] == "disputed" and event["to"] == "unverified"
+            and any(c["resolution"] is None for c in array(metadata(text), "conflicts"))):
+        raise GovernanceError("UNRESOLVED_CONFLICT")
+    return result
+
+
+def current_eligibility(record, scope=None):
+    """Canonical own-record gate; FOUND is deliberately independent of this."""
+    return (not record["legacy"] and record["status"] == "verified"
+            and record["temporal"] != "historical" and not record["freshness"]
+            and (scope is None or record["scope"] == scope)
+            and record["kind"] not in {"proposed_decision", "historical_decision"})
+
+
+def evaluate_evidence(root, page, catalog, *, text=None, record=None, scope=None,
+                      authorized_scopes=(), today=None, _visiting=()):
+    """Per-finding proof and transitive ADR eligibility, shared by Query and Lint.
+
+    Raw citations in a finding must all remain intact. An independently supported
+    finding may retain an ineligible ADR as context; it cannot support another
+    finding. Ordinary wiki links never create a new source of authority.
+    """
+    root, page = Path(root).absolute(), Path(page).absolute()
+    relative = page.relative_to(root).as_posix()
+    result = {"citations": [], "complete": True, "current": False, "reasons": [], "issues": []}
+    def problem(level, code):
+        result["issues"].append((level, code))
+        result["reasons"].append(code)
+    if relative in _visiting:
+        problem("ERROR", "DECISION_EVIDENCE_CYCLE")
+        result["complete"] = False
+        return result
+    if len(_visiting) >= MAX_DECISION_DEPTH:
+        problem("ERROR", "DECISION_EVIDENCE_LIMIT")
+        result["complete"] = False
+        return result
+    text = page.read_text(encoding="utf-8-sig") if text is None else text
+    meta = metadata(text)
+    record = read_page(root, page, text, today=today, _registered_ids=frozenset(catalog)) if record is None else record
+    target_scope = record["scope"] if scope is None else scope
+    own_current = current_eligibility(record, target_scope)
+    blocks = list(findings(prose(text)))
+    all_current = bool(blocks)
+    listed = set(SOURCE_TOKEN.findall(meta.get("source ids", "")))
+    visiting = _visiting + (relative,)
+
+    def decision(target):
+        if not target.is_relative_to(root / "decisions") or target.name == "index.md":
+            return None
+        try:
+            child_text = target.read_text(encoding="utf-8-sig")
+            child = read_page(root, target, child_text, today=today, _registered_ids=frozenset(catalog))
+            if (child["legacy"] or child["scope"] != record["scope"]
+                    or child["decision_authority"] not in {"approved", "historical"}
+                    or child["access"] == "restricted" and child["scope"] not in authorized_scopes):
+                problem("ERROR", "INVALID_DECISION_AUTHORITY")
+                return None
+            if __package__:
+                from .workspace_security import require_safe_data
+            else:
+                from workspace_security import require_safe_data
+            require_safe_data(child_text)
+            evaluated = evaluate_evidence(root, target, catalog, text=child_text, record=child,
+                                          scope=target_scope, authorized_scopes=authorized_scopes,
+                                          today=today, _visiting=visiting)
+            for level, code in evaluated["issues"]:
+                problem(level, code)
+            eligible = evaluated["current"] and child["decision_authority"] == "approved"
+            if not eligible:
+                problem("WARNING", "INELIGIBLE_DECISION_DEPENDENCY")
+            citation = {"decision_path": target.relative_to(root).as_posix(),
+                        "source_pointer": "documented human approval", "evidence_type": "project_decision",
+                        "scope": child["scope"], "eligible_for_current_truth": eligible,
+                        "context_only": not eligible,
+                        "knowledge_status": child["status"], "temporal": child["temporal"],
+                        "freshness": child["freshness"], "eligibility_reasons": evaluated["reasons"]}
+            return evaluated["complete"], eligible, citation
+        except (ValueError, OSError, UnicodeError, csv.Error):
+            problem("ERROR", "INVALID_DECISION_REFERENCE")
+            return None
+
+    for block in blocks:
+        required = set(SOURCE_TOKEN.findall(block))
+        raw, raw_current = [], True
+        for sid in sorted(required):
+            source = catalog.get(sid, {})
+            path = source.get("source_path") if "source_path" in source else (
+                source.get("local_path") if source.get("integrity_status") == "MATCH" else None)
+            pointer = source_pointer(block, sid)
+            if sid not in listed or not path or not pointer:
+                raw_current = False
+                continue
+            raw.append({"source_id": sid, **source, "source_path": path, "source_pointer": pointer})
+            raw_current &= source.get("integrity_status") == "MATCH"
+        raw_complete = bool(required) and len(raw) == len(required)
+        dependencies = []
+        knowledge_link = False
+        for match in LINK.finditer(block):
+            try:
+                target = link_path(root, page, match[1])
+                if target is None or not any(target.is_relative_to(root / folder) for folder in ("wiki", "decisions")):
+                    continue
+                knowledge_link = True
+                evaluated = decision(target)
+                if evaluated:
+                    dependencies.append(evaluated)
+            except (ValueError, OSError):
+                knowledge_link = True
+                problem("ERROR", "INVALID_DECISION_REFERENCE")
+        self_choice = (not required and not knowledge_link and not record["legacy"]
+                       and page.is_relative_to(root / "decisions")
+                       and record["decision_authority"] in {"approved", "historical"})
+        if required:
+            # A cited missing/tampered raw source is never silently replaced by an ADR.
+            supported, eligible = raw_complete, raw_complete and raw_current
+        else:
+            supported = self_choice or any(dep[0] for dep in dependencies)
+            eligible = self_choice or any(dep[1] for dep in dependencies)
+        result["complete"] &= supported
+        all_current &= eligible
+        if raw_complete:
+            result["citations"].extend(raw)
+        result["citations"].extend(dep[2] for dep in dependencies if dep[0])
+        if self_choice:
+            result["citations"].append({"decision_path": relative, "source_pointer": "documented human approval",
+                                        "evidence_type": "project_decision", "scope": record["scope"],
+                                        "eligible_for_current_truth": own_current})
+        if not supported:
+            problem("ERROR", "MISSING_CLAIM_EVIDENCE")
+    # Metadata references are provenance/context, not blanket proof for unlinked findings.
+    decision_field = meta.get("decision references", "None")
+    if decision_field != "None":
+        references = list(LINK.finditer(decision_field))
+        if not references:
+            problem("ERROR", "UNAPPROVED_DECISION")
+        for match in references:
+            try:
+                target = link_path(root, page, match[1])
+                if (target is None or not target.is_relative_to(root / "decisions")
+                        or target.name == "index.md" or decision(target) is None):
+                    problem("ERROR", "UNAPPROVED_DECISION")
+            except (ValueError, OSError):
+                problem("ERROR", "INVALID_DECISION_REFERENCE")
+    if not blocks:
+        result["complete"] = False
+    if not own_current:
+        result["reasons"].extend(record["freshness"] or ["NOT_CURRENT_KNOWLEDGE"])
+    result["current"] = bool(own_current and result["complete"] and all_current)
+    result["issues"] = sorted(set(result["issues"]))
+    result["reasons"] = sorted(set(result["reasons"]))
+    unique = {json.dumps(citation, sort_keys=True): citation for citation in result["citations"]}
+    result["citations"] = list(unique.values())
+    return result
 
 
 def check_transition(before, after, actor):
@@ -236,8 +443,11 @@ def read_page(root, page, text=None, today=None, *, _registered_ids=None):
             other = metadata(target.read_text(encoding="utf-8-sig")) if target else {}
     events = array(meta, "transitions")
     previous, last_date, verified_at = "draft", dates["created_at"], None
-    for event in events:
-        if (not isinstance(event, dict) or set(event) != {"from", "to", "actor", "at", "reason", "approval"}
+    approvals, history_warnings = {}, []
+    for number, event in enumerate(events):
+        base_keys = {"from", "to", "actor", "at", "reason", "approval"}
+        if (not isinstance(event, dict) or not base_keys <= event.keys()
+                or set(event) - base_keys not in (set(), {"approval_policy"}, {"approval_policy", "approval_content_hash"})
                 or event["from"] != previous or not isinstance(event["reason"], str) or not event["reason"].strip()
                 or not isinstance(event["at"], str) or not iso_date(event["at"])
                 or not last_date <= event["at"] <= dates["updated_at"]):
@@ -249,16 +459,21 @@ def read_page(root, page, text=None, today=None, *, _registered_ids=None):
             if not isinstance(event["approval"], str) or not event["approval"]:
                 raise GovernanceError("HUMAN_APPROVAL_REQUIRED")
             verified_at = event["at"]
-        if previous == "disputed" and event["to"] == "unverified" and not event["approval"]:
-            raise GovernanceError("CONFLICT_RESOLUTION_APPROVAL_REQUIRED")
+        if approval_required(event):
+            approvals[number] = validate_event_approval(root, page, text, event, events[:number], today=today)
+            if approvals[number]["policy"] == "1" and approvals[number]["content_hash"] != content_hash(text):
+                history_warnings.append("LEGACY_APPROVAL_SNAPSHOT_UNAVAILABLE")
         previous, last_date = event["to"], event["at"]
     if previous != state:
         raise GovernanceError("UNTRACED_STATE")
+    if (events and (events[-1]["from"], events[-1]["to"]) == ("disputed", "unverified")
+            and unresolved):
+        raise GovernanceError("UNRESOLVED_CONFLICT")
     if state == "verified" or state in {"superseded", "archived"} and verified_at:
         if dates["reviewed_at"] != verified_at:
             raise GovernanceError("REVIEW_DATE_REQUIRED")
-        last_verified = next(event for event in reversed(events) if event["to"] == "verified")
-        approval(root, last_verified["approval"], page, text, verified_at)
+        index = max(i for i, event in enumerate(events) if event["to"] == "verified")
+        validate_event_approval(root, page, text, events[index], events[:index], bind_current=True, today=today)
     freshness = []
     now = (today or date.today()).isoformat()
     if unresolved:
@@ -269,6 +484,11 @@ def read_page(root, page, text=None, today=None, *, _registered_ids=None):
         freshness.append("REVIEW_DATE_UNSET")
     if dates["effective_at"] and dates["effective_at"] > now:
         freshness.append("NOT_YET_EFFECTIVE")
+    # Historical approvals are evaluated at their event date; current authority
+    # additionally loses eligibility after explicit revocation/expiration.
+    if state == "verified" and verified_at:
+        index = max(i for i, event in enumerate(events) if event["to"] == "verified")
+        freshness.extend(approvals[index]["current_flags"])
     authority = None
     if kind.endswith("decision"):
         authority = ("historical" if verified_at and (state in {"superseded", "archived"}
@@ -277,12 +497,19 @@ def read_page(root, page, text=None, today=None, *, _registered_ids=None):
                      else "proposed" if kind == "proposed_decision" else "unapproved")
     return dict(legacy=False, status=state, kind=kind, scope=scope, access=access,
                 cross_project_refs=refs, conflicts=conflicts, superseded_by=successor,
-                temporal=meta["temporal"], freshness=freshness, decision_authority=authority, **dates)
+                temporal=meta["temporal"], freshness=freshness, decision_authority=authority,
+                history_warnings=sorted(set(history_warnings)), **dates)
 
 
 def validate_wiki_update(root, page, before, after):
     """Normal synthesis may edit drafts; lifecycle/history and evidence need explicit review."""
-    if before is None or before == after:
+    if before is None:
+        record = read_page(root, page, after.decode("utf-8-sig"))
+        if not record["legacy"] and (record["status"] != "draft"
+                                    or array(metadata(after.decode("utf-8-sig")), "transitions")):
+            raise GovernanceError("LIFECYCLE_CREATION_REQUIRES_DRAFT")
+        return
+    if before == after:
         return
     old_text, new_text = before.decode("utf-8-sig"), after.decode("utf-8-sig")
     old, new = read_page(root, page, old_text), read_page(root, page, new_text)
@@ -316,6 +543,9 @@ def validate_lifecycle_update(root, page, before, after):
     if (old["legacy"] or len(new_events) != len(old_events) + 1 or new_events[:-1] != old_events
             or new_events[-1].get("from") != old["status"] or content_hash(old_text) != content_hash(new_text)):
         raise GovernanceError("INVALID_LIFECYCLE_UPDATE")
+    read_page(root, page, new_text)
+    validate_event_approval(root, page, new_text, new_events[-1], old_events,
+                            write=True, bind_current=True)
 
 
 def replace_field(text, name, value):
@@ -344,13 +574,13 @@ def transition(root, relative, target, *, actor, at, reason, authorized=False,
     check_transition(current["status"], target, actor)
     if not iso_date(at) or not reason.strip():
         raise GovernanceError("TRANSITION_REASON_DATE_REQUIRED")
-    if target == "verified" or current["status"] == "disputed" and target == "unverified":
-        approval(root, approval_ref, page, text, at)
-        if current["status"] == "disputed" and any(c["resolution"] is None for c in current["conflicts"]):
-            raise GovernanceError("UNRESOLVED_CONFLICT")
     events = array(metadata(text), "transitions")
-    events.append({"from": current["status"], "to": target, "actor": actor, "at": at,
-                   "reason": reason, "approval": approval_ref})
+    event = {"from": current["status"], "to": target, "actor": actor, "at": at,
+             "reason": reason, "approval": approval_ref}
+    if approval_required(event):
+        event.update(approval_policy=2, approval_content_hash=content_hash(text))
+        validate_event_approval(root, page, text, event, events, write=True, bind_current=True)
+    events.append(event)
     changes = {"status": target, "updated_at": at,
                "transitions": json.dumps(events, ensure_ascii=False)}
     if target == "verified":
@@ -406,6 +636,8 @@ def audit_governance(root, today=None):
                 if not record["legacy"]:
                     for flag in record["freshness"]:
                         issues.append(f"WARNING {flag} {relative}: review required; no automatic state change.")
+                    for flag in record.get("history_warnings", []):
+                        issues.append(f"WARNING {flag} {relative}: preserve legacy history; review its unavailable snapshot.")
             except (ValueError, OSError, UnicodeError, csv.Error) as error:
                 code = str(error) if isinstance(error, GovernanceError) else "GOVERNANCE_READ"
                 issues.append(f"ERROR {code} {relative}: invalid governance metadata or authority.")

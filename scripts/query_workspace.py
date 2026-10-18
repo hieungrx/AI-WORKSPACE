@@ -16,13 +16,13 @@ else:
     from safe_operations import ensure_idle, read_version
 
 if __package__:
-    from .knowledge_governance import read_page, document_path, GovernanceError
+    from .knowledge_governance import read_page, document_path, GovernanceError, current_eligibility, evaluate_evidence
     from .check_workspace import (
         ROOT, MANIFEST_FIELDS, REQUIRED_FIELDS, SOURCE_TOKEN, findings, iso_date,
         linked_path, local_path, metadata, multilingual_metadata, prose, source_id, source_pointer,
     )
 else:
-    from knowledge_governance import read_page, document_path, GovernanceError
+    from knowledge_governance import read_page, document_path, GovernanceError, current_eligibility, evaluate_evidence
     from check_workspace import (
         ROOT, MANIFEST_FIELDS, REQUIRED_FIELDS, SOURCE_TOKEN, findings, iso_date,
         linked_path, local_path, metadata, multilingual_metadata, prose, source_id, source_pointer,
@@ -150,8 +150,8 @@ def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scope
             if page_id in page_ids:
                 raise GovernanceError("DUPLICATE_PAGE_ID")
             page_ids.add(page_id)
-        if (governed["decision_authority"] == "approved" and governed["temporal"] != "historical" and meta.get("decision_key")
-                and "NOT_YET_EFFECTIVE" not in governed["freshness"]):
+        if (governed["decision_authority"] == "approved" and current_eligibility(governed, scope)
+                and meta.get("decision_key")):
             key = (governed["scope"], meta["decision_key"])
             if key in decisions:
                 raise GovernanceError("CURRENT_DECISION_COLLISION")
@@ -168,70 +168,6 @@ def pages(root, scope, *, cross_refs=(), include_history=False, authorized_scope
             "path": child.relative_to(root).as_posix(), "title": title[1] if title else child.stem,
             "meta": meta, "text": text, "governance": governed, **fields,
         }
-
-
-def citations(page, catalog):
-    listed = set(SOURCE_TOKEN.findall(page["meta"].get("source ids", "")))
-    result = []
-    seen = set()
-    for block in findings(prose(page["text"])):
-        required = set(SOURCE_TOKEN.findall(block))
-        if not required or not required <= listed:
-            return []
-        for sid in sorted(required):
-            pointer = source_pointer(block, sid)
-            record = catalog.get(sid)
-            if not record or not record["source_path"] or not pointer:
-                return []
-            if pointer:
-                key = (sid, pointer)
-                if key not in seen:
-                    seen.add(key)
-                    result.append({
-                        "source_id": sid, **record,
-                        "source_pointer": pointer,
-                    })
-    return result
-
-
-def decision_citations(root, page, catalog, include_history, authorized_scopes):
-    """First-party decisions are evidence of a choice, never external facts."""
-    record = page["governance"]
-    if record["legacy"]:
-        return []
-    if any(SOURCE_TOKEN.search(block) for block in findings(prose(page["text"]))):
-        return []  # Never use decision approval to bypass an unavailable cited source.
-    if record["decision_authority"] == "approved" or (
-            include_history and record["decision_authority"] == "historical"
-            and record["reviewed_at"]):
-        return [{"decision_path": page["path"], "source_pointer": "documented human approval",
-                 "evidence_type": "project_decision", "scope": record["scope"]}]
-    result = []
-    for block in findings(prose(page["text"])):
-        if SOURCE_TOKEN.search(block):
-            return []
-        found = []
-        for match in re.finditer(r'\[[^\]\n]+\]\(([^)\s]+)\)', block):
-            target = local_path(root, (root / page["path"]).parent, match[1])
-            if not target.is_relative_to(root / "decisions") or target.name == "index.md":
-                continue
-            other_text = target.read_text(encoding="utf-8-sig")
-            other = read_page(root, target, other_text, _registered_ids=frozenset(catalog))
-            if (other["legacy"] or other["scope"] != record["scope"]
-                    or other["decision_authority"] != "approved"
-                    or other["access"] == "restricted" and other["scope"] not in authorized_scopes):
-                return []
-            if any(SOURCE_TOKEN.search(block) for block in findings(prose(other_text))):
-                node = {"text": other_text, "meta": metadata(other_text)}
-                if not citations(node, catalog):
-                    return []
-            found.append({"decision_path": target.relative_to(root).as_posix(),
-                          "source_pointer": "documented human approval", "evidence_type": "project_decision",
-                          "scope": other["scope"]})
-        if not found:
-            return []
-        result.extend(found)
-    return result
 
 
 def search(root, query, scope, *, cross_refs=(), include_history=False, authorized_scopes=()):
@@ -295,13 +231,10 @@ def search(root, query, scope, *, cross_refs=(), include_history=False, authoriz
             if any(item[1] in {"title_vi", "aliases_vi"} for item in matched):
                 additions = page["keywords"] or ([page["title"]] if page["language"] == "en" else [])
             governed = page["governance"]
-            evidence = citations(page, catalog) or decision_citations(root, page, catalog, include_history, authorized_scopes)
-            current = (not governed["legacy"] and governed["status"] == "verified"
-                       and governed["temporal"] != "historical" and not governed["freshness"]
-                       and governed["scope"] == scope
-                       and governed["kind"] not in {"proposed_decision", "historical_decision"}
-                       and bool(evidence) and all(c.get("integrity_status") == "MATCH"
-                                                 or c.get("evidence_type") == "project_decision" for c in evidence))
+            proof = evaluate_evidence(root, root / page["path"], catalog, text=page["text"],
+                                      record=governed, scope=scope, authorized_scopes=authorized_scopes)
+            evidence = proof["citations"] if proof["complete"] else []
+            current = proof["current"]
             candidates.append({
                 "content_trust": TRUST,
                 "path": page["path"], "title": page["title"],
@@ -314,6 +247,7 @@ def search(root, query, scope, *, cross_refs=(), include_history=False, authoriz
                 "decision_authority": governed["decision_authority"],
                 "freshness": governed["freshness"], "conflicts": governed["conflicts"],
                 "superseded_by": governed["superseded_by"], "usable_as_current_truth": current,
+                "eligibility_reasons": proof["reasons"], "evidence_issues": proof["issues"],
                 "cross_project_context": governed["scope"] != scope,
                 "score": score, "matched_fields": sorted({item[1] for item in matched}),
                 "matched_terms": list(dict.fromkeys(item[2] for item in matched)),

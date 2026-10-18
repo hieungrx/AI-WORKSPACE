@@ -334,9 +334,9 @@ class SecurityRecoveryTests(unittest.TestCase):
     def test_query_rejects_a_generation_changed_during_retrieval(self):
         changes, expected = self.plan()
         ingest.ingest_registered(self.root, SID, changes, expected, scope="security-demo", authorized=True, apply=True)
-        original = query.citations
+        original = query.evaluate_evidence
         changed = False
-        def concurrent_writer(page, catalog):
+        def concurrent_writer(*args, **kwargs):
             nonlocal changed
             if not changed:
                 changed = True
@@ -344,8 +344,8 @@ class SecurityRecoveryTests(unittest.TestCase):
                 before = (self.root / relative).read_bytes()
                 operations.transact(self.root, {relative: before + b"\nTEST_ONLY concurrent edit\n"},
                                     {relative: operations.digest(before)}, authorized=True)
-            return original(page, catalog)
-        with patch.object(query, "citations", concurrent_writer):
+            return original(*args, **kwargs)
+        with patch.object(query, "evaluate_evidence", concurrent_writer):
             result = query.search(self.root, "Safe synthesis", "security-demo")
         self.assertEqual(result["status"], "RECOVERY_REQUIRED")
         self.assertEqual(result["matches"], [])

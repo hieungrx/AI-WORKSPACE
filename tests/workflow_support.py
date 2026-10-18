@@ -78,10 +78,14 @@ class Workspace:
     def verify(self, relative):
         self.move(relative, "unverified")
         target = self.root / relative
-        approval = "experiments/" + target.stem + "-approval.md"
+        text = target.read_text(encoding="utf-8")
+        events = governance.array(lint.metadata(text), "transitions")
+        approval = "experiments/" + relative.replace("/", ".") + f"-{len(events)}-approval.md"
         self.write(approval, "# TEST_ONLY human approval simulation\n- Status: APPROVED\n- authority: human\n"
                    "- target: " + relative + "\n- content_hash: "
-                   + governance.content_hash(target.read_text(encoding="utf-8"))
+                   + governance.content_hash(text)
+                   + "\n- approval_policy: 2\n- from_state: unverified\n- to_state: verified\n- prior_transitions_hash: "
+                   + governance.history_hash(events)
                    + "\n- validated_at: " + DAY + '\n- evidence: ["reports/validation.md"]\n')
         self.move(relative, "verified", actor="human", approval_ref=approval)
 
