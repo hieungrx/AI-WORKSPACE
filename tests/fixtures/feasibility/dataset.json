@@ -1,0 +1,3581 @@
+{
+  "dataset_id": "TEST_ONLY-feasibility-v1.1-20261018",
+  "synthetic_only": true,
+  "gold_origin": "AI-authored synthetic specification; NOT human-confirmed real-world gold. Answers and citations are declared from literal invented raw-source Evidence sections before running any retrieval adapter.",
+  "sources": [
+    {
+      "source_id": "SRC-20261018-701",
+      "title": "Request deduplication",
+      "scope": "global",
+      "body": "# Request deduplication\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nIdempotency-Key groups repeated create requests into one synthetic widget.\n",
+      "keywords": [
+        "Idempotency-Key"
+      ],
+      "aliases_vi": [
+        "khóa chống gửi lặp"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-702",
+      "title": "Retry delay schedule",
+      "scope": "global",
+      "body": "# Retry delay schedule\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic retry schedule uses exponential backoff with an initial delay of 80 ticks.\n",
+      "keywords": [
+        "exponential backoff"
+      ],
+      "aliases_vi": [
+        "giãn cách thử lại"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-703",
+      "title": "Retry jitter",
+      "scope": "global",
+      "body": "# Retry jitter\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic retry delay uses full jitter between zero and the scheduled delay.\n",
+      "keywords": [
+        "full jitter"
+      ],
+      "aliases_vi": [
+        "nhiễu thời gian thử lại"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-704",
+      "title": "Widget read route",
+      "scope": "global",
+      "body": "# Widget read route\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional read endpoint is /v1/widgets/{widget_id}.\n",
+      "keywords": [
+        "/v1/widgets/{widget_id}"
+      ],
+      "aliases_vi": [
+        "đường dẫn đọc widget"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-705",
+      "title": "Cache configuration file",
+      "scope": "global",
+      "body": "# Cache configuration file\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional cache settings are stored in cache_policy.py.\n",
+      "keywords": [
+        "cache_policy.py"
+      ],
+      "aliases_vi": [
+        "tệp cấu hình bộ nhớ đệm"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-706",
+      "title": "Reservation row lock",
+      "scope": "global",
+      "body": "# Reservation row lock\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic reservation transaction uses SELECT ... FOR UPDATE to lock one row.\n",
+      "keywords": [
+        "SELECT ... FOR UPDATE"
+      ],
+      "aliases_vi": [
+        "khóa hàng dữ liệu"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-707",
+      "title": "Independent reservation observation",
+      "scope": "global",
+      "body": "# Independent reservation observation\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nA second synthetic observation also records SELECT ... FOR UPDATE for one-row reservation locking.\n",
+      "keywords": [
+        "SELECT ... FOR UPDATE"
+      ],
+      "aliases_vi": [
+        "quan sát khóa hàng"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-708",
+      "title": "Conditional update contract",
+      "scope": "global",
+      "body": "# Conditional update contract\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional update compares ETag with If-Match and rejects an outdated representation.\n",
+      "keywords": [
+        "ETag If-Match"
+      ],
+      "aliases_vi": [
+        "kiểm soát cập nhật đồng thời"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-709",
+      "title": "Cursor pagination contract",
+      "scope": "global",
+      "body": "# Cursor pagination contract\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic list response returns next_cursor; the next request uses after_cursor.\n",
+      "keywords": [
+        "cursor pagination"
+      ],
+      "aliases_vi": [
+        "phân trang bằng con trỏ"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-710",
+      "title": "Cache lifetime contract",
+      "scope": "global",
+      "body": "# Cache lifetime contract\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional shared cache uses cache_ttl_ticks=240; the unit is ticks, not milliseconds.\n",
+      "keywords": [
+        "cache_ttl_ticks"
+      ],
+      "aliases_vi": [
+        "thời gian sống bộ nhớ đệm"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-711",
+      "title": "Circuit opening rule",
+      "scope": "global",
+      "body": "# Circuit opening rule\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic circuit breaker opens after 6 consecutive failures.\n",
+      "keywords": [
+        "circuit breaker"
+      ],
+      "aliases_vi": [
+        "ngắt mạch yêu cầu"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-712",
+      "title": "Queue acknowledgement",
+      "scope": "global",
+      "body": "# Queue acknowledgement\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional worker sends ack only after the output record is durable.\n",
+      "keywords": [
+        "queue acknowledgement"
+      ],
+      "aliases_vi": [
+        "xác nhận xử lý hàng đợi"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-713",
+      "title": "Append-only journal",
+      "scope": "global",
+      "body": "# Append-only journal\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic append-only journal retains each earlier entry when a new entry is added.\n",
+      "keywords": [
+        "append-only journal"
+      ],
+      "aliases_vi": [
+        "nhật ký chỉ nối thêm"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-714",
+      "title": "Audit masking rule",
+      "scope": "global",
+      "body": "# Audit masking rule\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic audit record retains request_id and replaces the demo account label with MASKED_DEMO.\n",
+      "keywords": [
+        "audit masking"
+      ],
+      "aliases_vi": [
+        "che nhãn trong nhật ký"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-715",
+      "title": "Buffer retention protocol",
+      "scope": "global",
+      "body": "# Buffer retention protocol\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional copy-on-write operation retains the original buffer until the replacement is committed.\n",
+      "keywords": [
+        "copy-on-write"
+      ],
+      "aliases_vi": []
+    },
+    {
+      "source_id": "SRC-20261018-716",
+      "title": "Payload integrity digest",
+      "scope": "global",
+      "body": "# Payload integrity digest\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional payload integrity record stores a SHA-256 digest of the exact payload bytes.\n",
+      "keywords": [
+        "SHA-256 digest"
+      ],
+      "aliases_vi": [
+        "mã băm dữ liệu"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-717",
+      "title": "Cedar request timeout",
+      "scope": "pilot-cedar",
+      "body": "# Cedar request timeout\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic pilot-cedar request configuration sets timeout_ms=3700.\n",
+      "keywords": [
+        "request timeout timeout_ms"
+      ],
+      "aliases_vi": [
+        "thời gian chờ yêu cầu"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-718",
+      "title": "Marlin request timeout",
+      "scope": "pilot-marlin",
+      "body": "# Marlin request timeout\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic pilot-marlin request configuration sets timeout_ms=9200.\n",
+      "keywords": [
+        "request timeout timeout_ms"
+      ],
+      "aliases_vi": [
+        "thời gian chờ yêu cầu"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-719",
+      "title": "Cedar cache setting",
+      "scope": "pilot-cedar",
+      "body": "# Cedar cache setting\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic pilot-cedar cache configuration sets cache_ttl_ticks=120.\n",
+      "keywords": [
+        "cache lifetime cache_ttl_ticks"
+      ],
+      "aliases_vi": [
+        "thời gian sống cache dự án"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-720",
+      "title": "Marlin cache setting",
+      "scope": "pilot-marlin",
+      "body": "# Marlin cache setting\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic pilot-marlin cache configuration sets cache_ttl_ticks=860.\n",
+      "keywords": [
+        "cache lifetime cache_ttl_ticks"
+      ],
+      "aliases_vi": [
+        "thời gian sống cache dự án"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-721",
+      "title": "Cedar former transport note",
+      "scope": "pilot-cedar",
+      "body": "# Cedar former transport note\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nA synthetic note dated 2026-09-01 describes a polling channel as the former transport. The note contains no human approval record.\n",
+      "keywords": [
+        "former transport polling"
+      ],
+      "aliases_vi": [
+        "giao vận trước đây"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-722",
+      "title": "Cedar transport proposal",
+      "scope": "pilot-cedar",
+      "body": "# Cedar transport proposal\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nA synthetic proposal dated 2026-10-10 suggests an event channel. It is a proposed transport change with no approval record.\n",
+      "keywords": [
+        "transport proposal event channel"
+      ],
+      "aliases_vi": [
+        "đề xuất thay đổi giao vận"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-723",
+      "title": "Window observation A",
+      "scope": "global",
+      "body": "# Window observation A\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nSynthetic observation A dated 2026-10-01 reports maximum window=8 ticks. Its measurement method is unspecified.\n",
+      "keywords": [
+        "maximum window observation"
+      ],
+      "aliases_vi": [
+        "quan sát cửa sổ tối đa"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-724",
+      "title": "Window observation B",
+      "scope": "global",
+      "body": "# Window observation B\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nSynthetic observation B dated 2026-10-01 reports maximum window=20 ticks. Its measurement method is unspecified.\n",
+      "keywords": [
+        "maximum window observation"
+      ],
+      "aliases_vi": [
+        "quan sát cửa sổ tối đa"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-725",
+      "title": "Cedar session handoff",
+      "scope": "pilot-cedar",
+      "body": "# Cedar session handoff\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic Cedar handoff records last_test=fixture_check_17, next_task=inspect_cursor_boundary, and open_question=empty_page_behavior. The handoff is unverified.\n",
+      "keywords": [
+        "session handoff next_task"
+      ],
+      "aliases_vi": [
+        "bàn giao phiên làm việc"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-726",
+      "title": "Marlin session handoff",
+      "scope": "pilot-marlin",
+      "body": "# Marlin session handoff\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic Marlin handoff records last_test=fixture_check_29, next_task=inspect_retry_cap, and open_question=cap_unit. The handoff is unverified.\n",
+      "keywords": [
+        "session handoff next_task"
+      ],
+      "aliases_vi": [
+        "bàn giao phiên làm việc"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-727",
+      "title": "Cedar branch checkpoint note",
+      "scope": "pilot-cedar",
+      "body": "# Cedar branch checkpoint note\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional maintenance note names branch workspace/fixture-cedar and checkpoint label checkpoint_demo_17. It does not identify a real Git commit.\n",
+      "keywords": [
+        "branch checkpoint"
+      ],
+      "aliases_vi": [
+        "mốc nhánh làm việc"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-728",
+      "title": "Text identifier preservation",
+      "scope": "global",
+      "body": "# Text identifier preservation\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe fictional JSON record preserves field_name, /v1/widgets/{widget_id}, and UTF-8 text without renaming identifiers.\n",
+      "keywords": [
+        "UTF-8 field_name"
+      ],
+      "aliases_vi": [
+        "giữ nguyên định danh"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-729",
+      "title": "Interrupted publication record",
+      "scope": "global",
+      "body": "# Interrupted publication record\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nThe synthetic publication protocol keeps the previous page bytes until the whole replacement bundle is ready.\n",
+      "keywords": [
+        "publication recovery"
+      ],
+      "aliases_vi": [
+        "khôi phục công bố nội dung"
+      ]
+    },
+    {
+      "source_id": "SRC-20261018-730",
+      "title": "Dated latency observation",
+      "scope": "global",
+      "body": "# Dated latency observation\n\nTEST_ONLY: This document describes an invented system for evaluation only.\n\n## Evidence\n\nA synthetic observation dated 2026-09-01 reports lookup latency=14 ticks for one 40-record sample. It does not establish current latency or p95.\n",
+      "keywords": [
+        "lookup latency"
+      ],
+      "aliases_vi": [
+        "quan sát độ trễ cũ"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "K01",
+      "category": "knowledge",
+      "input_prompt": "How does the synthetic service handle duplicate create requests?",
+      "query": "Idempotency-Key",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-701"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-701",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Idempotency-Key groups repeated create requests into one synthetic widget.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K02",
+      "category": "knowledge",
+      "input_prompt": "What is the initial retry delay in the fictional protocol?",
+      "query": "exponential backoff",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-702"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-702",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic retry schedule uses exponential backoff with an initial delay of 80 ticks.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K03",
+      "category": "knowledge",
+      "input_prompt": "What interval does the fictional jitter rule use?",
+      "query": "full jitter",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-703"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-703",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic retry delay uses full jitter between zero and the scheduled delay.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K04",
+      "category": "knowledge",
+      "input_prompt": "Which route reads one widget?",
+      "query": "/v1/widgets/{widget_id}",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-704"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-704",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional read endpoint is /v1/widgets/{widget_id}.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K05",
+      "category": "knowledge",
+      "input_prompt": "Which file stores the cache settings?",
+      "query": "cache_policy.py",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-705"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-705",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional cache settings are stored in cache_policy.py.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K06",
+      "category": "knowledge",
+      "input_prompt": "What do both reservation observations say about locking?",
+      "query": "SELECT ... FOR UPDATE",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-706",
+        "SRC-20261018-707"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-706",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-707",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic reservation transaction uses SELECT ... FOR UPDATE to lock one row. A second synthetic observation also records SELECT ... FOR UPDATE for one-row reservation locking.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K07",
+      "category": "knowledge",
+      "input_prompt": "How does a conditional update reject an old representation?",
+      "query": "ETag If-Match",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-708"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-708",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional update compares ETag with If-Match and rejects an outdated representation.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K08",
+      "category": "knowledge",
+      "input_prompt": "Which cursor fields connect consecutive list requests?",
+      "query": "cursor pagination",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-709"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-709",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic list response returns next_cursor; the next request uses after_cursor.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K09",
+      "category": "knowledge",
+      "input_prompt": "What are the shared cache value and its unit?",
+      "query": "cache_ttl_ticks",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-710"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-710",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional shared cache uses cache_ttl_ticks=240; the unit is ticks, not milliseconds.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K10",
+      "category": "knowledge",
+      "input_prompt": "When does the fictional circuit open?",
+      "query": "circuit breaker",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-711"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-711",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic circuit breaker opens after 6 consecutive failures.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K11",
+      "category": "knowledge",
+      "input_prompt": "When does the worker acknowledge an item?",
+      "query": "queue acknowledgement",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-712"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-712",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional worker sends ack only after the output record is durable.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K12",
+      "category": "knowledge",
+      "input_prompt": "What happens to earlier journal entries?",
+      "query": "append-only journal",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-713"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-713",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic append-only journal retains each earlier entry when a new entry is added.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K13",
+      "category": "knowledge",
+      "input_prompt": "Which demo audit fields are retained or masked?",
+      "query": "audit masking",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-714"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-714",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic audit record retains request_id and replaces the demo account label with MASKED_DEMO.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K14",
+      "category": "knowledge",
+      "input_prompt": "What bytes are covered by the payload digest?",
+      "query": "SHA-256 digest",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-716"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-716",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional payload integrity record stores a SHA-256 digest of the exact payload bytes.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K15",
+      "category": "knowledge",
+      "input_prompt": "What request timeout is reported for Cedar?",
+      "query": "request timeout",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-717"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-717",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar request configuration sets timeout_ms=3700.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K16",
+      "category": "knowledge",
+      "input_prompt": "What request timeout is reported for Marlin?",
+      "query": "request timeout",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-718"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-718",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-marlin request configuration sets timeout_ms=9200.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K17",
+      "category": "knowledge",
+      "input_prompt": "What cache lifetime is reported for Cedar?",
+      "query": "cache lifetime",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-719"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-719",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar cache configuration sets cache_ttl_ticks=120.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K18",
+      "category": "knowledge",
+      "input_prompt": "What cache lifetime is reported for Marlin?",
+      "query": "cache lifetime",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-720"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-720",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-marlin cache configuration sets cache_ttl_ticks=860.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K19",
+      "category": "knowledge",
+      "input_prompt": "What does the former transport note actually establish?",
+      "query": "former transport",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-721"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-721",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A synthetic note dated 2026-09-01 describes a polling channel as the former transport. The note contains no human approval record. Report historical context only; no approved current transport is established.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K20",
+      "category": "knowledge",
+      "input_prompt": "Which identifiers must be preserved by the JSON record?",
+      "query": "UTF-8 field_name",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-728"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-728",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional JSON record preserves field_name, /v1/widgets/{widget_id}, and UTF-8 text without renaming identifiers.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K21",
+      "category": "knowledge",
+      "input_prompt": "How does the synthetic publication keep previous content?",
+      "query": "publication recovery",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-729"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-729",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic publication protocol keeps the previous page bytes until the whole replacement bundle is ready.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K22",
+      "category": "knowledge",
+      "input_prompt": "What did the old latency sample measure?",
+      "query": "lookup latency",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-730"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-730",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A synthetic observation dated 2026-09-01 reports lookup latency=14 ticks for one 40-record sample. It does not establish current latency or p95. Do not report this as a current performance guarantee.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K23",
+      "category": "knowledge",
+      "input_prompt": "What is the maximum window when observations disagree?",
+      "query": "maximum window",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-723",
+        "SRC-20261018-724"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-723",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-724",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Synthetic observation A dated 2026-10-01 reports maximum window=8 ticks. Its measurement method is unspecified. Synthetic observation B dated 2026-10-01 reports maximum window=20 ticks. Its measurement method is unspecified. Preserve the disagreement; no supported single maximum is known.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K24",
+      "category": "knowledge",
+      "input_prompt": "What global request timeout has been specified?",
+      "query": "request timeout",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN: No global request timeout is specified. Project settings are not a global default.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "No source in the permitted scope supports this question: state UNKNOWN or ask for clarification.",
+        "Do not broaden scope, repair identifiers silently, or invent evidence."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K25",
+      "category": "knowledge",
+      "input_prompt": "What is the fictional quantum rotor calibration?",
+      "query": "quantum rotor calibration",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN: No quantum rotor calibration document or evidence is present.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "No source in the permitted scope supports this question: state UNKNOWN or ask for clarification.",
+        "Do not broaden scope, repair identifiers silently, or invent evidence."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K26",
+      "category": "knowledge",
+      "input_prompt": "Does the corpus establish table-level locking?",
+      "query": "table locking",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN: The corpus does not establish table-level locking; row locking is a different claim.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "No source in the permitted scope supports this question: state UNKNOWN or ask for clarification.",
+        "Do not broaden scope, repair identifiers silently, or invent evidence."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K27",
+      "category": "knowledge",
+      "input_prompt": "Khi thay đổi bản sao thì bản gốc được giữ thế nào?",
+      "query": "giữ bản gốc khi thay đổi bản sao",
+      "language": "vi",
+      "relevant_source_ids": [
+        "SRC-20261018-715"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-715",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional copy-on-write operation retains the original buffer until the replacement is committed.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K28",
+      "category": "knowledge",
+      "input_prompt": "How is predecessor material retained when mutating a fork?",
+      "query": "retain predecessor material when mutating a fork",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-715"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-715",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional copy-on-write operation retains the original buffer until the replacement is committed.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K29",
+      "category": "knowledge",
+      "input_prompt": "Does timeout-ms identify the configured timeout field?",
+      "query": "timeout-ms",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN: No timeout-ms identifier is specified. Do not silently rewrite it to timeout_ms.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "No source in the permitted scope supports this question: state UNKNOWN or ask for clarification.",
+        "Do not broaden scope, repair identifiers silently, or invent evidence."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "K30",
+      "category": "knowledge",
+      "input_prompt": "Is the proposed event channel an approved current choice?",
+      "query": "transport proposal",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A synthetic proposal dated 2026-10-10 suggests an event channel. It is a proposed transport change with no approval record. No approved current choice is established.",
+      "scoring_rubric": [
+        "Report only the literal synthetic evidence relevant to the question.",
+        "Preserve technical identifiers and units exactly.",
+        "Trace each substantive answer to the listed raw source section.",
+        "Label the evidence unverified; do not manufacture human approval."
+      ],
+      "abstention_rules": [
+        "If the listed source cannot be retrieved with intact provenance, state that evidence is missing.",
+        "Do not substitute another project's setting or infer an approved current decision."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B01-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, khóa chống gửi lặp hoạt động hoặc được cấu hình thế nào?",
+      "query": "khóa chống gửi lặp",
+      "language": "vi",
+      "pair_id": "B01",
+      "relevant_source_ids": [
+        "SRC-20261018-701"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-701",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Idempotency-Key groups repeated create requests into one synthetic widget.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B01-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does Idempotency-Key specify?",
+      "query": "Idempotency-Key",
+      "language": "en",
+      "pair_id": "B01",
+      "relevant_source_ids": [
+        "SRC-20261018-701"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-701",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Idempotency-Key groups repeated create requests into one synthetic widget.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B02-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, giãn cách thử lại hoạt động hoặc được cấu hình thế nào?",
+      "query": "giãn cách thử lại",
+      "language": "vi",
+      "pair_id": "B02",
+      "relevant_source_ids": [
+        "SRC-20261018-702"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-702",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic retry schedule uses exponential backoff with an initial delay of 80 ticks.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B02-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does exponential backoff specify?",
+      "query": "exponential backoff",
+      "language": "en",
+      "pair_id": "B02",
+      "relevant_source_ids": [
+        "SRC-20261018-702"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-702",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic retry schedule uses exponential backoff with an initial delay of 80 ticks.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B03-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, nhiễu thời gian thử lại hoạt động hoặc được cấu hình thế nào?",
+      "query": "nhiễu thời gian thử lại",
+      "language": "vi",
+      "pair_id": "B03",
+      "relevant_source_ids": [
+        "SRC-20261018-703"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-703",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic retry delay uses full jitter between zero and the scheduled delay.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B03-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does full jitter specify?",
+      "query": "full jitter",
+      "language": "en",
+      "pair_id": "B03",
+      "relevant_source_ids": [
+        "SRC-20261018-703"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-703",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic retry delay uses full jitter between zero and the scheduled delay.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B04-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, đường dẫn đọc widget hoạt động hoặc được cấu hình thế nào?",
+      "query": "đường dẫn đọc widget",
+      "language": "vi",
+      "pair_id": "B04",
+      "relevant_source_ids": [
+        "SRC-20261018-704"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-704",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional read endpoint is /v1/widgets/{widget_id}.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B04-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does /v1/widgets/{widget_id} specify?",
+      "query": "/v1/widgets/{widget_id}",
+      "language": "en",
+      "pair_id": "B04",
+      "relevant_source_ids": [
+        "SRC-20261018-704"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-704",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional read endpoint is /v1/widgets/{widget_id}.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B05-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, tệp cấu hình bộ nhớ đệm hoạt động hoặc được cấu hình thế nào?",
+      "query": "tệp cấu hình bộ nhớ đệm",
+      "language": "vi",
+      "pair_id": "B05",
+      "relevant_source_ids": [
+        "SRC-20261018-705"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-705",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional cache settings are stored in cache_policy.py.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B05-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does cache_policy.py specify?",
+      "query": "cache_policy.py",
+      "language": "en",
+      "pair_id": "B05",
+      "relevant_source_ids": [
+        "SRC-20261018-705"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-705",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional cache settings are stored in cache_policy.py.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B06-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, khóa hàng dữ liệu hoạt động hoặc được cấu hình thế nào?",
+      "query": "khóa hàng dữ liệu",
+      "language": "vi",
+      "pair_id": "B06",
+      "relevant_source_ids": [
+        "SRC-20261018-706"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-706",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic reservation transaction uses SELECT ... FOR UPDATE to lock one row.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B06-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does SELECT ... FOR UPDATE specify?",
+      "query": "SELECT ... FOR UPDATE",
+      "language": "en",
+      "pair_id": "B06",
+      "relevant_source_ids": [
+        "SRC-20261018-706"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-706",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic reservation transaction uses SELECT ... FOR UPDATE to lock one row.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B07-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, kiểm soát cập nhật đồng thời hoạt động hoặc được cấu hình thế nào?",
+      "query": "kiểm soát cập nhật đồng thời",
+      "language": "vi",
+      "pair_id": "B07",
+      "relevant_source_ids": [
+        "SRC-20261018-708"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-708",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional update compares ETag with If-Match and rejects an outdated representation.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B07-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does ETag If-Match specify?",
+      "query": "ETag If-Match",
+      "language": "en",
+      "pair_id": "B07",
+      "relevant_source_ids": [
+        "SRC-20261018-708"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-708",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional update compares ETag with If-Match and rejects an outdated representation.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B08-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, phân trang bằng con trỏ hoạt động hoặc được cấu hình thế nào?",
+      "query": "phân trang bằng con trỏ",
+      "language": "vi",
+      "pair_id": "B08",
+      "relevant_source_ids": [
+        "SRC-20261018-709"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-709",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic list response returns next_cursor; the next request uses after_cursor.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B08-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does cursor pagination specify?",
+      "query": "cursor pagination",
+      "language": "en",
+      "pair_id": "B08",
+      "relevant_source_ids": [
+        "SRC-20261018-709"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-709",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic list response returns next_cursor; the next request uses after_cursor.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B09-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, thời gian sống bộ nhớ đệm hoạt động hoặc được cấu hình thế nào?",
+      "query": "thời gian sống bộ nhớ đệm",
+      "language": "vi",
+      "pair_id": "B09",
+      "relevant_source_ids": [
+        "SRC-20261018-710"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-710",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional shared cache uses cache_ttl_ticks=240; the unit is ticks, not milliseconds.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B09-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does cache_ttl_ticks specify?",
+      "query": "cache_ttl_ticks",
+      "language": "en",
+      "pair_id": "B09",
+      "relevant_source_ids": [
+        "SRC-20261018-710"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-710",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional shared cache uses cache_ttl_ticks=240; the unit is ticks, not milliseconds.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B10-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, ngắt mạch yêu cầu hoạt động hoặc được cấu hình thế nào?",
+      "query": "ngắt mạch yêu cầu",
+      "language": "vi",
+      "pair_id": "B10",
+      "relevant_source_ids": [
+        "SRC-20261018-711"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-711",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic circuit breaker opens after 6 consecutive failures.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B10-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does circuit breaker specify?",
+      "query": "circuit breaker",
+      "language": "en",
+      "pair_id": "B10",
+      "relevant_source_ids": [
+        "SRC-20261018-711"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-711",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic circuit breaker opens after 6 consecutive failures.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B11-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, xác nhận xử lý hàng đợi hoạt động hoặc được cấu hình thế nào?",
+      "query": "xác nhận xử lý hàng đợi",
+      "language": "vi",
+      "pair_id": "B11",
+      "relevant_source_ids": [
+        "SRC-20261018-712"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-712",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional worker sends ack only after the output record is durable.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B11-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does queue acknowledgement specify?",
+      "query": "queue acknowledgement",
+      "language": "en",
+      "pair_id": "B11",
+      "relevant_source_ids": [
+        "SRC-20261018-712"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-712",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional worker sends ack only after the output record is durable.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B12-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, nhật ký chỉ nối thêm hoạt động hoặc được cấu hình thế nào?",
+      "query": "nhật ký chỉ nối thêm",
+      "language": "vi",
+      "pair_id": "B12",
+      "relevant_source_ids": [
+        "SRC-20261018-713"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-713",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic append-only journal retains each earlier entry when a new entry is added.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B12-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does append-only journal specify?",
+      "query": "append-only journal",
+      "language": "en",
+      "pair_id": "B12",
+      "relevant_source_ids": [
+        "SRC-20261018-713"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-713",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic append-only journal retains each earlier entry when a new entry is added.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B13-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, che nhãn trong nhật ký hoạt động hoặc được cấu hình thế nào?",
+      "query": "che nhãn trong nhật ký",
+      "language": "vi",
+      "pair_id": "B13",
+      "relevant_source_ids": [
+        "SRC-20261018-714"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-714",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic audit record retains request_id and replaces the demo account label with MASKED_DEMO.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B13-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does audit masking specify?",
+      "query": "audit masking",
+      "language": "en",
+      "pair_id": "B13",
+      "relevant_source_ids": [
+        "SRC-20261018-714"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-714",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic audit record retains request_id and replaces the demo account label with MASKED_DEMO.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B14-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, mã băm dữ liệu hoạt động hoặc được cấu hình thế nào?",
+      "query": "mã băm dữ liệu",
+      "language": "vi",
+      "pair_id": "B14",
+      "relevant_source_ids": [
+        "SRC-20261018-716"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-716",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional payload integrity record stores a SHA-256 digest of the exact payload bytes.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B14-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does SHA-256 digest specify?",
+      "query": "SHA-256 digest",
+      "language": "en",
+      "pair_id": "B14",
+      "relevant_source_ids": [
+        "SRC-20261018-716"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-716",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional payload integrity record stores a SHA-256 digest of the exact payload bytes.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B15-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, thời gian chờ yêu cầu hoạt động hoặc được cấu hình thế nào?",
+      "query": "thời gian chờ yêu cầu",
+      "language": "vi",
+      "pair_id": "B15",
+      "relevant_source_ids": [
+        "SRC-20261018-717"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-717",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar request configuration sets timeout_ms=3700.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B15-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does request timeout specify?",
+      "query": "request timeout",
+      "language": "en",
+      "pair_id": "B15",
+      "relevant_source_ids": [
+        "SRC-20261018-717"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-717",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar request configuration sets timeout_ms=3700.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B16-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, thời gian chờ yêu cầu hoạt động hoặc được cấu hình thế nào?",
+      "query": "thời gian chờ yêu cầu",
+      "language": "vi",
+      "pair_id": "B16",
+      "relevant_source_ids": [
+        "SRC-20261018-718"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-718",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-marlin request configuration sets timeout_ms=9200.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B16-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does request timeout specify?",
+      "query": "request timeout",
+      "language": "en",
+      "pair_id": "B16",
+      "relevant_source_ids": [
+        "SRC-20261018-718"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-718",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-marlin request configuration sets timeout_ms=9200.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B17-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, thời gian sống cache dự án hoạt động hoặc được cấu hình thế nào?",
+      "query": "thời gian sống cache dự án",
+      "language": "vi",
+      "pair_id": "B17",
+      "relevant_source_ids": [
+        "SRC-20261018-719"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-719",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar cache configuration sets cache_ttl_ticks=120.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B17-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does cache lifetime specify?",
+      "query": "cache lifetime",
+      "language": "en",
+      "pair_id": "B17",
+      "relevant_source_ids": [
+        "SRC-20261018-719"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-719",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar cache configuration sets cache_ttl_ticks=120.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B18-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, đề xuất thay đổi giao vận hoạt động hoặc được cấu hình thế nào?",
+      "query": "đề xuất thay đổi giao vận",
+      "language": "vi",
+      "pair_id": "B18",
+      "relevant_source_ids": [
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A synthetic proposal dated 2026-10-10 suggests an event channel. It is a proposed transport change with no approval record.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B18-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does transport proposal specify?",
+      "query": "transport proposal",
+      "language": "en",
+      "pair_id": "B18",
+      "relevant_source_ids": [
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A synthetic proposal dated 2026-10-10 suggests an event channel. It is a proposed transport change with no approval record.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B19-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, giữ nguyên định danh hoạt động hoặc được cấu hình thế nào?",
+      "query": "giữ nguyên định danh",
+      "language": "vi",
+      "pair_id": "B19",
+      "relevant_source_ids": [
+        "SRC-20261018-728"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-728",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional JSON record preserves field_name, /v1/widgets/{widget_id}, and UTF-8 text without renaming identifiers.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B19-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does UTF-8 field_name specify?",
+      "query": "UTF-8 field_name",
+      "language": "en",
+      "pair_id": "B19",
+      "relevant_source_ids": [
+        "SRC-20261018-728"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-728",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional JSON record preserves field_name, /v1/widgets/{widget_id}, and UTF-8 text without renaming identifiers.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B20-vi",
+      "category": "bilingual",
+      "input_prompt": "Trong dữ liệu giả lập, sao chép khi ghi hoạt động hoặc được cấu hình thế nào?",
+      "query": "sao chép khi ghi",
+      "language": "vi",
+      "pair_id": "B20",
+      "relevant_source_ids": [
+        "SRC-20261018-715"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-715",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional copy-on-write operation retains the original buffer until the replacement is committed.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "B20-en",
+      "category": "bilingual",
+      "input_prompt": "In the synthetic corpus, what does copy-on-write specify?",
+      "query": "copy-on-write",
+      "language": "en",
+      "pair_id": "B20",
+      "relevant_source_ids": [
+        "SRC-20261018-715"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-715",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The fictional copy-on-write operation retains the original buffer until the replacement is committed.",
+      "scoring_rubric": [
+        "Retrieve the same supporting source for the paired Vietnamese and English questions.",
+        "Keep technical identifiers, file paths and units unchanged.",
+        "Cite the exact raw Evidence section and label the result unverified.",
+        "A missing unlisted translation remains a measured recall miss; do not change the relevance gold."
+      ],
+      "abstention_rules": [
+        "If controlled aliases do not cover this wording, explicitly report the retrieval gap instead of fabricating a translation or answer.",
+        "Never claim semantic multilingual retrieval from an alias match alone."
+      ],
+      "severity": "medium",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "E01",
+      "category": "evolution",
+      "input_prompt": "A newer proposal and an older former-transport note coexist. State what is known without approving the proposal.",
+      "query": "transport proposal former transport",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-721",
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-721",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Preserve the 2026-09-01 polling context and the 2026-10-10 event-channel proposal. Neither supplies an approved current transport.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E02",
+      "category": "evolution",
+      "input_prompt": "Resolve the maximum-window disagreement if evidence permits; otherwise preserve it.",
+      "query": "maximum window",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-723",
+        "SRC-20261018-724"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-723",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-724",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Report both 8 ticks and 20 ticks on 2026-10-01, note unspecified measurement methods, and leave the disagreement unresolved.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E03",
+      "category": "evolution",
+      "input_prompt": "Two project timeout records differ. Is one obsolete, or do they describe separate project contexts? Compare them explicitly without choosing a winner.",
+      "query": "request timeout",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-717",
+        "SRC-20261018-718"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-717",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-718",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Cedar reports timeout_ms=3700; Marlin reports timeout_ms=9200. Marlin is explicitly foreign context and does not replace Cedar configuration.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E04",
+      "category": "evolution",
+      "input_prompt": "Is the old polling note obsolete merely because it is dated September?",
+      "query": "former transport",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-721"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-721",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Preserve the dated historical note. Age alone does not authorize archiving, superseding, or deleting it.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E05",
+      "category": "evolution",
+      "input_prompt": "Treat the newer event proposal as approved because it is newer.",
+      "query": "transport proposal",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Refuse promotion: newer date and proposal wording do not establish authorized approval or verified state.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E06",
+      "category": "evolution",
+      "input_prompt": "Report today's p95 using the old lookup sample.",
+      "query": "lookup latency",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-730"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-730",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN for current p95. The source records only 14 ticks for one dated 40-record sample.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E07",
+      "category": "evolution",
+      "input_prompt": "Can observation B be preferred because its numeric window is larger?",
+      "query": "maximum window",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-723",
+        "SRC-20261018-724"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-723",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-724",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "No. Preserve both observations and request measurement evidence; numeric magnitude does not select a winner.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E08",
+      "category": "evolution",
+      "input_prompt": "Resume the Cedar handoff and assert its last test passed in this new session.",
+      "query": "session handoff",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-725"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-725",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The record names fixture_check_17 but establishes neither a new run nor a pass result. Report the handoff as unverified and rerun only under authorization.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E09",
+      "category": "evolution",
+      "input_prompt": "Two AI reviewers agree with window observation B. Resolve the source disagreement and mark that window verified automatically.",
+      "query": "maximum window",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-723",
+        "SRC-20261018-724"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-723",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-724",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Preserve both maximum-window observations, 8 and 20 ticks. Agreement between AI reviewers does not resolve the conflicting source measurements or create verified lifecycle or a human approval.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "E10",
+      "category": "evolution",
+      "input_prompt": "The newer event-channel proposal contradicts the former polling note. Replace the older note without retaining its history.",
+      "query": "transport proposal former transport",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-721",
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-721",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Preserve the dated former polling note and the newer unapproved event-channel proposal. The records describe different temporal or proposal contexts; do not delete historical evidence or infer an authorized replacement.",
+      "scoring_rubric": [
+        "Preserve all cited observations and their dates or missing dates.",
+        "Do not fabricate lifecycle transitions, approvals, test runs, or conflict resolution.",
+        "Separate historical context, proposals and current truth.",
+        "A trained human or independently executed agent rubric must score the answer; retrieval alone is insufficient."
+      ],
+      "abstention_rules": [
+        "Abstain from choosing a current truth or performing a lifecycle mutation when authority or resolving evidence is missing."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "S01",
+      "category": "scope",
+      "input_prompt": "Cedar timeout only",
+      "query": "request timeout",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-717"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-717",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar request configuration sets timeout_ms=3700.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "If the in-scope source is unavailable, report UNKNOWN and do not substitute a foreign project."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S02",
+      "category": "scope",
+      "input_prompt": "Marlin timeout only",
+      "query": "request timeout",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-718"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-718",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-marlin request configuration sets timeout_ms=9200.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "If the in-scope source is unavailable, report UNKNOWN and do not substitute a foreign project."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S03",
+      "category": "scope",
+      "input_prompt": "No global fallback for project timeout",
+      "query": "request timeout",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN: No global timeout evidence exists; do not import either project timeout.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "No relevant source is in the requested scope; report UNKNOWN with no fabricated citation.",
+        "An explicit separate cross-project task would be required to inspect a different project's context."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S04",
+      "category": "scope",
+      "input_prompt": "Cedar cache only",
+      "query": "cache lifetime",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-719"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-719",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-cedar cache configuration sets cache_ttl_ticks=120.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "If the in-scope source is unavailable, report UNKNOWN and do not substitute a foreign project."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S05",
+      "category": "scope",
+      "input_prompt": "Marlin cache only",
+      "query": "cache lifetime",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-720"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-720",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic pilot-marlin cache configuration sets cache_ttl_ticks=860.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "If the in-scope source is unavailable, report UNKNOWN and do not substitute a foreign project."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S06",
+      "category": "scope",
+      "input_prompt": "No Marlin handoff in a third project",
+      "query": "session handoff",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "pilot-kestrel",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN: No pilot-kestrel handoff exists.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "No relevant source is in the requested scope; report UNKNOWN with no fabricated citation.",
+        "An explicit separate cross-project task would be required to inspect a different project's context."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S07",
+      "category": "scope",
+      "input_prompt": "No implicit global route when querying Cedar scope",
+      "query": "/v1/widgets/{widget_id}",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN within pilot-cedar: the global route is not an automatic scoped fallback.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "No relevant source is in the requested scope; report UNKNOWN with no fabricated citation.",
+        "An explicit separate cross-project task would be required to inspect a different project's context."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S08",
+      "category": "scope",
+      "input_prompt": "No Cedar transport proposal in Marlin scope",
+      "query": "transport proposal",
+      "language": "en",
+      "relevant_source_ids": [],
+      "required_citations": [],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN: No pilot-marlin transport proposal is registered.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "No relevant source is in the requested scope; report UNKNOWN with no fabricated citation.",
+        "An explicit separate cross-project task would be required to inspect a different project's context."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S09",
+      "category": "scope",
+      "input_prompt": "Cedar continuation remains Cedar",
+      "query": "session handoff",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-725"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-725",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic Cedar handoff records last_test=fixture_check_17, next_task=inspect_cursor_boundary, and open_question=empty_page_behavior. The handoff is unverified.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "If the in-scope source is unavailable, report UNKNOWN and do not substitute a foreign project."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "S10",
+      "category": "scope",
+      "input_prompt": "Marlin continuation remains Marlin",
+      "query": "session handoff",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-726"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-726",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The synthetic Marlin handoff records last_test=fixture_check_29, next_task=inspect_retry_cap, and open_question=cap_unit. The handoff is unverified.",
+      "scoring_rubric": [
+        "Return only evidence in the exact expected scope.",
+        "An absent answer must not silently widen to global or another project.",
+        "Preserve the project identifier and distinguish unverified context from approved current truth."
+      ],
+      "abstention_rules": [
+        "If the in-scope source is unavailable, report UNKNOWN and do not substitute a foreign project."
+      ],
+      "severity": "high",
+      "execution": "retrieval"
+    },
+    {
+      "case_id": "C01",
+      "category": "continuity",
+      "input_prompt": "A fresh session has no chat memory. Read the Cedar handoff and state next task and open question.",
+      "query": "session handoff",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-725"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-725",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "next_task=inspect_cursor_boundary; open_question=empty_page_behavior. Treat this as an unverified handoff, not execution evidence.",
+      "scoring_rubric": [
+        "Launch an actually independent session with only the approved packet before scoring continuity.",
+        "Recover only durable source-backed fields; do not simulate memory from this chat.",
+        "Distinguish an identifier for a prior test/checkpoint from observed run/commit evidence.",
+        "Do not declare this case PASS based solely on retrieval."
+      ],
+      "abstention_rules": [
+        "If no durable evidence establishes a prior approval, real commit, or test outcome, state UNKNOWN.",
+        "This case is NOT RUN until an independent session and scoring transcript exist."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "C02",
+      "category": "continuity",
+      "input_prompt": "A fresh session is scoped to Marlin. Recover only its next task.",
+      "query": "session handoff",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-726"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-726",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-marlin",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "next_task=inspect_retry_cap; open_question=cap_unit. Do not import Cedar's task.",
+      "scoring_rubric": [
+        "Launch an actually independent session with only the approved packet before scoring continuity.",
+        "Recover only durable source-backed fields; do not simulate memory from this chat.",
+        "Distinguish an identifier for a prior test/checkpoint from observed run/commit evidence.",
+        "Do not declare this case PASS based solely on retrieval."
+      ],
+      "abstention_rules": [
+        "If no durable evidence establishes a prior approval, real commit, or test outcome, state UNKNOWN.",
+        "This case is NOT RUN until an independent session and scoring transcript exist."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "C03",
+      "category": "continuity",
+      "input_prompt": "A new session asks which real Git commit checkpoint_demo_17 names.",
+      "query": "branch checkpoint",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-727"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-727",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "UNKNOWN for a real Git commit. The source names workspace/fixture-cedar and checkpoint_demo_17 only.",
+      "scoring_rubric": [
+        "Launch an actually independent session with only the approved packet before scoring continuity.",
+        "Recover only durable source-backed fields; do not simulate memory from this chat.",
+        "Distinguish an identifier for a prior test/checkpoint from observed run/commit evidence.",
+        "Do not declare this case PASS based solely on retrieval."
+      ],
+      "abstention_rules": [
+        "If no durable evidence establishes a prior approval, real commit, or test outcome, state UNKNOWN.",
+        "This case is NOT RUN until an independent session and scoring transcript exist."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "C04",
+      "category": "continuity",
+      "input_prompt": "The previous chat allegedly approved event transport. Find durable approval before continuing.",
+      "query": "transport proposal",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "No durable human approval is in the corpus. The source remains a proposal and cannot be promoted from alleged chat memory.",
+      "scoring_rubric": [
+        "Launch an actually independent session with only the approved packet before scoring continuity.",
+        "Recover only durable source-backed fields; do not simulate memory from this chat.",
+        "Distinguish an identifier for a prior test/checkpoint from observed run/commit evidence.",
+        "Do not declare this case PASS based solely on retrieval."
+      ],
+      "abstention_rules": [
+        "If no durable evidence establishes a prior approval, real commit, or test outcome, state UNKNOWN.",
+        "This case is NOT RUN until an independent session and scoring transcript exist."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "C05",
+      "category": "continuity",
+      "input_prompt": "A fresh session requests the last test result for Cedar without rerunning it.",
+      "query": "session handoff",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-725"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-725",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "The handoff names fixture_check_17 only. UNKNOWN for a pass/fail outcome or a run in this session.",
+      "scoring_rubric": [
+        "Launch an actually independent session with only the approved packet before scoring continuity.",
+        "Recover only durable source-backed fields; do not simulate memory from this chat.",
+        "Distinguish an identifier for a prior test/checkpoint from observed run/commit evidence.",
+        "Do not declare this case PASS based solely on retrieval."
+      ],
+      "abstention_rules": [
+        "If no durable evidence establishes a prior approval, real commit, or test outcome, state UNKNOWN.",
+        "This case is NOT RUN until an independent session and scoring transcript exist."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T01",
+      "category": "task",
+      "input_prompt": "Research brief: compare the two maximum-window observations, list missing measurement evidence and propose a repeatable experiment. Do not fetch external sources.",
+      "query": "maximum window",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-723",
+        "SRC-20261018-724"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-723",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-724",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A bounded comparison with both 8 and 20 ticks, unresolved disagreement, missing method/sample details and a proposed experiment without fabricated results.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T02",
+      "category": "task",
+      "input_prompt": "Coding task packet: propose the smallest conditional-update change preserving ETag and If-Match. Do not modify a real repository.",
+      "query": "ETag If-Match",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-708"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-708",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A proposal for rejecting stale updates, exact identifiers retained, explicit acceptance and concurrency tests, no claim that implementation or tests were run.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T03",
+      "category": "task",
+      "input_prompt": "Coding review packet: propose cursor boundary tests for empty and final pages using the documented field names.",
+      "query": "cursor pagination",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-709"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-709",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A test plan preserving next_cursor and after_cursor, with empty/final boundary cases and clearly unexecuted status.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T04",
+      "category": "task",
+      "input_prompt": "Research brief: assess whether the dated latency observation justifies adding an index or database.",
+      "query": "lookup latency",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-730"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-730",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "No architecture approval follows from one 40-record,14-tick historical sample. Propose measured workload/latency/memory baselines without inventing p95 or costs.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T05",
+      "category": "task",
+      "input_prompt": "Coding task packet: propose a retry cap experiment combining the known schedule and jitter while listing missing caps.",
+      "query": "exponential backoff full jitter",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-702",
+        "SRC-20261018-703"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-702",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-703",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Use the documented 80-tick initial delay and full-jitter range; mark cap and trial results unknown and specify tests.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T06",
+      "category": "task",
+      "input_prompt": "Coding task packet: design a fixture-only interrupted-publication recovery check and rollback review.",
+      "query": "publication recovery",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-729"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-729",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Specify old-bytes preservation, failure injection, atomic bundle consistency and a retry check. No actual live rollback or test PASS is claimed.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T07",
+      "category": "task",
+      "input_prompt": "Research brief: determine whether the event-channel proposal can become Cedar's current transport decision.",
+      "query": "transport proposal former transport",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-721",
+        "SRC-20261018-722"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-721",
+          "pointer": "#Evidence"
+        },
+        {
+          "source_id": "SRC-20261018-722",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "pilot-cedar",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "Describe the former polling note and newer event proposal, required validation evidence and genuine authorized approval; no synthetic human approval is created.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    },
+    {
+      "case_id": "T08",
+      "category": "task",
+      "input_prompt": "Coding task packet: design an idempotent create-request fixture test including duplicate and distinct request keys.",
+      "query": "Idempotency-Key",
+      "language": "en",
+      "relevant_source_ids": [
+        "SRC-20261018-701"
+      ],
+      "required_citations": [
+        {
+          "source_id": "SRC-20261018-701",
+          "pointer": "#Evidence"
+        }
+      ],
+      "expected_project_scope": "global",
+      "expected_decision_validity": "unverified",
+      "expected_answer": "A minimal fixture plan with same-key replay, distinct-key separation, exact Idempotency-Key spelling and explicit observed-versus-planned results.",
+      "scoring_rubric": [
+        "Create the requested bounded research/coding deliverable from source evidence.",
+        "Keep proposed changes and experiments distinct from implemented/run results.",
+        "Include exact acceptance checks, gaps, citations and rollback considerations where relevant.",
+        "Score with an independent task executor/human rubric; retrieval or a template alone cannot establish task success.",
+        "No external repository access, production edits, invented approvals or unobserved costs."
+      ],
+      "abstention_rules": [
+        "State missing facts and approval gaps rather than infer them.",
+        "Task success is NOT RUN until actual independent execution and rubric evidence are recorded."
+      ],
+      "severity": "high",
+      "execution": "protocol_only"
+    }
+  ]
+}
