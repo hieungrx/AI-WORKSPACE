@@ -1,0 +1,2034 @@
+{
+  "phase": "V1.1 real-world feasibility evaluation: synthetic harness first",
+  "observed_at_utc": "2026-10-18T11:49:54.099142+00:00",
+  "verdict": "INCONCLUSIVE",
+  "real_world_feasibility": "NOT YET MEASURED",
+  "reason": "No curated real corpus, independent human-confirmed gold, equivalent same-model AI A/B trials, human review burden or observable usage/cost data. Synthetic component gains cannot establish practical value.",
+  "branch": "workspace/initialize",
+  "discovery_head": "457a9bf6db7bb2476117200f76586032ca1e432b",
+  "implementation_commit": "b533de2",
+  "report_generation_head": "b533de2b7ff465bec5ed70fd4e4b39c239dfd653",
+  "tested_worktree_note": "Full-suite and benchmark ran before the implementation checkpoint; their actual runtime HEAD and content hashes identify the tested worktree. Current implementation/test bytes match those hashes.",
+  "files_read": [
+    "AGENTS.md",
+    "README.md",
+    "SCHEMA.md",
+    "PROFILE.md",
+    "SECURITY_POLICY.md",
+    "KNOWLEDGE_GOVERNANCE.md",
+    "wiki/index.md",
+    "wiki/log.md",
+    "prompts/ingest.md",
+    "prompts/query.md",
+    "prompts/lint.md",
+    "latest governance remediation and retained independent audit",
+    "actual scripts and existing workflow benchmark/tests"
+  ],
+  "sources_used": "Repository implementation/reports and explicitly synthetic fixtures only; no real project or external source corpus.",
+  "files_changed": {
+    "scripts/evaluate_feasibility.py": "Synthetic-only validation, counterbalanced raw/wiki retrieval, independent gold scoring, metrics and exclusive reports.",
+    "scripts/feasibility_evolution.py": "Actual admission/controlled synthesis/conflict/rollback/retry/readback with retained source history.",
+    "tests/test_feasibility_harness.py": "12 adversarial evaluation/fairness tests: source cap, fake pointers, false MATCH, misses, zero denominators and raw-only access.",
+    "tests/test_feasibility_evolution.py": "3 actual evolution/preservation/target-boundary tests.",
+    "tests/fixtures/feasibility/dataset.json": "30 synthetic raw specs and 103 source-grounded case/rubric specifications; 20 bilingual pairs.",
+    "tests/fixtures/feasibility/README.md": "Gold format, counts and explicit protocol-only NOT RUN cases.",
+    "FEASIBILITY_EVALUATION.md": "Five evaluation questions, fair real AI A/B protocol, metrics, human-scoring rubrics and pilot guide.",
+    "README.md": "Local harness entry point and limits.",
+    "wiki/index.md": "Link the new first-party evaluation guide.",
+    "wiki/log.md": "Append actual maintenance/checks, preserving the entire prior 27166-byte log.",
+    "reports/feasibility-inspection-2026-10-18.json": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-inspection-2026-10-18.md": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-regression-2026-10-18.json": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-regression-2026-10-18.md": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-v1.1-2026-10-18.json": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-v1.1-2026-10-18.md": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-continuity-2026-10-18.json": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-continuity-2026-10-18.md": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-completion-2026-10-18.json": "New exclusive dated observation/report; previous reports unchanged.",
+    "reports/feasibility-completion-2026-10-18.md": "New exclusive dated observation/report; previous reports unchanged."
+  },
+  "methodology": {
+    "same_raw_bytes_and_scopes": true,
+    "A_wiki_access": false,
+    "B_maintained_metadata": true,
+    "order": "seeded shuffle, alternating AB/BA",
+    "independent_AI_sessions": false,
+    "engine": "same normalization/phrase boundaries/rank tiers; A raw title/body, B actual wiki keywords/aliases",
+    "source_access": "A receives all raw sources and independent title/scope packet; B has identical raw access plus maintained wiki.",
+    "information_limit": "Raw adapter is NOT a competent raw-searching AI; no model comparison or productivity conclusion.",
+    "cache_control": "No persistent eligibility cache; OS cache and sequential process effects uncontrolled."
+  },
+  "audit_premise": "No newer whole-system READY audit found. Two High findings resolved in last remediation; earlier Medium/Low limitations remain. Do not treat task premise as measurement.",
+  "dataset": {
+    "sources": 30,
+    "cases": 103,
+    "by_category": {
+      "knowledge": 30,
+      "bilingual": 40,
+      "evolution": 10,
+      "scope": 10,
+      "continuity": 5,
+      "task": 8
+    },
+    "bilingual_pairs": 20
+  },
+  "dataset_sha256": "484ba1d21a6a2778b53be0efd8008560c341a104acc399730daa24ccd8f8a975",
+  "gold_status": "AI-authored source-grounded synthetic specification, NOT human-confirmed real gold; not derived from Query or wiki output.",
+  "paired_cases": 80,
+  "arm_executions": 160,
+  "seed": 1101,
+  "protocol_only_cases": [
+    {
+      "case_id": "E01",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E02",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E03",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E04",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E05",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E06",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E07",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E08",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E09",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "E10",
+      "category": "evolution",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "C01",
+      "category": "continuity",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "C02",
+      "category": "continuity",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "C03",
+      "category": "continuity",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "C04",
+      "category": "continuity",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "C05",
+      "category": "continuity",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T01",
+      "category": "task",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T02",
+      "category": "task",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T03",
+      "category": "task",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T04",
+      "category": "task",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T05",
+      "category": "task",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T06",
+      "category": "task",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T07",
+      "category": "task",
+      "status": "NOT RUN"
+    },
+    {
+      "case_id": "T08",
+      "category": "task",
+      "status": "NOT RUN"
+    }
+  ],
+  "baseline_A_results": {
+    "recall_at_5": {
+      "status": "MEASURED",
+      "value": 0.5555555555555556,
+      "samples": 72,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+    },
+    "citation_structural_validity": {
+      "status": "MEASURED",
+      "value": 1.0,
+      "samples": 45,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Recorded source ID/path/hash status and Evidence heading; not factual truth.",
+      "numerator": 45,
+      "denominator": 45
+    },
+    "citation_gold_agreement": {
+      "status": "MEASURED",
+      "value": 0.9333333333333333,
+      "samples": 45,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Cited source IDs present in the independent relevance gold; meaning NOT assessed.",
+      "numerator": 42,
+      "denominator": 45
+    },
+    "cross_project_leakage": {
+      "status": "MEASURED",
+      "value": 0.0,
+      "samples": 80,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Trials returning an out-of-scope candidate.",
+      "numerator": 0,
+      "denominator": 80
+    },
+    "unauthorized_current_flags": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Returned wiki flags for this unverified-only corpus; NOT AI factual assertions.",
+      "numerator": 0,
+      "denominator": 0
+    },
+    "query_elapsed_mean_seconds": {
+      "status": "MEASURED",
+      "value": 0.5334771649999936,
+      "samples": 80,
+      "unit": "seconds",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Actual adapter elapsed time, uncontrolled OS cache; not human/AI task time."
+    },
+    "task_correctness": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "factual_correctness": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "citation_semantic_accuracy": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "context_continuity_quality": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "unsupported_AI_current_truth_assertions": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "human_corrections": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "human_review_seconds": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "AI_task_elapsed_seconds": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "context_tokens": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "token_usage": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "API_cost": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "net_productivity": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "repeated_research_steps": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    }
+  },
+  "workspace_B_results": {
+    "recall_at_5": {
+      "status": "MEASURED",
+      "value": 0.75,
+      "samples": 72,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+    },
+    "citation_structural_validity": {
+      "status": "MEASURED",
+      "value": 1.0,
+      "samples": 57,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Recorded source ID/path/hash status and Evidence heading; not factual truth.",
+      "numerator": 57,
+      "denominator": 57
+    },
+    "citation_gold_agreement": {
+      "status": "MEASURED",
+      "value": 0.9824561403508771,
+      "samples": 57,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Cited source IDs present in the independent relevance gold; meaning NOT assessed.",
+      "numerator": 56,
+      "denominator": 57
+    },
+    "cross_project_leakage": {
+      "status": "MEASURED",
+      "value": 0.0,
+      "samples": 80,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Trials returning an out-of-scope candidate.",
+      "numerator": 0,
+      "denominator": 80
+    },
+    "unauthorized_current_flags": {
+      "status": "MEASURED",
+      "value": 0.0,
+      "samples": 57,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Returned wiki flags for this unverified-only corpus; NOT AI factual assertions.",
+      "numerator": 0,
+      "denominator": 57
+    },
+    "query_elapsed_mean_seconds": {
+      "status": "MEASURED",
+      "value": 0.6332434675000173,
+      "samples": 80,
+      "unit": "seconds",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Actual adapter elapsed time, uncontrolled OS cache; not human/AI task time."
+    },
+    "task_correctness": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "factual_correctness": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "citation_semantic_accuracy": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "context_continuity_quality": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "unsupported_AI_current_truth_assertions": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "human_corrections": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "human_review_seconds": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "AI_task_elapsed_seconds": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "context_tokens": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "token_usage": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "API_cost": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "net_productivity": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    },
+    "repeated_research_steps": {
+      "status": "NOT MEASURED",
+      "value": null,
+      "samples": 0,
+      "unit": "ratio",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": ""
+    }
+  },
+  "per_language_results": {
+    "A": {
+      "vi": {
+        "recall_at_5": {
+          "status": "MEASURED",
+          "value": 0.0,
+          "samples": 21,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+        },
+        "citation_structural_validity": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Recorded source ID/path/hash status and Evidence heading; not factual truth.",
+          "numerator": 0,
+          "denominator": 0
+        },
+        "citation_gold_agreement": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Cited source IDs present in the independent relevance gold; meaning NOT assessed.",
+          "numerator": 0,
+          "denominator": 0
+        },
+        "cross_project_leakage": {
+          "status": "MEASURED",
+          "value": 0.0,
+          "samples": 21,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Trials returning an out-of-scope candidate.",
+          "numerator": 0,
+          "denominator": 21
+        },
+        "unauthorized_current_flags": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Returned wiki flags for this unverified-only corpus; NOT AI factual assertions.",
+          "numerator": 0,
+          "denominator": 0
+        },
+        "query_elapsed_mean_seconds": {
+          "status": "MEASURED",
+          "value": 0.5435789904761675,
+          "samples": 21,
+          "unit": "seconds",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Actual adapter elapsed time, uncontrolled OS cache; not human/AI task time."
+        },
+        "task_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "factual_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "citation_semantic_accuracy": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_continuity_quality": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "unsupported_AI_current_truth_assertions": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_corrections": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_review_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "AI_task_elapsed_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_tokens": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "token_usage": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "API_cost": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "net_productivity": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "repeated_research_steps": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        }
+      },
+      "en": {
+        "recall_at_5": {
+          "status": "MEASURED",
+          "value": 0.7843137254901961,
+          "samples": 51,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+        },
+        "citation_structural_validity": {
+          "status": "MEASURED",
+          "value": 1.0,
+          "samples": 45,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Recorded source ID/path/hash status and Evidence heading; not factual truth.",
+          "numerator": 45,
+          "denominator": 45
+        },
+        "citation_gold_agreement": {
+          "status": "MEASURED",
+          "value": 0.9333333333333333,
+          "samples": 45,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Cited source IDs present in the independent relevance gold; meaning NOT assessed.",
+          "numerator": 42,
+          "denominator": 45
+        },
+        "cross_project_leakage": {
+          "status": "MEASURED",
+          "value": 0.0,
+          "samples": 59,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Trials returning an out-of-scope candidate.",
+          "numerator": 0,
+          "denominator": 59
+        },
+        "unauthorized_current_flags": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Returned wiki flags for this unverified-only corpus; NOT AI factual assertions.",
+          "numerator": 0,
+          "denominator": 0
+        },
+        "query_elapsed_mean_seconds": {
+          "status": "MEASURED",
+          "value": 0.5298815999999996,
+          "samples": 59,
+          "unit": "seconds",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Actual adapter elapsed time, uncontrolled OS cache; not human/AI task time."
+        },
+        "task_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "factual_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "citation_semantic_accuracy": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_continuity_quality": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "unsupported_AI_current_truth_assertions": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_corrections": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_review_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "AI_task_elapsed_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_tokens": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "token_usage": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "API_cost": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "net_productivity": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "repeated_research_steps": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        }
+      }
+    },
+    "B": {
+      "vi": {
+        "recall_at_5": {
+          "status": "MEASURED",
+          "value": 0.9047619047619048,
+          "samples": 21,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+        },
+        "citation_structural_validity": {
+          "status": "MEASURED",
+          "value": 1.0,
+          "samples": 19,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Recorded source ID/path/hash status and Evidence heading; not factual truth.",
+          "numerator": 19,
+          "denominator": 19
+        },
+        "citation_gold_agreement": {
+          "status": "MEASURED",
+          "value": 1.0,
+          "samples": 19,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Cited source IDs present in the independent relevance gold; meaning NOT assessed.",
+          "numerator": 19,
+          "denominator": 19
+        },
+        "cross_project_leakage": {
+          "status": "MEASURED",
+          "value": 0.0,
+          "samples": 21,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Trials returning an out-of-scope candidate.",
+          "numerator": 0,
+          "denominator": 21
+        },
+        "unauthorized_current_flags": {
+          "status": "MEASURED",
+          "value": 0.0,
+          "samples": 19,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Returned wiki flags for this unverified-only corpus; NOT AI factual assertions.",
+          "numerator": 0,
+          "denominator": 19
+        },
+        "query_elapsed_mean_seconds": {
+          "status": "MEASURED",
+          "value": 0.6506678428571875,
+          "samples": 21,
+          "unit": "seconds",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Actual adapter elapsed time, uncontrolled OS cache; not human/AI task time."
+        },
+        "task_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "factual_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "citation_semantic_accuracy": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_continuity_quality": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "unsupported_AI_current_truth_assertions": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_corrections": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_review_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "AI_task_elapsed_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_tokens": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "token_usage": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "API_cost": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "net_productivity": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "repeated_research_steps": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        }
+      },
+      "en": {
+        "recall_at_5": {
+          "status": "MEASURED",
+          "value": 0.6862745098039216,
+          "samples": 51,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+        },
+        "citation_structural_validity": {
+          "status": "MEASURED",
+          "value": 1.0,
+          "samples": 38,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Recorded source ID/path/hash status and Evidence heading; not factual truth.",
+          "numerator": 38,
+          "denominator": 38
+        },
+        "citation_gold_agreement": {
+          "status": "MEASURED",
+          "value": 0.9736842105263158,
+          "samples": 38,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Cited source IDs present in the independent relevance gold; meaning NOT assessed.",
+          "numerator": 37,
+          "denominator": 38
+        },
+        "cross_project_leakage": {
+          "status": "MEASURED",
+          "value": 0.0,
+          "samples": 59,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Trials returning an out-of-scope candidate.",
+          "numerator": 0,
+          "denominator": 59
+        },
+        "unauthorized_current_flags": {
+          "status": "MEASURED",
+          "value": 0.0,
+          "samples": 38,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Returned wiki flags for this unverified-only corpus; NOT AI factual assertions.",
+          "numerator": 0,
+          "denominator": 38
+        },
+        "query_elapsed_mean_seconds": {
+          "status": "MEASURED",
+          "value": 0.6270415711864482,
+          "samples": 59,
+          "unit": "seconds",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": "Actual adapter elapsed time, uncontrolled OS cache; not human/AI task time."
+        },
+        "task_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "factual_correctness": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "citation_semantic_accuracy": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_continuity_quality": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "unsupported_AI_current_truth_assertions": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_corrections": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "human_review_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "AI_task_elapsed_seconds": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "context_tokens": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "token_usage": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "API_cost": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "net_productivity": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        },
+        "repeated_research_steps": {
+          "status": "NOT MEASURED",
+          "value": null,
+          "samples": 0,
+          "unit": "ratio",
+          "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+          "definition": ""
+        }
+      }
+    }
+  },
+  "paired_recall_comparisons": {
+    "tie": 38,
+    "B_higher": 24,
+    "A_higher": 10,
+    "excluded_empty_gold": 8
+  },
+  "proxy_recall_delta_B_minus_A": {
+    "status": "MEASURED",
+    "value": 0.19444444444444442,
+    "samples": 80,
+    "unit": "ratio",
+    "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+    "definition": "Paired raw adapter versus wiki helper on curated synthetic queries; NOT AI A/B value."
+  },
+  "retrieval_quality_outcomes": {
+    "A": {
+      "HIT": 40,
+      "MISS": 32,
+      "CORRECT_ABSTENTION_SIGNAL": 8
+    },
+    "B": {
+      "HIT": 54,
+      "MISS": 18,
+      "CORRECT_ABSTENTION_SIGNAL": 8
+    }
+  },
+  "retrieval_misses": {
+    "A": [
+      {
+        "case_id": "K17",
+        "query": "cache lifetime",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-719"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B15-vi",
+        "query": "thời gian chờ yêu cầu",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-717"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B10-vi",
+        "query": "ngắt mạch yêu cầu",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-711"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S05",
+        "query": "cache lifetime",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-720"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B19-en",
+        "query": "UTF-8 field_name",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-728"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B01-vi",
+        "query": "khóa chống gửi lặp",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-701"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B14-vi",
+        "query": "mã băm dữ liệu",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-716"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K18",
+        "query": "cache lifetime",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-720"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B18-vi",
+        "query": "đề xuất thay đổi giao vận",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-722"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B08-vi",
+        "query": "phân trang bằng con trỏ",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-709"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B07-en",
+        "query": "ETag If-Match",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-708"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B02-vi",
+        "query": "giãn cách thử lại",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-702"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B19-vi",
+        "query": "giữ nguyên định danh",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-728"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B20-vi",
+        "query": "sao chép khi ghi",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-715"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B04-vi",
+        "query": "đường dẫn đọc widget",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-704"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K07",
+        "query": "ETag If-Match",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-708"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K27",
+        "query": "giữ bản gốc khi thay đổi bản sao",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-715"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S04",
+        "query": "cache lifetime",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-719"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B07-vi",
+        "query": "kiểm soát cập nhật đồng thời",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-708"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B17-vi",
+        "query": "thời gian sống cache dự án",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-719"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B17-en",
+        "query": "cache lifetime",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-719"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B06-vi",
+        "query": "khóa hàng dữ liệu",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-706"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B05-vi",
+        "query": "tệp cấu hình bộ nhớ đệm",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-705"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B16-vi",
+        "query": "thời gian chờ yêu cầu",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-718"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B13-vi",
+        "query": "che nhãn trong nhật ký",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-714"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B03-vi",
+        "query": "nhiễu thời gian thử lại",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-703"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B11-vi",
+        "query": "xác nhận xử lý hàng đợi",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-712"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K20",
+        "query": "UTF-8 field_name",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-728"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K21",
+        "query": "publication recovery",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-729"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K28",
+        "query": "retain predecessor material when mutating a fork",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-715"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B09-vi",
+        "query": "thời gian sống bộ nhớ đệm",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-710"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B12-vi",
+        "query": "nhật ký chỉ nối thêm",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-713"
+        ],
+        "retrieved_source_ids_at_5": []
+      }
+    ],
+    "B": [
+      {
+        "case_id": "K17",
+        "query": "cache lifetime",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-719"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S05",
+        "query": "cache lifetime",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-720"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B18-en",
+        "query": "transport proposal",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-722"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S09",
+        "query": "session handoff",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-725"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K15",
+        "query": "request timeout",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-717"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K18",
+        "query": "cache lifetime",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-720"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B16-en",
+        "query": "request timeout",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-718"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S10",
+        "query": "session handoff",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-726"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K30",
+        "query": "transport proposal",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-722"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B20-vi",
+        "query": "sao chép khi ghi",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-715"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K27",
+        "query": "giữ bản gốc khi thay đổi bản sao",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-715"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S04",
+        "query": "cache lifetime",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-719"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B17-en",
+        "query": "cache lifetime",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-719"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "B15-en",
+        "query": "request timeout",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-717"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S01",
+        "query": "request timeout",
+        "scope": "pilot-cedar",
+        "expected_source_ids": [
+          "SRC-20261018-717"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K16",
+        "query": "request timeout",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-718"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "S02",
+        "query": "request timeout",
+        "scope": "pilot-marlin",
+        "expected_source_ids": [
+          "SRC-20261018-718"
+        ],
+        "retrieved_source_ids_at_5": []
+      },
+      {
+        "case_id": "K28",
+        "query": "retain predecessor material when mutating a fork",
+        "scope": "global",
+        "expected_source_ids": [
+          "SRC-20261018-715"
+        ],
+        "retrieved_source_ids_at_5": []
+      }
+    ]
+  },
+  "reliability": {
+    "harness_infrastructure": "PASS",
+    "definition": "Execution, preservation and integrity plumbing only. MISS/unexpected retrieval rows remain explicit quality failures, never converted to PASS.",
+    "full_suite": {
+      "run": 234,
+      "passed": 234,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "new_tests": 15,
+    "previous_tests": 219,
+    "code_unchanged_during_tests": true,
+    "query_and_lint_read_only": true,
+    "live_lint": [
+      "WARNING NO_EVIDENCE wiki/concepts/knowledge-system-principles.md: page has no registered source or approved decision evidence."
+    ]
+  },
+  "evolution": {
+    "passed": true,
+    "checks": {
+      "initial_query_found_unverified": true,
+      "initial_query_read_only": true,
+      "failed_update_injected_after_first_owned_replacement": true,
+      "failed_existing_update_exact_rollback": true,
+      "failed_update_no_pending_journal_or_lock": true,
+      "retry_committed": true,
+      "original_claim_retained_verbatim": true,
+      "both_conflicting_claims_retained": true,
+      "original_transition_prefix_retained": true,
+      "conflict_query_disputed_with_both_references": true,
+      "strict_lint_no_errors": true,
+      "query_and_lint_read_only": true,
+      "three_sources_intact_and_unverified": true,
+      "unrelated_raw_and_append_only_prefixes_preserved": true,
+      "no_approval_records_created": true,
+      "fresh_python_continuity": true,
+      "scenario_completed": true
+    },
+    "maintenance_elapsed_seconds": {
+      "unrelated_source_admission": 1.0327290000000175,
+      "unrelated_draft_ingest": 0.840538800000104,
+      "source_a_admission": 1.2780842999995912,
+      "initial_draft_ingest": 0.8712676999998621,
+      "initial_unverified_transition": 0.6009578000002875,
+      "initial_query": 0.06657809999978781,
+      "return_to_draft": 0.5275550000001203,
+      "source_b_admission": 1.1044468000000052,
+      "failed_update_and_automatic_rollback": 0.896277000000282,
+      "retry_conflicting_draft_update": 0.9599342999999863,
+      "updated_unverified_transition": 0.48310940000010305,
+      "disputed_transition": 0.5541215000002921,
+      "disputed_query": 0.07930390000001353,
+      "strict_lint": 0.15007520000017394,
+      "source_integrity_audit": 0.04413269999986369,
+      "fresh_python_query": 0.830797099999927
+    },
+    "human_approvals_created": 0,
+    "scope": "One fully executed generic synthetic scenario; not completion of all ten case-specific gold rubrics."
+  },
+  "independent_agent_readback": {
+    "observed": true,
+    "agent_task": "/root/feasibility_fresh_reader",
+    "history_mode": "fork_turns=none",
+    "answer_key_provided": false,
+    "reported_status": "DISPUTED",
+    "current_truth": false,
+    "both_sources_and_unresolved_conflict_retained": true,
+    "root_query_and_hash_corroboration": true,
+    "scope": "One synthetic new-agent readback; not a full A/B task, five continuity case scores or human correctness evaluation.",
+    "model_version_settings_tokens_cost": "NOT OBSERVED"
+  },
+  "compounding_rounds": [
+    {
+      "source_count": 10,
+      "fixed_query_panel": [
+        "K01",
+        "K02",
+        "K03",
+        "K04"
+      ],
+      "A_recall": {
+        "status": "MEASURED",
+        "value": 1.0,
+        "samples": 4,
+        "unit": "ratio",
+        "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+        "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+      },
+      "B_recall": {
+        "status": "MEASURED",
+        "value": 1.0,
+        "samples": 4,
+        "unit": "ratio",
+        "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+        "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+      },
+      "actual_batch_machine_seconds": 34.46264220000057
+    },
+    {
+      "source_count": 20,
+      "fixed_query_panel": [
+        "K01",
+        "K02",
+        "K03",
+        "K04"
+      ],
+      "A_recall": {
+        "status": "MEASURED",
+        "value": 1.0,
+        "samples": 4,
+        "unit": "ratio",
+        "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+        "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+      },
+      "B_recall": {
+        "status": "MEASURED",
+        "value": 1.0,
+        "samples": 4,
+        "unit": "ratio",
+        "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+        "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+      },
+      "actual_batch_machine_seconds": 38.18853299999955
+    },
+    {
+      "source_count": 30,
+      "fixed_query_panel": [
+        "K01",
+        "K02",
+        "K03",
+        "K04"
+      ],
+      "A_recall": {
+        "status": "MEASURED",
+        "value": 1.0,
+        "samples": 4,
+        "unit": "ratio",
+        "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+        "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+      },
+      "B_recall": {
+        "status": "MEASURED",
+        "value": 1.0,
+        "samples": 4,
+        "unit": "ratio",
+        "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+        "definition": "Macro source Recall@5: first 5 distinct source IDs projected from ranked candidates; nonempty gold, blocked identities included; no answer score."
+      },
+      "actual_batch_machine_seconds": 41.48731939999925
+    }
+  ],
+  "compounding_value": "NOT MEASURED. Four simple fixed queries stay at recall 1.0 in both arms at 10/20/30 sources; this demonstrates persistence, not increasing practical value.",
+  "productivity_and_cost": {
+    "machine_maintenance": {
+      "status": "MEASURED",
+      "value": 114.13849459999938,
+      "samples": 30,
+      "unit": "seconds",
+      "scope": "synthetic deterministic component; no AI model, human score or real pilot",
+      "definition": "Actual synthetic admission/synthesis/lifecycle machine time; excludes human review."
+    },
+    "synthetic_harness_elapsed_seconds": 237.90388620000022,
+    "human_review_seconds": null,
+    "human_corrections": null,
+    "real_AI_task_elapsed_seconds": null,
+    "context_tokens": null,
+    "API_tokens_cost": null,
+    "net_productivity": "NOT MEASURED",
+    "timing_limit": "One uncontrolled local run. Part of benchmark overlapped a separate regression run/system activity; no isolated performance advantage, CPU cost, SLA or human time saving is inferred."
+  },
+  "human_review_burden": "NOT MEASURED. No human-confirmed real gold, semantic citation scores, task grades, correction minutes or review minutes were collected.",
+  "iteration_evidence": [
+    "Independent review exposed three scorer defects before the recorded benchmark: >5 source IDs from one page, permissive Evidence substring and implicit gold misses. Fixed source projection, exact pointer plus recorded-byte checks and explicit HIT/MISS outcomes; regression tests cover the reproduced defects.",
+    "80 pairs versus 160 arm executions are reported separately. Twenty-three protocol-only rubrics are explicitly NOT RUN.",
+    "An optional final review-agent follow-up hit a usage limit; it is not counted as completed review. The root checked the fixes and all 12 targeted metric tests plus the entire 234-test suite passed."
+  ],
+  "remaining_limitations": [
+    "A deterministic raw adapter is not a competent AI baseline; B curated aliases and layout can improve fixture recall without improving real reasoning or productivity.",
+    "B still misses 18/72 nonempty-gold cases; A misses 32/72. Lexical full-phrase matching misses unlisted paraphrases and grouped keyword strings such as request timeout timeout_ms when queried by a shorter phrase.",
+    "Structural citations and source-ID gold agreement do not prove claim meaning or factual truth; synthetic gold itself lacks independent human confirmation.",
+    "All main-corpus pages remain unverified, so this does not measure practical use of human-approved current decisions. Existing governance behavior remains covered by prior regressions.",
+    "Twenty-three case-specific protocol rubrics, actual coding/research output, paired AI fresh sessions and real compounding value remain NOT RUN/NOT MEASURED.",
+    "Human identity, host containment, physical power loss, dense dependency graphs and earlier Medium/Low audit findings are unchanged residual risks."
+  ],
+  "V1_recommendations": [
+    "Review exact keyword phrases and API/identifier entries separately instead of joining unrelated terms into one phrase. Keep unlisted paraphrases as holdout gold; do not rewrite expected results to make the benchmark pass.",
+    "Preserve HIT/MISS, citation meaning and current-authority outcomes as separate metrics; prioritize human source review over increasing file count.",
+    "If a pilot is separately authorized, curate a small nonsensitive corpus, human-confirm gold and permissions, freeze model/tools and run balanced independent A/B sessions with the same raw/decision access.",
+    "Collect complete intake/synthesis/review/correction/Lint/conflict overhead alongside task outcomes before estimating reusable value or considering infrastructure upgrades."
+  ],
+  "V2_recommendation": "Do not start V2. No practical-value or net-cost evidence currently justifies it; do not introduce QMD, embeddings, database or framework on these proxy scores.",
+  "approval_items": "No new permission is required to finish this authorized synthetic harness. Real sources, human-confirmed gold, source rights and real pilot task/tool scope need a separate direct user task. No real knowledge or decision approval was created.",
+  "protected_baselines": {
+    ".obsidian/graph.json": {
+      "bytes": 511,
+      "sha256": "9101fb93e2fefb6266c38a1fe7cf7c33fa5b2a33487dbb27e4171d971e686806",
+      "observed_sha256": "9101fb93e2fefb6266c38a1fe7cf7c33fa5b2a33487dbb27e4171d971e686806",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "decisions/index.md": {
+      "bytes": 165,
+      "sha256": "0eb74c8b24c81b746b6fa4c86b983364fe1242d55fd7d2305d51fd07ca8405b2",
+      "observed_sha256": "0eb74c8b24c81b746b6fa4c86b983364fe1242d55fd7d2305d51fd07ca8405b2",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-audit-2026-10-18.json": {
+      "bytes": 51058,
+      "sha256": "b45b49d3736129c97df5a3ecd7b5836960decaf47836af23e5f5f2801e78d73b",
+      "observed_sha256": "b45b49d3736129c97df5a3ecd7b5836960decaf47836af23e5f5f2801e78d73b",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-audit-2026-10-18.md": {
+      "bytes": 30042,
+      "sha256": "7a25a56727aa48eba9f00a6652e5e34b1a8cd8aac825f1bc8ce40a6d1fd1ac23",
+      "observed_sha256": "7a25a56727aa48eba9f00a6652e5e34b1a8cd8aac825f1bc8ce40a6d1fd1ac23",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-governance-probes-2026-10-18.json": {
+      "bytes": 8086,
+      "sha256": "538921f41e6f2b3f3f4e309093387609e2378cd9948732becedda9d367ea32fd",
+      "observed_sha256": "538921f41e6f2b3f3f4e309093387609e2378cd9948732becedda9d367ea32fd",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-governance-probes-2026-10-18.md": {
+      "bytes": 7468,
+      "sha256": "f38c18de607f50634f2adc5f9dccc3a98c89fefa4150f15298c6401334663435",
+      "observed_sha256": "f38c18de607f50634f2adc5f9dccc3a98c89fefa4150f15298c6401334663435",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-load-2026-10-18.json": {
+      "bytes": 14413,
+      "sha256": "32d36d13e190088ffd26c3469ffe679e3b86c3965a1b3bce67309c80a2ebc901",
+      "observed_sha256": "32d36d13e190088ffd26c3469ffe679e3b86c3965a1b3bce67309c80a2ebc901",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-load-2026-10-18.md": {
+      "bytes": 9969,
+      "sha256": "7595e1a140c843e18603a4ab0c2358d7d39efd5a581acaaac8631729d64dadc7",
+      "observed_sha256": "7595e1a140c843e18603a4ab0c2358d7d39efd5a581acaaac8631729d64dadc7",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-security-probes-2026-10-18.json": {
+      "bytes": 9821,
+      "sha256": "5d221a374cb1348efaf1626847540ba4a432ca670984e0c9ceb1432a3e5a7474",
+      "observed_sha256": "5d221a374cb1348efaf1626847540ba4a432ca670984e0c9ceb1432a3e5a7474",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-security-probes-2026-10-18.md": {
+      "bytes": 6872,
+      "sha256": "baf27576988e784148969f26235731b7574a8b320c053e5991be5c0afa708c7e",
+      "observed_sha256": "baf27576988e784148969f26235731b7574a8b320c053e5991be5c0afa708c7e",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-workflows-2026-10-18.json": {
+      "bytes": 200917,
+      "sha256": "a2c089395379561770a67ca91337fd074c847b1c475fdc1b2c25f66cdad85ce9",
+      "observed_sha256": "a2c089395379561770a67ca91337fd074c847b1c475fdc1b2c25f66cdad85ce9",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "reports/independent-final-workflows-2026-10-18.md": {
+      "bytes": 18148,
+      "sha256": "21c8a3b5721a83f337f746c4340d303ad2822d1676c870f16276bad01112c90d",
+      "observed_sha256": "21c8a3b5721a83f337f746c4340d303ad2822d1676c870f16276bad01112c90d",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "sources/manifest.csv": {
+      "bytes": 109,
+      "sha256": "1abd623611abb8760a152154c369c789ebe47b481b6bc1b24690cc27512fb285",
+      "observed_sha256": "1abd623611abb8760a152154c369c789ebe47b481b6bc1b24690cc27512fb285",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "sources/provenance.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "sources/raw/README.md": {
+      "bytes": 416,
+      "sha256": "c03e0fc22df68048d53bb3d422f302beeed28e395280b711ca44304384775ad8",
+      "observed_sha256": "c03e0fc22df68048d53bb3d422f302beeed28e395280b711ca44304384775ad8",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "wiki/concepts/knowledge-system-principles.md": {
+      "bytes": 420,
+      "sha256": "6f3147ad0c4b4425b9bb7738b47e41eb78c91e8d3a5692840b7eba3408a2bc13",
+      "observed_sha256": "6f3147ad0c4b4425b9bb7738b47e41eb78c91e8d3a5692840b7eba3408a2bc13",
+      "preserved": true,
+      "comparison": "whole file"
+    },
+    "wiki/log.md": {
+      "bytes": 27166,
+      "sha256": "b258643720bf0f0fb6bdc643fd0a6de61e74ba0513bb5240ba259bd145cf6da8",
+      "observed_sha256": "b258643720bf0f0fb6bdc643fd0a6de61e74ba0513bb5240ba259bd145cf6da8",
+      "preserved": true,
+      "comparison": "old prefix"
+    }
+  },
+  "live_registered_sources": 0,
+  "owned_fixture_cleanup": true,
+  "core_implementation_sha256": {
+    "ingest_workspace.py": "c98a95afe039b643205250a1acf888ce6771b09294fdf71cf53ab4f5f110f5d3",
+    "query_workspace.py": "2d3884fd180711a7d63808d33fb3450ced9bd616bd5a80ac72c87511732cf14a",
+    "check_workspace.py": "4b9c51045ede39596125af367146dffc2fc437e5b082b05224dd0468f0f2462a",
+    "knowledge_governance.py": "b1e9339c39b022f00256036e9ef40fad376a1c4ae7ed67fdf796398c6ce7c9f6",
+    "source_integrity.py": "2df48ff29a5e41057b18703c8d7fa20009e06d2afa1ef73ed110b8cb0b8b2468",
+    "safe_operations.py": "2a97bc6d198627aa8cf69c2bf33528b7c16ce831bb5bea28b87ab0610c4d050e",
+    "workspace_security.py": "03a35cb6524de3a4fb2c7b1b994c8d6d9ad88d4f0607341b1d8d92ec175f80ad"
+  },
+  "implementation_test_sha256": {
+    "scripts/benchmark_scalability.py": "adaa62aadb6a3e7c6a638dd834f15f384a6576080cee84f8e8d31ebf08e7d04c",
+    "scripts/check_workspace.py": "4b9c51045ede39596125af367146dffc2fc437e5b082b05224dd0468f0f2462a",
+    "scripts/evaluate_feasibility.py": "49b11301dd9b8c206e298c1aa7f159df3f87651d48abdd588c702d7b6406612a",
+    "scripts/feasibility_evolution.py": "8baa1cdaa0f2d646b6882c48a8df8e8802b9a6fcda52ae731f763e1bee06c3d9",
+    "scripts/ingest_workspace.py": "c98a95afe039b643205250a1acf888ce6771b09294fdf71cf53ab4f5f110f5d3",
+    "scripts/knowledge_governance.py": "b1e9339c39b022f00256036e9ef40fad376a1c4ae7ed67fdf796398c6ce7c9f6",
+    "scripts/query_workspace.py": "2d3884fd180711a7d63808d33fb3450ced9bd616bd5a80ac72c87511732cf14a",
+    "scripts/safe_operations.py": "2a97bc6d198627aa8cf69c2bf33528b7c16ce831bb5bea28b87ab0610c4d050e",
+    "scripts/source_integrity.py": "2df48ff29a5e41057b18703c8d7fa20009e06d2afa1ef73ed110b8cb0b8b2468",
+    "scripts/validate_governance_remediation.py": "f4cea4c1fc41bf95be06fa4adf14a06238074fdf1b420422694d6c7954e9cd76",
+    "scripts/validate_knowledge_governance.py": "f213ac2469248afc8a596f6a5117b05e73667d0515f1063ec25deac44ff199f3",
+    "scripts/validate_multilingual.py": "41c875ecd40190a85e46fce29bc947dc444e98263c9eb2b3a111bf45b5d8e134",
+    "scripts/validate_scalability.py": "de1dcf6aba63151f663b69f7fb52c9a278c4b15814da9e853d6c586b905320b3",
+    "scripts/validate_security.py": "ed79324a9d34aed9314a94712a6d6f566ae1a80caa88a0eddcb9360bc6b40f7a",
+    "scripts/validate_source_integrity.py": "d6c001e3382a57a3d578a88a82d638c7aa69d0ea80d89aad78d92face1eb7c63",
+    "scripts/validate_workflows.py": "32bff4f845759e9c28c9163ca3c0236dd433c37ad74ac96f1e4d3494e9f3c9b0",
+    "scripts/workspace_security.py": "03a35cb6524de3a4fb2c7b1b994c8d6d9ad88d4f0607341b1d8d92ec175f80ad",
+    "tests/test_check_workspace.py": "09c3e825c0e1064da4043cb2e9b46f5ba7e848dddc79bf6b35379d576f0a364f",
+    "tests/test_feasibility_evolution.py": "3b6f297983cac9f590b833a4e1a00e0124d7d37142e8fcda68f507244b91437f",
+    "tests/test_feasibility_harness.py": "536be6d60cfe02385c5540dc1e2b74a0d25cbd6e6b7069682f9a8e22589a410f",
+    "tests/test_governance_adr_eligibility.py": "fab8745bd45fd203f40032683844a085bd25bb310ad3362925ca345301021280",
+    "tests/test_governance_approval_paths.py": "8ec9ce54f386dd438b1f4befdea84aeccd950d0ebf0b5a922343cb708c742880",
+    "tests/test_knowledge_governance.py": "10a3e0f499b9c320fe2eb43f872db327e87f39fca22ef97fc0cdc486865ccf5a",
+    "tests/test_multilingual.py": "183f7da34345114d1d5dc79bd15249458712fb0897f07ef773448342903b2d66",
+    "tests/test_scalability.py": "1f5ea5fb68164b2b16cf6ba26a44785d97882fd7b007e155627060fd3467981a",
+    "tests/test_security_recovery.py": "3bfa4a48b73d2fa8cd95aa2a39b1c4bc3f60bbe9221482412ebae4178fb51f1b",
+    "tests/test_source_integrity.py": "6cc5536aa0525fb89c071e5f30ae9422399a62e51dcc5ade1840a6f5968017cd",
+    "tests/test_workflow_reliability.py": "6343a662265773ef957ede18660aac32168ba1049262a163e9975c3f65bdac43",
+    "tests/workflow_benchmark.py": "d118b5c50500fd164fe740d6ea03634eaeab5d71daf8fa73cb42cdde41732293",
+    "tests/workflow_support.py": "e8d968fdac6f444aceef0749f208e4d9e7ee0e04210910449f605844134083d1"
+  },
+  "evidence_reports": [
+    "reports/feasibility-inspection-2026-10-18.json",
+    "reports/feasibility-inspection-2026-10-18.md",
+    "reports/feasibility-v1.1-2026-10-18.json",
+    "reports/feasibility-v1.1-2026-10-18.md",
+    "reports/feasibility-regression-2026-10-18.json",
+    "reports/feasibility-regression-2026-10-18.md",
+    "reports/feasibility-continuity-2026-10-18.json",
+    "reports/feasibility-continuity-2026-10-18.md"
+  ],
+  "commands_executed": [
+    "python -B -m unittest discover -s tests -p test_feasibility_evolution.py -v (3/3 PASS)",
+    "python -B -m unittest discover -s tests -p test_feasibility_harness.py -v (12/12 PASS)",
+    "python -B scripts/evaluate_feasibility.py --output reports/feasibility-v1.1-2026-10-18.json (exit 0)",
+    "Fresh scripts.validate_workflows.evaluate() exported via bounded save_reports: 234/234 PASS, code hashes unchanged",
+    "Fresh-agent public Query and root corroborating Query (exit 0, DISPUTED)",
+    "python -B scripts/check_workspace.py --integrity --security (exit 0, 0 errors/1 existing warning)",
+    "git diff --cached --check; git diff 457a9bf --check (exit 0)",
+    "SHA-256 protected baseline and actual implementation/test checks (all match)"
+  ]
+}
