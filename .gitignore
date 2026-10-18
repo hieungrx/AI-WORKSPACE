@@ -26,3 +26,37 @@ exports/private/
 
 # Local write journals and before-images; never publish recovery snapshots.
 recovery/
+
+# Local credential stores and additional private-key formats
+/.aws/
+/.azure/
+/.ssh/
+/.gnupg/
+/.config/gcloud/
+/.codex/auth.json
+.netrc
+_netrc
+.git-credentials
+.pypirc
+.npmrc
+*.pfx
+*.p8
+*.ppk
+id_ed25519*
+id_ecdsa*
+id_dsa*
+.envrc
+.envrc.*
+
+# Raw publication is opt-in; keep the scaffold and synthetic fixtures visible
+/sources/raw/**
+!/sources/raw/README.md
+/private/
+
+# Local runtimes and caches
+.venv/
+venv/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

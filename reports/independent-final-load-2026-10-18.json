@@ -1,0 +1,412 @@
+{
+  "phase": "V1 Phase 5",
+  "label": "independent-final-audit",
+  "synthetic_only": true,
+  "observed_at_utc": "2026-10-17T18:43:18.424972+00:00",
+  "environment": {
+    "os": "Windows",
+    "release": "11",
+    "machine": "AMD64",
+    "python": "3.13.0",
+    "logical_cpu_count": 8,
+    "free_bytes_at_start": 469557547008
+  },
+  "method": {
+    "trials": 1,
+    "operation_timeout_seconds": 600,
+    "latency": "Fresh worker process; imports/startup excluded; Path open/stat counters enabled. OS disk cache uncontrolled; not a cold-cache claim.",
+    "memory": "Worker process lifetime peak working set on Windows; imports/checks included.",
+    "setup": "Direct owned fixture provisioning, not production admission throughput.",
+    "cost": "LLM tokens/API charges NOT MEASURED; no LLM API is called by the benchmark.",
+    "selected_operations": [
+      "source_lookup",
+      "query_en",
+      "query_vi",
+      "validation",
+      "incremental_update"
+    ]
+  },
+  "datasets": [
+    {
+      "setup": {
+        "documents": 100,
+        "raw_snapshots": 100,
+        "fixture_build_seconds": 1.6435576000003493,
+        "fixture_navigation_generation_seconds": 0.01153139999951236,
+        "production_index_generation": "NOT MEASURED (no production generator)",
+        "file_count": 217,
+        "directory_count": 17,
+        "logical_bytes": 451159,
+        "allocated_disk_bytes": "NOT MEASURED",
+        "corpus_sha256": "f32c2cf40a72c58516752e96bafba7e4ad015f34cee28d4bfe11bd843f9bcf6d",
+        "recipe": "TEST_ONLY-scale-v1"
+      },
+      "operations": [
+        {
+          "status": "MEASURED",
+          "operation": "source_lookup",
+          "trial": 0,
+          "seconds": 0.006431199999497039,
+          "cpu_seconds": 0.0,
+          "io_calls": {
+            "path_stat_calls": 5,
+            "path_open_calls": 1,
+            "manifest_open_calls": 1
+          },
+          "memory": {
+            "peak_working_set_bytes": 33665024,
+            "working_set_bytes": 31920128,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "source_id": "SRC-20260101-001"
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "query_en",
+          "trial": 0,
+          "seconds": 1.3030502999972668,
+          "cpu_seconds": 1.28125,
+          "io_calls": {
+            "path_stat_calls": 3238,
+            "path_open_calls": 202,
+            "manifest_open_calls": 1
+          },
+          "memory": {
+            "peak_working_set_bytes": 33333248,
+            "working_set_bytes": 32329728,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "status": "FOUND",
+            "path": "wiki/projects/load-project-01/p000001.md",
+            "source_id": "SRC-20260101-001",
+            "scope": "load-project-01"
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "query_vi",
+          "trial": 0,
+          "seconds": 0.8352224999980535,
+          "cpu_seconds": 0.828125,
+          "io_calls": {
+            "path_stat_calls": 3238,
+            "path_open_calls": 202,
+            "manifest_open_calls": 1
+          },
+          "memory": {
+            "peak_working_set_bytes": 33148928,
+            "working_set_bytes": 32485376,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "status": "FOUND",
+            "path": "wiki/projects/load-project-01/p000001.md",
+            "source_id": "SRC-20260101-001",
+            "scope": "load-project-01"
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "validation",
+          "trial": 0,
+          "seconds": 2.835356999999931,
+          "cpu_seconds": 2.765625,
+          "io_calls": {
+            "path_stat_calls": 7866,
+            "path_open_calls": 544,
+            "manifest_open_calls": 3
+          },
+          "memory": {
+            "peak_working_set_bytes": 33349632,
+            "working_set_bytes": 32997376,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "errors": 0,
+            "warnings": 99
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "incremental_update",
+          "trial": 0,
+          "seconds": 1.7278009000001475,
+          "cpu_seconds": 1.234375,
+          "io_calls": {
+            "path_stat_calls": 3632,
+            "path_open_calls": 246,
+            "manifest_open_calls": 7
+          },
+          "memory": {
+            "peak_working_set_bytes": 33370112,
+            "working_set_bytes": 32710656,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "status": "COMMITTED",
+            "changed_paths": [
+              "wiki/log.md",
+              "wiki/projects/load-project-01/p000001.md"
+            ],
+            "planned_targets": 3,
+            "all_other_hashes_preserved": true,
+            "retry_status": "UNCHANGED",
+            "retry_seconds": 1.4417940999992425,
+            "new_keyword_visible_without_rebuild": true
+          },
+          "correct": true
+        }
+      ],
+      "summary": {
+        "source_lookup": {
+          "completed_trials": 1,
+          "median_seconds": 0.006431199999497039,
+          "max_seconds": 0.006431199999497039
+        },
+        "query_en": {
+          "completed_trials": 1,
+          "median_seconds": 1.3030502999972668,
+          "max_seconds": 1.3030502999972668
+        },
+        "query_vi": {
+          "completed_trials": 1,
+          "median_seconds": 0.8352224999980535,
+          "max_seconds": 0.8352224999980535
+        },
+        "validation": {
+          "completed_trials": 1,
+          "median_seconds": 2.835356999999931,
+          "max_seconds": 2.835356999999931
+        },
+        "incremental_update": {
+          "completed_trials": 1,
+          "median_seconds": 1.7278009000001475,
+          "max_seconds": 1.7278009000001475
+        }
+      },
+      "quality": {
+        "status": "MEASURED",
+        "operation": "quality",
+        "correct": true,
+        "observed": {
+          "wrong_scope": "NOT_FOUND",
+          "missing_evidence_abstention": "NOT_FOUND",
+          "same_size_mtime_raw_tamper": "MISSING_EVIDENCE",
+          "injection": "UNTRUSTED_CONTENT",
+          "verified_overwrite": "PROTECTED_KNOWLEDGE_UPDATE",
+          "path_boundary": "WRITE_DENIED",
+          "interrupted_query": "RECOVERY_REQUIRED",
+          "recovery": "ROLLED_BACK",
+          "all_fixture_hashes_restored": true
+        },
+        "memory": {
+          "peak_working_set_bytes": 33480704,
+          "working_set_bytes": 32096256,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        }
+      }
+    },
+    {
+      "setup": {
+        "documents": 1000,
+        "raw_snapshots": 1000,
+        "fixture_build_seconds": 22.815392900000006,
+        "fixture_navigation_generation_seconds": 0.04281999999875552,
+        "production_index_generation": "NOT MEASURED (no production generator)",
+        "file_count": 2017,
+        "directory_count": 17,
+        "logical_bytes": 4496468,
+        "allocated_disk_bytes": "NOT MEASURED",
+        "corpus_sha256": "7091dd7804edf9c717d531e86d08b91ec3ac031ef41c8d832c9f99ae7c383fbe",
+        "recipe": "TEST_ONLY-scale-v1"
+      },
+      "operations": [
+        {
+          "status": "MEASURED",
+          "operation": "source_lookup",
+          "trial": 0,
+          "seconds": 0.034121199998480733,
+          "cpu_seconds": 0.03125,
+          "io_calls": {
+            "path_stat_calls": 5,
+            "path_open_calls": 1,
+            "manifest_open_calls": 1
+          },
+          "memory": {
+            "peak_working_set_bytes": 33390592,
+            "working_set_bytes": 32165888,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "source_id": "SRC-20260101-001"
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "query_en",
+          "trial": 0,
+          "seconds": 9.065995599998132,
+          "cpu_seconds": 8.890625,
+          "io_calls": {
+            "path_stat_calls": 30058,
+            "path_open_calls": 2002,
+            "manifest_open_calls": 1
+          },
+          "memory": {
+            "peak_working_set_bytes": 36397056,
+            "working_set_bytes": 36397056,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "status": "FOUND",
+            "path": "wiki/projects/load-project-01/p000001.md",
+            "source_id": "SRC-20260101-001",
+            "scope": "load-project-01"
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "query_vi",
+          "trial": 0,
+          "seconds": 8.90726690000156,
+          "cpu_seconds": 8.875,
+          "io_calls": {
+            "path_stat_calls": 30058,
+            "path_open_calls": 2002,
+            "manifest_open_calls": 1
+          },
+          "memory": {
+            "peak_working_set_bytes": 35880960,
+            "working_set_bytes": 35532800,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "status": "FOUND",
+            "path": "wiki/projects/load-project-01/p000001.md",
+            "source_id": "SRC-20260101-001",
+            "scope": "load-project-01"
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "validation",
+          "trial": 0,
+          "seconds": 28.993895700001303,
+          "cpu_seconds": 27.984375,
+          "io_calls": {
+            "path_stat_calls": 71226,
+            "path_open_calls": 5044,
+            "manifest_open_calls": 3
+          },
+          "memory": {
+            "peak_working_set_bytes": 46997504,
+            "working_set_bytes": 46997504,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "errors": 0,
+            "warnings": 999
+          },
+          "correct": true
+        },
+        {
+          "status": "MEASURED",
+          "operation": "incremental_update",
+          "trial": 0,
+          "seconds": 13.146671999998944,
+          "cpu_seconds": 11.078125,
+          "io_calls": {
+            "path_stat_calls": 30452,
+            "path_open_calls": 2046,
+            "manifest_open_calls": 7
+          },
+          "memory": {
+            "peak_working_set_bytes": 39567360,
+            "working_set_bytes": 38035456,
+            "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+          },
+          "observed": {
+            "status": "COMMITTED",
+            "changed_paths": [
+              "wiki/log.md",
+              "wiki/projects/load-project-01/p000001.md"
+            ],
+            "planned_targets": 3,
+            "all_other_hashes_preserved": true,
+            "retry_status": "UNCHANGED",
+            "retry_seconds": 11.237063399999897,
+            "new_keyword_visible_without_rebuild": true
+          },
+          "correct": true
+        }
+      ],
+      "summary": {
+        "source_lookup": {
+          "completed_trials": 1,
+          "median_seconds": 0.034121199998480733,
+          "max_seconds": 0.034121199998480733
+        },
+        "query_en": {
+          "completed_trials": 1,
+          "median_seconds": 9.065995599998132,
+          "max_seconds": 9.065995599998132
+        },
+        "query_vi": {
+          "completed_trials": 1,
+          "median_seconds": 8.90726690000156,
+          "max_seconds": 8.90726690000156
+        },
+        "validation": {
+          "completed_trials": 1,
+          "median_seconds": 28.993895700001303,
+          "max_seconds": 28.993895700001303
+        },
+        "incremental_update": {
+          "completed_trials": 1,
+          "median_seconds": 13.146671999998944,
+          "max_seconds": 13.146671999998944
+        }
+      },
+      "quality": {
+        "status": "MEASURED",
+        "operation": "quality",
+        "correct": true,
+        "observed": {
+          "wrong_scope": "NOT_FOUND",
+          "missing_evidence_abstention": "NOT_FOUND",
+          "same_size_mtime_raw_tamper": "MISSING_EVIDENCE",
+          "injection": "UNTRUSTED_CONTENT",
+          "verified_overwrite": "PROTECTED_KNOWLEDGE_UPDATE",
+          "path_boundary": "WRITE_DENIED",
+          "interrupted_query": "RECOVERY_REQUIRED",
+          "recovery": "ROLLED_BACK",
+          "all_fixture_hashes_restored": true
+        },
+        "memory": {
+          "peak_working_set_bytes": 38256640,
+          "working_set_bytes": 38256640,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        }
+      }
+    }
+  ],
+  "benchmark_script_sha256": "adaa62aadb6a3e7c6a638dd834f15f384a6576080cee84f8e8d31ebf08e7d04c",
+  "implementation_sha256": {
+    "query_workspace.py": "5d427636470a66b3c4f1b8dd4df7f409b0d940847c373190d4aee680678ed117",
+    "source_integrity.py": "2df48ff29a5e41057b18703c8d7fa20009e06d2afa1ef73ed110b8cb0b8b2468",
+    "knowledge_governance.py": "3273536ef7c521a61d1ae0ff518fa7b2f76a9dbfb6a46b444b3b2eaf1bacac8d",
+    "check_workspace.py": "76ff102227494acf733723d4674f87da607ba4d8400424ef1690e8051a65fd07",
+    "safe_operations.py": "2a97bc6d198627aa8cf69c2bf33528b7c16ce831bb5bea28b87ab0610c4d050e"
+  },
+  "verdict": "PASS"
+}

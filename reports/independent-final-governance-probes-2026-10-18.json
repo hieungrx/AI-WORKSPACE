@@ -1,0 +1,125 @@
+{
+  "audit": "Independent final governance probes",
+  "created_at": "2026-10-17T18:39:50.293072+00:00",
+  "synthetic_only": true,
+  "scope": "Disposable tests/fixture-final-governance-*/workspace; approvals simulated TEST_ONLY; no real knowledge or implementation edited.",
+  "probe_source": "\nimport json,tempfile\nfrom pathlib import Path\nfrom tests.workflow_support import Workspace,DAY,SID\nfrom scripts import knowledge_governance as g,query_workspace as q,check_workspace as c,safe_operations as s\nwith tempfile.TemporaryDirectory(prefix='fixture-final-governance-',dir=Path('tests').absolute()) as td:\n root=Path(td)/'workspace';w=Workspace(root);cases=[]\n for tag,extra in [('future',{'effective_at':'2099-01-01'}),('overdue',{'review_after':'2020-01-01'}),('historical',{'temporal':'historical'})]:\n  adr=f'decisions/{tag}.md';wiki=f'wiki/current-{tag}.md';fields={'kind':'approved_decision','temporal':'current','review_after':'2099-12-31'};fields.update(extra)\n  w.write(adr,w.page(title='ADR '+tag,sources=(),claims=[],scope='audit-project',**fields)+'- FACT: TEST_ONLY project chose option A.\\n');w.verify(adr)\n  w.write(wiki,w.page(title='Current '+tag,sources=(),claims=[],scope='audit-project',temporal='current',review_after='2099-12-31')+f'- FACT: TEST_ONLY current configuration uses option A. [ADR](../{adr})\\n');w.verify(wiki)\n  with (root/'wiki/index.md').open('a',encoding='utf-8') as f:f.write(f'[page](current-{tag}.md)\\n[decision](../{adr})\\n')\n  result=q.search(root,'Current '+tag,'audit-project');ar=g.read_page(root,root/adr)\n  cases.append({'case':tag,'adr_status':ar['status'],'adr_temporal':ar['temporal'],'adr_freshness':ar['freshness'],'status':result['status'],'matches':[{'path':p['path'],'usable_as_current_truth':p['usable_as_current_truth'],'citations':p['citations']} for p in result['matches']]})\n issues=c.check_workspace(root,integrity=True,security=True)\n w.register();sid2='SRC-20261018-502';w.register(sid2,body='TEST_ONLY alternate')\n conflict=[{'summary':'TEST_ONLY disagreement','source_ids':[SID,sid2],'resolution':'TEST_ONLY reported resolution pending human validation'}]\n path='wiki/conflict.md';w.write(path,w.page(title='Conflict probe',sources=(SID,sid2),conflicts=json.dumps(conflict)));w.move(path,'unverified');w.move(path,'disputed')\n old=(root/path).read_text();events=json.loads(c.metadata(old)['transitions']);events.append({'from':'disputed','to':'unverified','actor':'human','at':DAY,'reason':'TEST_ONLY forged history','approval':'experiments/does-not-exist.md'})\n proposed=g.replace_field(g.replace_field(old,'status','unverified'),'transitions',json.dumps(events))\n try:g.transition(root,path,'unverified',actor='human',at=DAY,reason='TEST_ONLY same transition',approval_ref='experiments/does-not-exist.md');helper='ACCEPTED'\n except Exception as error:helper=type(error).__name__\n result=s.transact(root,{path:proposed.encode()},s.versions(root,[path],operation='lifecycle'),operation='lifecycle',authorized=True)\n observed={'dependency_eligibility':cases,'dependency_lint_errors':[i for i in issues if i.startswith('ERROR ')],'dependency_lint_warnings':[i for i in issues if i.startswith('WARNING ')],'conflict_resolution':{'transition_helper':helper,'bounded_writer':result['status'],'status':g.read_page(root,root/path)['status'],'missing_approval_exists':(root/'experiments/does-not-exist.md').exists(),'lint_errors':[i for i in c.check_workspace(root,integrity=True,security=True) if i.startswith('ERROR ')]}}\n",
+  "probe_source_sha256": "5e752a74aaf79ecce4822f41abb8b1c5973c0ae55bc1d1c5bddb34351a3d4efe",
+  "observed": {
+    "dependency_eligibility": [
+      {
+        "case": "future",
+        "adr_status": "verified",
+        "adr_temporal": "current",
+        "adr_freshness": [
+          "NOT_YET_EFFECTIVE"
+        ],
+        "status": "FOUND",
+        "matches": [
+          {
+            "path": "wiki/current-future.md",
+            "usable_as_current_truth": true,
+            "citations": [
+              {
+                "decision_path": "decisions/future.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case": "overdue",
+        "adr_status": "verified",
+        "adr_temporal": "current",
+        "adr_freshness": [
+          "REVIEW_DUE"
+        ],
+        "status": "FOUND",
+        "matches": [
+          {
+            "path": "wiki/current-overdue.md",
+            "usable_as_current_truth": true,
+            "citations": [
+              {
+                "decision_path": "decisions/overdue.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case": "historical",
+        "adr_status": "verified",
+        "adr_temporal": "historical",
+        "adr_freshness": [],
+        "status": "FOUND",
+        "matches": [
+          {
+            "path": "wiki/current-historical.md",
+            "usable_as_current_truth": true,
+            "citations": [
+              {
+                "decision_path": "decisions/historical.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dependency_lint_errors": [],
+    "dependency_lint_warnings": [
+      "WARNING NOT_YET_EFFECTIVE decisions/future.md: review required; no automatic state change.",
+      "WARNING REVIEW_DUE decisions/overdue.md: review required; no automatic state change."
+    ],
+    "conflict_resolution": {
+      "transition_helper": "FileNotFoundError",
+      "bounded_writer": "COMMITTED",
+      "status": "unverified",
+      "missing_approval_exists": false,
+      "lint_errors": []
+    }
+  },
+  "findings": [
+    {
+      "id": "H-GOV-01",
+      "severity": "HIGH",
+      "verdict": "FAIL",
+      "requirement": "A referenced future-effective, overdue or historical ADR cannot make another current page eligible as current truth.",
+      "evidence": "All three Query results FOUND and usable_as_current_truth=true; strict lint zero errors.",
+      "code": [
+        "scripts/query_workspace.py:219-230",
+        "scripts/query_workspace.py:299-304"
+      ],
+      "cause": "ADR reference validation checks approved authority and scope but omits its freshness/effectivity/temporal; current-eligibility only considers parent page.",
+      "fix_proposed_not_applied": "Propagate referenced decision context/eligibility gates and require eligible dependencies for current truth; add regression cases for each case."
+    },
+    {
+      "id": "H-GOV-02",
+      "severity": "HIGH",
+      "verdict": "FAIL",
+      "requirement": "Conflict resolution requires documented human approval through every supported write entry point.",
+      "evidence": "Transition helper rejects nonexistent approval (FileNotFoundError); lifecycle transaction commits exact event and strict lint has zero errors.",
+      "code": [
+        "scripts/knowledge_governance.py:252-261",
+        "scripts/knowledge_governance.py:309-318",
+        "scripts/safe_operations.py:265-272"
+      ],
+      "cause": "Read-time history only tests truthiness of conflict-resolution approval; lifecycle writer validates event append but not the required approval record.",
+      "fix_proposed_not_applied": "Validate newly appended required approval in lifecycle transaction; preserve verifiable historical approval snapshots for full history audits."
+    }
+  ],
+  "limits": [
+    "No human identity authentication or cryptographic review verification claimed; authorization flag is trusted local caller boundary.",
+    "Helper rejection is tested separately from writer path; raw fixture data only.",
+    "Other scopes and broad regression tests run independently by root auditor."
+  ]
+}

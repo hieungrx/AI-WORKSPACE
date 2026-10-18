@@ -1,0 +1,1077 @@
+{
+  "executive": {
+    "verdict": "NOT READY",
+    "summary": "Bộ test hiện có đạt, nhưng hai counterexample High mới tái hiện làm sai điều kiện current truth và tính hợp lệ của approval trong lịch sử lifecycle. V1.1 Knowledge Pilot chưa đủ điều kiện bắt đầu. Audit này không sửa implementation.",
+    "critical": "Không phát hiện Critical đã chứng minh trong phạm vi kiểm tra; không phải chứng nhận không còn Critical.",
+    "pilot": "NOT READY. Sửa H-GOV-01/H-GOV-02, thêm regression ở public write/read boundaries, chạy lại full suite và probes; sau đó mới xem xét pilot nhỏ có human review và quyền intake riêng.",
+    "v2_blockers": [
+      "Hai High findings va cac regression phai duoc giai quyet truoc khi mo rong authority hoac retrieval.",
+      "Xac dinh trusted caller/approval identity va permissions cua host tools truoc khi tuyen bo agent tu tri an toan voi nguon doi khang.",
+      "Thu nghiem approval/citation relevance va lifecycle tren pilot thuc te duoc phep; giai quyet source VERIFIED self-assertion.",
+      "Natural VI unseen/paraphrase gold va recall/abstention goals can human agreement; khong coi curated aliases la semantic retrieval.",
+      "Do p95, concurrency, representative IO/revision graphs va real admission cost truoc khi chon full-text/QMD/embeddings/database/background jobs.",
+      "Process interruption/Windows link aliases/power-loss recovery can evidence trong moi truong cho phep; khong xoa recovery history de lam dep ket qua."
+    ],
+    "fix_order": [
+      "Khac phuc H-GOV-01: dependency eligibility cua ADR, bo sung future/overdue/historical regression.",
+      "Khac phuc H-GOV-02: required approval validation o lifecycle transaction va history reader/Lint.",
+      "Bo sung VI/encoded attack cases, source verification semantics va alignment cua unknown metadata notes.",
+      "Lam ro runtime revision trong reports; chay lai 174 tests, 60-query gold va cac audit probes. Khong thay gold de cho test dat.",
+      "Chi sau khi blocker het, xin quyen intake pilot 25-100 trang va thong nhat latency budget; khong bat dau V2."
+    ]
+  },
+  "findings": [
+    {
+      "id": "H-GOV-01",
+      "severity": "High",
+      "status": "FAIL",
+      "title": "ADR chưa đủ điều kiện vẫn hợp thức hóa current truth",
+      "refs": [
+        "scripts/query_workspace.py:219",
+        "scripts/query_workspace.py:299",
+        "KNOWLEDGE_GOVERNANCE.md:99"
+      ],
+      "expected": "Trang tong hop chi du dieu kien current truth khi ADR ho tro cung du dieu kien ve hieu luc, freshness va temporal.",
+      "observed": "Ba ADR hop le: future-effective, overdue va temporal=historical. Query tren trang wiki dan ADR deu FOUND, usable_as_current_truth=true. Strict Lint: 0 errors.",
+      "impact": "Co the tra cau hinh chua co hieu luc, can review hoac chi thuoc lich su nhu trang thai hien tai cua project.",
+      "cause": "decision_citations kiem approved/scope/access nhung bo qua eligibility cua ADR; current gate chi xem metadata cua trang cha.",
+      "fix": "Truyen eligibility/freshness/history cua ADR vao evidence va current gate, fail closed neu dependency khong du dieu kien. Them ca 3 truong hop vao suite.",
+      "evidence": "reports/independent-final-governance-probes-2026-10-18.json",
+      "pilot_blocker": true
+    },
+    {
+      "id": "H-GOV-02",
+      "severity": "High",
+      "status": "FAIL",
+      "title": "Lifecycle writer chấp nhận approval giải quyết tranh chấp không tồn tại",
+      "refs": [
+        "scripts/knowledge_governance.py:252",
+        "scripts/knowledge_governance.py:309",
+        "scripts/safe_operations.py:265"
+      ],
+      "expected": "disputed -> unverified phai kiem tra documented human validation o moi public write entry point.",
+      "observed": "transition() tra FileNotFoundError cho approval thieu; cung event duoc transact(operation=lifecycle, authorized=True) COMMITTED. read_page va strict Lint chap nhan; approval file khong ton tai.",
+      "impact": "Lich su lifecycle co the tuyen bo da co phe duyet giai quyet tranh chap ma khong co record. Trang van unverified; probe KHONG chung minh tu promote len verified hoac current truth.",
+      "cause": "Read-time chi kiem approval string truthy cho resolution; validate_lifecycle_update chi kiem append event/content hash; nghia vu kiem approval nam o helper va co the bi bo qua.",
+      "fix": "Dung chung validator cho approval bat buoc o read/write boundaries; kiem resolution event, target/hash/date/evidence va conflict resolution; them direct transaction + Lint regression.",
+      "evidence": "reports/independent-final-governance-probes-2026-10-18.json",
+      "pilot_blocker": true
+    },
+    {
+      "id": "M-SRC-01",
+      "severity": "Medium",
+      "status": "FAIL",
+      "title": "Source VERIFIED là assertion tự khai báo, chưa có validation record",
+      "refs": [
+        "scripts/source_integrity.py:97",
+        "scripts/source_integrity.py:343",
+        "SOURCE_INTEGRITY.md:26"
+      ],
+      "observed": "register_source authorized=True + VERIFIED + arbitrary note => REGISTERED; citation.verification_status=VERIFIED; strict source audit khong loi; khong co validation record.",
+      "impact": "Nhan source co the gay nham lan voi ket qua da kiem chung. Wiki trong probe van draft, current=false: khong phai lifecycle bypass.",
+      "fix": "Doi nhan thanh declared trust/assertion hoac yeu cau evidence va authorized approval binding cho source VERIFIED."
+    },
+    {
+      "id": "M-SEC-01",
+      "severity": "Medium",
+      "status": "FAIL",
+      "title": "Detector bỏ sót injection tiếng Việt và HTML entity",
+      "refs": [
+        "scripts/workspace_security.py:23",
+        "scripts/workspace_security.py:54",
+        "scripts/query_workspace.py:306"
+      ],
+      "observed": "Hai detector probes tra []; VI actual Ingest COMMITTED va Query FOUND, instruction duoc giu trong title; content_trust=UNTRUSTED_DATA.",
+      "impact": "Attack corpus tieng Anh chua dai dien cho giao dien tieng Viet. KHONG chung minh command execution, secret access hay allowlist bypass.",
+      "fix": "Bo sung unseen VI/encoded adversarial cases, giu hard allowlist va tieu thu ket qua nhu DATA. Khong xem regex filter la sandbox.",
+      "evidence": "reports/independent-final-security-probes-2026-10-18.json"
+    },
+    {
+      "id": "L-SCHEMA-01",
+      "severity": "Low",
+      "status": "FAIL",
+      "title": "Chưa enforce notes giải thích metadata chưa biết",
+      "refs": [
+        "SCHEMA.md:32",
+        "scripts/source_integrity.py:48"
+      ],
+      "observed": "Author, published_date va notes cung rong van dang ky duoc. Khong co metadata bi phat minh.",
+      "fix": "Dong bo validator voi yeu cau explanation trong notes hoac sua contract qua review rieng."
+    },
+    {
+      "id": "L-AUDIT-01",
+      "severity": "Low",
+      "status": "FAIL",
+      "title": "Baseline trong validation report được hardcode",
+      "refs": [
+        "scripts/validate_workflows.py:40",
+        "scripts/validate_scalability.py:70"
+      ],
+      "observed": "Run moi tai HEAD 80d9d67 van ghi discovery_baseline=6097642 trong workflow report; scalability wrapper hardcode 55e6e1f. Ket qua test moi la that; nhan revision khong mo ta code dang chay.",
+      "fix": "Ghi runtime HEAD/dirty state va hashes; tach historical phase origin khoi tested revision. Final audit nay ghi HEAD va current hashes rieng."
+    },
+    {
+      "id": "L-DOC-01",
+      "severity": "Low",
+      "status": "NOT RUN",
+      "title": "Onboarding chưa chỉ rõ admission API tại bước đầu",
+      "refs": [
+        "README.md:16",
+        "prompts/ingest.md:8"
+      ],
+      "observed": "README first-source steps neu raw + append manifest nhung khong neu ledger/API ngay tai buoc do; prompt/Phase1 guide moi bo sung. Day la ambiguity doc review, chua chay mot user onboarding session.",
+      "fix": "Rut gon mot con duong create_raw_snapshot -> register_source -> strict Lint -> reviewed Ingest; giu original raw/metadata bat bien."
+    }
+  ],
+  "root_provenance_probe": {
+    "chunk_id": "0c5e53",
+    "wall_time_seconds": 3.0975976,
+    "exit_code": 0,
+    "original_token_count": 61,
+    "output": "{\"register_status\": \"REGISTERED\", \"source_verification_status\": \"VERIFIED\", \"knowledge_status\": \"draft\", \"usable_as_current_truth\": false, \"empty_unknown_metadata_notes_accepted\": true, \"strict_source_errors\": []}\r\nOwned fixture cleaned: True\r\n"
+  },
+  "root_security_probe": {
+    "chunk_id": "fc4918",
+    "wall_time_seconds": 9.004324,
+    "exit_code": 0,
+    "original_token_count": 221,
+    "output": "{\r\n  \"policy\": \"POLICY_WRITE_DENIED\",\r\n  \"traversal\": \"WRITE_DENIED\",\r\n  \"approval\": \"WRITE_DENIED\",\r\n  \"raw\": \"WRITE_DENIED\",\r\n  \"boundary_files_preserved\": true,\r\n  \"query_pending\": \"RECOVERY_REQUIRED\",\r\n  \"recover\": \"ROLLED_BACK\",\r\n  \"rollback_preserved_all_hashes\": true,\r\n  \"query_data\": \"UNTRUSTED_DATA\",\r\n  \"ai_verify\": \"HUMAN_AUTHORITY_REQUIRED\",\r\n  \"forged_human_without_record\": \"FileNotFoundError\",\r\n  \"report_redacted\": true,\r\n  \"main_fixture_cleaned\": true,\r\n  \"hardlink\": \"NOT RUN: PermissionError winerror=5\",\r\n  \"symlink\": \"NOT RUN: OSError winerror=1314\",\r\n  \"link_fixture_cleaned\": true,\r\n  \"detector_vietnamese\": [],\r\n  \"detector_entity\": [],\r\n  \"language_path\": {\r\n    \"actual_ingest\": \"COMMITTED\",\r\n    \"actual_query\": \"FOUND\",\r\n    \"unfiltered_instruction_in_returned_title\": true,\r\n    \"trust\": \"UNTRUSTED_DATA\"\r\n  },\r\n  \"language_fixture_cleaned\": true\r\n}\r\n"
+  },
+  "fresh_multilingual": {
+    "chunk_id": "09f3cb",
+    "wall_time_seconds": 1.62e-05,
+    "exit_code": 0,
+    "original_token_count": 192,
+    "output": "{\r\n  \"fixture_only\": true,\r\n  \"fixture_root\": \"tests/fixtures/multilingual\",\r\n  \"method\": \"scoped deterministic lexical matching with curated aliases; no semantic retrieval\",\r\n  \"python\": \"3.13.0\",\r\n  \"pairs\": 25,\r\n  \"queries\": 50,\r\n  \"passed\": 50,\r\n  \"failed\": 0,\r\n  \"categories\": {\r\n    \"exact_keyword\": {\r\n      \"queries\": 10,\r\n      \"passed\": 10\r\n    },\r\n    \"bilingual_aliases\": {\r\n      \"queries\": 10,\r\n      \"passed\": 10\r\n    },\r\n    \"cross_language\": {\r\n      \"queries\": 10,\r\n      \"passed\": 10\r\n    },\r\n    \"project_scope\": {\r\n      \"queries\": 10,\r\n      \"passed\": 10\r\n    },\r\n    \"missing_evidence\": {\r\n      \"queries\": 10,\r\n      \"passed\": 10\r\n    }\r\n  },\r\n  \"actual_outcomes\": {\r\n    \"FOUND\": 36,\r\n    \"NOT_FOUND\": 6,\r\n    \"MISSING_EVIDENCE\": 8\r\n  }\r\n}\r\n"
+  },
+  "fresh_lint": {
+    "chunk_id": "2ef0e2",
+    "wall_time_seconds": 6.0288586,
+    "exit_code": 0,
+    "original_token_count": 87,
+    "output": "WARNING NO_EVIDENCE wiki/concepts/knowledge-system-principles.md: page has no registered source or approved decision evidence.\r\nCHECKS COMPLETED: 0 structural errors, 1 warning(s).\r\nMANUAL REVIEW: facts, freshness, exact source pointers, permission, human approval, heading anchors, unsupported Markdown and Obsidian rendering are not verified.\r\n"
+  },
+  "audited_at_utc": "2026-10-17T18:49:44.686658+00:00",
+  "head": "80d9d67c495aad3443efa06b2b823bae5be8b4a7",
+  "branch": "workspace/initialize",
+  "live_registered_sources": 0,
+  "read_scope": [
+    "AGENTS/README/SCHEMA/PROFILE",
+    "SOURCE_INTEGRITY/KNOWLEDGE_GOVERNANCE/SECURITY_POLICY/MULTILINGUAL/WORKFLOW_RELIABILITY/SCALABILITY",
+    "prompts/ingest,query,lint",
+    "wiki/index and log",
+    "projects/index and three context pointers inside workspace only",
+    "decisions/index",
+    "manifest/provenance metadata",
+    "all relevant scripts/*.py and tests/test_*.py",
+    "workflow support/benchmark, workflow corpus/query gold, multilingual and security fixtures",
+    "local Git history and diffs; older reports for consistency checks only"
+  ],
+  "changed_scope": "New reports only. No implementation, live knowledge, raw/manifest/provenance, operating log or Obsidian edits. Existing graph.json change remains outside audit. Owned temporary builder/load/probe fixtures are cleaned.",
+  "commands": [
+    {
+      "command": "python -B scripts/validate_workflows.py --output reports/independent-final-workflows-2026-10-18.json",
+      "exit_code": 0,
+      "result": "174/174 tests; 60 workflow queries; root recomputed Recall@5=0.9375 and citations 53/53."
+    },
+    {
+      "command": "python -B scripts/validate_multilingual.py",
+      "exit_code": 0,
+      "result": "25 pairs, 50/50 actual lexical contract queries."
+    },
+    {
+      "command": "python -B scripts/check_workspace.py --integrity --security",
+      "exit_code": 0,
+      "result": "0 errors; existing NO_EVIDENCE warning only."
+    },
+    {
+      "command": "python -B -m unittest discover -s tests -p test_source_integrity.py -v",
+      "exit_code": 0,
+      "result": "Source sub-audit: 26/26 PASS; also covered in fresh full suite."
+    },
+    {
+      "command": "python -B scripts/benchmark_scalability.py --sizes 100 1000 --trials 1 --timeout 600 --label independent-final-audit --output reports/independent-final-load-2026-10-18.json",
+      "exit_code": 0,
+      "result": "Both loads completed five operations and quality probes."
+    },
+    {
+      "command": "Manually reviewed governance probe_source in independent-final-governance-probes JSON; executed on owned synthetic fixtures via python -B stdin",
+      "exit_code": 0,
+      "result": "Root reproduced three invalid current-truth cases and missing-approval lifecycle COMMITTED. Exit 0 means violation reproduced, not requirement PASS."
+    },
+    {
+      "command": "Manually reviewed security reproduction.python in independent-final-security-probes JSON; executed via python -B stdin",
+      "exit_code": 0,
+      "result": "Root reproduced allowlist, recovery, redaction and VI/entity detector outcomes; link creation NOT RUN due Windows permissions."
+    },
+    {
+      "command": "Synthetic provenance registration/query probe via python -B stdin",
+      "exit_code": 0,
+      "result": "Source VERIFIED accepted with arbitrary note; page remains draft/current=false. Empty explanation notes accepted."
+    },
+    {
+      "command": "git status/branch/log/diff; git diff --check; tracked implementation/knowledge diff against HEAD",
+      "exit_code": 0,
+      "result": "workspace/initialize, HEAD 80d9d67; audited tracked paths unchanged; graph edit excluded."
+    }
+  ],
+  "unit_tests": {
+    "run": 174,
+    "passed": 174,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "observed_output": "----------------------------------------------------------------------\nRan 174 tests in 383.316s\n\nOK\n"
+  },
+  "benchmark": {
+    "pairs": 30,
+    "queries": 60,
+    "metrics": {
+      "retrieval_recall_at_5": {
+        "value": 0.9375,
+        "queries_with_relevance_gold": 48,
+        "definition": "Macro document Recall@5 over actual highest-tier candidates (matches + blocked), ordered by score/path; excludes zero-relevance cases. Retrieval does not imply answerability.",
+        "vi": {
+          "value": 0.9166666666666666,
+          "queries_with_relevance_gold": 24
+        },
+        "en": {
+          "value": 0.9583333333333334,
+          "queries_with_relevance_gold": 24
+        }
+      },
+      "citation_validity": {
+        "numerator": 53,
+        "denominator": 53,
+        "value": 1.0
+      },
+      "cross_project_leakage": {
+        "numerator": 0,
+        "denominator": 60,
+        "value": 0.0
+      },
+      "duplicate_ingestion_rate": {
+        "numerator": 0,
+        "denominator": 13,
+        "value": 0.0
+      },
+      "duplicate_registration_rate": {
+        "numerator": 0,
+        "denominator": 17,
+        "value": 0.0
+      },
+      "schema_validation_pass_rate": {
+        "numerator": 16,
+        "denominator": 16,
+        "value": 1.0
+      },
+      "workflow_failure_rate": {
+        "numerator": 0,
+        "denominator": 90,
+        "value": 0.0
+      },
+      "answer_generation_accuracy": "NOT MEASURED",
+      "cross_language_semantic_search": "NOT MEASURED (not implemented)",
+      "automatic_translation_accuracy": "NOT MEASURED (not implemented)",
+      "semantic_factual_verification": "NOT MEASURED"
+    },
+    "query_and_lint_read_only": true,
+    "fixture_sha256": {
+      "corpus.json": "c8edd287eab6c140cac9accc86495c39b64f56c163d6dcd98a5cd05b4bb62305",
+      "queries.json": "c4ba26834e22b7abe2ff89e28915474eb594c1d9d8fb5c858ba471cc9445b24f"
+    }
+  },
+  "fresh_load": [
+    {
+      "documents": 100,
+      "setup": {
+        "documents": 100,
+        "raw_snapshots": 100,
+        "fixture_build_seconds": 1.6435576000003493,
+        "fixture_navigation_generation_seconds": 0.01153139999951236,
+        "production_index_generation": "NOT MEASURED (no production generator)",
+        "file_count": 217,
+        "directory_count": 17,
+        "logical_bytes": 451159,
+        "allocated_disk_bytes": "NOT MEASURED",
+        "corpus_sha256": "f32c2cf40a72c58516752e96bafba7e4ad015f34cee28d4bfe11bd843f9bcf6d",
+        "recipe": "TEST_ONLY-scale-v1"
+      },
+      "summary": {
+        "source_lookup": {
+          "completed_trials": 1,
+          "median_seconds": 0.006431199999497039,
+          "max_seconds": 0.006431199999497039
+        },
+        "query_en": {
+          "completed_trials": 1,
+          "median_seconds": 1.3030502999972668,
+          "max_seconds": 1.3030502999972668
+        },
+        "query_vi": {
+          "completed_trials": 1,
+          "median_seconds": 0.8352224999980535,
+          "max_seconds": 0.8352224999980535
+        },
+        "validation": {
+          "completed_trials": 1,
+          "median_seconds": 2.835356999999931,
+          "max_seconds": 2.835356999999931
+        },
+        "incremental_update": {
+          "completed_trials": 1,
+          "median_seconds": 1.7278009000001475,
+          "max_seconds": 1.7278009000001475
+        }
+      },
+      "quality": {
+        "status": "MEASURED",
+        "operation": "quality",
+        "correct": true,
+        "observed": {
+          "wrong_scope": "NOT_FOUND",
+          "missing_evidence_abstention": "NOT_FOUND",
+          "same_size_mtime_raw_tamper": "MISSING_EVIDENCE",
+          "injection": "UNTRUSTED_CONTENT",
+          "verified_overwrite": "PROTECTED_KNOWLEDGE_UPDATE",
+          "path_boundary": "WRITE_DENIED",
+          "interrupted_query": "RECOVERY_REQUIRED",
+          "recovery": "ROLLED_BACK",
+          "all_fixture_hashes_restored": true
+        },
+        "memory": {
+          "peak_working_set_bytes": 33480704,
+          "working_set_bytes": 32096256,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        }
+      },
+      "memory": [
+        {
+          "peak_working_set_bytes": 33665024,
+          "working_set_bytes": 31920128,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 33333248,
+          "working_set_bytes": 32329728,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 33148928,
+          "working_set_bytes": 32485376,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 33349632,
+          "working_set_bytes": 32997376,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 33370112,
+          "working_set_bytes": 32710656,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        }
+      ],
+      "incremental_observed": {
+        "status": "COMMITTED",
+        "changed_paths": [
+          "wiki/log.md",
+          "wiki/projects/load-project-01/p000001.md"
+        ],
+        "planned_targets": 3,
+        "all_other_hashes_preserved": true,
+        "retry_status": "UNCHANGED",
+        "retry_seconds": 1.4417940999992425,
+        "new_keyword_visible_without_rebuild": true
+      }
+    },
+    {
+      "documents": 1000,
+      "setup": {
+        "documents": 1000,
+        "raw_snapshots": 1000,
+        "fixture_build_seconds": 22.815392900000006,
+        "fixture_navigation_generation_seconds": 0.04281999999875552,
+        "production_index_generation": "NOT MEASURED (no production generator)",
+        "file_count": 2017,
+        "directory_count": 17,
+        "logical_bytes": 4496468,
+        "allocated_disk_bytes": "NOT MEASURED",
+        "corpus_sha256": "7091dd7804edf9c717d531e86d08b91ec3ac031ef41c8d832c9f99ae7c383fbe",
+        "recipe": "TEST_ONLY-scale-v1"
+      },
+      "summary": {
+        "source_lookup": {
+          "completed_trials": 1,
+          "median_seconds": 0.034121199998480733,
+          "max_seconds": 0.034121199998480733
+        },
+        "query_en": {
+          "completed_trials": 1,
+          "median_seconds": 9.065995599998132,
+          "max_seconds": 9.065995599998132
+        },
+        "query_vi": {
+          "completed_trials": 1,
+          "median_seconds": 8.90726690000156,
+          "max_seconds": 8.90726690000156
+        },
+        "validation": {
+          "completed_trials": 1,
+          "median_seconds": 28.993895700001303,
+          "max_seconds": 28.993895700001303
+        },
+        "incremental_update": {
+          "completed_trials": 1,
+          "median_seconds": 13.146671999998944,
+          "max_seconds": 13.146671999998944
+        }
+      },
+      "quality": {
+        "status": "MEASURED",
+        "operation": "quality",
+        "correct": true,
+        "observed": {
+          "wrong_scope": "NOT_FOUND",
+          "missing_evidence_abstention": "NOT_FOUND",
+          "same_size_mtime_raw_tamper": "MISSING_EVIDENCE",
+          "injection": "UNTRUSTED_CONTENT",
+          "verified_overwrite": "PROTECTED_KNOWLEDGE_UPDATE",
+          "path_boundary": "WRITE_DENIED",
+          "interrupted_query": "RECOVERY_REQUIRED",
+          "recovery": "ROLLED_BACK",
+          "all_fixture_hashes_restored": true
+        },
+        "memory": {
+          "peak_working_set_bytes": 38256640,
+          "working_set_bytes": 38256640,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        }
+      },
+      "memory": [
+        {
+          "peak_working_set_bytes": 33390592,
+          "working_set_bytes": 32165888,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 36397056,
+          "working_set_bytes": 36397056,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 35880960,
+          "working_set_bytes": 35532800,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 46997504,
+          "working_set_bytes": 46997504,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        },
+        {
+          "peak_working_set_bytes": 39567360,
+          "working_set_bytes": 38035456,
+          "definition": "Current worker process lifetime counters, including imports and checks; not operation-only allocations."
+        }
+      ],
+      "incremental_observed": {
+        "status": "COMMITTED",
+        "changed_paths": [
+          "wiki/log.md",
+          "wiki/projects/load-project-01/p000001.md"
+        ],
+        "planned_targets": 3,
+        "all_other_hashes_preserved": true,
+        "retry_status": "UNCHANGED",
+        "retry_seconds": 11.237063399999897,
+        "new_keyword_visible_without_rebuild": true
+      }
+    }
+  ],
+  "historical_10000": {
+    "status": "NOT RUN",
+    "code_fingerprints_match": true,
+    "benchmark_script_fingerprint_matches": true,
+    "note": "Historical records are internally consistent but not independent latency/capacity proof; no 10,000 replay in this audit."
+  },
+  "governance_observed": {
+    "dependency_eligibility": [
+      {
+        "case": "future",
+        "adr_status": "verified",
+        "adr_temporal": "current",
+        "adr_freshness": [
+          "NOT_YET_EFFECTIVE"
+        ],
+        "status": "FOUND",
+        "matches": [
+          {
+            "path": "wiki/current-future.md",
+            "usable_as_current_truth": true,
+            "citations": [
+              {
+                "decision_path": "decisions/future.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case": "overdue",
+        "adr_status": "verified",
+        "adr_temporal": "current",
+        "adr_freshness": [
+          "REVIEW_DUE"
+        ],
+        "status": "FOUND",
+        "matches": [
+          {
+            "path": "wiki/current-overdue.md",
+            "usable_as_current_truth": true,
+            "citations": [
+              {
+                "decision_path": "decisions/overdue.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case": "historical",
+        "adr_status": "verified",
+        "adr_temporal": "historical",
+        "adr_freshness": [],
+        "status": "FOUND",
+        "matches": [
+          {
+            "path": "wiki/current-historical.md",
+            "usable_as_current_truth": true,
+            "citations": [
+              {
+                "decision_path": "decisions/historical.md",
+                "source_pointer": "documented human approval",
+                "evidence_type": "project_decision",
+                "scope": "audit-project"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dependency_lint_errors": [],
+    "dependency_lint_warnings": [
+      "WARNING NOT_YET_EFFECTIVE decisions/future.md: review required; no automatic state change.",
+      "WARNING REVIEW_DUE decisions/overdue.md: review required; no automatic state change."
+    ],
+    "conflict_resolution": {
+      "transition_helper": "FileNotFoundError",
+      "bounded_writer": "COMMITTED",
+      "status": "unverified",
+      "missing_approval_exists": false,
+      "lint_errors": []
+    }
+  },
+  "security_observed": {
+    "main_probe": {
+      "policy": "POLICY_WRITE_DENIED",
+      "traversal": "WRITE_DENIED",
+      "approval": "WRITE_DENIED",
+      "raw": "WRITE_DENIED",
+      "boundary_files_preserved": true,
+      "query_pending": "RECOVERY_REQUIRED",
+      "recover": "ROLLED_BACK",
+      "rollback_preserved_all_hashes": true,
+      "query_data": "UNTRUSTED_DATA",
+      "ai_verify": "HUMAN_AUTHORITY_REQUIRED",
+      "forged_human_without_record": "FileNotFoundError",
+      "report_redacted": true,
+      "temp_cleaned": true
+    },
+    "links": {
+      "hardlink": {
+        "status": "NOT RUN",
+        "reason": "PermissionError winerror=5 during synthetic link creation; guard not exercised."
+      },
+      "symlink": {
+        "status": "NOT RUN",
+        "reason": "OSError winerror=1314 during synthetic link creation; guard not exercised."
+      },
+      "temp_cleaned": true,
+      "remaining_own_link_fixture_directories": 0
+    },
+    "detector": {
+      "vietnamese": [],
+      "html_entity": [],
+      "status": "FAIL for detection of these two samples"
+    },
+    "language_path": {
+      "actual_ingest": "COMMITTED",
+      "actual_query": "FOUND",
+      "unfiltered_instruction_in_returned_title": true,
+      "trust": "UNTRUSTED_DATA",
+      "temp_cleaned": true
+    }
+  },
+  "requirements": [
+    {
+      "id": "P1-01",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Unique source IDs and manifest consistency",
+      "status": "PASS",
+      "evidence": "26 source tests and the full 174-test run; duplicate IDs with different bytes are rejected.",
+      "reference": "scripts/source_integrity.py:40"
+    },
+    {
+      "id": "P1-02",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Known/unknown provenance and original location",
+      "status": "PASS",
+      "evidence": "CSV + append-only ledger preserve supplied origin and null/und for unknown values; no URL fetch is inferred.",
+      "reference": "SOURCE_INTEGRITY.md:10"
+    },
+    {
+      "id": "P1-03",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "SHA-256 of raw bytes and manifest metadata",
+      "status": "PASS",
+      "evidence": "Fresh tests detect changed bytes, missing snapshots and metadata tampering, including unchanged size/mtime.",
+      "reference": "scripts/source_integrity.py:223"
+    },
+    {
+      "id": "P1-04",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Deterministic duplicate and idempotent registration",
+      "status": "PASS",
+      "evidence": "Fresh workflow benchmark: 0 duplicate registrations across 17 controlled retries.",
+      "reference": "tests/workflow_benchmark.py:94"
+    },
+    {
+      "id": "P1-05",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Immutable existing raw through supported APIs",
+      "status": "PASS",
+      "evidence": "Normal raw admission refuses replacement; bounded wiki writes reject raw paths. This is not an OS ACL guarantee.",
+      "reference": "scripts/safe_operations.py:55"
+    },
+    {
+      "id": "P1-06",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Missing/corrupted raw and invalid references",
+      "status": "PASS",
+      "evidence": "Fresh source/workflow tests exercise missing raw, invalid IDs and evidence abstention.",
+      "reference": "tests/test_source_integrity.py:1"
+    },
+    {
+      "id": "P1-07",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Explicit replacement versions and legacy migration",
+      "status": "PASS",
+      "evidence": "Existing migration/version tests execute in fresh suite; no production migration is authorized.",
+      "reference": "tests/test_source_integrity.py:1"
+    },
+    {
+      "id": "P1-08",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Source-to-wiki and multiple-source traceability",
+      "status": "PASS",
+      "evidence": "Full integrity audit keeps reverse relationships; Query validates selected references.",
+      "reference": "scripts/source_integrity.py:328"
+    },
+    {
+      "id": "P1-09",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Evidence-backed source VERIFIED status",
+      "status": "FAIL",
+      "evidence": "M-SRC-01: authorized registration accepts VERIFIED with arbitrary note, and Query exports that label without validation record. Wiki still remains draft/non-current.",
+      "reference": "scripts/source_integrity.py:97"
+    },
+    {
+      "id": "P1-10",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Notes explaining unknown author/date",
+      "status": "FAIL",
+      "evidence": "L-SCHEMA-01: blank author, published_date and notes are accepted despite SCHEMA requiring an explanation.",
+      "reference": "SCHEMA.md:32"
+    },
+    {
+      "id": "P1-11",
+      "objective": "Source Integrity & Provenance",
+      "requirement": "Live URL availability and production-source accuracy",
+      "status": "NOT RUN",
+      "evidence": "No network/production intake; offline snapshot tests do not establish real URL reachability or factual correctness.",
+      "reference": "SOURCE_INTEGRITY.md:26"
+    },
+    {
+      "id": "P2-01",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Six lifecycle states and legal actor transitions",
+      "status": "PASS",
+      "evidence": "Fresh tests cover draft/unverified/verified/disputed/superseded/archived; supported transition helper enforces actor gates.",
+      "reference": "scripts/knowledge_governance.py:111"
+    },
+    {
+      "id": "P2-02",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "AI cannot directly verify wiki factual knowledge",
+      "status": "PASS",
+      "evidence": "Independent probe returns HUMAN_AUTHORITY_REQUIRED; actor=human without approval is also rejected for verification.",
+      "reference": "scripts/knowledge_governance.py:80"
+    },
+    {
+      "id": "P2-03",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Content-bound approval for verified wiki knowledge",
+      "status": "PASS",
+      "evidence": "Fresh tests invalidate changed verified content/scope and missing approval records. Human identity authentication remains separate.",
+      "reference": "tests/test_knowledge_governance.py:203"
+    },
+    {
+      "id": "P2-04",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Approval required through every lifecycle write path",
+      "status": "FAIL",
+      "evidence": "H-GOV-02: helper rejects nonexistent conflict-resolution approval, while direct lifecycle transaction COMMITTED and Lint accepted it.",
+      "reference": "scripts/knowledge_governance.py:252"
+    },
+    {
+      "id": "P2-05",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Information kinds, proposals and approved decisions",
+      "status": "PASS",
+      "evidence": "Fresh tests keep requirements/proposals/interpretations/hypotheses separate; legacy REVIEWED never becomes verified.",
+      "reference": "tests/test_knowledge_governance.py:180"
+    },
+    {
+      "id": "P2-06",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "History/supersession and direct freshness behavior",
+      "status": "PASS",
+      "evidence": "Direct-page future/review/history tests pass; age alone does not archive or erase data.",
+      "reference": "tests/test_knowledge_governance.py:234"
+    },
+    {
+      "id": "P2-07",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Freshness/history eligibility of cited ADR dependencies",
+      "status": "FAIL",
+      "evidence": "H-GOV-01: future-effective, overdue and historical ADRs each make a parent wiki page current=true; no Lint errors.",
+      "reference": "scripts/query_workspace.py:219"
+    },
+    {
+      "id": "P2-08",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Project scope isolation and explicit cross-project context",
+      "status": "PASS",
+      "evidence": "Fresh benchmark 0/60 scope leaks; explicit cross-ref tests retain context labels without local authority.",
+      "reference": "scripts/query_workspace.py:105"
+    },
+    {
+      "id": "P2-09",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Restricted scope and arbitrary scope names",
+      "status": "PASS",
+      "evidence": "Supported Query API requires declared scope authorization; project names are data. This is not authenticated host access control.",
+      "reference": "tests/test_knowledge_governance.py:221"
+    },
+    {
+      "id": "P2-10",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Conflict preservation and blocked disputed claims",
+      "status": "PASS",
+      "evidence": "Existing conflicting-source and protected-update tests pass; conflict-resolution evidence gap is separately FAIL above.",
+      "reference": "tests/test_knowledge_governance.py:144"
+    },
+    {
+      "id": "P2-11",
+      "objective": "Knowledge Lifecycle & Isolation",
+      "requirement": "Real human approval and reviewer authentication",
+      "status": "NOT RUN",
+      "evidence": "Only TEST_ONLY simulated approval records; bool/actor labels are trusted-caller assertions, not identity authentication.",
+      "reference": "KNOWLEDGE_GOVERNANCE.md:37"
+    },
+    {
+      "id": "P3-01",
+      "objective": "Security & Recovery",
+      "requirement": "Untrusted data labels and no source execution in APIs",
+      "status": "PASS",
+      "evidence": "Reviewed APIs do not execute source commands; independent Query retains UNTRUSTED_DATA even for missed detector samples.",
+      "reference": "scripts/workspace_security.py:1"
+    },
+    {
+      "id": "P3-02",
+      "objective": "Security & Recovery",
+      "requirement": "English adversarial fixtures on actual Ingest/Query",
+      "status": "PASS",
+      "evidence": "Fresh security unit cases execute supported paths; policy/raw/traversal writes remain blocked.",
+      "reference": "tests/test_security_recovery.py:1"
+    },
+    {
+      "id": "P3-03",
+      "objective": "Security & Recovery",
+      "requirement": "Vietnamese and encoded injection detection",
+      "status": "FAIL",
+      "evidence": "M-SEC-01: detector returns [] for VI override and HTML entity; VI actual Ingest COMMITTED, Query FOUND with instruction retained in title. No command execution or write-boundary bypass demonstrated.",
+      "reference": "scripts/workspace_security.py:23"
+    },
+    {
+      "id": "P3-04",
+      "objective": "Security & Recovery",
+      "requirement": "Policy/raw/outside/private write allowlist",
+      "status": "PASS",
+      "evidence": "Independent policy/traversal/approval/raw probes returned POLICY_WRITE_DENIED or WRITE_DENIED with unchanged fixture hashes.",
+      "reference": "scripts/safe_operations.py:55"
+    },
+    {
+      "id": "P3-05",
+      "objective": "Security & Recovery",
+      "requirement": "Sensitive path checks and synthetic report redaction",
+      "status": "PASS",
+      "evidence": "Fresh synthetic checks/redaction passed; actual secrets were never opened. Pattern-based detection is bounded.",
+      "reference": "scripts/workspace_security.py:12"
+    },
+    {
+      "id": "P3-06",
+      "objective": "Security & Recovery",
+      "requirement": "Expected-version and cooperating concurrent writers",
+      "status": "PASS",
+      "evidence": "Fresh two-writer test yields exactly one COMMITTED and one conflict; no silent lost update in that scenario.",
+      "reference": "tests/test_security_recovery.py:177"
+    },
+    {
+      "id": "P3-07",
+      "objective": "Security & Recovery",
+      "requirement": "Failed write, rollback and interrupted-operation recovery",
+      "status": "PASS",
+      "evidence": "Independent interruption returns RECOVERY_REQUIRED then ROLLED_BACK; before/after fixture content hashes match.",
+      "reference": "scripts/safe_operations.py:183"
+    },
+    {
+      "id": "P3-08",
+      "objective": "Security & Recovery",
+      "requirement": "Recovery refuses newer unrelated user edits",
+      "status": "PASS",
+      "evidence": "Fresh recovery conflict/tampered-journal tests pass; source admission is retained as a separate durable checkpoint.",
+      "reference": "tests/test_security_recovery.py:231"
+    },
+    {
+      "id": "P3-09",
+      "objective": "Security & Recovery",
+      "requirement": "Runtime hardlink/symlink/junction protections",
+      "status": "NOT RUN",
+      "evidence": "Creation was denied: hardlink WinError 5, symlink WinError 1314; junction runtime probe not run. Code guard exists; setup failure is not PASS.",
+      "reference": "scripts/check_workspace.py:61"
+    },
+    {
+      "id": "P3-10",
+      "objective": "Security & Recovery",
+      "requirement": "Whole-agent sandbox and real process/power-loss failure",
+      "status": "NOT RUN",
+      "evidence": "No broader-tool/OS ACL containment, hostile editor race, actual process kill or physical power-loss test. API controls do not authenticate their caller.",
+      "reference": "SECURITY_POLICY.md:1"
+    },
+    {
+      "id": "P4-01",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "End-to-end registration, synthesis and preserved provenance",
+      "status": "PASS",
+      "evidence": "Fresh full suite and independent synthetic corpus run through actual admission/Ingest/Query/Lint paths.",
+      "reference": "tests/workflow_support.py:1"
+    },
+    {
+      "id": "P4-02",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Idempotent Ingest, page/index/log consistency",
+      "status": "PASS",
+      "evidence": "Fresh benchmark 0/13 repeated synthesis writes; incremental load probes additionally verify exact changed paths and UNCHANGED retry.",
+      "reference": "scripts/ingest_workspace.py:21"
+    },
+    {
+      "id": "P4-03",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Preservation of verified knowledge and conflicts",
+      "status": "PASS",
+      "evidence": "Existing protected-update and evidence/history/conflict preservation tests pass.",
+      "reference": "scripts/knowledge_governance.py:285"
+    },
+    {
+      "id": "P4-04",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Query exact terms, curated aliases and technical spelling",
+      "status": "PASS",
+      "evidence": "50/50 multilingual contract queries plus 60/60 independent workflow contract outcomes; no automatic semantic translation claimed.",
+      "reference": "scripts/query_workspace.py:281"
+    },
+    {
+      "id": "P4-05",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Citation validity, scope and missing evidence abstention",
+      "status": "PASS",
+      "evidence": "Fresh benchmark: citation checks 53/53, scope leaks 0/60; NOT_FOUND/MISSING_EVIDENCE cases execute.",
+      "reference": "tests/workflow_benchmark.py:1"
+    },
+    {
+      "id": "P4-06",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Current project truth from dependent decisions",
+      "status": "FAIL",
+      "evidence": "H-GOV-01 reproduces incorrect current=true outside existing benchmark gold.",
+      "reference": "scripts/query_workspace.py:299"
+    },
+    {
+      "id": "P4-07",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Broken links, IDs/frontmatter/index and deterministic Lint",
+      "status": "PASS",
+      "evidence": "Fresh validator/unit fault cases detect supported structural defects. Heading meaning/anchor correctness are manual.",
+      "reference": "tests/test_workflow_reliability.py:1"
+    },
+    {
+      "id": "P4-08",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Lint validates all required transition approval records",
+      "status": "FAIL",
+      "evidence": "H-GOV-02: accepted conflict-resolution history references a missing approval, yet strict Lint has no error.",
+      "reference": "scripts/knowledge_governance.py:252"
+    },
+    {
+      "id": "P4-09",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Independent gold and multilingual recall reporting",
+      "status": "PASS",
+      "evidence": "Root recomputed Recall@5=0.9375 over 48 nonempty-gold queries, including 3 misses; matches+blocked candidates, not answer accuracy.",
+      "reference": "tests/workflow_benchmark.py:27"
+    },
+    {
+      "id": "P4-10",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Query/Lint are read-only and failure recovery retriable",
+      "status": "PASS",
+      "evidence": "Fresh corpus snapshots show Query/Lint no writes; injected rollback/retry scenarios pass.",
+      "reference": "tests/test_workflow_reliability.py:1"
+    },
+    {
+      "id": "P4-11",
+      "objective": "Ingest / Query / Lint Reliability",
+      "requirement": "Semantic search, automatic translation and factual answers",
+      "status": "NOT RUN",
+      "evidence": "Not implemented; English-first plus curated VI aliases is lexical only. LLM answer quality and semantic contradiction detection remain unmeasured.",
+      "reference": "WORKFLOW_RELIABILITY.md:48"
+    },
+    {
+      "id": "P5-01",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Reproducible synthetic load outside live knowledge",
+      "status": "PASS",
+      "evidence": "Fresh 100/1,000 load uses owned tests/fixture-scale-* trees; deterministic recipe and IDs have regression tests.",
+      "reference": "scripts/benchmark_scalability.py:69"
+    },
+    {
+      "id": "P5-02",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Correctness under fresh 100-document load",
+      "status": "PASS",
+      "evidence": "All five operations and quality probes completed; results are in the new audit load report.",
+      "reference": "reports/independent-final-load-2026-10-18.json"
+    },
+    {
+      "id": "P5-03",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Correctness under fresh 1,000-document load",
+      "status": "PASS",
+      "evidence": "All five operations and quality probes must complete before this audit is saved; no general correctness extrapolation beyond probe shapes.",
+      "reference": "reports/independent-final-load-2026-10-18.json"
+    },
+    {
+      "id": "P5-04",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Independent replay of 10,000-document load",
+      "status": "NOT RUN",
+      "evidence": "Not rerun in this audit: focused runtime budget on 174 regressions, counterexamples and fresh 100/1,000 probes. Historical JSON/code hashes match but do not independently establish timing or capacity.",
+      "reference": "reports/scalability-phase5-2026-10-18.json"
+    },
+    {
+      "id": "P5-05",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Lookup/Query/Lint/update/memory/filesystem measurements",
+      "status": "PASS",
+      "evidence": "Fresh worker timings, logical bytes/file counts and process peak working set are recorded; physical allocation is explicitly unmeasured.",
+      "reference": "scripts/benchmark_scalability.py:147"
+    },
+    {
+      "id": "P5-06",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Selective update, hashing/invalidation and recovery",
+      "status": "PASS",
+      "evidence": "Fresh updates alter only selected page/log content, expose new keyword without rebuild and restore content hashes after interruption. Audits still scan sources.",
+      "reference": "scripts/benchmark_scalability.py:219"
+    },
+    {
+      "id": "P5-07",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "No premature QMD/vector/database/RAG infrastructure",
+      "status": "PASS",
+      "evidence": "Git/code inspection shows stdlib modules and specification-only Levels 1-4 migration interface; no backend installed.",
+      "reference": "SCALABILITY.md:73"
+    },
+    {
+      "id": "P5-08",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Measured scale limits or agreed interactive SLA",
+      "status": "NOT RUN",
+      "evidence": "No user-agreed SLA, p95, throughput/concurrency capacity, real intake, dense graphs/deep revisions, binaries, Obsidian UI or above-10,000 certification.",
+      "reference": "SCALABILITY.md:80"
+    },
+    {
+      "id": "P5-09",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Actual tokens, API charges and monetary local costs",
+      "status": "NOT RUN",
+      "evidence": "No observable usage/cost data; benchmark calls no LLM API. No unobserved expense is presented as measured.",
+      "reference": "scripts/benchmark_scalability.py:346"
+    },
+    {
+      "id": "P5-10",
+      "objective": "Scalability & Performance Readiness",
+      "requirement": "Upgrade triggers and provisional pilot gates",
+      "status": "PASS",
+      "evidence": "2s/30s and 25-100 page pilot proposal are labeled PROVISIONAL, not measured capacity or architectural approval.",
+      "reference": "SCALABILITY.md:87"
+    }
+  ],
+  "requirement_counts": {
+    "PASS": 38,
+    "FAIL": 7,
+    "NOT RUN": 8
+  },
+  "count_note": "Checkpoints overlap: repeated FAIL rows can share a root cause; counts are not independent tests or completion percentages.",
+  "performance_limits": [
+    "One trial per operation; OS cache/host load uncontrolled, instrumented Path counters. No p95/confidence/production SLA claim.",
+    "Worker peak working set includes imports/checks; logical bytes do not measure allocated disk overhead.",
+    "10,000 replay, dense graphs/deep revisions, high same-day admission, long logs/large binaries, real admission/review throughput and Obsidian UI NOT RUN.",
+    "Semantic/LLM answers, tokens/API/monetary cost, authenticated reviewer identity, whole-agent containment, actual process kill and physical power loss NOT RUN/NOT MEASURED."
+  ],
+  "technical_debt": [
+    "ADR dependency eligibility and universal required-approval validation: two High blockers.",
+    "Unseen VI/entity attack cases; safe source verification semantics; unknown metadata explanation notes.",
+    "Runtime revision/dirty-state report provenance instead of hardcoded baseline labels.",
+    "Windows alias regression in a permitted environment; actual process interruption and rollback failure during recovery.",
+    "Manual citation relevance, factual truth and semantic contradiction review remain necessary.",
+    "Full raw/path scans, CSV/ledger copying and retained before-images; sequential admissions/long revision chains need measurements before optimization.",
+    "Clarify onboarding admission API and structural approval validation versus authenticated human approval. No competing schema or new backend is justified."
+  ],
+  "prior_report_handling": "Prior reports were not proof. Current tests/queries/probes and 100/1,000 loads were rerun. Historical 10,000 data only received code/script hash and corpus consistency checks. Older wrapper baseline labels are not accepted as the tested revision.",
+  "publication_note": "An initial inline report-export command exceeded the Windows command-line limit (launcher 206); it executed no Python. A bounded file-based temporary builder saved this report. Test outcomes were unaffected.",
+  "evidence_files": [
+    "reports/independent-final-workflows-2026-10-18.json",
+    "reports/independent-final-load-2026-10-18.json",
+    "reports/independent-final-governance-probes-2026-10-18.json",
+    "reports/independent-final-security-probes-2026-10-18.json"
+  ]
+}
