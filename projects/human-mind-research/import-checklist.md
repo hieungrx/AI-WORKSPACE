@@ -1,131 +1,122 @@
-# Human Mind Research — Manifest 28 note & checklist nhập liệu
+# Human Mind Research — Checklist báo cáo Markdown & danh mục 28 chủ đề
 
 - **Project:** `human-mind-research`
-- **Document status:** `DRAFT_FOR_REVIEW`
+- **Status:** `DRAFT_FOR_REVIEW`
 - **Updated at:** 2026-11-05
-- **Source:** tóm tắt kết quả Deep Research do người dùng cung cấp trong hội thoại (có thông báo hai gói ZIP, ~44.000 từ Markdown); **chưa mở/kiểm trực tiếp nội dung ZIP hoặc 28 note**
-- **Purpose:** hợp đồng kiểm kê để nhập vào một vault/repo nghiên cứu độc lập; không phải `sources/manifest.csv` của AI-WORKSPACE
+- **Input thực tế do người dùng xác nhận:** **một file báo cáo Deep Research định dạng `.md`**, chưa được đính kèm/đọc trong workspace này
+- **Không có ZIP được xác nhận.** Danh sách 28 đường dẫn phía dưới là **tên file đề xuất nếu sau này tách báo cáo thành ghi chú**, không phải manifest file hiện có và không phải tên file đã được Deep Research cung cấp.
+- **Scope:** kiểm nội dung báo cáo, coverage 28 chủ đề, và khả năng tạo note phái sinh theo nhu cầu; không phải `sources/manifest.csv` của AI-WORKSPACE.
 
-## 1. Gói và file lõi cần kiểm kê
+## 1. Tài liệu đầu vào
 
-Theo **báo cáo được cung cấp**, các gói dự kiến:
+**Đầu vào duy nhất đang biết:** báo cáo `.md` mà người dùng đã lưu từ Deep Research.
 
-- `human-mind-research-obsidian.zip` — bản Obsidian-ready.
-- `human-mind-research.zip` — bản Git-ready.
-- `00-START-HERE.md`, `MASTER-REPORT.md`, `NOTE-MAPPING.md`, `AI_CONTEXT.md`, `RESEARCH-ROADMAP.md`, `SCHEMA.md`.
-- `PRIORITIZED-READING-LIST.md`, `TESTS-AND-CHECKPOINTS.md`, `PROJECT-UPLOAD-MANIFEST.md`.
-- `references/REFERENCES.md` và `research-log/TEMPLATE-research-log.md`.
-- `bundles/01-foundations-bundle.md` … `bundles/07-integration-bundle.md`.
+- [ ] Người dùng đính kèm báo cáo Markdown hoặc cung cấp vị trí đọc được.
+- [ ] Kiểm đúng tên file, encoding UTF-8, cấu trúc headings, bảng, links và bibliography.
+- [ ] Ghi kích thước, ngày nhận và SHA-256 khi có file thực tế.
+- [ ] Lưu bản gốc không sửa để làm baseline; mọi bản tách note phải có provenance.
+- [ ] Không giả định có `MASTER-REPORT.md`, `NOTE-MAPPING.md`, bundles, 28 note, ZIP hay metadata khi chưa thấy file.
+- [ ] Kiểm xem báo cáo chứa kế hoạch, phân tích sâu từng chủ đề hay chỉ tổng hợp; mức độ chi tiết phải được ghi nhận thực tế.
 
-**Đây là danh sách mong đợi từ báo cáo, chưa phải kết quả kiểm tra filesystem.** Đường dẫn tải ZIP trong phiên Deep Research cần được người dùng cung cấp/tải lại nếu không thể truy cập trực tiếp từ phiên này.
+## 2. Danh mục 28 chủ đề — đường dẫn **đề xuất**, chưa tồn tại
 
-## 2. Manifest 28 note
+Các đường dẫn sau là phương án tổ chức nếu người dùng muốn tách báo cáo thành 28 ghi chú Obsidian sau này. Chúng **không** phải file cần người dùng đi tìm.
 
-Mỗi file dưới đây dự kiến ở root của **canonical Human Mind Research vault**, không ở `AI-WORKSPACE/projects/`. Các tên file theo đúng báo cáo được cung cấp, gồm các tên dài ở topic 14, 15, 16 và 26.
-
-| ID | Relative path | Chủ đề | Tuần dự kiến | Trạng thái nhập |
+| ID | Proposed note path | Chủ đề | Tuần dự kiến | Trạng thái |
 | --- | --- | --- | --- | --- |
-| 01 | `01-foundations/01-human-evolution.md` | Tiến hóa người | 5 | `NOT_IMPORTED` |
-| 02 | `01-foundations/02-human-biology.md` | Sinh học người | 6 | `NOT_IMPORTED` |
-| 03 | `01-foundations/03-neuroscience.md` | Thần kinh học | 7 | `NOT_IMPORTED` |
-| 04 | `01-foundations/04-neuroplasticity.md` | Tính dẻo thần kinh | 8 | `NOT_IMPORTED` |
-| 05 | `02-cognition/05-perception.md` | Tri giác | 9 | `NOT_IMPORTED` |
-| 06 | `02-cognition/06-attention.md` | Chú ý | 10 | `NOT_IMPORTED` |
-| 07 | `02-cognition/07-human-memory.md` | Trí nhớ | 11 | `NOT_IMPORTED` |
-| 08 | `02-cognition/08-learning-science.md` | Khoa học học tập | 12 | `NOT_IMPORTED` |
-| 09 | `03-intelligence/09-intelligence.md` | Trí tuệ | 13 | `NOT_IMPORTED` |
-| 10 | `03-intelligence/10-critical-thinking.md` | Tư duy phản biện | 14 | `NOT_IMPORTED` |
-| 11 | `03-intelligence/11-cognitive-biases.md` | Thiên kiến nhận thức | 15 | `NOT_IMPORTED` |
-| 12 | `03-intelligence/12-metacognition.md` | Siêu nhận thức | 16 | `NOT_IMPORTED` |
-| 13 | `03-intelligence/13-creativity.md` | Sáng tạo | 17 | `NOT_IMPORTED` |
-| 14 | `04-behavior/14-emotion-interoception.md` | Cảm xúc và cảm nhận nội thân | 18 | `NOT_IMPORTED` |
-| 15 | `04-behavior/15-motivation-reward.md` | Động lực và phần thưởng | 19 | `NOT_IMPORTED` |
-| 16 | `04-behavior/16-habits-self-control.md` | Thói quen và tự kiểm soát | 20 | `NOT_IMPORTED` |
-| 17 | `04-behavior/17-decision-making.md` | Ra quyết định | 21 | `NOT_IMPORTED` |
-| 18 | `05-consciousness/18-sleep-science.md` | Khoa học giấc ngủ | 22 | `NOT_IMPORTED` |
-| 19 | `05-consciousness/19-dream-psychology.md` | Tâm lý học giấc mơ | 23 | `NOT_IMPORTED` |
-| 20 | `05-consciousness/20-consciousness.md` | Ý thức | 24 | `NOT_IMPORTED` |
-| 21 | `05-consciousness/21-altered-states.md` | Trạng thái ý thức biến đổi | 25 | `NOT_IMPORTED` |
-| 22 | `05-consciousness/22-cognitive-phenomena.md` | Hiện tượng nhận thức | 26 | `NOT_IMPORTED` |
-| 23 | `06-human-development/23-personality-identity.md` | Nhân cách và bản sắc | 27 | `NOT_IMPORTED` |
-| 24 | `06-human-development/24-social-psychology.md` | Tâm lý xã hội | 28 | `NOT_IMPORTED` |
-| 25 | `06-human-development/25-human-development.md` | Phát triển con người | 29 | `NOT_IMPORTED` |
-| 26 | `06-human-development/26-mental-health-resilience.md` | Sức khỏe tâm thần và khả năng phục hồi | 30 | `NOT_IMPORTED` |
-| 27 | `07-integration/27-philosophy-of-mind.md` | Triết học tâm trí | 31 | `NOT_IMPORTED` |
-| 28 | `07-integration/28-cognitive-practice.md` | Thực hành nhận thức | 32 | `NOT_IMPORTED` |
+| 01 | `01-foundations/01-human-evolution.md` | Tiến hóa người | 5 | `NOT_CREATED (OPTIONAL)` |
+| 02 | `01-foundations/02-human-biology.md` | Sinh học người | 6 | `NOT_CREATED (OPTIONAL)` |
+| 03 | `01-foundations/03-neuroscience.md` | Thần kinh học | 7 | `NOT_CREATED (OPTIONAL)` |
+| 04 | `01-foundations/04-neuroplasticity.md` | Tính dẻo thần kinh | 8 | `NOT_CREATED (OPTIONAL)` |
+| 05 | `02-cognition/05-perception.md` | Tri giác | 9 | `NOT_CREATED (OPTIONAL)` |
+| 06 | `02-cognition/06-attention.md` | Chú ý | 10 | `NOT_CREATED (OPTIONAL)` |
+| 07 | `02-cognition/07-human-memory.md` | Trí nhớ | 11 | `NOT_CREATED (OPTIONAL)` |
+| 08 | `02-cognition/08-learning-science.md` | Khoa học học tập | 12 | `NOT_CREATED (OPTIONAL)` |
+| 09 | `03-intelligence/09-intelligence.md` | Trí tuệ | 13 | `NOT_CREATED (OPTIONAL)` |
+| 10 | `03-intelligence/10-critical-thinking.md` | Tư duy phản biện | 14 | `NOT_CREATED (OPTIONAL)` |
+| 11 | `03-intelligence/11-cognitive-biases.md` | Thiên kiến nhận thức | 15 | `NOT_CREATED (OPTIONAL)` |
+| 12 | `03-intelligence/12-metacognition.md` | Siêu nhận thức | 16 | `NOT_CREATED (OPTIONAL)` |
+| 13 | `03-intelligence/13-creativity.md` | Sáng tạo | 17 | `NOT_CREATED (OPTIONAL)` |
+| 14 | `04-behavior/14-emotion-interoception.md` | Cảm xúc và cảm nhận nội thân | 18 | `NOT_CREATED (OPTIONAL)` |
+| 15 | `04-behavior/15-motivation-reward.md` | Động lực và phần thưởng | 19 | `NOT_CREATED (OPTIONAL)` |
+| 16 | `04-behavior/16-habits-self-control.md` | Thói quen và tự kiểm soát | 20 | `NOT_CREATED (OPTIONAL)` |
+| 17 | `04-behavior/17-decision-making.md` | Ra quyết định | 21 | `NOT_CREATED (OPTIONAL)` |
+| 18 | `05-consciousness/18-sleep-science.md` | Khoa học giấc ngủ | 22 | `NOT_CREATED (OPTIONAL)` |
+| 19 | `05-consciousness/19-dream-psychology.md` | Tâm lý học giấc mơ | 23 | `NOT_CREATED (OPTIONAL)` |
+| 20 | `05-consciousness/20-consciousness.md` | Ý thức | 24 | `NOT_CREATED (OPTIONAL)` |
+| 21 | `05-consciousness/21-altered-states.md` | Trạng thái ý thức biến đổi | 25 | `NOT_CREATED (OPTIONAL)` |
+| 22 | `05-consciousness/22-cognitive-phenomena.md` | Hiện tượng nhận thức | 26 | `NOT_CREATED (OPTIONAL)` |
+| 23 | `06-human-development/23-personality-identity.md` | Nhân cách và bản sắc | 27 | `NOT_CREATED (OPTIONAL)` |
+| 24 | `06-human-development/24-social-psychology.md` | Tâm lý xã hội | 28 | `NOT_CREATED (OPTIONAL)` |
+| 25 | `06-human-development/25-human-development.md` | Phát triển con người | 29 | `NOT_CREATED (OPTIONAL)` |
+| 26 | `06-human-development/26-mental-health-resilience.md` | Sức khỏe tâm thần và khả năng phục hồi | 30 | `NOT_CREATED (OPTIONAL)` |
+| 27 | `07-integration/27-philosophy-of-mind.md` | Triết học tâm trí | 31 | `NOT_CREATED (OPTIONAL)` |
+| 28 | `07-integration/28-cognitive-practice.md` | Thực hành nhận thức | 32 | `NOT_CREATED (OPTIONAL)` |
 
-Tổng: **28 đường dẫn dự kiến**, **0 file được xác nhận đã nhập trong canonical repo** tại thời điểm lập manifest. `NOT_IMPORTED` không có nghĩa là ZIP chưa được tạo trong phiên Deep Research; chỉ có nghĩa là **chưa nhập/kiểm trong AI-WORKSPACE và canonical repo chưa được xác định**.
+Tổng: **28 chủ đề kế hoạch**, **0 file ghi chú riêng được xác nhận tồn tại/được nhập**. Chỉ tạo ghi chú khi có nội dung nguồn thực tế hoặc sau nghiên cứu bổ sung được ghi nhãn rõ.
 
-## 3. Hợp đồng chất lượng từng note
+## 3. Đối chiếu báo cáo với 28 chủ đề
 
-Sau khi có ZIP, kiểm trực tiếp mỗi file:
+Sau khi nhận `.md`, lập bảng mới với các trường:
 
-- [ ] Có Markdown UTF-8, nội dung thực sự chi tiết, không phải heading trống hoặc placeholder.
-- [ ] YAML frontmatter phù hợp **Obsidian vault**: `id`, `title`/title_vi, `project`, `scope`, `status`, `document_type`, `source_type`, `updated_at`, `related_topics`. Không tự gán `verified`.
-- [ ] Tóm tắt, mục tiêu, kiến thức tiên quyết và 5–8 câu hỏi nghiên cứu từ cơ bản đến nâng cao.
-- [ ] Định nghĩa, cơ chế, mô hình và ví dụ, phân biệt điều được quan sát với diễn giải/giả thuyết.
-- [ ] Nguồn tham khảo có URL/DOI cụ thể; claim quan trọng truy được tới vị trí nguồn, không tự tạo DOI.
-- [ ] Tranh luận, giới hạn, độ chắc chắn và những điều chưa biết.
-- [ ] Active recall, bài tập tự đánh giá, mini-project, ví dụ và thực hành an toàn.
-- [ ] Internal links `[[file-stem|Tên hiển thị]]` trỏ đúng một trong 28 note; không có dangling link.
-- [ ] Có ít nhất 2 liên kết chéo **được giải thích**, không chỉ liệt kê.
-- [ ] Không khẳng định tăng IQ, “kích hoạt toàn bộ não”, hay hiệu quả lucid dreaming/mental health vượt quá bằng chứng.
+| Field | Ý nghĩa |
+| --- | --- |
+| `topic_id` | 01–28 theo bảng trên |
+| `report_heading` | Heading/section trong báo cáo gốc |
+| `coverage` | `COVERED`, `PARTIAL`, `MISSING_IN_REPORT`, `NOT_CHECKED` |
+| `source_pointer` | Heading, dòng hoặc đoạn trích ngắn có thể tìm lại |
+| `evidence_status` | `NOT_CHECKED`, `SUPPORTED`, `CONTESTED`, `UNSUPPORTED` |
+| `action` | Giữ nguyên, bổ sung nghiên cứu, tách note, hoặc hỏi người dùng |
 
-## 4. Kiểm tra ở cấp gói
+**Không điền `COVERED` hay `SUPPORTED` trước khi đọc báo cáo và kiểm nguồn.**
 
-### Structural
+## 4. Checklist đánh giá
 
-- [ ] ZIP đọc được, không có path traversal/symlink nguy hiểm, không chứa secrets hoặc raw không được phép.
-- [ ] Có đúng 28 topic note theo bảng, không trùng ID/path, không rỗng.
-- [ ] Root docs và 7 bundle (nếu báo cáo tuyên bố có) tồn tại, bundle khớp snapshot note.
-- [ ] Internal links, image paths, Markdown links và headings hoạt động trong Obsidian.
-- [ ] Dates phản ánh sự kiện thực; không tự tái tạo thời gian tạo/duyệt lịch sử.
-- [ ] Lưu SHA-256 ZIP và commit ID sau khi có artifact thật; hiện chưa có số liệu để ghi.
+### Nội dung Markdown
 
-### Evidence & provenance
+- [ ] Báo cáo đọc được, không bị cắt đoạn, không có placeholder giả.
+- [ ] Kiểm heading, mục lục, bảng, link ngoài và bibliography.
+- [ ] Kiểm thực tế số chủ đề có phần riêng; ghi chủ đề còn thiếu.
+- [ ] Xác định lộ trình 40 tuần có sẵn hay phải xây dựng từ báo cáo.
+- [ ] Ghi mọi claim mơ hồ, khẳng định vượt quá bằng chứng và nguồn chưa kiểm.
 
-- [ ] Lấy mẫu tất cả 28 note để rà ít nhất một claim trọng yếu/topic.
-- [ ] Đối chiếu nguồn với `references/REFERENCES.md` và `MASTER-REPORT.md`.
-- [ ] Đánh dấu `FACT`, `INTERPRETATION`, `HYPOTHESIS`, `UNKNOWN`; ưu tiên primary literature, review chất lượng và nguồn open access.
-- [ ] Tranh luận không được diễn giải thành “đồng thuận khoa học” nếu chưa có cơ sở.
-- [ ] Kiểm quyền sao chép và tái phân phối riêng; URL công khai không phải license.
-- [ ] Lập danh sách citation lỗi, unsupported claims, missing sources và ưu tiên sửa.
+### Bằng chứng và nguồn
 
-### Compatibility
+- [ ] Phân biệt `FACT`, `INTERPRETATION`, `HYPOTHESIS`, `UNKNOWN`.
+- [ ] Lấy mẫu claim quan trọng mỗi chủ đề có trong báo cáo, truy về nguồn gốc và pointer.
+- [ ] Không coi URL/DOI là xác nhận nguồn đúng hoặc được phép sao chép.
+- [ ] Nêu giới hạn về sample, replication, causal inference, measurement và bias.
+- [ ] Ghi tranh luận/độ chắc chắn; không tự nâng trạng thái `verified`.
+- [ ] Chủ đề giấc ngủ, altered states và mental health cần thực hành an toàn.
 
-- [ ] Obsidian vault dùng YAML Properties và wikilinks theo schema **riêng** của dự án.
-- [ ] AI-WORKSPACE `wiki/` dùng metadata Markdown bullets, links tương đối và source IDs đã đăng ký theo [SCHEMA](../../SCHEMA.md); **không** bulk-import vault này vào wiki.
-- [ ] `projects/human-mind-research/` chỉ giữ pointer/plan/manifest.
-- [ ] ChatGPT Project (nếu được tạo qua UI) chỉ nhận snapshot có manifest, không được mô tả là đồng bộ tự động.
-- [ ] Bất kỳ source admission/Ingest nào phải được ủy quyền riêng và tuân thủ trạng thái HOLD hiện hành.
+### Nếu người dùng yêu cầu tách thành Obsidian notes
 
-## 5. Thứ tự nhập và phê duyệt
+- [ ] Xác nhận nơi lưu canonical repo/vault và quyền viết.
+- [ ] Chọn schema frontmatter **riêng** cho vault Obsidian, khác metadata bullets của AI-WORKSPACE `wiki/`.
+- [ ] Ghi `derived_from` trỏ về section báo cáo gốc, status `draft`/`unverified`.
+- [ ] Tạo note chỉ từ nội dung được hỗ trợ; thiếu thì ghi research gap, không bịa nội dung.
+- [ ] Kiểm links, IDs, duplicate paths, bibliography, backlink và readability.
+- [ ] Review diff trước khi commit; không tự đưa source vào AI-WORKSPACE registry/Ingest.
 
-1. **Artifact available:** cung cấp ZIP thật và xác nhận canonical repo/vault.
-2. **Read-only audit:** liệt kê nội dung, kiểm link và metadata, so với manifest; tạo report sai lệch.
-3. **Human review:** duyệt cấu trúc, quyền nguồn, yêu cầu chỉnh sửa và đích lưu.
-4. **Canonical commit:** nhập vào repo độc lập bằng branch/PR, giữ gói gốc để đối chiếu.
-5. **Evidence review:** rà từng module, lưu sửa đổi và evidence-gap register.
-6. **Snapshot:** build bundles mới và cập nhật `PROJECT-UPLOAD-MANIFEST.md`.
-7. **Optional separate gate:** yêu cầu riêng nếu muốn đăng ký/ingest nguồn vào AI-WORKSPACE.
+## 5. Thứ tự xử lý
 
-## 6. Theo dõi kiểm tra
+1. **Report received:** có file `.md` thật.
+2. **Read-only audit:** kiểm cấu trúc, 28-topic coverage và nguồn.
+3. **Plan update:** sửa lịch học theo những gì báo cáo thực sự có.
+4. **User decision:** giữ một báo cáo hay tách thành 28 note Obsidian.
+5. **Optional derivative:** tạo và review notes trong vault/repo được chỉ định.
+6. **Separate authorization:** nếu muốn đăng ký nguồn hoặc Ingest vào AI-WORKSPACE.
+
+## 6. Nhật ký kiểm tra
 
 | Check | Observed result | Date |
 | --- | --- | --- |
-| Đối chiếu manifest với bản tóm tắt Deep Research | 28 đường dẫn được liệt kê trong tài liệu này | 2026-11-05 |
-| Đọc 28 file thực tế | `NOT_RUN` | — |
-| SHA-256 ZIP | `NOT_RUN` | — |
-| Validate links/frontmatter | `NOT_RUN` | — |
+| Người dùng xác nhận định dạng kết quả | Một báo cáo `.md`; không có ZIP được xác nhận | 2026-11-05 |
+| Đọc nội dung báo cáo `.md` | `NOT_RUN` — chưa có file | — |
+| Đối chiếu 28 chủ đề với nội dung báo cáo | `NOT_RUN` | — |
 | Kiểm citation/DOI | `NOT_RUN` | — |
-| Obsidian visual check | `NOT_RUN` | — |
+| SHA-256 file báo cáo | `NOT_RUN` | — |
+| Tạo 28 note Obsidian | `NOT_REQUESTED / NOT_RUN` | — |
 | AI-WORKSPACE Ingest | `NOT_AUTHORIZED / NOT_RUN` | — |
-
-## 7. Điều kiện chuyển trạng thái
-
-- `NOT_IMPORTED` → `IMPORTED_UNREVIEWED`: đã đọc được file thật và có commit canonical.
-- `IMPORTED_UNREVIEWED` → `READY_FOR_REVIEW`: structural checks xong, issues đã được ghi.
-- `READY_FOR_REVIEW` → `ACCEPTED_BY_HUMAN`: người dùng duyệt diff và nguồn; không suy từ Lint PASS.
-- `BLOCKED`: thiếu artifact, quyền, hoặc nguồn thiết yếu; không tự điền khoảng trống.
 
 Quay lại [project context](context.md) hoặc [kế hoạch triển khai](plan.md).
