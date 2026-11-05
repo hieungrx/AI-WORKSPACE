@@ -1,32 +1,33 @@
 # Human Mind Research — Project Context
 
 - **Project ID:** `human-mind-research`
-- **Status:** `NOT_YET_SYNCED` (chưa nhập và kiểm tra bộ 28 note gốc)
+- **Status:** `NOT_YET_SYNCED` — báo cáo nghiên cứu Markdown chưa được cung cấp để đọc/kiểm trong workspace này
 - **Planning status:** `DRAFT_FOR_REVIEW`
-- **Scope:** nghiên cứu liên ngành về con người, nhận thức, trí tuệ, hành vi và ý thức
-- **Canonical repository/vault:** `TO_BE_CONFIRMED` — chưa xác nhận một Git repository riêng làm nguồn chân lý
-- **Research export:** bản tóm tắt Deep Research do người dùng cung cấp trong hội thoại, báo cáo có gói `human-mind-research.zip` và `human-mind-research-obsidian.zip`; **nội dung 28 file chưa được nhập/đối chiếu vào repository này**
-- **Requirements:** [Kế hoạch triển khai](plan.md) và [Danh mục/kiểm tra nhập liệu](import-checklist.md)
-- **Last project metadata review:** 2026-11-05
-- **Tech stack:** Markdown, Obsidian, Git, AI-WORKSPACE (context/pointer); ChatGPT Project là snapshot, không phải hệ thống đồng bộ
-- **Current phase:** P0 — đăng ký dự án, lập kế hoạch và chờ nhập/kiểm tra artifacts
-- **Source registry:** chưa có nguồn nghiên cứu nào được phê duyệt/đăng ký/ingest cho dự án này trong AI-WORKSPACE
-- **Approved decisions:** chưa có quyết định nào được ghi nhận là đã phê duyệt cho dự án này
+- **Scope:** nghiên cứu liên ngành về con người, nhận thức, trí tuệ, hành vi và ý thức (28 chủ đề, 7 nhóm)
+- **Input thực tế do người dùng xác nhận:** **một báo cáo Deep Research định dạng `.md`**; chưa có file ZIP nào được xác nhận
+- **Canonical source:** bản báo cáo Markdown gốc của người dùng, chờ đính kèm/định vị; không suy rằng 28 ghi chú Markdown riêng đã tồn tại
+- **Canonical vault/repo cho ghi chú phát triển:** `TO_BE_CONFIRMED` — tùy chọn sau khi đọc báo cáo
+- **Requirements:** [Kế hoạch](plan.md) và [Checklist tiếp nhận báo cáo, danh mục 28 chủ đề](import-checklist.md)
+- **Last metadata review:** 2026-11-05
+- **Current phase:** P0 — đăng ký project và chờ bản `.md` để rà soát, sau đó lên kế hoạch học
+- **Source registry:** chưa có nguồn nghiên cứu được phê duyệt/đăng ký/Ingest cho project này trong AI-WORKSPACE
+- **Approved decisions:** chưa có quyết định nào được ghi nhận đã phê duyệt
 
 ## Goals
 
-1. Quản lý có kiểm soát **28 ghi chú nghiên cứu** chia thành 7 module, có liên kết Obsidian, metadata và nguồn tham khảo.
-2. Duy trì một báo cáo tổng hợp, roadmap 40 tuần (6–8 giờ/tuần), research log, câu hỏi tự kiểm tra và capstone.
-3. Phân biệt nguồn gốc khoa học, tổng thuật, diễn giải AI, giả thuyết, quan điểm triết học và phần chưa xác minh.
-4. Đảm bảo khả năng rà soát thay đổi, sửa lỗi và tái sử dụng trong Obsidian/ChatGPT mà không làm mất provenance.
+1. Đọc và quản lý **báo cáo Markdown thực tế** của Deep Research như một tài liệu đầu vào, giữ nguyên bản gốc và provenance.
+2. Lập kế hoạch 40 tuần (6–8 giờ/tuần) cho 28 chủ đề, có checkpoints, nghiên cứu khoa học, câu hỏi tự kiểm tra và capstone.
+3. Đối chiếu xem báo cáo `.md` thực sự có nội dung nào: 28 phần, nguồn tham khảo, lộ trình, bài tập, hay chỉ là bản tổng hợp. Không suy đoán các file riêng.
+4. Chỉ khi có nhu cầu và đủ nội dung, **đề xuất** tách thành 28 ghi chú Obsidian; mọi ghi chú tạo mới được gắn `derived draft` và truy ngược đến báo cáo gốc.
+5. Phân biệt `FACT`, `INTERPRETATION`, `HYPOTHESIS`, `UNKNOWN` và giữ tình trạng kiểm chứng nguồn.
 
 ## Non-goals / boundaries
 
-- Không tự động đưa 28 note vào `wiki/`, `sources/raw/` hay `sources/manifest.csv`.
-- Không xem một citation/URL trong báo cáo AI là bằng chứng đã kiểm chứng, quyền sao chép hay đăng ký nguồn.
-- Không tự nâng trạng thái tài liệu lên `verified`, không tạo human approval giả, không tuyên bố Ingest đã chạy.
-- Không đặt toàn bộ nội dung vault nghiên cứu trong `projects/`: theo [README gốc](../../README.md), đây là nơi giữ **pointer và context**. Bộ note chi tiết nên nằm ở vault/repository độc lập được xác nhận.
-- Không thay đổi trạng thái **HOLD / NOT READY** của quy trình real-source intake AI-WORKSPACE.
+- Không khẳng định có ZIP, bundles, 28 file riêng, hoặc tài liệu đã được nhập khi chưa thấy artifact thật.
+- Không tự động đưa báo cáo hoặc ghi chú vào `wiki/`, `sources/raw/`, `sources/manifest.csv`.
+- Không coi citation/URL trong báo cáo AI là bằng chứng đã kiểm chứng, license hay quyền tái phân phối.
+- Không nâng trạng thái tri thức lên `verified`, không tạo human approval giả, không tuyên bố Ingest đã chạy.
+- Không thay đổi các rào cản real-source intake hiện hành của AI-WORKSPACE.
 
 ## Architecture & source of truth
 
@@ -35,42 +36,40 @@ AI-WORKSPACE/
 └── projects/
     ├── index.md
     └── human-mind-research/
-        ├── context.md             <- pointer / current status
-        ├── plan.md                <- execution roadmap
-        └── import-checklist.md    <- 28-file manifest and gates
+        ├── context.md             <- project pointer / status
+        ├── plan.md                <- learning & review roadmap
+        └── import-checklist.md    <- Markdown intake & 28-topic outline
 
-Separate canonical Human Mind Research vault/repo (PENDING):
+User-provided Deep Research report (PENDING):
+└── report.md                      <- original file name to be confirmed
+
+Optional derived Obsidian vault/repo (NOT CREATED):
 ├── 00-START-HERE.md
-├── MASTER-REPORT.md
-├── AI_CONTEXT.md
-├── RESEARCH-ROADMAP.md
-├── 01-foundations/ ... 07-integration/ (28 notes)
-├── references/
-├── research-log/
-└── bundles/
+├── 01-foundations/ ... 07-integration/  <- up to 28 derived notes
+└── references/ and research-log/
 ```
 
-**Source of truth:** vault/repo độc lập khi được xác nhận. **AI-WORKSPACE:** bối cảnh và trạng thái tích hợp. **ChatGPT Project:** snapshot cập nhật thủ công, không đồng bộ hai chiều.
+**Source of truth:** báo cáo `.md` gốc cho nội dung Deep Research; bản tách note chỉ là sản phẩm phái sinh có thể kiểm tra lại. **AI-WORKSPACE:** context/pointer, không phải kho chứa toàn bộ tài liệu. **ChatGPT Project:** snapshot thủ công nếu được tạo, không phải đồng bộ GitHub.
 
 ## Current priorities
 
-1. Xác nhận và tải đúng gói ZIP từ phiên Deep Research; đối chiếu 28 file với manifest.
-2. Kiểm tra cấu trúc, frontmatter, wikilinks, nội dung không rỗng, trích dẫn và giấy phép; ghi lỗi và độ chắc chắn.
-3. Chọn canonical vault/repository riêng; chỉ nhập bộ Markdown vào đó sau khi đã xác nhận nội dung.
-4. Review khoa học theo từng module, sau đó triển khai lịch học 40 tuần.
-5. Chỉ đề xuất real-source intake của AI-WORKSPACE qua luồng phê duyệt riêng.
+1. Nhận đúng **file báo cáo `.md`** do người dùng lưu, không yêu cầu ZIP.
+2. Đọc/kiểm thực tế cấu trúc, 28 chủ đề, nguồn, trích dẫn, mức độ chi tiết và nội dung còn thiếu.
+3. Điều chỉnh kế hoạch 40 tuần theo nội dung báo cáo; lập backlog cho những phần chưa có.
+4. Nếu người dùng muốn Obsidian, xin xác nhận repo/vault rồi tách note từ báo cáo với provenance rõ ràng.
+5. Chỉ đề xuất source intake vào AI-WORKSPACE bằng quy trình phê duyệt riêng.
 
 ## Open questions
 
-- Canonical repo/vault nào sẽ chứa đầy đủ 28 note và lịch sử Git?
-- Hai ZIP Deep Research có thể được cung cấp trực tiếp để kiểm tra nội dung, kích thước và file thực tế không?
-- Ai là người duyệt nguồn và các tuyên bố khoa học; mức độ chi tiết/cập nhật nào là tiêu chí chấp nhận?
-- Có cần tạo **ChatGPT Project** riêng qua giao diện ChatGPT hay chỉ cần thư mục dự án trong GitHub AI-WORKSPACE? Đây là hai thực thể khác nhau.
+- Người dùng có thể đính kèm file báo cáo `.md` vào hội thoại này không?
+- Báo cáo có 28 phần riêng hay chỉ có roadmap/tổng hợp? Cần đọc file mới xác định được.
+- Người dùng muốn chỉ quản lý trong GitHub `projects/` hay còn tạo ChatGPT Project qua UI?
+- Nếu cần Obsidian, canonical repo/vault độc lập nào sẽ được chọn?
 
 ## Useful handoffs
 
-- [Kế hoạch 40 tuần và milestones](plan.md)
-- [Manifest 28 note và checklist kiểm tra](import-checklist.md)
+- [Kế hoạch 40 tuần](plan.md)
+- [Checklist báo cáo và danh mục 28 chủ đề](import-checklist.md)
 - [Danh mục dự án](../index.md)
 - [Governance](../../KNOWLEDGE_GOVERNANCE.md)
 - [Source integrity](../../SOURCE_INTEGRITY.md)
